@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-elbow">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/img/elbow-hydro-gunblue-small.png">
+                    <img src="/img/hydro-gunblue-small.png">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -67,7 +67,7 @@
             @yield('bottom')
             <div class="container">
                 <hr>
-                <p class="footer small">&copy;  {{ date('F jS, Y') }}</p>
+                <p class="footer small">&copy; Elbow Farm {{ date('F jS, Y') }}</p>
             </div>
         </main>
     </div>

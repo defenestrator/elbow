@@ -7,7 +7,7 @@
                     <h2>For those who grow </h2>
                 </div>
                 <div class="title m-b-md">
-                    <img src="img/new-hero.png" style="width:360px;" alt="The  says hello, from elbow.io!" title="The  says hello!" />
+                    <img src="img/new-hero.png" style="width:360px;" alt="Hello, from elbow farm!" title="Hello, from elbow farm!" />
                 </div>
 
                 <div class="welcome-links m-b-md">
@@ -25,7 +25,7 @@
                             <hr>
                         </div>
                         <div class="col-sm-6">
-                            <h5> helps your plants grow</h5>
+                            <h5>Optimize your garden</h5>
                             <h4 style="color:#2d94fa;">from seed to harvest</h4>
                         </div>
                     </div>
