@@ -10,7 +10,7 @@ let mix = require('laravel-mix');
 if (process.env.APP_ENV !== "production") {
     mix.js('resources/assets/js/app.js', 'public/js')
         .sass('resources/assets/sass/app.scss', 'public/css')
-        .browserSync({proxy: 'groid.fz', notify: false});
+        .browserSync({proxy: 'elbow.fz', notify: false});
 } else {
     mix.js('resources/assets/js/app.js', 'public/js')
         .sass('resources/assets/sass/app.scss', 'public/css')

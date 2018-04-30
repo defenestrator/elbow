@@ -95,8 +95,8 @@ h4, h5 {
   text-align: center;
 }
 
-.title h1{
-  font-size: 64px;
+.title h1 {
+  font-size: 48px;
   line-height:1.05em;
   font-family: $font-family-sans-serif;
   font-weight:200;
@@ -105,8 +105,8 @@ h4, h5 {
 .title h2 {
   font-family: $font-family-serif;
   font-weight: 400;
-  font-size: 1.6666666666em;
-  color:$dgray;
+  font-size: 2em;
+  color:$lgray;
 }
 
 .welcome-links > a {

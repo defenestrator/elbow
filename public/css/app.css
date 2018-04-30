@@ -10492,7 +10492,7 @@ h5 {
 }
 
 .title h1 {
-  font-size: 64px;
+  font-size: 48px;
   line-height: 1.05em;
   font-family: "Fira Sans", sans-serif;
   font-weight: 200;
@@ -10502,8 +10502,8 @@ h5 {
 .title h2 {
   font-family: "Spectral", "Georgia", serif;
   font-weight: 400;
-  font-size: 1.6666666666em;
-  color: #343a40;
+  font-size: 2em;
+  color: #a3a3a3;
 }
 
 .welcome-links > a {

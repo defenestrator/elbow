@@ -3,7 +3,7 @@
         <div class="container-fluid" style="padding-left:0;padding-right:0;">
             <div class="center">
                 <div class="title m-b-md">
-                    <h1>Elbow</h1>
+                    <h1>Elbow Farm</h1>
                     <h2>For those who grow </h2>
                 </div>
                 <div class="title m-b-md">
@@ -22,6 +22,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <h3>Get your <a href="/register">free account</a> today<sup><a href="#no-cc">*</a></sup></h3>
+                            Faggot bitches.
                             <hr>
                         </div>
                         <div class="col-sm-6">
