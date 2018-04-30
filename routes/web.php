@@ -18,3 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::view('/hobbyist', 'hobbyist');
+Route::view('/commercial', 'commercial');
+
+Route::get('/activate/please', 'Auth\ActivationController@please');
+Route::get('/resendEmail', 'Auth\ActivationController@resendEmail');
+Route::get('/activate/{code}', 'Auth\ActivationController@activateAccount');

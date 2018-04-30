@@ -1,95 +1,44 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
+@extends('layouts.master')
+    @section('content')
+        <div class="container-fluid" style="padding-left:0;padding-right:0;">
+            <div class="center">
                 <div class="title m-b-md">
-                    Laravel
+                    <h1>Elbow</h1>
+                    <h2>For those who grow </h2>
+                </div>
+                <div class="title m-b-md">
+                    <img src="img/new-hero.png" style="width:360px;" alt="The  says hello, from elbow.io!" title="The  says hello!" />
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="welcome-links m-b-md">
+                    <a href="/hobbyist">Hobbyist</a>
+                    <a href="/commercial">Commercial</a>
+                    <a href="https://docs.elbow.io">Developer</a>
+                </div>
+
+            </div>
+            <div class="m-b-md dark" style="padding:2em 0;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h3>Get your <a href="/register">free account</a> today<sup><a href="#no-cc">*</a></sup></h3>
+                            <hr>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5> helps your plants grow</h5>
+                            <h4 style="color:#2d94fa;">from seed to harvest</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="container m-b-md">
+                <p class="serif">This service is an
+                    <a href="https://github.com/defenestrator/elbow">
+                        open source software
+                    </a>
+                    project, for great good
+                </p>
+                <p class="small" id="no-cc"><a href="#no-cc">*</a>no credit card required</p>
+            </div>
         </div>
-    </body>
-</html>
+    @endsection

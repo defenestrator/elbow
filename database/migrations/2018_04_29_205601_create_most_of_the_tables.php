@@ -181,15 +181,15 @@ class CreateMostOfTheTables extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('uuid')->unique();
-            $table->string('avatar')->default('/img/groid-bot.png');
+            $table->string('avatar')->default('/img/bot.png');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('facebook')->default('groid');
-            $table->string('instagram')->default('groid');
-            $table->string('youtube')->default('groid');
-            $table->string('whatsapp')->default('groid');
-            $table->string('snapchat')->default('groid');
-            $table->string('cashtag')->default('groid');
+            $table->string('facebook')->default('elbow');
+            $table->string('instagram')->default('elbow');
+            $table->string('youtube')->default('elbow');
+            $table->string('whatsapp')->default('elbow');
+            $table->string('snapchat')->default('elbow');
+            $table->string('cashtag')->default('elbow');
             $table->longText('bio')->nullable();
             $table->timestamps();
         });

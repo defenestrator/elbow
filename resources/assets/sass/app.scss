@@ -1,6 +1,6 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,400|Spectral:400,800&subset=latin-ext');
 
 // Variables
 @import "variables";
@@ -8,7 +8,183 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
+body, html {
+  font-family: 'Fira Sans', sans-serif;
+  color: $primary;
+  min-height: 100%;
+}
+.form-control {
+  font-size:16px;
+}
+.serif {
+  font-family: $font-family-serif;
+}
+.sans {
+  font-family: $font-family-sans-serif;
+}
+.navbar-elbow {
+  background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.btn-primary {
+  background-color: $elbowbot;
+  border-color: $primary;
+}
+
+.btn {
+  font-weight:200;
+}
+
+h1, h2, h3 {
+  font-family:$font-family-serif;
+  line-height:1.05em;
+}
+
+h1 {
+  font-weight:800;
+  color:$elbowbot;
+}
+
+h2 {
+  font-weight:400;
+  color:$elbowbot;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+h4, h5 {
+  font-weight:200;
+  line-height:1.05em;
+}
+
+.dark {
+  background-color: #2D3942;
+  color:white;
+  width:100%;
+  font-weight:200;
+}
+
+.dark.card-header {
+  background-color: $elbowbot;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width:100%;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+.center {
+  text-align: center;
+}
+
+.title h1{
+  font-size: 64px;
+  line-height:1.05em;
+  font-family: $font-family-sans-serif;
+  font-weight:200;
+  color:$water;
+}
+.title h2 {
+  font-family: $font-family-serif;
+  font-weight: 400;
+  font-size: 1.6666666666em;
+  color:$dgray;
+}
+
+.welcome-links > a {
+  color: #636b6f;
+  padding-left: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  line-height:2em;
+}
+
+.m-b-md {
+  margin-bottom: 20px;
+}
+
+.justified {
+  text-align:justify;
+  padding:2em;
+}
+
+.dark h4 {
+  color: $water;
+  font-weight:200;
+}
+
+a:link, a:visited, a:active, a:hover {
+  transition:0.2s;
+  text-decoration:none;
+}
+a:link, a:visited {
+  color:$mgreen;
+  font-weight:400;
+}
+
+a:active, a:hover {
+  color:$olive;
+}
+
+.dark a:link,.dark a:visited {
+  color:$lgreen;
+  text-decoration: none;
+}
+
+.dark a:hover, .dark a:active {
+  color:$olive;
+  text-decoration: none;
+}
+
+.navbar-light .navbar-nav .nav-link{
+  color:$primary;
+}
+
+.navbar-light .navbar-toggler {
+  color:transparent;
+  border-color:transparent;
+}
+
+.small {
+  font-size:85%;
+}
+.dark .small {
+  font-weight:200;
+  color:$body-bg;
+}
+
+.footer {
+  color:$lgray;
+  font-family:$font-family-serif;
+}
+.dark span.invalid-feedback  {
+
+}
+.dark span strong {
+  font-weight:200;
+}
+.dark .form-control.is-invalid {
+
 }
