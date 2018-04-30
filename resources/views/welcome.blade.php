@@ -13,7 +13,7 @@
                 <div class="welcome-links m-b-md">
                     <a href="/hobbyist">Hobbyist</a>
                     <a href="/commercial">Commercial</a>
-                    <a href="https://docs.elbow.io">Developer</a>
+                    <a href="https://docs.elbow.farm">Developer</a>
                 </div>
 
             </div>
@@ -34,7 +34,7 @@
             </div>
             <div class="container m-b-md">
                 <p class="serif">This service is an
-                    <a href="https://github.com/defenestrator/elbow">
+                    <a href="https://github.com/defenestrator/elbow.farm">
                         open source software
                     </a>
                     project, for great good
