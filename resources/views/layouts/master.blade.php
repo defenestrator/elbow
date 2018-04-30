@@ -9,6 +9,7 @@
     <title>@yield('title', config('app.name'))</title>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="icon" href="/favicon-100.png" sizes="100x100">
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <!-- Page level Styles -->
