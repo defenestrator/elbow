@@ -3,7 +3,7 @@
         <div class="container-fluid" style="padding-left:0;padding-right:0;">
             <div class="center">
                 <div class="title m-b-md">
-                    <h1>Elbow Farm</h1>
+                    <h1>Elbow</h1>
                     <h2>For those who grow </h2>
                 </div>
                 <div class="title m-b-md">
