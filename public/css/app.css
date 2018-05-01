@@ -10481,12 +10481,6 @@ h5 {
   position: relative;
 }
 
-.top-right {
-  position: absolute;
-  right: 10px;
-  top: 18px;
-}
-
 .center {
   text-align: center;
 }
@@ -10536,13 +10530,13 @@ a:link,
 a:visited,
 a:active,
 a:hover {
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
   text-decoration: none;
 }
 
 a:link,
 a:visited {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
   color: #3c883e;
   font-weight: 400;
 }
