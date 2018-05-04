@@ -243,7 +243,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedInteger('manufacturer_id')->default(1);
             $table->unsignedInteger('btus')->default(0);
             $table->unsignedInteger('watts')->default(0);
-            $table->unsignedInteger('m3m')->default(0);
+            $table->unsignedInteger('cfm')->default(0);
             $table->string('name')->default(0);
             $table->string('appliance_type')->default('Air Conditioner');
             $table->timestamps();
@@ -316,16 +316,26 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('harvests', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('date_of')->nullable();
+            $table->unsignedBigInteger('initial_yield_g');
+            $table->unsignedBigInteger('loss_g')->default(0);
+            $table->unsignedBigInteger('dry_weight_g')->default(0);
+            $table->text('notes')->default('great harvest!');
             $table->timestamps();
         });
 
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('role');
             $table->timestamps();
         });
 
         Schema::create('api_keys', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('key');
+            $table->string('name');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('sensor_id');
             $table->timestamps();
         });
 
