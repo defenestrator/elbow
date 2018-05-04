@@ -317,10 +317,10 @@ class CreateMostOfTheTables extends Migration
         Schema::create('harvests', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date_of')->nullable();
-            $table->unsignedBigInteger('initial_yield_g');
-            $table->unsignedBigInteger('loss_g')->default(0);
-            $table->unsignedBigInteger('dry_weight_g')->default(0);
-            $table->text('notes')->default('great harvest!');
+            $table->unsignedInteger('initial_yield_g');
+            $table->unsignedInteger('loss_g')->default(0);
+            $table->unsignedInteger('dry_weight_g')->default(0);
+            $table->string('notes')->default('great harvest!');
             $table->timestamps();
         });
 
@@ -342,17 +342,33 @@ class CreateMostOfTheTables extends Migration
         Schema::create('area_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->string('description')->default('');
             $table->timestamps();
         });
 
         Schema::create('solutions', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('sensor_id')->nullable();
+            $table->float('ph', 4, 2)->nullable();
+            $table->float('ec')->nullable();
+            $table->unsignedInteger('tds')->nullable();
+            $table->unsignedInteger('level')->nullable();
+            $table->unsignedInteger('temperature_c')->nullable();
+            $table->unsignedInteger('dissolved_oxygen')->nullable();
+            $table->float('barometric_pressure', 4, 2)->nullable();
             $table->timestamps();
         });
 
         Schema::create('environments', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('sensor_id')->nullable();
+            $table->unsignedInteger('temperature_c')->nullable();
+            $table->unsignedInteger('c02_ppm')->nullable();
+            $table->unsignedInteger('oxygen_ppm')->nullable();
+            $table->unsignedInteger('relative_humidity')->nullable();
+            $table->float('barometric_pressure', 4, 2)->nullable();
             $table->timestamps();
         });
 
@@ -384,6 +400,25 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedInteger('feature_id');
             $table->timestamps();
         });
+
+        Schema::create('team_users', function (Blueprint $table) {
+            $table->unsignedInteger('team_id');
+            $table->unsignedInteger('user_id');
+            $table->timestamps();
+        });
+
+        Schema::create('team_roles', function (Blueprint $table) {
+            $table->unsignedInteger('plan_id');
+            $table->unsignedInteger('feature_id');
+            $table->timestamps();
+        });
+
+        Schema::create('team_role_users', function (Blueprint $table) {
+            $table->unsignedInteger('plan_id');
+            $table->unsignedInteger('feature_id');
+            $table->timestamps();
+        });
+
     }
 
     /**

@@ -1,0 +1,69 @@
+# Elbow Farm CI and CD brought to you by CircleCI, Slack, Envoyer.io and my personal lack of grit.
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/php:7.2.5-cli-node
+
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run:
+          name: Download NodeJS v8
+          command: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      - run:
+          name: Install Nodejs 8
+          command: sudo apt-get install -y nodejs
+      - run: sudo apt install -y libsqlite3-dev
+      - run: sudo apt-get install -y libmagickwand-dev
+      - run: sudo pecl install imagick-3.4.3 && sudo docker-php-ext-enable imagick
+      - run:
+          name: Install PHP GD Extension
+          command: sudo docker-php-ext-install gd
+      - restore_cache:
+          keys:
+          - dependency-cache-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "composer.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-{{ checksum "composer.json" }}
+      - run:
+          name: Install NodeJS Packages
+          command: npm install
+      - run: cp .env.dusk .env
+      - run: composer install -n --ignore-platform-reqs
+      - run: touch storage/testing.sqlite
+      - run: php artisan key:generate
+      - run: php artisan migrate --force
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - save_cache:
+          paths:
+            - ./vendor
+          key: v1-dependencies-{{ checksum "composer.json" }}
+      # run tests!
+      - run:
+         name: Start Chrome Driver
+         command: ./vendor/laravel/dusk/bin/chromedriver-linux
+         background: true
+      - run:
+         name: Run Http Server
+         command: php artisan serve
+         background: true
+      - run:
+         name: Run Dusk Tests
+         command: |
+           mkdir -p ~/phpunit
+           php artisan dusk --log-junit ~/phpunit/duskunit.xml tests/Browser
+         when: always
+      - run: ./vendor/bin/phpunit tests/Spark
+      - store_test_results:
+         path: ~/phpunit
+      - store_artifacts:
+         path: ~/phpunit
+notify:
+  webhooks:
+    # A list of hook hashes, containing the URL field
+    - url: https://elbow.farm/api/deploy-HfDamFwqhXEUUsHg6t4L?api_token=$API_KEY
