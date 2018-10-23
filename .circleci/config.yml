@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.2.5-cli-node
+      - image: 7.2.11-cli-node-browsers-legacy
 
     working_directory: ~/repo
     steps:
