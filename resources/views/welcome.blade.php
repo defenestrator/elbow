@@ -32,12 +32,6 @@
                 </div>
             </div>
             <div class="container m-b-md">
-                <p class="serif">This service is an
-                    <a href="https://github.com/defenestrator/elbow.farm">
-                        open source software
-                    </a>
-                    project, for great good
-                </p>
                 <p class="small" id="no-cc"><a href="#no-cc">*</a>no credit card required</p>
             </div>
         </div>
