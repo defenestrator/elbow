@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: 7.2.11-fpm-stretch
+      - image: circleci/7.2.11-fpm-stretch
 
     working_directory: ~/repo
     steps:
