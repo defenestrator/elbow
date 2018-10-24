@@ -58,7 +58,6 @@ jobs:
            mkdir -p ~/phpunit
            php artisan dusk --log-junit ~/phpunit/duskunit.xml tests/Browser
          when: always
-      - run: ./vendor/bin/phpunit tests/Spark
       - store_test_results:
          path: ~/phpunit
       - store_artifacts:
