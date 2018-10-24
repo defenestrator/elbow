@@ -63,7 +63,3 @@ jobs:
          path: ~/phpunit
       - store_artifacts:
          path: ~/phpunit
-#notify:
-#  webhooks:
-    # A list of hook hashes, containing the URL field
-#    - url: https://elbow.farm/api/deploy-HfDamFwqhXEUUsHg6t4L?api_token=$API_KEY
