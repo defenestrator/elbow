@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: 7.2.11-cli-node-browsers-legacy
+      - image: 7.2.11-fpm-stretch
 
     working_directory: ~/repo
     steps:
@@ -63,7 +63,7 @@ jobs:
          path: ~/phpunit
       - store_artifacts:
          path: ~/phpunit
-notify:
-  webhooks:
+#notify:
+#  webhooks:
     # A list of hook hashes, containing the URL field
-    - url: https://elbow.farm/api/deploy-HfDamFwqhXEUUsHg6t4L?api_token=$API_KEY
+#    - url: https://elbow.farm/api/deploy-HfDamFwqhXEUUsHg6t4L?api_token=$API_KEY
