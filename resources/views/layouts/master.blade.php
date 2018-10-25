@@ -11,7 +11,7 @@
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link rel="icon" href="/favicon-100.png" sizes="100x100">
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/style.css') }}" rel="stylesheet">
     <!-- Page level Styles -->
     @yield('page_styles', '')
 </head>
@@ -75,7 +75,7 @@
         </main>
     </div>
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/script.js') }}" defer></script>
     @yield('page_scripts')
 </body>
 </html>
