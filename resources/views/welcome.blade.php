@@ -11,9 +11,8 @@
                 </div>
 
                 <div class="welcome-links m-b-md">
-                    <a href="/hobbyist">Hobbyist</a>
-                    <a href="/commercial">Commercial</a>
-                    <a href="https://docs.elbow.farm">Developer</a>
+                    <a href="https://github.com/defenestrator/elbow" target="_blank">Github</a>
+                    <a href="https://docs.elbow.farm" target="_blank">Developer Documentation</a>
                 </div>
 
             </div>
