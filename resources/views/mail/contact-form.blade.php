@@ -1,9 +1,6 @@
-@section('top')
 <div>
     <h1>Hello, Elbow</h1>
     </div>
-@endsection
-@section('content')
 <div>
     <h2>you got a new contact message!</h2>
     <div style="border:1px solid gray; padding:12px;">
@@ -21,4 +18,3 @@
     </div>
     <h2>Write them back!</h2>
 </div>
-@endsection
