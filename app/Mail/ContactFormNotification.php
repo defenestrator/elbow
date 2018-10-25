@@ -33,7 +33,7 @@ class ContactFormNotification extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.sales-inquiry')
+        return $this->view('mail.contact-form')
             ->with([
                 'data' => $this->contact
             ]);
