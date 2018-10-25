@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGiveawaysTable extends Migration
+class CreateContestEntriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateGiveawaysTable extends Migration
      */
     public function up()
     {
-        Schema::create('giveaways', function (Blueprint $table) {
+        Schema::create('contest_entries', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->string('title');
-            $table->longText('description');
-            $table->string('image');
-            $table->timestamp('ends_at');
+            $table->integer('giveaway_id')->unsigned()->default(0);
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ class CreateGiveawaysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('giveaways');
+        Schema::dropIfExists('contest_entries');
     }
 }
