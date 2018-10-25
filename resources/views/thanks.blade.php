@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Hobo Fly Fishing | Have Rod, Will Travel
+    Thanks for taking the time to write us.
     @parent
 @stop
 
