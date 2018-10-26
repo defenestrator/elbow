@@ -1,5 +1,4 @@
 <?php
-
 namespace Elbow\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;

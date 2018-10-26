@@ -11,11 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
+Auth::routes(['verify' => true]);
+Route::view('/', 'welcome');
 // Contact Form
 Route::view('/contact', 'contact')->name('contact');
 Route::post('/contact','ContactFormController@create')->name('contact');
@@ -36,4 +33,5 @@ Route::get('/scrape-strains', 'Ingestion\CannabisReportsController@scrape');
 Route::get('/scrape-seed-companies-details', 'Ingestion\CannabisReportsController@seedco');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
