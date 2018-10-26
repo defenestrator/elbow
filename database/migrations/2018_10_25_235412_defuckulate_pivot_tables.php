@@ -14,16 +14,14 @@ class DefuckulatePivotTables extends Migration
     public function up()
     {
         Schema::table('team_roles', function (Blueprint $table) {
-            $table->rename('plan_id', 'team_id');
-            $table->unsignedInteger('feature_id', 'role_id');
-            $table->timestamps();
+            $table->renameColumn('plan_id', 'team_id');
+            $table->renameColumn('feature_id', 'role_id');
         });
 
         Schema::table('team_role_users', function (Blueprint $table) {
-            $table->rename('plan_id', 'team_id');
-            $table->rename('feature_id', 'role_id');
+            $table->renameColumn('plan_id', 'team_id');
+            $table->renameColumn('feature_id', 'role_id');
             $table->unsignedInteger('user_id');
-            $table->timestamps();
         });
         Schema::create('role_users', function (Blueprint $table) {
             $table->unsignedInteger('role_id');
