@@ -10420,6 +10420,8 @@ html {
 .btn-primary {
   background-color: #39556a;
   border-color: #2D3942;
+  color: white;
+  text-transform: uppercase;
 }
 
 .btn {
@@ -10461,7 +10463,16 @@ h5 {
 }
 
 .dark.card-header {
-  background-color: #39556a;
+  background-color: #2d94fa;
+}
+
+.card-header {
+  background-color: white;
+  border-bottom: 1px solid #a3a3a3;
+}
+
+.card {
+  border: 1px solid #2D3942;
 }
 
 .flex-center {
