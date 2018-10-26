@@ -27,8 +27,8 @@ class DefuckulatePivotTables extends Migration
             $table->renameColumn('feature_id', 'role_id');
         });
         Schema::create('role_users', function (Blueprint $table) {
-            $table->unsignedInteger('role_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('role_id')->default(0);
+            $table->unsignedInteger('user_id')->default(0);
             $table->timestamps();
         });
     }
