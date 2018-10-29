@@ -9,7 +9,11 @@
                 <div class="title m-b-md">
                     <img src="img/new-hero.png" style="width:360px;" alt="Hello, from elbow farm!" title="Hello, from elbow farm!" />
                 </div>
+                <div class="welcome-links m-b-md">
+                <a href="giveaways" target="_blank" style="font-size:32px;">Click Here to Win Free Seeds!</a>
+                </div>
             </div>
+
             <div class="m-b-md dark" style="padding:2em 0;">
                 <div class="container">
                     <div class="row">
@@ -67,7 +71,6 @@
                         </form>
                     </div>
                     <hr>
-                    <contest-entry></contest-entry>
                     {{--<div class="welcome-links m-b-md">--}}
                         {{--<a href="https://github.com/defenestrator/elbow" target="_blank">Github</a>--}}
                         {{--<a href="https://docs.elbow.farm" target="_blank">Developer Documentation</a>--}}
