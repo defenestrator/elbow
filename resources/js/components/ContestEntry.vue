@@ -56,7 +56,7 @@
                         .then(result => {
                     swal({
                             title: 'Thanks for entering the contest!',
-                            text: this.message,
+                            text: this.message + ' Be sure to check your Spam folder for emails from @elbow.farm. Thank you.',
                             type: 'success',
                             timer: 5000
                             });
