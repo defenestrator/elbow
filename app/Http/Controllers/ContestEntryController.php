@@ -46,7 +46,7 @@ class ContestEntryController extends Controller
             $this->mail->to($request->email)->send(new ContestEntryVerificationMail($resend));
 
             return response([
-                    'message' => 'An entry for this contest already exists for ' . $request->email . '. Please confirm your email address',
+                    'message' => 'An entry already exists for ' . $request->email . '. Please confirm your email, check your Spam folder for emails from @elbow.farm.',
                     'success' => true
                 ]
             );
@@ -55,12 +55,12 @@ class ContestEntryController extends Controller
         $entry = ContestEntry::create([
             'email' => $request->email,
             'uuid' => Uuid::uuid4(),
-            'giveaway_id' => 1
+            'giveaway_id' => $request->giveaway_id
         ]);
 
         $this->mail->to($request->email)->send(new ContestEntryVerificationMail($entry));
         return response([
-            'message' => 'Entered contest with email: '. $request->email . '. Please confirm your email address',
+            'message' => 'Entered contest with email: '. $request->email . '. Please confirm your email. Check spam for support@elbow.farm or re-enter your email.',
             'success' => true
         ]);
     }

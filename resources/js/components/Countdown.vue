@@ -2,21 +2,22 @@
 <div class="dark" style="border-radius:1em;">
     <h3 style="text-transform:uppercase; padding-top:1em; font-weight:100; font-family: 'Fira Sans', sans-serif; color:white;">The contest will expire in:</h3>
     <div class="block">
-        <p class="digit">{{ days | two_digits }}</p>
+        <p class="digit">{{ days }}</p>
         <p class="text">Days</p>
     </div>
     <div class="block">
-        <p class="digit">{{ hours | two_digits }}</p>
+        <p class="digit">{{ hours }}</p>
         <p class="text">Hours</p>
     </div>
     <div class="block">
-        <p class="digit">{{ minutes | two_digits }}</p>
+        <p class="digit">{{ minutes }}</p>
         <p class="text">Minutes</p>
     </div>
     <div class="block">
-        <p class="digit">{{ seconds | two_digits }}</p>
+        <p class="digit">{{ seconds }}</p>
         <p class="text">Seconds</p>
     </div>
+    <div class="text-left"> <img style="width:50%;" class="left" src="img/new-hero-gh.png"></div>
 </div>
 </template>
 

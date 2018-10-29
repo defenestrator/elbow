@@ -47418,6 +47418,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(59)
+}
 var normalizeComponent = __webpack_require__(3)
 /* script */
 var __vue_script__ = __webpack_require__(44)
@@ -47426,7 +47430,7 @@ var __vue_template__ = __webpack_require__(46)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -47496,6 +47500,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
@@ -47519,7 +47525,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
                 email: this.email
             }).then(function (result) {
                 axios.post('/api/contest-entries', {
-                    email: _this.email
+                    email: _this.email,
+                    giveaway_id: _this.giveaway_id
                 }).then(function (result) {
                     _this.message = result.data.message;
                 }).then(function (result) {
@@ -56227,109 +56234,116 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-6 offset-md-3" }, [
-    _c("p", { staticClass: "text-center" }, [
-      _vm._v("Enter your email to win!")
-    ]),
-    _vm._v(" "),
-    _c("form", [
-      _c("div", { staticClass: "input-group" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "validate",
-              rawName: "v-validate",
-              value: "required|email",
-              expression: "'required|email'"
-            },
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.email,
-              expression: "email"
-            }
-          ],
-          staticClass: "form-control",
-          class: {
-            "form-control": true,
-            "is-danger": _vm.errors.has("contest-entry")
-          },
-          staticStyle: {
-            "font-size": "18px",
-            "margin-right": "0",
-            "border-right": "none"
-          },
-          attrs: {
-            placeholder: "your email",
-            name: "contest-entry",
-            type: "email",
-            "aria-describedby": "basic-addon2",
-            required: ""
-          },
-          domProps: { value: _vm.email },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.email = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "input-group-btn" }, [
-          _c(
-            "button",
-            {
-              class: {
-                btn: true,
-                "btn-primary": true,
-                "is-danger": _vm.errors.has("contest-entry")
-              },
-              staticStyle: {
-                height: "35.59px",
-                "margin-left": "-1px",
-                "border-left": "none",
-                "border-top-left-radius": "0",
-                "border-bottom-left-radius": "0",
-                "font-size": "16px"
-              },
-              attrs: {
-                type: "submit",
-                role: "button",
-                disabled: _vm.email == "" || _vm.errors.has("contest-entry")
-              },
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.signup($event)
-                }
-              }
-            },
-            [_vm._v("\n                        Enter\n                    ")]
-          )
-        ])
+  return _c(
+    "div",
+    {
+      staticClass: "col-md-6 offset-md-3",
+      staticStyle: { "font-family": "Fira Sans', sans-serif" }
+    },
+    [
+      _c("h3", { staticClass: "text-center" }, [
+        _vm._v("Enter your email to win!")
       ]),
       _vm._v(" "),
-      _c("div", { staticStyle: { "min-height": "24px" } }, [
-        _c(
-          "span",
-          {
+      _c("form", [
+        _c("div", { staticClass: "input-group" }, [
+          _c("input", {
             directives: [
               {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.errors.has("contest-entry"),
-                expression: "errors.has('contest-entry')"
+                name: "validate",
+                rawName: "v-validate",
+                value: "required|email",
+                expression: "'required|email'"
+              },
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
               }
             ],
-            staticClass: "help is-danger"
-          },
-          [_vm._v(_vm._s(_vm.errors.first("contest-entry")))]
-        )
+            staticClass: "form-control",
+            class: {
+              "form-control": true,
+              "is-danger": _vm.errors.has("contest-entry")
+            },
+            staticStyle: {
+              "font-size": "18px",
+              "margin-right": "0",
+              "border-right": "none"
+            },
+            attrs: {
+              placeholder: "your email",
+              name: "contest-entry",
+              type: "email",
+              "aria-describedby": "basic-addon2",
+              required: ""
+            },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "input-group-btn" }, [
+            _c(
+              "button",
+              {
+                class: {
+                  btn: true,
+                  "btn-primary": true,
+                  "is-danger": _vm.errors.has("contest-entry")
+                },
+                staticStyle: {
+                  height: "35.59px",
+                  "margin-left": "-1px",
+                  "border-left": "none",
+                  "border-top-left-radius": "0",
+                  "border-bottom-left-radius": "0",
+                  "font-size": "16px"
+                },
+                attrs: {
+                  type: "submit",
+                  role: "button",
+                  disabled: _vm.email == "" || _vm.errors.has("contest-entry")
+                },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.signup($event)
+                  }
+                }
+              },
+              [_vm._v("\n                        Enter\n                    ")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticStyle: { "min-height": "24px" } }, [
+          _c(
+            "span",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.errors.has("contest-entry"),
+                  expression: "errors.has('contest-entry')"
+                }
+              ],
+              staticClass: "help is-danger"
+            },
+            [_vm._v(_vm._s(_vm.errors.first("contest-entry")))]
+          )
+        ])
       ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -56803,6 +56817,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -56873,40 +56888,47 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "block" }, [
-        _c("p", { staticClass: "digit" }, [
-          _vm._v(_vm._s(_vm._f("two_digits")(_vm.days)))
-        ]),
+        _c("p", { staticClass: "digit" }, [_vm._v(_vm._s(_vm.days))]),
         _vm._v(" "),
         _c("p", { staticClass: "text" }, [_vm._v("Days")])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "block" }, [
-        _c("p", { staticClass: "digit" }, [
-          _vm._v(_vm._s(_vm._f("two_digits")(_vm.hours)))
-        ]),
+        _c("p", { staticClass: "digit" }, [_vm._v(_vm._s(_vm.hours))]),
         _vm._v(" "),
         _c("p", { staticClass: "text" }, [_vm._v("Hours")])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "block" }, [
-        _c("p", { staticClass: "digit" }, [
-          _vm._v(_vm._s(_vm._f("two_digits")(_vm.minutes)))
-        ]),
+        _c("p", { staticClass: "digit" }, [_vm._v(_vm._s(_vm.minutes))]),
         _vm._v(" "),
         _c("p", { staticClass: "text" }, [_vm._v("Minutes")])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "block" }, [
-        _c("p", { staticClass: "digit" }, [
-          _vm._v(_vm._s(_vm._f("two_digits")(_vm.seconds)))
-        ]),
+        _c("p", { staticClass: "digit" }, [_vm._v(_vm._s(_vm.seconds))]),
         _vm._v(" "),
         _c("p", { staticClass: "text" }, [_vm._v("Seconds")])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-left" }, [
+      _c("img", {
+        staticClass: "left",
+        staticStyle: { width: "50%" },
+        attrs: { src: "img/new-hero-gh.png" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -56921,6 +56943,49 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(60);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(51)("d6da2936", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-960756ae\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ContestEntry.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-960756ae\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ContestEntry.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(50)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nbody {font-family:'Fira Sans', sans-serif;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

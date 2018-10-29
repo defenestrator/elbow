@@ -1,6 +1,6 @@
 <template>
-    <div class="col-md-6 offset-md-3">
-        <p class="text-center">Enter your email to win!</p>
+    <div class="col-md-6 offset-md-3" style="font-family:Fira Sans', sans-serif;">
+        <h3 class="text-center">Enter your email to win!</h3>
         <form>
             <div class="input-group">
                 <input style="font-size:18px; margin-right:0; border-right:none;" class="form-control" placeholder="your email"
@@ -26,7 +26,9 @@
         </form>
     </div>
 </template>
-
+<style>
+    body {font-family:'Fira Sans', sans-serif;}
+</style>
 <script>
     import VeeValidate from 'vee-validate';
     Vue.use(VeeValidate);
@@ -49,14 +51,15 @@
                         })
                         .then(result => {
                     axios.post(`/api/contest-entries`, {
-                            email: this.email
+                            email: this.email,
+                            giveaway_id: this.giveaway_id
                         }).then(result => {
                             this.message = result.data.message
                         })
                         .then(result => {
                     swal({
                             title: 'Thanks for entering the contest!',
-                            text: this.message + ' Be sure to check your Spam folder for emails from @elbow.farm. Thank you.',
+                            text: this.message,
                             type: 'success',
                             timer: 5000
                             });
