@@ -75,7 +75,7 @@ class ContestEntryController extends Controller
         $account = ContestEntry::where('uuid', '=', $uuid)->first();
         if( $account instanceof $this->contestEntry ) {
             $account->update(['email_verified_at' => now()->toDateTimeString(), 'uuid' => null]);
-            $message = 'Confirmed your contest entry for'. $account->email .'. Thanks!';
+            $message = 'Contest entry for '. $account->email .' is complete. Thanks!';
             return view('thanks', compact('message'));
         };
         return view('thanks', compact('message'));

@@ -56287,10 +56287,12 @@ var render = function() {
                 "is-danger": _vm.errors.has("contest-entry")
               },
               staticStyle: {
+                height: "35.59px",
                 "margin-left": "-1px",
                 "border-left": "none",
                 "border-top-left-radius": "0",
-                "border-bottom-left-radius": "0"
+                "border-bottom-left-radius": "0",
+                "font-size": "16px"
               },
               attrs: {
                 type: "submit",

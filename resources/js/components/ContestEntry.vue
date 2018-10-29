@@ -14,7 +14,7 @@
                                 type="submit"
                                 role="button"
                                 :disabled="email == '' || errors.has('contest-entry')"
-                                style="margin-left:-1px; border-left:none; border-top-left-radius:0; border-bottom-left-radius:0;">
+                                style="height:35.59px;margin-left:-1px; border-left:none; border-top-left-radius:0; border-bottom-left-radius:0; font-size:16px;">
                             Enter
                         </button>
                     </span>
