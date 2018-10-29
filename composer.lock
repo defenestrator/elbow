@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f73de33f6d69427c839da7cf34fc97c4",
+    "content-hash": "a9f7d1577320e4947b59636b6910a234",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3691,16 +3691,16 @@
     ],
     "packages-dev": [
         {
-            "name": "copacetic/test-printer",
+            "name": "defenestrator/test-printer",
             "version": "3.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/copacetic-co/test-printer.git",
+                "url": "https://github.com/defenestrator/test-printer.git",
                 "reference": "57ca6d05e825719a1c0ce4f70eb8553c174e135c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/copacetic-co/test-printer/zipball/57ca6d05e825719a1c0ce4f70eb8553c174e135c",
+                "url": "https://api.github.com/repos/defenestrator/test-printer/zipball/57ca6d05e825719a1c0ce4f70eb8553c174e135c",
                 "reference": "57ca6d05e825719a1c0ce4f70eb8553c174e135c",
                 "shasum": ""
             },

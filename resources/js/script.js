@@ -15,8 +15,15 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('example-component', require('./components/ExampleComponent.vue'))
+Vue.component('contest-entry', require('./components/ContestEntry.vue'))
+Vue.component('countdown', require('./components/Countdown.vue'));
 
 const app = new Vue({
     el: '#app'
 });
+
+const swa=document.createElement('link');
+swa.href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.css';
+swa.rel='stylesheet';
+document.getElementsByTagName('head')[0].appendChild(swa);

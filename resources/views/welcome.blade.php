@@ -61,15 +61,13 @@
                                   rows="6"
                                   placeholder="message" required>{{ old('contact-msg') }}</textarea>
                             </div>
-                            <div class="form-group recaptcha">
-                                {!! Recaptcha::render() !!}
-                            </div>
                             <div class="input-group">
                                 <button class="btn btn-primary input-lg" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>
                     <hr>
+                    <contest-entry></contest-entry>
                     {{--<div class="welcome-links m-b-md">--}}
                         {{--<a href="https://github.com/defenestrator/elbow" target="_blank">Github</a>--}}
                         {{--<a href="https://docs.elbow.farm" target="_blank">Developer Documentation</a>--}}

@@ -21,6 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::view('/hobbyist', 'hobbyist');
 Route::view('/commercial', 'commercial');
 
+Route::view('/contest-entries', 'contest-entries');
+Route::get('/contest-entries/{uuid}', 'ContestEntryController@confirm');
+
 Route::get('/activate/please', 'Auth\ActivationController@please');
 Route::get('/resendEmail', 'Auth\ActivationController@resendEmail');
 Route::get('/activate/{code}', 'Auth\ActivationController@activateAccount');

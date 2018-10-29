@@ -2,84 +2,82 @@
 
 namespace Elbow\Http\Controllers;
 
+use Elbow\Mail\ContestEntryVerificationMail;
 use Elbow\ContestEntry;
 use Illuminate\Http\Request;
-
+use Ramsey\Uuid\Uuid;
+use Illuminate\Contracts\Mail\Mailer;
 class ContestEntryController extends Controller
 {
+    private $contestEntry;
+    private $mail;
     /**
-     * Display a listing of the resource.
+     * Where to redirect users after verification.
      *
-     * @return \Illuminate\Http\Response
+     * @var string
      */
-    public function index()
+    protected $redirectTo = '/contest-entries';
+
+    public function __construct(ContestEntry $contestEntry, Mailer $mail)
     {
-        //
+        $this->contestEntry = $contestEntry;
+        $this->mail = $mail;
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Contact form processing.
+     * @param Request $request
+     * @return Redirect
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $this->validate($request, [
+            'email' => 'required|email'
+        ]);
+
+        if (ContestEntry::where('email', '=', $request->email)->count() > 0) {
+
+            $resend = ContestEntry::where('email', '=', $request->email)->first();
+
+            if ($resend->uuid == '' || null) {
+                $resend->update(['uuid' => Uuid::uuid4()]);
+            }
+
+            $this->mail->to($request->email)->send(new ContestEntryVerificationMail($resend));
+
+            return response([
+                    'message' => 'An entry for this contest already exists for ' . $request->email . '. Please confirm your email address',
+                    'success' => true
+                ]
+            );
+        };
+
+        $entry = ContestEntry::create([
+            'email' => $request->email,
+            'uuid' => Uuid::uuid4(),
+            'giveaway_id' => 1
+        ]);
+
+        $this->mail->to($request->email)->send(new ContestEntryVerificationMail($entry));
+        return response([
+            'message' => 'Entered contest with email: '. $request->email . '. Please confirm your email address',
+            'success' => true
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param $uuid
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store(Request $request)
+    public function confirm($uuid)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \Elbow\ContestEntry  $contestEntry
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ContestEntry $contestEntry)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \Elbow\ContestEntry  $contestEntry
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ContestEntry $contestEntry)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Elbow\ContestEntry  $contestEntry
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ContestEntry $contestEntry)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Elbow\ContestEntry  $contestEntry
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(ContestEntry $contestEntry)
-    {
-        //
+        $message = 'Sorry, we do not recognize that link';
+        $account = ContestEntry::where('uuid', '=', $uuid)->first();
+        if( $account instanceof $this->contestEntry ) {
+            $account->update(['email_verified_at' => now()->toDateTimeString(), 'uuid' => null]);
+            $message = 'Confirmed your contest entry for'. $account->email .'. Thanks!';
+            return view('thanks', compact('message'));
+        };
+        return view('thanks', compact('message'));
     }
 }

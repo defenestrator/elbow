@@ -2,19 +2,24 @@
 
 namespace Elbow\Http\Controllers;
 
+use Carbon\Carbon;
 use Elbow\Giveaway;
 use Illuminate\Http\Request;
-
 class GiveawayController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return $this
      */
     public function index()
     {
-        //
+        $giveaway = Giveaway::oldest()->get();
+        $giveaway->map(function ($giveaway) {
+            $thing = new Carbon($giveaway->ends_at);
+            $date = $thing->timezone('America/Denver')->timestamp;
+            $giveaway->expires = $date;
+            return $giveaway;
+        });
+        return view('giveaways')->with('giveaway', $giveaway);
     }
 
     /**

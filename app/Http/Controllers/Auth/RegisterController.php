@@ -10,16 +10,12 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+    private $user;
+
+    public function __construct(User $user) {
+        $this->user = $user;
+        $this->middleware('guest');
+    }
 
     use RegistersUsers;
 
@@ -29,16 +25,6 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/email/resend';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
 
     /**
      * Get a validator for an incoming registration request.
@@ -63,6 +49,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $this->user->sendEmailVerificationNotification();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

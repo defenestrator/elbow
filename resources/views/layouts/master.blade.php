@@ -75,5 +75,7 @@
         </main>
     </div>
     @yield('page_scripts')
+
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.js"></script>
 </body>
 </html>

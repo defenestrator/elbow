@@ -2,14 +2,12 @@
 
 namespace Elbow;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Auth\MustVerifyEmail as EmailVerification;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
-
-class ContestEntry extends Model implements MustVerifyEmail
+class ContestEntry extends Model
 {
-    use EmailVerification;
+    use Notifiable;
 
-    private $fillable = ['email', 'giveaway_id'];
+    protected $fillable = ['email', 'giveaway_id', 'uuid', 'email_verified_at'];
 
 }
