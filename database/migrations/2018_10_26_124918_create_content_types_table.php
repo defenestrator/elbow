@@ -16,7 +16,7 @@ class CreateContentTypesTable extends Migration
         Schema::create('content_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('type')->default('basic');
-            $table->json('fields')->default('{}');
+            $table->json('fields')->nullable();
             $table->timestamps();
         });
     }
