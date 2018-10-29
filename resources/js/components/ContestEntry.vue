@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="col-md-6 offset-md-3">
         <p class="text-center">Enter your email to win!</p>
         <form>
             <div class="input-group">
-                <input style="font-size:18px;"class="form-control" placeholder="your email"
+                <input style="font-size:18px; margin-right:0; border-right:none;" class="form-control" placeholder="your email"
                        v-validate="'required|email'" v-model="email" name="contest-entry"
                        type="email"
                        :class="{'form-control': true, 'is-danger': errors.has('contest-entry') }"
@@ -13,7 +13,8 @@
                                 @click.prevent="signup"
                                 type="submit"
                                 role="button"
-                                :disabled="email == '' || errors.has('contest-entry')">
+                                :disabled="email == '' || errors.has('contest-entry')"
+                                style="margin-left:-1px; border-left:none; border-top-left-radius:0; border-bottom-left-radius:0;">
                             Enter
                         </button>
                     </span>

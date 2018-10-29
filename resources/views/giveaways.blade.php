@@ -36,8 +36,7 @@ Elbow Farm Giveaway!
 
 @section('top')
     <div style="background: linear-gradient(rgba(0,0,0, 0.25),rgba(0,0,0, 0.25)), url('{!! $giveaway[0]['image'] !!}') center center no-repeat; background-size:cover; height:50vh;" class="text-center tagline">
-        <h1 style="padding:1em;" class="feature-tagline showcase-header">Enter the Elbow Farm Giveaway</h1>
-        <h2 class="feature-tagline showcase-header">To Win</h2>
+        <h1 style="padding:1em;" class="feature-tagline showcase-header">Elbow Farm Giveaway</h1>
         <h2 class="feature-tagline showcase-header">{!! $giveaway[0]['title'] !!}</h2>
     </div>
 @stop
