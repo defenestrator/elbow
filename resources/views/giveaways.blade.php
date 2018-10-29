@@ -44,7 +44,7 @@ Elbow Farm Giveaway!
 @section('content')
     <div class="container col-md-8 offset-md-2">
         <h2 class="text-center"></h2>
-        <div class="text-center"><countdown initial_expiration="{!! $giveaway[0]['expires'] !!}"></countdown></div>
+        <div class="text-center"><countdown :initial_expiration="parseInt({!! $giveaway[0]['expires'] !!})"></countdown></div>
         <hr>
         <contest-entry g_id="{!! $giveaway[0]['id'] !!}"></contest-entry>
         <hr>

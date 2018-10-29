@@ -56268,6 +56268,7 @@ var render = function() {
               "is-danger": _vm.errors.has("contest-entry")
             },
             staticStyle: {
+              height: "36px",
               "font-size": "18px",
               "margin-right": "0",
               "border-right": "none"
@@ -56300,7 +56301,7 @@ var render = function() {
                   "is-danger": _vm.errors.has("contest-entry")
                 },
                 staticStyle: {
-                  height: "35.59px",
+                  height: "36px",
                   "margin-left": "-1px",
                   "border-left": "none",
                   "border-top-left-radius": "0",

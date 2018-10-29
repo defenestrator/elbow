@@ -15,8 +15,7 @@ class GiveawayController extends Controller
         $giveaway = Giveaway::oldest()->get();
         $giveaway->map(function ($giveaway) {
             $thing = new Carbon($giveaway->ends_at);
-            $date = $thing->timezone('America/Denver')->timestamp;
-            $giveaway->expires = $date;
+            $giveaway->expires = $thing->timezone('America/Denver')->timestamp;
             return $giveaway;
         });
         return view('giveaways')->with('giveaway', $giveaway);
