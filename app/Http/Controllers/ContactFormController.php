@@ -39,7 +39,7 @@ class ContactFormController extends Controller
             'message' => $request->get('contact-msg'),
         ]);
 
-        $this->mail->to('support@mg.elbow.farm')->send(new ContactFormNotification($data));
+        $this->mail->to('support@mg.elbow.farm')->queue(newContactFormNotification($data));
         return view('thanks')->with('message', 'We will get back to you as quick as we can!');
     }
 }
