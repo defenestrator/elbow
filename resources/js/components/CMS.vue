@@ -254,7 +254,7 @@
                             fileFieldName: 'image',
                             urlPropertyName: 'large',
                             headers: {
-                                'X-CSRF-TOKEN': Spark.csrfToken
+                                'X-CSRF-TOKEN': token
                             },
                             xhrFields: {}
                         },

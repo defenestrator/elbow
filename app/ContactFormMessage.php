@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage whereMessage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage query()
  */
 class ContactFormMessage extends Model
 {

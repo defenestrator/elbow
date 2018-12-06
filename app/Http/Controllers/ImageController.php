@@ -28,7 +28,7 @@ class ImagesController extends Controller
     public function header(Request $request)
     {
         $request->validate([
-            'header_photo' => 'required|image'
+            'header_photo' => 'required|image|mimes:jpeg,jpg,gif,bmp,png,svg'
         ]);
 
         $large = $this->large($request->file('header_photo'));

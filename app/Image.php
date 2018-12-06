@@ -20,6 +20,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereThumbnail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image query()
  */
 class Image extends Model
 {

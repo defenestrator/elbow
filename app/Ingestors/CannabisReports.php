@@ -77,7 +77,7 @@ class CannabisReports
 
     public function getSeedCompanyDetails()
     {
-        for ($i = 173; $i < 571; ++$i) {
+        for ($i = 570; $i < 1000; ++$i) {
             try {
                 sleep(7);
                 $seedco = SeedCompany::where('id', '=', $i)->firstOrFail();
