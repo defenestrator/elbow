@@ -16,7 +16,7 @@ Cannabis Seed Shop |
 
 @section('content')
     <div class="container">
-        Hi, bitches, soon we will have a seed shop here.
+        Howdy, bitches, soon we will have a seed shop here.
     </div>
 @stop
 
