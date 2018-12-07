@@ -12,7 +12,7 @@ class GiveawayController extends Controller
      */
     public function index()
     {
-        $giveaway = Giveaway::oldest()->get();
+        $giveaway = Giveaway::latest()->get();
         $giveaway->map(function ($giveaway) {
             $thing = new Carbon($giveaway->ends_at);
             $giveaway->expires = $thing->timezone('America/Denver')->timestamp;
