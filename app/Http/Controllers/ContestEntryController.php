@@ -46,7 +46,7 @@ class ContestEntryController extends Controller
             $this->mail->to($request->email)->queue(newContestEntryVerificationMail($resend));
 
             return response([
-                    'message' => 'An entry already exists for ' . $request->email . '. Please confirm your email, check your Spam folder for emails from @elbow.farm.',
+                    'message' => 'An entry already exists for ' . $request->email . '. Please confirm your email, check your Spam folder for emails from @mg.elbow.farm.',
                     'success' => true
                 ]
             );
@@ -60,7 +60,7 @@ class ContestEntryController extends Controller
 
         $this->mail->to($request->email)->queue(newContestEntryVerificationMail($entry));
         return response([
-            'message' => 'Entered contest with email: '. $request->email . '. Please confirm your email. Check spam for support@elbow.farm or re-enter your email.',
+            'message' => 'Entered contest with email: '. $request->email . '. Please confirm your email. Check spam for support@mg.elbow.farm or re-enter your email.',
             'success' => true
         ]);
     }
