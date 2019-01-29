@@ -60,7 +60,7 @@ return [
         'redis' => [
             'driver' => 'redis',
             'connection' => 'default',
-            'queue' => 'elbow_queue',
+            'queue' => '{elbow_queue}',
             'retry_after' => 90,
             'block_for' => null,
         ],
