@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
-use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasPermissions;
 
 /**
  * Elbow\User
@@ -49,9 +49,10 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use VerifyEmail;
-    use HasRoles;
+    use HasPermissions;
     
     protected $guard_name = 'web';
+    
     /**
      * The attributes that are mass assignable.
      *

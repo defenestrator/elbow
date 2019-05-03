@@ -4,6 +4,14 @@ namespace Elbow;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
+/**
+ * Elbow\ContentImage
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContentImage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContentImage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContentImage query()
+ * @mixin \Eloquent
+ */
 class ContentImage extends Pivot
 {
     /**

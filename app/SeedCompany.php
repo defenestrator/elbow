@@ -27,6 +27,9 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Query\Builder|\Elbow\SeedCompany whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\SeedCompany whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany query()
  */
 class SeedCompany extends Model
 {

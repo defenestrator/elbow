@@ -23,6 +23,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image query()
+ * @property string $small
+ * @property string $thumb
+ * @property string $imageable_type
+ * @property int $imageable_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereImageableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereImageableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereSmall($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereThumb($value)
  */
 class Image extends Model
 {

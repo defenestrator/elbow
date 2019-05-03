@@ -41,6 +41,9 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereCreatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain query()
  */
 class Strain extends Model
 {
