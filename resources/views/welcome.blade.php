@@ -10,7 +10,6 @@
                     <img src="img/new-hero.png" style="width:360px;" alt="Hello, from elbow farm!" title="Hello, from elbow farm!" />
                 </div>
                 <div class="welcome-links m-b-md">
-                <a href="giveaways" style="font-size:32px;">Click Here to Win Free Seeds!</a>
                 </div>
             </div>
 
