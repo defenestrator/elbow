@@ -35,7 +35,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'database' => env('DB_DATABASE', 'storage/app/db/database.sqlite'),
             'prefix' => '',
         ],
 
@@ -79,7 +79,7 @@ return [
         ],
         'dusk' => [
             'driver' => 'sqlite',
-            'database' => storage_path('testing.sqlite'),
+            'database' => env('DB_SQLITE_TEST', storage_path('testing.sqlite')),
             'prefix' => '',
         ],
 

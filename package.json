@@ -18,9 +18,11 @@
         "jquery": "^3.2",
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
+        "node-sass": "^4.11.0",
         "popper.js": "^1.12",
         "vee-validate": "^2.1.1",
         "vue": "^2.5.7",
         "vue-trumbowyg": "^3.4.0"
-    }
+    },
+    "dependencies": {}
 }
