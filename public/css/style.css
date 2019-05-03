@@ -10688,6 +10688,9 @@ html {
   position: sticky;
   top: 0;
   z-index: 100;
+  opacity: 0.96;
+  min-height: 54px;
+  padding: 0.25em 0.5em;
 }
 
 .btn-primary {

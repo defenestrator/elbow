@@ -1763,7 +1763,7 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
+/* harmony import */ var vee_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vee-validate */ "./node_modules/vee-validate/dist/vee-validate.esm.js");
 //
 //
 //
@@ -1796,7 +1796,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-Vue.use(vee_validate__WEBPACK_IMPORTED_MODULE_1__["default"]);
+Vue.use(vee_validate__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'contest-entry',
   props: ['g_id'],
@@ -1842,7 +1842,7 @@ Vue.use(vee_validate__WEBPACK_IMPORTED_MODULE_1__["default"]);
     }
   },
   created: function created() {
-    this.validator = new vee_validate__WEBPACK_IMPORTED_MODULE_1__["default"].Validator({
+    this.validator = new vee_validate__WEBPACK_IMPORTED_MODULE_0__["default"].Validator({
       email: 'required|email'
     });
   },
