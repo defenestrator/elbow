@@ -24,7 +24,7 @@ Route::domain( config('app.domain') )->group( function () {
     });
 
     //CMS Routes Group
-    Route::name('cms.')->prefix('/cms')->middleware('role:Admin')->group( function () {
+    Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verified'])->group( function () {
         // Seeds CMS Routes
         Route::get('/seeds', 'SeedController@index')->name('seeds.index');
         Route::get('/seeds/new', 'SeedController@create')->name('seeds.create');
@@ -52,4 +52,5 @@ Route::domain( config('app.domain') )->group( function () {
     //////////////////////////////////////////////////////////
     Route::get('/scrape-strains', 'Ingestion\CannabisReportsController@scrape');
     Route::get('/scrape-seed-companies-details', 'Ingestion\CannabisReportsController@seedco');
+    Route::get('/scrape-strain-details', 'Ingestion\CannabisReportsController@getStrainDetails');
 });

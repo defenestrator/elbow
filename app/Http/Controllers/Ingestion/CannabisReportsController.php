@@ -19,4 +19,11 @@ class CannabisReportsController extends Controller {
         $page = new CannabisReports();
         return $page->getSeedCompanyDetails();
     }
+
+    public function getStrainDetails()
+    {
+        $page = new CannabisReports;
+        return $page->getStrainDetails();
+    }
+    
 }

@@ -50,7 +50,8 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use VerifyEmail;
     use HasRoles;
-
+    
+    protected $guard_name = 'web';
     /**
      * The attributes that are mass assignable.
      *

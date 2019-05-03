@@ -29,7 +29,7 @@ class CannabisReports
 
     public function iterateOverPages()
     {
-        for ($i = 1; $i < 1000; ++$i) {
+        for ($i = 900; $i < 1400; ++$i) {
             $this->makeRequest($i);
             sleep(7);
         }
@@ -77,7 +77,7 @@ class CannabisReports
 
     public function getSeedCompanyDetails()
     {
-        for ($i = 570; $i < 1000; ++$i) {
+        for ($i = 368; $i <= 570; ++$i) {
             try {
                 sleep(7);
                 $seedco = SeedCompany::where('id', '=', $i)->firstOrFail();
@@ -85,6 +85,7 @@ class CannabisReports
                 $response = $request->getBody();
                 $data = json_decode($response, true);
                 $seedco->image = $data['data']['image'];
+                // $seedco->description = $data['data']['description'];
                 $seedco->url = $data['data']['url'];
                 $seedco->save();
             } catch (\Exception $e) {
@@ -96,13 +97,16 @@ class CannabisReports
 
     public function getStrainDetails()
     {
-        for ($i = 1; $i < 10000; ++$i) {
+        for ($i = 0; $i <= 9008; ++$i) {
             try {
                 sleep(7);
                 $strain = Strain::where('id', '=', $i)->firstOrFail();
                 $request = $this->client()->get('https://www.cannabisreports.com/api/v1.0/strains/'.$strain->ucpc);
                 $response = $request->getBody();
                 $data = json_decode($response, true);
+                $strain->url = $data['data']['url'];
+                $strain->lineage = $data['data']['lineage'];
+                $strain->description = $data['data']['description'];
                 $strain->url = $data['data']['url'];
                 $strain->qr = $data['data']['qr'];
                 $strain->save();
