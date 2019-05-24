@@ -14,7 +14,8 @@ class CreateMostOfTheTables extends Migration
     public function up()
     {
         Schema::create('users', function ($table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
+            $table->string('uuid')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -35,7 +36,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('subscriptions', function ($table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('stripe_id');
@@ -47,7 +48,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('cannabis_strains', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('lineage')->nullable();
@@ -66,7 +67,7 @@ class CreateMostOfTheTables extends Migration
 
 
         Schema::create('cannabis_seed_companies', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('ucpc')->nullable()->unique();
             $table->text('description')->nullable();
@@ -78,7 +79,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('crops', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('growstuff_id')->nullable()->unique();
             $table->string('name')->nullable();
             $table->string('species')->nullable();
@@ -94,7 +95,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('farms', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->default('My Secret Garden');
             $table->longText('description')->nullable();
@@ -109,7 +110,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('cycles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->default('Default Crop Cycle');
             $table->unsignedBigInteger('medium_id')->nullable();
@@ -126,7 +127,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('stages', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->default('default stage');
             $table->unsignedBigInteger('photoperiod')->default(24);
@@ -145,7 +146,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('reservoir_id');
         });
         Schema::create('light_fixtures', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->string('model')->default('custom');
@@ -170,7 +171,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('reservoirs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->default('null reservoir');
             $table->text('description')->nullable();
@@ -182,7 +183,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('areas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name');
             $table->unsignedBigInteger('floorspace_cm2')->default(1);
@@ -193,7 +194,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('sensors', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->default('default sensor');
             $table->unsignedBigInteger('manufacturer_id')->default(1);
@@ -203,11 +204,11 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('profiles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
-            $table->string('avatar')->default('/img/bot.png');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('avatar')->default('/img/bot.png');            
             $table->string('facebook')->default('elbow');
             $table->string('instagram')->default('elbow');
             $table->string('youtube')->default('elbow');
@@ -220,7 +221,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('teams', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->unique();
             $table->unsignedBigInteger('owner_id');
@@ -230,7 +231,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('invoices', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
@@ -245,7 +246,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('fertilizers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->default('default');
             $table->unsignedBigInteger('manufacturer_id')->default(1);
@@ -266,7 +267,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('hvac_appliances', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->unsignedBigInteger('btus')->default(0);
@@ -279,7 +280,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('fans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->softDeletes();
@@ -287,7 +288,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('chillers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->softDeletes();
@@ -295,7 +296,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('lamps', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->softDeletes();
@@ -303,7 +304,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('drivers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->softDeletes();
@@ -311,7 +312,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('ballasts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->softDeletes();
@@ -319,7 +320,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('reflector_hoods', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->unsignedBigInteger('manufacturer_id')->default(1);
             $table->softDeletes();
@@ -327,7 +328,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('media', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name');
             $table->unsignedBigInteger('manufacturer_id')->default(1);
@@ -337,7 +338,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('manufacturers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('uuid')->unique();
             $table->string('name')->unique();
             $table->string('phone')->default('555-867-5309');
@@ -352,7 +353,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('harvests', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->date('date_of')->nullable();
             $table->unsignedBigInteger('initial_yield_g');
             $table->unsignedBigInteger('loss_g')->default(0);
@@ -363,7 +364,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('api_keys', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('key');
             $table->string('name');
             $table->unsignedBigInteger('user_id');
@@ -372,7 +373,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('area_types', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('description')->default('');
             $table->softDeletes();
@@ -380,7 +381,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('solutions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('sensor_id')->nullable();
             $table->float('ph', 4, 2)->nullable();
@@ -395,7 +396,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('environments', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('sensor_id')->nullable();
             $table->unsignedBigInteger('temperature_c')->nullable();
@@ -408,7 +409,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('sensor_types', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('type')->unique();
             $table->string('format')->default('');
             // float ^[+-]?(\d*\.)?(\d+)?\b$
@@ -418,7 +419,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('features', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('description')->default('super useful new feature!');
             $table->softDeletes();
@@ -426,7 +427,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('plans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('stripe_plan');
             $table->boolean('archived')->default(false);
@@ -447,7 +448,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('giveaways', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->uuid('uuid');
             $table->string('title');
             $table->longText('description');
@@ -458,7 +459,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('contest_entries', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->uuid('uuid');
             $table->integer('giveaway_id')->unsigned()->default(0);
             $table->string('email')->nullable();
@@ -468,7 +469,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('contact_form_messages', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('email_address');
             $table->string('message');
@@ -477,7 +478,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('images', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->text('large');
             $table->text('small');
             $table->text('thumb');
@@ -496,7 +497,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('content', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->morphs('contentable');
             $table->text('title');
             $table->longText('body');
@@ -506,7 +507,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('raffles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('cannabis_strain_id');
             $table->unsignedBigInteger('ticket_limit')->default(0);
             $table->string('title');
@@ -520,14 +521,14 @@ class CreateMostOfTheTables extends Migration
         $columnNames = config('permission.column_names');
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();
         });
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();
@@ -585,7 +586,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('seeds', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('cannabis_strain_id');
             $table->foreign('cannabis_strain_id')
                 ->references('id')
@@ -604,13 +605,13 @@ class CreateMostOfTheTables extends Migration
         });
         
         Schema::create('plants', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::create('shops', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('shop_name');
             $table->softDeletes();
             $table->timestamps();

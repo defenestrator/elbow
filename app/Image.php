@@ -35,4 +35,9 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     protected $fillable = ['thumbnail', 'large', 'stamp'];
+
+    public function imageable()
+    {
+        return $this->morphTo();
+    }
 }

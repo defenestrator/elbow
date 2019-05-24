@@ -150,8 +150,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Greggilbert\Recaptcha\RecaptchaServiceProvider::class,
-        // Not in production, please.
         // Laravel\Dusk\DuskServiceProvider::class,
         /*
          * Application Service Providers...
