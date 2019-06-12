@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Giveaway whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Giveaway whereUuid($value)
  * @mixin \Eloquent
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Giveaway whereDeletedAt($value)
  */
 class Giveaway extends Model
 {

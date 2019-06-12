@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Profile::class, function (Faker $faker) {
+$factory->define(Elbow\Profile::class, function (Faker $faker) {
     return [
         //
     ];

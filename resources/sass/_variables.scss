@@ -1,6 +1,6 @@
 
 // Body
-$body-bg: #fcfcf8;
+$body-bg: #F8FDF8;
 
 // Typography
 $font-family-sans-serif: 'Fira Sans', sans-serif;
@@ -10,17 +10,20 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.5;
 
 // Colors
-$primary: #2D3942; // base text and button color
+$primary: #343A40; // base text and button color
 $elbowbot: #39556a; // is a bot
 $water: #2d94fa; // is usually not this color
 $lgreen: #91ba3c; // more yellow green than light green
-$mgreen: #3c883e; // m stands for "might change this"
+$mgreen: #3c883e; 
+$iguana: #7DB17F;// m stands for "might change this"
 $olive: #6c8a2d; // not that kind of olive
 $lgray: #a3a3a3; // what about me?
 $mgray: #666; // praise the dark lord
 $dgray: #343a40; // and the medium lord?
-$red: #ef6f6c;
+$red: #ec3f3c;
 $blue: #2d94fa;
+$sky: #A8DCFE;
+
 $indigo: #6610f2;
 $purple: #6f42c1;
 $pink: #fc6fb6;
@@ -31,14 +34,15 @@ $teal: #20c997;
 $cyan: #17a2b8;
 $white: #fff;
 $gray: #6c757d;
-$gray-dark: #343a40;
-$primary: #2D3942;
+
+$primary: #343A40;
 $secondary: #6c757d;
-$success: #3c883e;
+$success: #7DB17F;
 $info: #2d94fa;
 $warning: #ffc107;
-$danger: #ef6f6c;
-$light: #fcfcf8;
+$danger: #ec3f3c;
+
+$light: #F8FDF8;
 $dark: #343a40;
 
 // Responsive breakpoints

@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Fan::class, function (Faker $faker) {
+$factory->define(Elbow\Fan::class, function (Faker $faker) {
     return [
         //
     ];

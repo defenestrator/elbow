@@ -26,6 +26,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContestEntry whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContestEntry whereUuid($value)
  * @mixin \Eloquent
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContestEntry whereDeletedAt($value)
  */
 class ContestEntry extends Model
 {

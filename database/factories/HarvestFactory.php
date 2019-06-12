@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Harvest::class, function (Faker $faker) {
+$factory->define(Elbow\Harvest::class, function (Faker $faker) {
     return [
         //
     ];

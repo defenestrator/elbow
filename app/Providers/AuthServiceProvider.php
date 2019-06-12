@@ -2,6 +2,7 @@
 
 namespace Elbow\Providers;
 
+use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -24,6 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        
         // Implicitly grant "admin" role all permissions
         // This works in the app by using gate-related functions like auth()->user->can() and @can()
         Gate::before(function ($user, $ability) {
@@ -31,5 +33,7 @@ class AuthServiceProvider extends ServiceProvider
                 return true;
             }
         });
+        
+        Passport::routes();
     }
 }

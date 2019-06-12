@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\HvacAppliance::class, function (Faker $faker) {
+$factory->define(Elbow\HvacAppliance::class, function (Faker $faker) {
     return [
         //
     ];

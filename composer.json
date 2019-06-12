@@ -20,6 +20,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/cashier": "^7.1",
         "laravel/framework": "^5.8.12",
+        "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "php-units-of-measure/php-units-of-measure": "^2.1",
         "predis/predis": "^1.1",

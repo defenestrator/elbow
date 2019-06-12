@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\LightFixture::class, function (Faker $faker) {
+$factory->define(Elbow\LightFixture::class, function (Faker $faker) {
     return [
         //
     ];

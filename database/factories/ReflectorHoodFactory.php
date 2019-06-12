@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\ReflectorHood::class, function (Faker $faker) {
+$factory->define(Elbow\ReflectorHood::class, function (Faker $faker) {
     return [
         //
     ];

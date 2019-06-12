@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Medium::class, function (Faker $faker) {
+$factory->define(Elbow\Medium::class, function (Faker $faker) {
     return [
         //
     ];

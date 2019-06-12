@@ -31,6 +31,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereImageableType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereSmall($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereThumb($value)
+ * @property string|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $imageable
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereDeletedAt($value)
  */
 class Image extends Model
 {

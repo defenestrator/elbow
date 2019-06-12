@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Environment::class, function (Faker $faker) {
+$factory->define(Elbow\Environment::class, function (Faker $faker) {
     return [
         //
     ];

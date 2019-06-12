@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Lamp::class, function (Faker $faker) {
+$factory->define(Elbow\Lamp::class, function (Faker $faker) {
     return [
         //
     ];

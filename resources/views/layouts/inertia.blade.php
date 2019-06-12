@@ -17,7 +17,7 @@
     <!-- Page level Styles -->
     @yield('page_styles', '')
 </head>
-<body>
-    <div id="app" data-component="{{ $component }}" data-props="{{ json_encode($props) }}"></div>
-</body>
+    <body>
+        <div id="app" data-component="{{ $component }}" data-props="{{ json_encode($props) }}"></div>
+    </body>
 </html>

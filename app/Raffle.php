@@ -27,8 +27,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereTicketLimit($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereUpdatedAt($value)
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereDeletedAt($value)
  */
 class Raffle extends Model
 {
-    protected $fillable = ['thumbnail', 'large', 'stamp'];
+    protected $fillable = ['ticket_limit', 'title', 'description', 'cannabis_strain_id'];
 }

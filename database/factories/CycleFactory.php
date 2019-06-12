@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Cycle::class, function (Faker $faker) {
+$factory->define(Elbow\Cycle::class, function (Faker $faker) {
     return [
         //
     ];

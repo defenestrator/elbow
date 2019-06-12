@@ -30,13 +30,17 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany query()
+ * @property string|null $uuid
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereUuid($value)
  */
 class SeedCompany extends Model
 {
     /**
      * @var string
      */
-    protected $table = 'cannabis_seed_companies';
+    protected $table = 'seed_companies';
 
     /**
      * @var array
@@ -55,6 +59,6 @@ class SeedCompany extends Model
      */
     public function strains()
     {
-        return $this->hasMany('Elbow\Strain');
+        return $this->hasMany(Strain::class);
     }
 }

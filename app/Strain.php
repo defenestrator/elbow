@@ -44,6 +44,12 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain query()
+ * @property string|null $uuid
+ * @property int|null $cannabis_seed_company_id
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereCannabisSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereUuid($value)
  */
 class Strain extends Model
 {
@@ -51,13 +57,14 @@ class Strain extends Model
     /**
      * @var string
      */
-    protected $table = 'cannabis_strains';
+    protected $table = 'strains';
 
     /**
      * @var array
      */
     protected $fillable = [
-        'cannabis_reports_link', 'name', 'lineage', 'genetics', 'description', 'seed_company',
+        'cannabis_reports_link', 'name', 'lineage', 'genetics', 'description', 'seed_company', 
+        'seed_company_id',
         'flowering_time_min', 'flowering_time_max', 'ucpc', 'image', 'url', 'qr', 'description'
     ];
 
@@ -66,7 +73,7 @@ class Strain extends Model
      */
     public function plants()
     {
-        return $this->belongsToMany('Elbow\Plant');
+        return $this->belongsToMany(Plant::class);
     }
 
     /**
@@ -74,6 +81,6 @@ class Strain extends Model
      */
     public function seedCompanies()
     {
-        return $this->belongsTo('Elbow\SeedCompany');
+        return $this->belongsTo(SeedCompany::class);
     }
 }

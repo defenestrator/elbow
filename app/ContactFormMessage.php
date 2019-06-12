@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage query()
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage whereDeletedAt($value)
  */
 class ContactFormMessage extends Model
 {

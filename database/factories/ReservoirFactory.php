@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Reservoir::class, function (Faker $faker) {
+$factory->define(Elbow\Reservoir::class, function (Faker $faker) {
     return [
         //
     ];

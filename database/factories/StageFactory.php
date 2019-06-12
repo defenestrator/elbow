@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(\Stage::class, function (Faker $faker) {
+$factory->define(Elbow\Stage::class, function (Faker $faker) {
     return [
         //
     ];

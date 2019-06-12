@@ -17,6 +17,14 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $uuid
+ * @property int $cannabis_strain_id
+ * @property int $cycle_id
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereCannabisStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereCycleId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUuid($value)
  */
 class Plant extends Model
 {

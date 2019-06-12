@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
 use Spatie\Permission\Traits\HasPermissions;
+use Laravel\Passport\HasApiTokens;
 
 /**
  * Elbow\User
@@ -44,12 +45,17 @@ use Spatie\Permission\Traits\HasPermissions;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereTrialEndsAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $uuid
+ * @property string|null $deleted_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\User[] $contents
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUuid($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Client[] $clients
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
-    use VerifyEmail;
-    use HasPermissions;
+    use Notifiable, VerifyEmail, HasPermissions, HasApiTokens;
     
     protected $guard_name = 'web';
     
@@ -70,4 +76,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function contents()
+    {
+        return $this->morphMany(User::class, 'contentable');
+    }
 }

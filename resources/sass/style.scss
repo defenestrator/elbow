@@ -9,7 +9,8 @@
 @import '~bootstrap/scss/bootstrap';
 
 body, html {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: $font-family-sans-serif;
+  background:$light;
   color: $primary;
   min-height: 100%;
 }
@@ -33,15 +34,9 @@ body, html {
   padding:0.25em 0.5em;
 }
 
-.btn-primary {
-  background-color: $elbowbot;
-  border-color: $primary;
-  color:white;
-  text-transform: uppercase;
-}
-
 .btn {
   font-weight:200;
+  text-transform: uppercase;
 }
 
 h1, h2, h3 {
@@ -148,7 +143,7 @@ a:link, a:visited, a:active, a:hover {
 }
 a:link, a:visited {
   transition:0.2s;
-  color:$mgreen;
+  color:$green;
   font-weight:400;
 }
 
@@ -170,9 +165,14 @@ a:active, a:hover {
   color: $primary;
 }
 
-.navbar-light .navbar-toggler {
-  color:transparent;
-  border-color:transparent;
+.navbar-toggler {
+  border:none;
+  outline:none;
+}
+
+.navbar-toggler:focus {
+  outline-color:transparent;
+  outline:none;
 }
 
 .small {
@@ -188,9 +188,7 @@ a:active, a:hover {
   color:$lgray;
   font-family:$font-family-serif;
 }
-.dark span.invalid-feedback  {
 
-}
 .dark span strong {
   font-weight:200;
 }
