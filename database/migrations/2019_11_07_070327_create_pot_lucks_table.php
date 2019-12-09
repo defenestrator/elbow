@@ -15,6 +15,11 @@ class CreatePotLucksTable extends Migration
     {
         Schema::create('pot_lucks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigIncrements('game_id')->nullable();
+            $table->foreign('game_id')->references('id')->on('games');
+            $table->bigIncrements('winner_id');
+            $table->unsignedBigInteger('winner_id')->nullable();
+            $table->foreign('winner_id')->references('id')->on('user');
             $table->timestamps();
         });
     }
