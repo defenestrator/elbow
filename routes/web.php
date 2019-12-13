@@ -1,10 +1,12 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+Route::get('/potluck', 'PotLuckController@index');
 //Declare root domain route group for application-level sub-domain routing compatibility.
 Route::domain( config('app.domain') )->group( function () {
     Auth::routes(['verify' => true]);
     Route::view('/', 'welcome')->name('welcome');
+    Route::get('/potluck', 'PotLuckController@index');
     // Contact Form
     Route::view('/contact', 'contact')->name('contact');
     Route::post('/contact','ContactFormController@create')->name('contact');
@@ -47,10 +49,14 @@ Route::domain( config('app.domain') )->group( function () {
         Route::delete('/strains/{id}', 'StrainController@delete')->name('strains.destroy');
     });
 
+
     //////////////////////////////////////////////////////////
     // For scraping data from Cannabis Reports. Thanks, folks!
     //////////////////////////////////////////////////////////
     Route::get('/scrape-strains', 'Ingestion\CannabisReportsController@scrape');
     Route::get('/scrape-seed-companies-details', 'Ingestion\CannabisReportsController@seedco');
     Route::get('/scrape-strain-details', 'Ingestion\CannabisReportsController@getStrainDetails');
+
+
 });
+

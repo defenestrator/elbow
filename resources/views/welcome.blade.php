@@ -1,10 +1,12 @@
 @extends('layouts.master')
     @section('content')
+    <board></board>
         <div class="container-fluid" style="padding-left:0;padding-right:0;">
             <div class="center">
                 <div class="title m-b-md">
                     <h1>Elbow</h1>
                     <h2>For those who grow </h2>
+                     
                 </div>
                 <div class="title m-b-md">
                     <img src="img/new-hero.png" style="width:360px;" alt="Hello, from elbow farm!" title="Hello, from elbow farm!" />

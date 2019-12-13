@@ -113,7 +113,6 @@ var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
 var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./node_modules/axios/lib/helpers/isURLSameOrigin.js");
 var createError = __webpack_require__(/*! ../core/createError */ "./node_modules/axios/lib/core/createError.js");
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(/*! ./../helpers/btoa */ "./node_modules/axios/lib/helpers/btoa.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -125,22 +124,6 @@ module.exports = function xhrAdapter(config) {
     }
 
     var request = new XMLHttpRequest();
-    var loadEvent = 'onreadystatechange';
-    var xDomain = false;
-
-    // For IE 8/9 CORS support
-    // Only supports POST and GET calls and doesn't returns the response headers.
-    // DON'T do this for testing b/c XMLHttpRequest is mocked, not XDomainRequest.
-    if ( true &&
-        typeof window !== 'undefined' &&
-        window.XDomainRequest && !('withCredentials' in request) &&
-        !isURLSameOrigin(config.url)) {
-      request = new window.XDomainRequest();
-      loadEvent = 'onload';
-      xDomain = true;
-      request.onprogress = function handleProgress() {};
-      request.ontimeout = function handleTimeout() {};
-    }
 
     // HTTP basic authentication
     if (config.auth) {
@@ -155,8 +138,8 @@ module.exports = function xhrAdapter(config) {
     request.timeout = config.timeout;
 
     // Listen for ready state
-    request[loadEvent] = function handleLoad() {
-      if (!request || (request.readyState !== 4 && !xDomain)) {
+    request.onreadystatechange = function handleLoad() {
+      if (!request || request.readyState !== 4) {
         return;
       }
 
@@ -173,9 +156,8 @@ module.exports = function xhrAdapter(config) {
       var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
       var response = {
         data: responseData,
-        // IE sends 1223 instead of 204 (https://github.com/axios/axios/issues/201)
-        status: request.status === 1223 ? 204 : request.status,
-        statusText: request.status === 1223 ? 'No Content' : request.statusText,
+        status: request.status,
+        statusText: request.statusText,
         headers: responseHeaders,
         config: config,
         request: request
@@ -988,54 +970,6 @@ module.exports = function bind(fn, thisArg) {
 
 /***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/btoa.js":
-/*!************************************************!*\
-  !*** ./node_modules/axios/lib/helpers/btoa.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
-
-var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-
-function E() {
-  this.message = 'String contains an invalid character';
-}
-E.prototype = new Error;
-E.prototype.code = 5;
-E.prototype.name = 'InvalidCharacterError';
-
-function btoa(input) {
-  var str = String(input);
-  var output = '';
-  for (
-    // initialize result and counter
-    var block, charCode, idx = 0, map = chars;
-    // if the next str index does not exist:
-    //   change the mapping table to "="
-    //   check if d has no fractional digits
-    str.charAt(idx | 0) || (map = '=', idx % 1);
-    // "8 - idx % 1 * 8" generates the sequence 2, 4, 6, 8
-    output += map.charAt(63 & block >> 8 - idx % 1 * 8)
-  ) {
-    charCode = str.charCodeAt(idx += 3 / 4);
-    if (charCode > 0xFF) {
-      throw new E();
-    }
-    block = block << 8 | charCode;
-  }
-  return output;
-}
-
-module.exports = btoa;
-
-
-/***/ }),
-
 /***/ "./node_modules/axios/lib/helpers/buildURL.js":
 /*!****************************************************!*\
   !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
@@ -1450,7 +1384,7 @@ module.exports = function spread(callback) {
 
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
-var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/is-buffer/index.js");
+var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
 
 /*global toString:true*/
 
@@ -1750,6 +1684,28 @@ module.exports = {
   extend: extend,
   trim: trim
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/node_modules/is-buffer/index.js":
+/*!************************************************************!*\
+  !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
 
 
 /***/ }),
@@ -3344,6 +3300,560 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       axios["delete"]('/oauth/personal-access-tokens/' + token.id).then(function (response) {
         _this4.getTokens();
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/potluck/board.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _players_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./players.js */ "./resources/js/components/potluck/players.js");
+/* harmony import */ var _spaces_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./spaces.js */ "./resources/js/components/potluck/spaces.js");
+/* harmony import */ var _bummers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bummers.js */ "./resources/js/components/potluck/bummers.js");
+/* harmony import */ var _farouts_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./farouts.js */ "./resources/js/components/potluck/farouts.js");
+/* harmony import */ var _strains_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./strains.js */ "./resources/js/components/potluck/strains.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+Vue.use([_players_js__WEBPACK_IMPORTED_MODULE_0__["default"], _spaces_js__WEBPACK_IMPORTED_MODULE_1__["default"], _bummers_js__WEBPACK_IMPORTED_MODULE_2__["default"], _farouts_js__WEBPACK_IMPORTED_MODULE_3__["default"], _strains_js__WEBPACK_IMPORTED_MODULE_4__["default"]]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      "skipped": [],
+      "activePlayerId": 0,
+      "players": _players_js__WEBPACK_IMPORTED_MODULE_0__["default"],
+      "spaces": _spaces_js__WEBPACK_IMPORTED_MODULE_1__["default"],
+      "bummers": _bummers_js__WEBPACK_IMPORTED_MODULE_2__["default"],
+      "farouts": _farouts_js__WEBPACK_IMPORTED_MODULE_3__["default"],
+      "strains": _strains_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+    };
+  },
+  methods: {
+    sixSidedDie: function sixSidedDie(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+    gameRoll: function gameRoll() {
+      var first = this.sixSidedDie(1, 6);
+      var second = this.sixSidedDie(1, 6);
+      return first + second;
+    },
+    moveCash: function moveCash(amount, player) {
+      player.cash = player.cash - amount;
+      bank = bank + amount;
+      return player.cash;
+    },
+    completeTurn: function completeTurn() {
+      this.activePlayerId++;
+
+      if (this.activePlayerId > 7) {
+        this.activePlayerId = 0;
+      }
+
+      console.log("active player id: " + this.activePlayerId);
+
+      if (this.activePlayerId === this.players.indexOf()) {
+        var player = _players_js__WEBPACK_IMPORTED_MODULE_0__["default"][activePlayerId];
+
+        if (player.playing !== true) {
+          return this.completeTurn();
+        }
+      }
+
+      if (this.skipped.includes(this.activePlayerId)) {
+        this.skipped.splice(this.skipped.indexOf(this.activePlayerId), 1);
+        console.log("end of turn, player id: " + this.activePlayerId);
+        console.log("skipped player id: " + this.activePlayerId);
+        return this.completeTurn();
+      }
+
+      console.log("end of turn, player id: " + this.activePlayerId);
+      return gameRoll();
+    },
+    loseTurn: function loseTurn() {
+      return this.skipped.push(this.skipped[this.activePlayerId]);
     }
   }
 });
@@ -7807,7 +8317,7 @@ exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/**\n * Trumbowyg v2.16.2 - A lightweight WYSIWYG editor\n * Default stylesheet for Trumbowyg editor\n * ------------------------\n * @link http://alex-d.github.io/Trumbowyg\n * @license MIT\n * @author Alexandre Demode (Alex-D)\n *         Twitter : @AlexandreDemode\n *         Website : alex-d.fr\n */\n\n#trumbowyg-icons {\n  overflow: hidden;\n  visibility: hidden;\n  height: 0;\n  width: 0; }\n  #trumbowyg-icons svg {\n    height: 0;\n    width: 0; }\n\n.trumbowyg-box *,\n.trumbowyg-box *::before,\n.trumbowyg-box *::after,\n.trumbowyg-modal *,\n.trumbowyg-modal *::before,\n.trumbowyg-modal *::after {\n  box-sizing: border-box; }\n\n.trumbowyg-box svg,\n.trumbowyg-modal svg {\n  width: 17px;\n  height: 100%;\n  fill: #222; }\n\n.trumbowyg-box,\n.trumbowyg-editor {\n  display: block;\n  position: relative;\n  border: 1px solid #DDD;\n  width: 100%;\n  min-height: 300px;\n  margin: 17px auto; }\n\n.trumbowyg-box .trumbowyg-editor {\n  margin: 0 auto; }\n\n.trumbowyg-box.trumbowyg-fullscreen {\n  background: #FEFEFE;\n  border: none !important; }\n\n.trumbowyg-editor,\n.trumbowyg-textarea {\n  position: relative;\n  box-sizing: border-box;\n  padding: 20px;\n  min-height: 300px;\n  width: 100%;\n  border-style: none;\n  resize: none;\n  outline: none;\n  overflow: auto; }\n  .trumbowyg-editor.trumbowyg-autogrow-on-enter,\n  .trumbowyg-textarea.trumbowyg-autogrow-on-enter {\n    transition: height 300ms ease-out; }\n\n.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {\n  color: transparent !important;\n  text-shadow: 0 0 7px #333; }\n  @media screen and (min-width: 0 \\0) {\n    .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {\n      color: rgba(200, 200, 200, 0.6) !important; } }\n  @supports (-ms-accelerator: true) {\n    .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {\n      color: rgba(200, 200, 200, 0.6) !important; } }\n\n.trumbowyg-box-blur .trumbowyg-editor img,\n.trumbowyg-box-blur .trumbowyg-editor hr {\n  opacity: 0.2; }\n\n.trumbowyg-textarea {\n  position: relative;\n  display: block;\n  overflow: auto;\n  border: none;\n  font-size: 14px;\n  font-family: \"Inconsolata\", \"Consolas\", \"Courier\", \"Courier New\", sans-serif;\n  line-height: 18px; }\n\n.trumbowyg-box.trumbowyg-editor-visible .trumbowyg-textarea {\n  height: 1px !important;\n  width: 25%;\n  min-height: 0 !important;\n  padding: 0 !important;\n  background: none;\n  opacity: 0 !important; }\n\n.trumbowyg-box.trumbowyg-editor-hidden .trumbowyg-textarea {\n  display: block; }\n\n.trumbowyg-box.trumbowyg-editor-hidden .trumbowyg-editor {\n  display: none; }\n\n.trumbowyg-box.trumbowyg-disabled .trumbowyg-textarea {\n  opacity: 0.8;\n  background: none; }\n\n.trumbowyg-editor[contenteditable=true]:empty:not(:focus)::before {\n  content: attr(placeholder);\n  color: #999;\n  pointer-events: none; }\n\n.trumbowyg-button-pane {\n  width: 100%;\n  min-height: 36px;\n  background: #ecf0f1;\n  border-bottom: 1px solid #d7e0e2;\n  margin: 0;\n  padding: 0 5px;\n  position: relative;\n  list-style-type: none;\n  line-height: 10px;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  z-index: 11; }\n  .trumbowyg-button-pane::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    top: 36px;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 1px;\n    background: #d7e0e2; }\n  .trumbowyg-button-pane .trumbowyg-button-group {\n    display: inline-block; }\n    .trumbowyg-button-pane .trumbowyg-button-group .trumbowyg-fullscreen-button svg {\n      color: transparent; }\n    .trumbowyg-button-pane .trumbowyg-button-group::after {\n      content: \" \";\n      display: inline-block;\n      width: 1px;\n      background: #d7e0e2;\n      margin: 0 5px;\n      height: 35px;\n      vertical-align: top; }\n    .trumbowyg-button-pane .trumbowyg-button-group:last-child::after {\n      content: none; }\n  .trumbowyg-button-pane button {\n    display: inline-block;\n    position: relative;\n    width: 35px;\n    height: 35px;\n    padding: 1px 6px !important;\n    margin-bottom: 1px;\n    overflow: hidden;\n    border: none;\n    cursor: pointer;\n    background: none;\n    vertical-align: middle;\n    transition: background-color 150ms, opacity 150ms; }\n    .trumbowyg-button-pane button.trumbowyg-textual-button {\n      width: auto;\n      line-height: 35px;\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n  .trumbowyg-button-pane.trumbowyg-disable button:not(.trumbowyg-not-disable):not(.trumbowyg-active),\n  .trumbowyg-button-pane button.trumbowyg-disable,\n  .trumbowyg-disabled .trumbowyg-button-pane button:not(.trumbowyg-not-disable):not(.trumbowyg-viewHTML-button) {\n    opacity: 0.2;\n    cursor: default; }\n  .trumbowyg-button-pane.trumbowyg-disable .trumbowyg-button-group::before,\n  .trumbowyg-disabled .trumbowyg-button-pane .trumbowyg-button-group::before {\n    background: #e3e9eb; }\n  .trumbowyg-button-pane button:not(.trumbowyg-disable):hover,\n  .trumbowyg-button-pane button:not(.trumbowyg-disable):focus,\n  .trumbowyg-button-pane button.trumbowyg-active {\n    background-color: #FFF;\n    outline: none; }\n  .trumbowyg-button-pane .trumbowyg-open-dropdown::after {\n    display: block;\n    content: \" \";\n    position: absolute;\n    top: 25px;\n    right: 3px;\n    height: 0;\n    width: 0;\n    border: 3px solid transparent;\n    border-top-color: #555; }\n  .trumbowyg-button-pane .trumbowyg-open-dropdown.trumbowyg-textual-button {\n    padding-left: 10px !important;\n    padding-right: 18px !important; }\n    .trumbowyg-button-pane .trumbowyg-open-dropdown.trumbowyg-textual-button::after {\n      top: 17px;\n      right: 7px; }\n  .trumbowyg-button-pane .trumbowyg-right {\n    float: right; }\n\n.trumbowyg-dropdown {\n  min-width: 200px;\n  border: 1px solid #ecf0f1;\n  padding: 5px 0;\n  border-top: none;\n  background: #FFF;\n  margin-left: -1px;\n  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 3px;\n  z-index: 12; }\n  .trumbowyg-dropdown button {\n    display: block;\n    width: 100%;\n    height: 35px;\n    line-height: 35px;\n    text-decoration: none;\n    background: #FFF;\n    padding: 0 10px;\n    color: #333 !important;\n    border: none;\n    cursor: pointer;\n    text-align: left;\n    font-size: 15px;\n    transition: all 150ms; }\n    .trumbowyg-dropdown button:hover, .trumbowyg-dropdown button:focus {\n      background: #ecf0f1; }\n    .trumbowyg-dropdown button svg {\n      float: left;\n      margin-right: 14px; }\n\n/* Modal box */\n.trumbowyg-modal {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  max-width: 520px;\n  width: 100%;\n  height: 350px;\n  z-index: 12;\n  overflow: hidden;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.trumbowyg-modal-box {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  max-width: 500px;\n  width: calc(100% - 20px);\n  padding-bottom: 45px;\n  z-index: 1;\n  background-color: #FFF;\n  text-align: center;\n  font-size: 14px;\n  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 3px;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n  .trumbowyg-modal-box .trumbowyg-modal-title {\n    font-size: 24px;\n    font-weight: bold;\n    margin: 0 0 20px;\n    padding: 15px 0 13px;\n    display: block;\n    border-bottom: 1px solid #EEE;\n    color: #333;\n    background: #fbfcfc; }\n  .trumbowyg-modal-box .trumbowyg-progress {\n    width: 100%;\n    height: 3px;\n    position: absolute;\n    top: 58px; }\n    .trumbowyg-modal-box .trumbowyg-progress .trumbowyg-progress-bar {\n      background: #2BC06A;\n      width: 0;\n      height: 100%;\n      transition: width 150ms linear; }\n  .trumbowyg-modal-box label {\n    display: block;\n    position: relative;\n    margin: 15px 12px;\n    height: 29px;\n    line-height: 29px;\n    overflow: hidden; }\n    .trumbowyg-modal-box label .trumbowyg-input-infos {\n      display: block;\n      text-align: left;\n      height: 25px;\n      line-height: 25px;\n      transition: all 150ms; }\n      .trumbowyg-modal-box label .trumbowyg-input-infos span {\n        display: block;\n        color: #69878f;\n        background-color: #fbfcfc;\n        border: 1px solid #DEDEDE;\n        padding: 0 7px;\n        width: 150px; }\n      .trumbowyg-modal-box label .trumbowyg-input-infos span.trumbowyg-msg-error {\n        color: #e74c3c; }\n    .trumbowyg-modal-box label.trumbowyg-input-error input,\n    .trumbowyg-modal-box label.trumbowyg-input-error textarea {\n      border: 1px solid #e74c3c; }\n    .trumbowyg-modal-box label.trumbowyg-input-error .trumbowyg-input-infos {\n      margin-top: -27px; }\n    .trumbowyg-modal-box label input {\n      position: absolute;\n      top: 0;\n      right: 0;\n      height: 27px;\n      line-height: 27px;\n      border: 1px solid #DEDEDE;\n      background: #fff;\n      font-size: 14px;\n      max-width: 330px;\n      width: 70%;\n      padding: 0 7px;\n      transition: all 150ms; }\n      .trumbowyg-modal-box label input:hover, .trumbowyg-modal-box label input:focus {\n        outline: none;\n        border: 1px solid #95a5a6; }\n      .trumbowyg-modal-box label input:focus {\n        background: #fbfcfc; }\n    .trumbowyg-modal-box label input[type=\"checkbox\"] {\n      left: 6px;\n      top: 6px;\n      right: auto;\n      height: 16px;\n      width: 16px; }\n      .trumbowyg-modal-box label input[type=\"checkbox\"] + .trumbowyg-input-infos span {\n        width: auto;\n        padding-left: 25px; }\n  .trumbowyg-modal-box .error {\n    margin-top: 25px;\n    display: block;\n    color: red; }\n  .trumbowyg-modal-box .trumbowyg-modal-button {\n    position: absolute;\n    bottom: 10px;\n    right: 0;\n    text-decoration: none;\n    color: #FFF;\n    display: block;\n    width: 100px;\n    height: 35px;\n    line-height: 33px;\n    margin: 0 10px;\n    background-color: #333;\n    border: none;\n    cursor: pointer;\n    font-family: \"Trebuchet MS\", Helvetica, Verdana, sans-serif;\n    font-size: 16px;\n    transition: all 150ms; }\n    .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {\n      right: 110px;\n      background: #2bc06a; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:hover, .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:focus {\n        background: #40d47e;\n        outline: none; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:active {\n        background: #25a25a; }\n    .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset {\n      color: #555;\n      background: #e6e6e6; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:hover, .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:focus {\n        background: #fbfbfb;\n        outline: none; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:active {\n        background: #d5d5d5; }\n\n.trumbowyg-overlay {\n  position: absolute;\n  background-color: rgba(255, 255, 255, 0.5);\n  height: 100%;\n  width: 100%;\n  left: 0;\n  display: none;\n  top: 0;\n  z-index: 10; }\n\n/**\n * Fullscreen\n */\nbody.trumbowyg-body-fullscreen {\n  overflow: hidden; }\n\n.trumbowyg-fullscreen {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  z-index: 99999; }\n  .trumbowyg-fullscreen.trumbowyg-box,\n  .trumbowyg-fullscreen .trumbowyg-editor {\n    border: none; }\n  .trumbowyg-fullscreen .trumbowyg-editor,\n  .trumbowyg-fullscreen .trumbowyg-textarea {\n    height: calc(100% - 37px) !important;\n    overflow: auto; }\n  .trumbowyg-fullscreen .trumbowyg-overlay {\n    height: 100% !important; }\n  .trumbowyg-fullscreen .trumbowyg-button-group .trumbowyg-fullscreen-button svg {\n    color: #222;\n    fill: transparent; }\n\n.trumbowyg-editor {\n  /*\n     * lset for resetCss option\n     */ }\n  .trumbowyg-editor object,\n  .trumbowyg-editor embed,\n  .trumbowyg-editor video,\n  .trumbowyg-editor img {\n    max-width: 100%; }\n  .trumbowyg-editor video,\n  .trumbowyg-editor img {\n    height: auto; }\n  .trumbowyg-editor img {\n    cursor: move; }\n  .trumbowyg-editor.trumbowyg-reset-css {\n    background: #FEFEFE !important;\n    font-family: \"Trebuchet MS\", Helvetica, Verdana, sans-serif !important;\n    font-size: 14px !important;\n    line-height: 1.45em !important;\n    color: #333; }\n    .trumbowyg-editor.trumbowyg-reset-css a {\n      color: #15c !important;\n      text-decoration: underline !important; }\n    .trumbowyg-editor.trumbowyg-reset-css div,\n    .trumbowyg-editor.trumbowyg-reset-css p,\n    .trumbowyg-editor.trumbowyg-reset-css ul,\n    .trumbowyg-editor.trumbowyg-reset-css ol,\n    .trumbowyg-editor.trumbowyg-reset-css blockquote {\n      box-shadow: none !important;\n      background: none !important;\n      margin: 0 !important;\n      margin-bottom: 15px !important;\n      line-height: 1.4em !important;\n      font-family: \"Trebuchet MS\", Helvetica, Verdana, sans-serif !important;\n      font-size: 14px !important;\n      border: none; }\n    .trumbowyg-editor.trumbowyg-reset-css iframe,\n    .trumbowyg-editor.trumbowyg-reset-css object,\n    .trumbowyg-editor.trumbowyg-reset-css hr {\n      margin-bottom: 15px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css blockquote {\n      margin-left: 32px !important;\n      font-style: italic !important;\n      color: #555; }\n    .trumbowyg-editor.trumbowyg-reset-css ul {\n      list-style: disc; }\n    .trumbowyg-editor.trumbowyg-reset-css ul,\n    .trumbowyg-editor.trumbowyg-reset-css ol {\n      padding-left: 20px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css ul ul,\n    .trumbowyg-editor.trumbowyg-reset-css ol ol,\n    .trumbowyg-editor.trumbowyg-reset-css ul ol,\n    .trumbowyg-editor.trumbowyg-reset-css ol ul {\n      border: none;\n      margin: 2px !important;\n      padding: 0 !important;\n      padding-left: 24px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css hr {\n      display: block;\n      height: 1px;\n      border: none;\n      border-top: 1px solid #CCC; }\n    .trumbowyg-editor.trumbowyg-reset-css h1,\n    .trumbowyg-editor.trumbowyg-reset-css h2,\n    .trumbowyg-editor.trumbowyg-reset-css h3,\n    .trumbowyg-editor.trumbowyg-reset-css h4 {\n      color: #111;\n      background: none;\n      margin: 0 !important;\n      padding: 0 !important;\n      font-weight: bold; }\n    .trumbowyg-editor.trumbowyg-reset-css h1 {\n      font-size: 32px !important;\n      line-height: 38px !important;\n      margin-bottom: 20px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css h2 {\n      font-size: 26px !important;\n      line-height: 34px !important;\n      margin-bottom: 15px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css h3 {\n      font-size: 22px !important;\n      line-height: 28px !important;\n      margin-bottom: 7px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css h4 {\n      font-size: 16px !important;\n      line-height: 22px !important;\n      margin-bottom: 7px !important; }\n\n/*\n * Dark theme\n */\n.trumbowyg-dark .trumbowyg-textarea {\n  background: #111;\n  color: #ddd; }\n\n.trumbowyg-dark .trumbowyg-box {\n  border: 1px solid #343434; }\n  .trumbowyg-dark .trumbowyg-box.trumbowyg-fullscreen {\n    background: #111; }\n  .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {\n    text-shadow: 0 0 7px #ccc; }\n    @media screen and (min-width: 0 \\0 ) {\n      .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {\n        color: rgba(20, 20, 20, 0.6) !important; } }\n    @supports (-ms-accelerator: true) {\n      .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {\n        color: rgba(20, 20, 20, 0.6) !important; } }\n  .trumbowyg-dark .trumbowyg-box svg {\n    fill: #ecf0f1;\n    color: #ecf0f1; }\n\n.trumbowyg-dark .trumbowyg-button-pane {\n  background-color: #222;\n  border-bottom-color: #343434; }\n  .trumbowyg-dark .trumbowyg-button-pane::after {\n    background: #343434; }\n  .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-button-group:not(:empty)::after {\n    background-color: #343434; }\n  .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-button-group:not(:empty) .trumbowyg-fullscreen-button svg {\n    color: transparent; }\n  .trumbowyg-dark .trumbowyg-button-pane.trumbowyg-disable .trumbowyg-button-group::after {\n    background-color: #2a2a2a; }\n  .trumbowyg-dark .trumbowyg-button-pane button:not(.trumbowyg-disable):hover,\n  .trumbowyg-dark .trumbowyg-button-pane button:not(.trumbowyg-disable):focus,\n  .trumbowyg-dark .trumbowyg-button-pane button.trumbowyg-active {\n    background-color: #333; }\n  .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-open-dropdown::after {\n    border-top-color: #fff; }\n\n.trumbowyg-dark .trumbowyg-fullscreen .trumbowyg-button-pane .trumbowyg-button-group:not(:empty) .trumbowyg-fullscreen-button svg {\n  color: #ecf0f1;\n  fill: transparent; }\n\n.trumbowyg-dark .trumbowyg-dropdown {\n  border-color: #222;\n  background: #333;\n  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 3px; }\n  .trumbowyg-dark .trumbowyg-dropdown button {\n    background: #333;\n    color: #fff !important; }\n    .trumbowyg-dark .trumbowyg-dropdown button:hover, .trumbowyg-dark .trumbowyg-dropdown button:focus {\n      background: #222; }\n\n.trumbowyg-dark .trumbowyg-modal-box {\n  background-color: #222; }\n  .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-title {\n    border-bottom: 1px solid #555;\n    color: #fff;\n    background: #3c3c3c; }\n  .trumbowyg-dark .trumbowyg-modal-box label {\n    display: block;\n    position: relative;\n    margin: 15px 12px;\n    height: 27px;\n    line-height: 27px;\n    overflow: hidden; }\n    .trumbowyg-dark .trumbowyg-modal-box label .trumbowyg-input-infos span {\n      color: #eee;\n      background-color: #2f2f2f;\n      border-color: #222; }\n    .trumbowyg-dark .trumbowyg-modal-box label .trumbowyg-input-infos span.trumbowyg-msg-error {\n      color: #e74c3c; }\n    .trumbowyg-dark .trumbowyg-modal-box label.trumbowyg-input-error input,\n    .trumbowyg-dark .trumbowyg-modal-box label.trumbowyg-input-error textarea {\n      border-color: #e74c3c; }\n    .trumbowyg-dark .trumbowyg-modal-box label input {\n      border-color: #222;\n      color: #eee;\n      background: #333; }\n      .trumbowyg-dark .trumbowyg-modal-box label input:hover, .trumbowyg-dark .trumbowyg-modal-box label input:focus {\n        border-color: #626262; }\n      .trumbowyg-dark .trumbowyg-modal-box label input:focus {\n        background-color: #2f2f2f; }\n  .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {\n    background: #1b7943; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:hover, .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:focus {\n      background: #25a25a; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:active {\n      background: #176437; }\n  .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset {\n    background: #333;\n    color: #ccc; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:hover, .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:focus {\n      background: #444; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:active {\n      background: #111; }\n\n.trumbowyg-dark .trumbowyg-overlay {\n  background-color: rgba(15, 15, 15, 0.6); }\n", ""]);
+exports.push([module.i, "/**\n * Trumbowyg v2.16.2 - A lightweight WYSIWYG editor\n * Default stylesheet for Trumbowyg editor\n * ------------------------\n * @link http://alex-d.github.io/Trumbowyg\n * @license MIT\n * @author Alexandre Demode (Alex-D)\n *         Twitter : @AlexandreDemode\n *         Website : alex-d.fr\n */\n\n#trumbowyg-icons {\n  overflow: hidden;\n  visibility: hidden;\n  height: 0;\n  width: 0; }\n  #trumbowyg-icons svg {\n    height: 0;\n    width: 0; }\n\n.trumbowyg-box *,\n.trumbowyg-box *::before,\n.trumbowyg-box *::after,\n.trumbowyg-modal *,\n.trumbowyg-modal *::before,\n.trumbowyg-modal *::after {\n  box-sizing: border-box; }\n\n.trumbowyg-box svg,\n.trumbowyg-modal svg {\n  width: 17px;\n  height: 100%;\n  fill: #222; }\n\n.trumbowyg-box,\n.trumbowyg-editor {\n  display: block;\n  position: relative;\n  border: 1px solid #DDD;\n  width: 100%;\n  min-height: 300px;\n  margin: 17px auto; }\n\n.trumbowyg-box .trumbowyg-editor {\n  margin: 0 auto; }\n\n.trumbowyg-box.trumbowyg-fullscreen {\n  background: #FEFEFE;\n  border: none !important; }\n\n.trumbowyg-editor,\n.trumbowyg-textarea {\n  position: relative;\n  box-sizing: border-box;\n  padding: 20px;\n  min-height: 300px;\n  width: 100%;\n  border-style: none;\n  resize: none;\n  outline: none;\n  overflow: auto; }\n  .trumbowyg-editor.trumbowyg-autogrow-on-enter,\n  .trumbowyg-textarea.trumbowyg-autogrow-on-enter {\n    -webkit-transition: height 300ms ease-out;\n    transition: height 300ms ease-out; }\n\n.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {\n  color: transparent !important;\n  text-shadow: 0 0 7px #333; }\n  @media screen and (min-width: 0 \\0) {\n    .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {\n      color: rgba(200, 200, 200, 0.6) !important; } }\n  @supports (-ms-accelerator: true) {\n    .trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-box-blur .trumbowyg-editor::before {\n      color: rgba(200, 200, 200, 0.6) !important; } }\n\n.trumbowyg-box-blur .trumbowyg-editor img,\n.trumbowyg-box-blur .trumbowyg-editor hr {\n  opacity: 0.2; }\n\n.trumbowyg-textarea {\n  position: relative;\n  display: block;\n  overflow: auto;\n  border: none;\n  font-size: 14px;\n  font-family: \"Inconsolata\", \"Consolas\", \"Courier\", \"Courier New\", sans-serif;\n  line-height: 18px; }\n\n.trumbowyg-box.trumbowyg-editor-visible .trumbowyg-textarea {\n  height: 1px !important;\n  width: 25%;\n  min-height: 0 !important;\n  padding: 0 !important;\n  background: none;\n  opacity: 0 !important; }\n\n.trumbowyg-box.trumbowyg-editor-hidden .trumbowyg-textarea {\n  display: block; }\n\n.trumbowyg-box.trumbowyg-editor-hidden .trumbowyg-editor {\n  display: none; }\n\n.trumbowyg-box.trumbowyg-disabled .trumbowyg-textarea {\n  opacity: 0.8;\n  background: none; }\n\n.trumbowyg-editor[contenteditable=true]:empty:not(:focus)::before {\n  content: attr(placeholder);\n  color: #999;\n  pointer-events: none; }\n\n.trumbowyg-button-pane {\n  width: 100%;\n  min-height: 36px;\n  background: #ecf0f1;\n  border-bottom: 1px solid #d7e0e2;\n  margin: 0;\n  padding: 0 5px;\n  position: relative;\n  list-style-type: none;\n  line-height: 10px;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden;\n  z-index: 11; }\n  .trumbowyg-button-pane::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    top: 36px;\n    left: 0;\n    right: 0;\n    width: 100%;\n    height: 1px;\n    background: #d7e0e2; }\n  .trumbowyg-button-pane .trumbowyg-button-group {\n    display: inline-block; }\n    .trumbowyg-button-pane .trumbowyg-button-group .trumbowyg-fullscreen-button svg {\n      color: transparent; }\n    .trumbowyg-button-pane .trumbowyg-button-group::after {\n      content: \" \";\n      display: inline-block;\n      width: 1px;\n      background: #d7e0e2;\n      margin: 0 5px;\n      height: 35px;\n      vertical-align: top; }\n    .trumbowyg-button-pane .trumbowyg-button-group:last-child::after {\n      content: none; }\n  .trumbowyg-button-pane button {\n    display: inline-block;\n    position: relative;\n    width: 35px;\n    height: 35px;\n    padding: 1px 6px !important;\n    margin-bottom: 1px;\n    overflow: hidden;\n    border: none;\n    cursor: pointer;\n    background: none;\n    vertical-align: middle;\n    -webkit-transition: background-color 150ms, opacity 150ms;\n    transition: background-color 150ms, opacity 150ms; }\n    .trumbowyg-button-pane button.trumbowyg-textual-button {\n      width: auto;\n      line-height: 35px;\n      -webkit-user-select: none;\n         -moz-user-select: none;\n          -ms-user-select: none;\n              user-select: none; }\n  .trumbowyg-button-pane.trumbowyg-disable button:not(.trumbowyg-not-disable):not(.trumbowyg-active),\n  .trumbowyg-button-pane button.trumbowyg-disable,\n  .trumbowyg-disabled .trumbowyg-button-pane button:not(.trumbowyg-not-disable):not(.trumbowyg-viewHTML-button) {\n    opacity: 0.2;\n    cursor: default; }\n  .trumbowyg-button-pane.trumbowyg-disable .trumbowyg-button-group::before,\n  .trumbowyg-disabled .trumbowyg-button-pane .trumbowyg-button-group::before {\n    background: #e3e9eb; }\n  .trumbowyg-button-pane button:not(.trumbowyg-disable):hover,\n  .trumbowyg-button-pane button:not(.trumbowyg-disable):focus,\n  .trumbowyg-button-pane button.trumbowyg-active {\n    background-color: #FFF;\n    outline: none; }\n  .trumbowyg-button-pane .trumbowyg-open-dropdown::after {\n    display: block;\n    content: \" \";\n    position: absolute;\n    top: 25px;\n    right: 3px;\n    height: 0;\n    width: 0;\n    border: 3px solid transparent;\n    border-top-color: #555; }\n  .trumbowyg-button-pane .trumbowyg-open-dropdown.trumbowyg-textual-button {\n    padding-left: 10px !important;\n    padding-right: 18px !important; }\n    .trumbowyg-button-pane .trumbowyg-open-dropdown.trumbowyg-textual-button::after {\n      top: 17px;\n      right: 7px; }\n  .trumbowyg-button-pane .trumbowyg-right {\n    float: right; }\n\n.trumbowyg-dropdown {\n  min-width: 200px;\n  border: 1px solid #ecf0f1;\n  padding: 5px 0;\n  border-top: none;\n  background: #FFF;\n  margin-left: -1px;\n  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 3px;\n  z-index: 12; }\n  .trumbowyg-dropdown button {\n    display: block;\n    width: 100%;\n    height: 35px;\n    line-height: 35px;\n    text-decoration: none;\n    background: #FFF;\n    padding: 0 10px;\n    color: #333 !important;\n    border: none;\n    cursor: pointer;\n    text-align: left;\n    font-size: 15px;\n    -webkit-transition: all 150ms;\n    transition: all 150ms; }\n    .trumbowyg-dropdown button:hover, .trumbowyg-dropdown button:focus {\n      background: #ecf0f1; }\n    .trumbowyg-dropdown button svg {\n      float: left;\n      margin-right: 14px; }\n\n/* Modal box */\n.trumbowyg-modal {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  max-width: 520px;\n  width: 100%;\n  height: 350px;\n  z-index: 12;\n  overflow: hidden;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n\n.trumbowyg-modal-box {\n  position: absolute;\n  top: 0;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  max-width: 500px;\n  width: calc(100% - 20px);\n  padding-bottom: 45px;\n  z-index: 1;\n  background-color: #FFF;\n  text-align: center;\n  font-size: 14px;\n  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 3px;\n  -webkit-backface-visibility: hidden;\n          backface-visibility: hidden; }\n  .trumbowyg-modal-box .trumbowyg-modal-title {\n    font-size: 24px;\n    font-weight: bold;\n    margin: 0 0 20px;\n    padding: 15px 0 13px;\n    display: block;\n    border-bottom: 1px solid #EEE;\n    color: #333;\n    background: #fbfcfc; }\n  .trumbowyg-modal-box .trumbowyg-progress {\n    width: 100%;\n    height: 3px;\n    position: absolute;\n    top: 58px; }\n    .trumbowyg-modal-box .trumbowyg-progress .trumbowyg-progress-bar {\n      background: #2BC06A;\n      width: 0;\n      height: 100%;\n      -webkit-transition: width 150ms linear;\n      transition: width 150ms linear; }\n  .trumbowyg-modal-box label {\n    display: block;\n    position: relative;\n    margin: 15px 12px;\n    height: 29px;\n    line-height: 29px;\n    overflow: hidden; }\n    .trumbowyg-modal-box label .trumbowyg-input-infos {\n      display: block;\n      text-align: left;\n      height: 25px;\n      line-height: 25px;\n      -webkit-transition: all 150ms;\n      transition: all 150ms; }\n      .trumbowyg-modal-box label .trumbowyg-input-infos span {\n        display: block;\n        color: #69878f;\n        background-color: #fbfcfc;\n        border: 1px solid #DEDEDE;\n        padding: 0 7px;\n        width: 150px; }\n      .trumbowyg-modal-box label .trumbowyg-input-infos span.trumbowyg-msg-error {\n        color: #e74c3c; }\n    .trumbowyg-modal-box label.trumbowyg-input-error input,\n    .trumbowyg-modal-box label.trumbowyg-input-error textarea {\n      border: 1px solid #e74c3c; }\n    .trumbowyg-modal-box label.trumbowyg-input-error .trumbowyg-input-infos {\n      margin-top: -27px; }\n    .trumbowyg-modal-box label input {\n      position: absolute;\n      top: 0;\n      right: 0;\n      height: 27px;\n      line-height: 27px;\n      border: 1px solid #DEDEDE;\n      background: #fff;\n      font-size: 14px;\n      max-width: 330px;\n      width: 70%;\n      padding: 0 7px;\n      -webkit-transition: all 150ms;\n      transition: all 150ms; }\n      .trumbowyg-modal-box label input:hover, .trumbowyg-modal-box label input:focus {\n        outline: none;\n        border: 1px solid #95a5a6; }\n      .trumbowyg-modal-box label input:focus {\n        background: #fbfcfc; }\n    .trumbowyg-modal-box label input[type=\"checkbox\"] {\n      left: 6px;\n      top: 6px;\n      right: auto;\n      height: 16px;\n      width: 16px; }\n      .trumbowyg-modal-box label input[type=\"checkbox\"] + .trumbowyg-input-infos span {\n        width: auto;\n        padding-left: 25px; }\n  .trumbowyg-modal-box .error {\n    margin-top: 25px;\n    display: block;\n    color: red; }\n  .trumbowyg-modal-box .trumbowyg-modal-button {\n    position: absolute;\n    bottom: 10px;\n    right: 0;\n    text-decoration: none;\n    color: #FFF;\n    display: block;\n    width: 100px;\n    height: 35px;\n    line-height: 33px;\n    margin: 0 10px;\n    background-color: #333;\n    border: none;\n    cursor: pointer;\n    font-family: \"Trebuchet MS\", Helvetica, Verdana, sans-serif;\n    font-size: 16px;\n    -webkit-transition: all 150ms;\n    transition: all 150ms; }\n    .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {\n      right: 110px;\n      background: #2bc06a; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:hover, .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:focus {\n        background: #40d47e;\n        outline: none; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:active {\n        background: #25a25a; }\n    .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset {\n      color: #555;\n      background: #e6e6e6; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:hover, .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:focus {\n        background: #fbfbfb;\n        outline: none; }\n      .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:active {\n        background: #d5d5d5; }\n\n.trumbowyg-overlay {\n  position: absolute;\n  background-color: rgba(255, 255, 255, 0.5);\n  height: 100%;\n  width: 100%;\n  left: 0;\n  display: none;\n  top: 0;\n  z-index: 10; }\n\n/**\n * Fullscreen\n */\nbody.trumbowyg-body-fullscreen {\n  overflow: hidden; }\n\n.trumbowyg-fullscreen {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  padding: 0;\n  z-index: 99999; }\n  .trumbowyg-fullscreen.trumbowyg-box,\n  .trumbowyg-fullscreen .trumbowyg-editor {\n    border: none; }\n  .trumbowyg-fullscreen .trumbowyg-editor,\n  .trumbowyg-fullscreen .trumbowyg-textarea {\n    height: calc(100% - 37px) !important;\n    overflow: auto; }\n  .trumbowyg-fullscreen .trumbowyg-overlay {\n    height: 100% !important; }\n  .trumbowyg-fullscreen .trumbowyg-button-group .trumbowyg-fullscreen-button svg {\n    color: #222;\n    fill: transparent; }\n\n.trumbowyg-editor {\n  /*\n     * lset for resetCss option\n     */ }\n  .trumbowyg-editor object,\n  .trumbowyg-editor embed,\n  .trumbowyg-editor video,\n  .trumbowyg-editor img {\n    max-width: 100%; }\n  .trumbowyg-editor video,\n  .trumbowyg-editor img {\n    height: auto; }\n  .trumbowyg-editor img {\n    cursor: move; }\n  .trumbowyg-editor.trumbowyg-reset-css {\n    background: #FEFEFE !important;\n    font-family: \"Trebuchet MS\", Helvetica, Verdana, sans-serif !important;\n    font-size: 14px !important;\n    line-height: 1.45em !important;\n    color: #333; }\n    .trumbowyg-editor.trumbowyg-reset-css a {\n      color: #15c !important;\n      text-decoration: underline !important; }\n    .trumbowyg-editor.trumbowyg-reset-css div,\n    .trumbowyg-editor.trumbowyg-reset-css p,\n    .trumbowyg-editor.trumbowyg-reset-css ul,\n    .trumbowyg-editor.trumbowyg-reset-css ol,\n    .trumbowyg-editor.trumbowyg-reset-css blockquote {\n      box-shadow: none !important;\n      background: none !important;\n      margin: 0 !important;\n      margin-bottom: 15px !important;\n      line-height: 1.4em !important;\n      font-family: \"Trebuchet MS\", Helvetica, Verdana, sans-serif !important;\n      font-size: 14px !important;\n      border: none; }\n    .trumbowyg-editor.trumbowyg-reset-css iframe,\n    .trumbowyg-editor.trumbowyg-reset-css object,\n    .trumbowyg-editor.trumbowyg-reset-css hr {\n      margin-bottom: 15px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css blockquote {\n      margin-left: 32px !important;\n      font-style: italic !important;\n      color: #555; }\n    .trumbowyg-editor.trumbowyg-reset-css ul {\n      list-style: disc; }\n    .trumbowyg-editor.trumbowyg-reset-css ul,\n    .trumbowyg-editor.trumbowyg-reset-css ol {\n      padding-left: 20px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css ul ul,\n    .trumbowyg-editor.trumbowyg-reset-css ol ol,\n    .trumbowyg-editor.trumbowyg-reset-css ul ol,\n    .trumbowyg-editor.trumbowyg-reset-css ol ul {\n      border: none;\n      margin: 2px !important;\n      padding: 0 !important;\n      padding-left: 24px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css hr {\n      display: block;\n      height: 1px;\n      border: none;\n      border-top: 1px solid #CCC; }\n    .trumbowyg-editor.trumbowyg-reset-css h1,\n    .trumbowyg-editor.trumbowyg-reset-css h2,\n    .trumbowyg-editor.trumbowyg-reset-css h3,\n    .trumbowyg-editor.trumbowyg-reset-css h4 {\n      color: #111;\n      background: none;\n      margin: 0 !important;\n      padding: 0 !important;\n      font-weight: bold; }\n    .trumbowyg-editor.trumbowyg-reset-css h1 {\n      font-size: 32px !important;\n      line-height: 38px !important;\n      margin-bottom: 20px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css h2 {\n      font-size: 26px !important;\n      line-height: 34px !important;\n      margin-bottom: 15px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css h3 {\n      font-size: 22px !important;\n      line-height: 28px !important;\n      margin-bottom: 7px !important; }\n    .trumbowyg-editor.trumbowyg-reset-css h4 {\n      font-size: 16px !important;\n      line-height: 22px !important;\n      margin-bottom: 7px !important; }\n\n/*\n * Dark theme\n */\n.trumbowyg-dark .trumbowyg-textarea {\n  background: #111;\n  color: #ddd; }\n\n.trumbowyg-dark .trumbowyg-box {\n  border: 1px solid #343434; }\n  .trumbowyg-dark .trumbowyg-box.trumbowyg-fullscreen {\n    background: #111; }\n  .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {\n    text-shadow: 0 0 7px #ccc; }\n    @media screen and (min-width: 0 \\0 ) {\n      .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {\n        color: rgba(20, 20, 20, 0.6) !important; } }\n    @supports (-ms-accelerator: true) {\n      .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor *, .trumbowyg-dark .trumbowyg-box.trumbowyg-box-blur .trumbowyg-editor::before {\n        color: rgba(20, 20, 20, 0.6) !important; } }\n  .trumbowyg-dark .trumbowyg-box svg {\n    fill: #ecf0f1;\n    color: #ecf0f1; }\n\n.trumbowyg-dark .trumbowyg-button-pane {\n  background-color: #222;\n  border-bottom-color: #343434; }\n  .trumbowyg-dark .trumbowyg-button-pane::after {\n    background: #343434; }\n  .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-button-group:not(:empty)::after {\n    background-color: #343434; }\n  .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-button-group:not(:empty) .trumbowyg-fullscreen-button svg {\n    color: transparent; }\n  .trumbowyg-dark .trumbowyg-button-pane.trumbowyg-disable .trumbowyg-button-group::after {\n    background-color: #2a2a2a; }\n  .trumbowyg-dark .trumbowyg-button-pane button:not(.trumbowyg-disable):hover,\n  .trumbowyg-dark .trumbowyg-button-pane button:not(.trumbowyg-disable):focus,\n  .trumbowyg-dark .trumbowyg-button-pane button.trumbowyg-active {\n    background-color: #333; }\n  .trumbowyg-dark .trumbowyg-button-pane .trumbowyg-open-dropdown::after {\n    border-top-color: #fff; }\n\n.trumbowyg-dark .trumbowyg-fullscreen .trumbowyg-button-pane .trumbowyg-button-group:not(:empty) .trumbowyg-fullscreen-button svg {\n  color: #ecf0f1;\n  fill: transparent; }\n\n.trumbowyg-dark .trumbowyg-dropdown {\n  border-color: #222;\n  background: #333;\n  box-shadow: rgba(0, 0, 0, 0.3) 0 2px 3px; }\n  .trumbowyg-dark .trumbowyg-dropdown button {\n    background: #333;\n    color: #fff !important; }\n    .trumbowyg-dark .trumbowyg-dropdown button:hover, .trumbowyg-dark .trumbowyg-dropdown button:focus {\n      background: #222; }\n\n.trumbowyg-dark .trumbowyg-modal-box {\n  background-color: #222; }\n  .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-title {\n    border-bottom: 1px solid #555;\n    color: #fff;\n    background: #3c3c3c; }\n  .trumbowyg-dark .trumbowyg-modal-box label {\n    display: block;\n    position: relative;\n    margin: 15px 12px;\n    height: 27px;\n    line-height: 27px;\n    overflow: hidden; }\n    .trumbowyg-dark .trumbowyg-modal-box label .trumbowyg-input-infos span {\n      color: #eee;\n      background-color: #2f2f2f;\n      border-color: #222; }\n    .trumbowyg-dark .trumbowyg-modal-box label .trumbowyg-input-infos span.trumbowyg-msg-error {\n      color: #e74c3c; }\n    .trumbowyg-dark .trumbowyg-modal-box label.trumbowyg-input-error input,\n    .trumbowyg-dark .trumbowyg-modal-box label.trumbowyg-input-error textarea {\n      border-color: #e74c3c; }\n    .trumbowyg-dark .trumbowyg-modal-box label input {\n      border-color: #222;\n      color: #eee;\n      background: #333; }\n      .trumbowyg-dark .trumbowyg-modal-box label input:hover, .trumbowyg-dark .trumbowyg-modal-box label input:focus {\n        border-color: #626262; }\n      .trumbowyg-dark .trumbowyg-modal-box label input:focus {\n        background-color: #2f2f2f; }\n  .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit {\n    background: #1b7943; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:hover, .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:focus {\n      background: #25a25a; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-submit:active {\n      background: #176437; }\n  .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset {\n    background: #333;\n    color: #ccc; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:hover, .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:focus {\n      background: #444; }\n    .trumbowyg-dark .trumbowyg-modal-box .trumbowyg-modal-button.trumbowyg-modal-reset:active {\n      background: #111; }\n\n.trumbowyg-dark .trumbowyg-overlay {\n  background-color: rgba(15, 15, 15, 0.6); }\n", ""]);
 
 // exports
 
@@ -7864,7 +8374,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.block {\n    display: inline-block;\n    flex-direction: column;\n    margin: 10px;\n    margin-top:0;\n    background-color:#343a40;\n}\n.text {\n    color: #b1ddf0;\n    font-size: 20px;\n    font-weight: 600;\n    text-align: center;\n}\n.digit {\n    color: #ecf0f1;\n    font-size: 40px;\n    font-weight: 100;\n    margin: 12px;\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.block {\n    display: inline-block;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n    margin: 10px;\n    margin-top:0;\n    background-color:#343a40;\n}\n.text {\n    color: #b1ddf0;\n    font-size: 20px;\n    font-weight: 600;\n    text-align: center;\n}\n.digit {\n    color: #ecf0f1;\n    font-size: 40px;\n    font-weight: 100;\n    margin: 12px;\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -7922,6 +8432,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.action-link[data-v-49962cc0] {\n    cursor: pointer;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ndiv {\n\tbox-sizing: border-box;\n\ttext-transform: uppercase;\n}\n.responsive {\n    background: #cde6d0;\n    width: 80vw;\n    height: 80vw;\n    margin: 10px auto;\n}\n.mainSquare {\n\theight: 100%;\n\tposition:relative;\n\tleft: 14px;\n}\n.row {\n\twidth: 100%;\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n}\n.top {\n\theight: 15.384615385%;\n}\n.center {\n\theight: 69.23076923%;\n}\n.square1 {\n\toutline: 1px solid black;\n\t-webkit-box-flex: 1;\n\t        flex-grow: 1;\n\tposition: relative;\n}\n.square2 {\n\t-webkit-box-flex: 2;\n\t        flex-grow: 2;\n\toutline: 1px solid black;\n\tdisplay: -webkit-box;\n\tdisplay: flex;\n\t-webkit-box-orient: vertical;\n\t-webkit-box-direction: normal;\n\t        flex-direction: column;\n\tposition: relative;\n}\n.square9 {\n\t-webkit-box-flex: 9;\n\t        flex-grow: 9;\n\toutline: 1px solid black;\n}\n.squareSide {\n\toutline: 1px solid black;\n\twidth: 100%;\n\t-webkit-box-flex: 1;\n\t        flex-grow: 1;\n\tposition: relative;\n}\n.header {\n\theight: 21%;\n\tposition: absolute;\n\toutline: 2px solid black;\n\tbackground: grey;\n\t/* width: 100%; */\n}\n.headerSide {\n\t/* height: 100%; */\n\twidth: 21%;\n\tposition: absolute;\n\toutline: 2px solid black;\n}\n.header-top {\n\tbottom: 1px;\n\tleft: 1px;\n\tright: 1px;\n}\n.header-bottom {\n\ttop: 1px;\n\tleft: 1px;\n\tright: 1px;\n}\n.header-left {\n\ttop: 1px;\n\tbottom: 1px;\n\tright: 1px;\n\tbackground: grey;\n}\n.header-right {\n\ttop: 1px;\n\tbottom: 1px;\n\tleft: 1px;\n\tbackground: grey;\n}\n.firstLine {\n\tposition: absolute;\n\tfont-size: 0.7vw;\n\tfont-weight: 500;\n\tline-height: 1vw;\n\ttext-align: center;\n}\n.firstLine-top {\n\tleft: 1px;\n\tright: 1px;\n\tbottom: 30%;\n\theight: 10%;\n}\n.firstLine-top.no-color {\n\tbottom: 12%;\n}\n.firstLine-left {\n\ttop: 0px;\n\tbottom: 0px;\n\tright: 42%;\n}\n.firstLine-left.no-color {\n\tright: 23%;\n}\n.firstLine-right {\n\ttop: 0;\n\tbottom: 0;\n\tleft: 42%;\n}\n.firstLine-right.no-color {\n\tleft: 23%;\n}\n.firstLine-bottom {\n\tleft: 0;\n\tright: 0;\n\ttop: 30%;\n}\n.firstLine-bottom.no-color {\n\ttop: 12%;\n}\n.red {\n  background-color: #ed1b24;\n}\n.yellow {\n  background-color: #fef200;\n}\n.lightblue {\n  background-color: #aae0fa;\n}\n.brown {\n  background-color: #955436;\n}\n.blue {\n  background-color: #0072bb;\n}\n.green {\n  background-color: #1fb25a;\n}\n.orange {\n  background-color: #f7941d;\n}\n.purple {\n  background-color: #d93a96;\n}\n.rotation1 {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.rotation2 {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.rotation3 {\n  -webkit-transform: rotate(-90deg);\n          transform: rotate(-90deg);\n}\n.logoBox {\n\twidth: 46%;\n\tbackground: #ed1b24;\n\tposition: absolute;\n\t-webkit-transform: rotateZ(-45deg) translateX(-27%) translateY(237%);\n\t        transform: rotateZ(-45deg) translateX(-27%) translateY(237%);\n\tborder: 3px solid black;\n\ttext-align: center;\n\tbox-shadow: inset 0px 2px 12px 0px white;\n}\n.logoName {\n\tfont-size: 7.1vw;\n\tcolor: white;\n\tfont-family: futura;\n\ttext-shadow: -4px 3px 0px black;\n\t-webkit-text-fill-color: white; /* Will override color (regardless of order) */\n\t-webkit-text-stroke-width: 2px;\n\t-webkit-text-stroke-color: #cfc2c3;\n}\n.card-box {\n\tposition: absolute;\n\twidth: 15%;\n\theight: 9vw;\n}\n.card-blue {\n\tbackground: -webkit-gradient(linear, left top, left bottom, from(#4ccaf4), to(#a3dff9));\n\tbackground: linear-gradient(#4ccaf4, #a3dff9);\n\t-webkit-transform: rotateZ(-45deg) translateX(-13%) translateY(66%);\n\t        transform: rotateZ(-45deg) translateX(-13%) translateY(66%);\n}\n.card-blue-inside {\n    background: -webkit-gradient(linear, left top, left bottom, from(#a3dff9), to(#4ccaf4));\n    background: linear-gradient(#a3dff9, #4ccaf4);\n    width: 94%;\n    height: 94%;\n    margin: 0.3vw auto;\n    position: relative;\n}\n.card-orange {\n\tbackground: -webkit-gradient(linear, left top, left bottom, from(#f99120), to(#f57420));\n\tbackground: linear-gradient(#f99120, #f57420);\n\t-webkit-transform: rotateZ(-45deg) translateX(-13%) translateY(610%);\n\t        transform: rotateZ(-45deg) translateX(-13%) translateY(610%);\n}\n.card-orange-inside {\n    background: -webkit-gradient(linear, left top, left bottom, from(#f57420), to(#f99120));\n    background: linear-gradient(#f57420, #f99120);\n    width: 94%;\n    height: 94%;\n    margin: 0.3vw auto;\n    position: relative;\n}\n.corner {\n\tposition: absolute;\n\ttext-align: center;\n\tline-height: 8vw;\n\tfont-size: 1.2vw;\n\tfont-weight: 500;\n}\n.corner1 {\n    -webkit-transform: rotateZ(135deg) translateX(-66%) translateY(-15%);\n            transform: rotateZ(135deg) translateX(-66%) translateY(-15%);\n}\n.corner2 {\n    -webkit-transform: rotateZ(-135deg) translateX(-30%) translateY(23%);\n            transform: rotateZ(-135deg) translateX(-30%) translateY(23%);\n    line-height: 9vw;\n}\n.corner3 {\n    -webkit-transform: rotateZ(-45deg) translateX(-14%) translateY(26%);\n            transform: rotateZ(-45deg) translateX(-14%) translateY(26%);\n    line-height: 1.4vw;\n    font-size: 1vw;\n}\n.corner4 {\n    -webkit-transform: rotateZ(45deg) translateX(-9%) translateY(-31%);\n            transform: rotateZ(45deg) translateX(-9%) translateY(-31%);\n    line-height: 7vw;\n}\n.squareCorner {\n\theight: 65%;\n\twidth: 65%;\n\tborder: 2px solid black;\n\tright: -1px;\n\ttop: -1px;\n\tposition: absolute;\n}\n.corner4-left {\n\tposition: absolute;\n\t-webkit-transform: rotateZ(90deg) translateX(80%) translateY(-36%);\n\t        transform: rotateZ(90deg) translateX(80%) translateY(-36%);\n\tfont-size: 1.2vw;\n\tfont-weight: 500;\n}\n.corner4-bottom {\n\tposition: absolute;\n\t-webkit-transform: translateX(112%) translateY(720%);\n\t        transform: translateX(112%) translateY(720%);\n\tfont-size: 1.2vw;\n\tfont-weight: 500;\n}\n", ""]);
 
 // exports
 
@@ -8010,38 +8539,6 @@ function toComment(sourceMap) {
 	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
 
 	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-
-/***/ "./node_modules/is-buffer/index.js":
-/*!*****************************************!*\
-  !*** ./node_modules/is-buffer/index.js ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/*!
- * Determine if an object is a Buffer
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
 
@@ -18667,7 +19164,7 @@ return jQuery;
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
  * @license
  * Lodash <https://lodash.com/>
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -18678,7 +19175,7 @@ return jQuery;
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.11';
+  var VERSION = '4.17.15';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -21337,16 +21834,10 @@ return jQuery;
         value.forEach(function(subValue) {
           result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
         });
-
-        return result;
-      }
-
-      if (isMap(value)) {
+      } else if (isMap(value)) {
         value.forEach(function(subValue, key) {
           result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
         });
-
-        return result;
       }
 
       var keysFunc = isFull
@@ -22270,8 +22761,8 @@ return jQuery;
         return;
       }
       baseFor(source, function(srcValue, key) {
+        stack || (stack = new Stack);
         if (isObject(srcValue)) {
-          stack || (stack = new Stack);
           baseMergeDeep(object, source, key, srcIndex, baseMerge, customizer, stack);
         }
         else {
@@ -24088,7 +24579,7 @@ return jQuery;
       return function(number, precision) {
         number = toNumber(number);
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
-        if (precision) {
+        if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
           // See [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
@@ -25271,7 +25762,7 @@ return jQuery;
     }
 
     /**
-     * Gets the value at `key`, unless `key` is "__proto__".
+     * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
      * @param {Object} object The object to query.
@@ -25279,6 +25770,10 @@ return jQuery;
      * @returns {*} Returns the property value.
      */
     function safeGet(object, key) {
+      if (key === 'constructor' && typeof object[key] === 'function') {
+        return;
+      }
+
       if (key == '__proto__') {
         return;
       }
@@ -29079,6 +29574,7 @@ return jQuery;
           }
           if (maxing) {
             // Handle invocations in a tight loop.
+            clearTimeout(timerId);
             timerId = setTimeout(timerExpired, wait);
             return invokeFunc(lastCallTime);
           }
@@ -33465,9 +33961,12 @@ return jQuery;
       , 'g');
 
       // Use a sourceURL for easier debugging.
+      // The sourceURL gets injected into the source that's eval-ed, so be careful
+      // with lookup (in case of e.g. prototype pollution), and strip newlines if any.
+      // A newline wouldn't be a valid sourceURL anyway, and it'd enable code injection.
       var sourceURL = '//# sourceURL=' +
-        ('sourceURL' in options
-          ? options.sourceURL
+        (hasOwnProperty.call(options, 'sourceURL')
+          ? (options.sourceURL + '').replace(/[\r\n]/g, ' ')
           : ('lodash.templateSources[' + (++templateCounter) + ']')
         ) + '\n';
 
@@ -33500,7 +33999,9 @@ return jQuery;
 
       // If `variable` is not specified wrap a with-statement around the generated
       // code to add the data object to the top of the scope chain.
-      var variable = options.variable;
+      // Like with sourceURL, we take care to not check the option's prototype,
+      // as this configuration is a code injection vector.
+      var variable = hasOwnProperty.call(options, 'variable') && options.variable;
       if (!variable) {
         source = 'with (obj) {\n' + source + '\n}\n';
       }
@@ -35705,10 +36206,11 @@ return jQuery;
     baseForOwn(LazyWrapper.prototype, function(func, methodName) {
       var lodashFunc = lodash[methodName];
       if (lodashFunc) {
-        var key = (lodashFunc.name + ''),
-            names = realNames[key] || (realNames[key] = []);
-
-        names.push({ 'name': methodName, 'func': lodashFunc });
+        var key = lodashFunc.name + '';
+        if (!hasOwnProperty.call(realNames, key)) {
+          realNames[key] = [];
+        }
+        realNames[key].push({ 'name': methodName, 'func': lodashFunc });
       }
     });
 
@@ -35779,7 +36281,7 @@ return jQuery;
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.15.0
+ * @version 1.16.0
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -35801,16 +36303,17 @@ __webpack_require__.r(__webpack_exports__);
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined' && typeof navigator !== 'undefined';
 
-var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
-var timeoutDuration = 0;
-for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
-  if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
-    timeoutDuration = 1;
-    break;
+var timeoutDuration = function () {
+  var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
+  for (var i = 0; i < longerTimeoutBrowsers.length; i += 1) {
+    if (isBrowser && navigator.userAgent.indexOf(longerTimeoutBrowsers[i]) >= 0) {
+      return 1;
+    }
   }
-}
+  return 0;
+}();
 
 function microtaskDebounce(fn) {
   var called = false;
@@ -35928,6 +36431,17 @@ function getScrollParent(element) {
   }
 
   return getScrollParent(getParentNode(element));
+}
+
+/**
+ * Returns the reference node of the reference object, or the reference object itself.
+ * @method
+ * @memberof Popper.Utils
+ * @param {Element|Object} reference - the reference element (the popper will be relative to this)
+ * @returns {Element} parent
+ */
+function getReferenceNode(reference) {
+  return reference && reference.referenceNode ? reference.referenceNode : reference;
 }
 
 var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
@@ -36238,8 +36752,8 @@ function getBoundingClientRect(element) {
 
   // subtract scrollbar size from sizes
   var sizes = element.nodeName === 'HTML' ? getWindowSizes(element.ownerDocument) : {};
-  var width = sizes.width || element.clientWidth || result.right - result.left;
-  var height = sizes.height || element.clientHeight || result.bottom - result.top;
+  var width = sizes.width || element.clientWidth || result.width;
+  var height = sizes.height || element.clientHeight || result.height;
 
   var horizScrollbar = element.offsetWidth - width;
   var vertScrollbar = element.offsetHeight - height;
@@ -36391,7 +36905,7 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
   // NOTE: 1 DOM access here
 
   var boundaries = { top: 0, left: 0 };
-  var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+  var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
 
   // Handle viewport case
   if (boundariesElement === 'viewport') {
@@ -36519,7 +37033,7 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
 function getReferenceOffsets(state, popper, reference) {
   var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-  var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+  var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, getReferenceNode(reference));
   return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
 }
 
@@ -36781,7 +37295,7 @@ function destroy() {
 
   this.disableEventListeners();
 
-  // remove the popper if user explicity asked for the deletion on destroy
+  // remove the popper if user explicitly asked for the deletion on destroy
   // do not use `remove` because IE11 doesn't support it
   if (this.options.removeOnDestroy) {
     this.popper.parentNode.removeChild(this.popper);
@@ -38938,6 +39452,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./PersonalAccessTokens.vue?vue&type=style&index=0&id=49962cc0&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/passport/PersonalAccessTokens.vue?vue&type=style&index=0&id=49962cc0&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./board.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -41474,7 +42018,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "version", function() { return version; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "withValidation", function() { return withValidation; });
 /**
-  * vee-validate v2.2.8
+  * vee-validate v2.2.15
   * (c) 2019 Abdelrahman Awad
   * @license MIT
   */
@@ -41503,7 +42047,7 @@ var isNaN$1 = function (value) {
   }
 
   // eslint-disable-next-line
-  return value === value;
+  return typeof(value) === 'number' && value !== value;
 };
 
 /**
@@ -42257,6 +42801,10 @@ Dictionary.prototype.setMessage = function setMessage (locale, key, message) {
       attributes: {}
     };
   }
+    
+  if (!this.container[locale].messages) {
+    this.container[locale].messages = {};
+  }
 
   this.container[locale].messages[key] = message;
 };
@@ -42444,12 +42992,15 @@ ErrorBag.prototype.clear = function clear (scope) {
     var this$1 = this;
 
   var matchesVM = isNullOrUndefined(this.vmId) ? function () { return true; } : function (i) { return i.vmId === this$1.vmId; };
-  if (isNullOrUndefined(scope)) {
+  var matchesScope = function (i) { return i.scope === scope; };
+  if (arguments.length === 0) {
+    matchesScope = function () { return true; };
+  } else if (isNullOrUndefined(scope)) {
     scope = null;
   }
 
   for (var i = 0; i < this.items.length; ++i) {
-    if (matchesVM(this.items[i]) && this.items[i].scope === scope) {
+    if (matchesVM(this.items[i]) && matchesScope(this.items[i])) {
       this.items.splice(i, 1);
       --i;
     }
@@ -42811,22 +43362,18 @@ function findModelConfig (vnode) {
 }
 // Adds a listener to vnode listener object.
 function mergeVNodeListeners (obj, eventName, handler) {
-  // Has a single listener.
+  // Has a single listener, convert to array.
   if (isCallable(obj[eventName])) {
     var prevHandler = obj[eventName];
     obj[eventName] = [prevHandler];
   }
 
-  // has other listeners.
-  if (Array.isArray(obj[eventName])) {
-    obj[eventName].push(handler);
-    return;
+  // no listeners, create the array.
+  if (isNullOrUndefined(obj[eventName])) {
+    obj[eventName] = [];
   }
 
-  // no listener at all.
-  if (isNullOrUndefined(obj[eventName])) {
-    obj[eventName] = [handler];
-  }
+  obj[eventName].push(handler);
 }
 
 // Adds a listener to a native HTML vnode.
@@ -42892,6 +43439,20 @@ function normalizeSlots (slots, ctx) {
 
     return arr.concat(slots[key]);
   }, []);
+}
+function createRenderless (h, children) {
+  // Only render the first item of the node.
+  if (Array.isArray(children) && children[0]) {
+    return children[0];
+  }
+
+  // a single node.
+  if (children) {
+    return children;
+  }
+
+  // No slots, render nothing.
+  return h();
 }
 
 /**
@@ -43318,7 +43879,7 @@ var prototypeAccessors$1 = { validator: { configurable: true },isRequired: { con
 
 prototypeAccessors$1.validator.get = function () {
   if (!this.vm || !this.vm.$validator) {
-    return { validate: function () {} };
+    return { validate: function () { return Promise.resolve(true); } };
   }
 
   return this.vm.$validator;
@@ -43446,6 +44007,8 @@ Field.prototype.isWaitingFor = function isWaitingFor (promise) {
  * Updates the field with changed data.
  */
 Field.prototype.update = function update (options) {
+    var this$1 = this;
+
   this.targetOf = options.targetOf || null;
   this.immediate = options.immediate || this.immediate || false;
   this.persist = options.persist || this.persist || false;
@@ -43477,6 +44040,13 @@ Field.prototype.update = function update (options) {
   // update required flag flags
   if (options.rules !== undefined) {
     this.flags.required = this.isRequired;
+  }
+
+  if (Object.keys(options.rules || {}).length === 0 && this.updated) {
+    var resetFlag = this.flags.validated;
+    this.validator.validate(("#" + (this.id))).then(function () {
+      this$1.flags.validated = resetFlag;
+    });
   }
 
   // validate if it was validated before and field was updated and there was a rules mutation.
@@ -45622,112 +46192,112 @@ var isDefinedGlobally = function () {
 var obj;
 
 var messages = {
-  _default: function (field) { return ("The " + field + " value is not valid."); },
+  _default: function (field) { return ("The " + field + " value is not valid"); },
   after: function (field, ref) {
     var target = ref[0];
     var inclusion = ref[1];
 
-    return ("The " + field + " must be after " + (inclusion ? 'or equal to ' : '') + target + ".");
+    return ("The " + field + " must be after " + (inclusion ? 'or equal to ' : '') + target);
 },
-  alpha: function (field) { return ("The " + field + " field may only contain alphabetic characters."); },
-  alpha_dash: function (field) { return ("The " + field + " field may contain alpha-numeric characters as well as dashes and underscores."); },
-  alpha_num: function (field) { return ("The " + field + " field may only contain alpha-numeric characters."); },
-  alpha_spaces: function (field) { return ("The " + field + " field may only contain alphabetic characters as well as spaces."); },
+  alpha: function (field) { return ("The " + field + " field may only contain alphabetic characters"); },
+  alpha_dash: function (field) { return ("The " + field + " field may contain alpha-numeric characters as well as dashes and underscores"); },
+  alpha_num: function (field) { return ("The " + field + " field may only contain alpha-numeric characters"); },
+  alpha_spaces: function (field) { return ("The " + field + " field may only contain alphabetic characters as well as spaces"); },
   before: function (field, ref) {
     var target = ref[0];
     var inclusion = ref[1];
 
-    return ("The " + field + " must be before " + (inclusion ? 'or equal to ' : '') + target + ".");
+    return ("The " + field + " must be before " + (inclusion ? 'or equal to ' : '') + target);
 },
   between: function (field, ref) {
     var min = ref[0];
     var max = ref[1];
 
-    return ("The " + field + " field must be between " + min + " and " + max + ".");
+    return ("The " + field + " field must be between " + min + " and " + max);
 },
-  confirmed: function (field) { return ("The " + field + " confirmation does not match."); },
-  credit_card: function (field) { return ("The " + field + " field is invalid."); },
+  confirmed: function (field) { return ("The " + field + " confirmation does not match"); },
+  credit_card: function (field) { return ("The " + field + " field is invalid"); },
   date_between: function (field, ref) {
     var min = ref[0];
     var max = ref[1];
 
-    return ("The " + field + " must be between " + min + " and " + max + ".");
+    return ("The " + field + " must be between " + min + " and " + max);
 },
   date_format: function (field, ref) {
     var format = ref[0];
 
-    return ("The " + field + " must be in the format " + format + ".");
+    return ("The " + field + " must be in the format " + format);
 },
   decimal: function (field, ref) {
     if ( ref === void 0 ) ref = [];
     var decimals = ref[0]; if ( decimals === void 0 ) decimals = '*';
 
-    return ("The " + field + " field must be numeric and may contain " + (!decimals || decimals === '*' ? '' : decimals) + " decimal points.");
+    return ("The " + field + " field must be numeric and may contain" + (!decimals || decimals === '*' ? '' : ' ' + decimals) + " decimal points");
 },
   digits: function (field, ref) {
     var length = ref[0];
 
-    return ("The " + field + " field must be numeric and exactly contain " + length + " digits.");
+    return ("The " + field + " field must be numeric and contains exactly " + length + " digits");
 },
   dimensions: function (field, ref) {
     var width = ref[0];
     var height = ref[1];
 
-    return ("The " + field + " field must be " + width + " pixels by " + height + " pixels.");
+    return ("The " + field + " field must be " + width + " pixels by " + height + " pixels");
 },
-  email: function (field) { return ("The " + field + " field must be a valid email."); },
-  excluded: function (field) { return ("The " + field + " field must be a valid value."); },
-  ext: function (field) { return ("The " + field + " field must be a valid file."); },
-  image: function (field) { return ("The " + field + " field must be an image."); },
-  included: function (field) { return ("The " + field + " field must be a valid value."); },
-  integer: function (field) { return ("The " + field + " field must be an integer."); },
-  ip: function (field) { return ("The " + field + " field must be a valid ip address."); },
-  ip_or_fqdn: function (field) { return ("The " + field + " field must be a valid ip address or FQDN."); },
+  email: function (field) { return ("The " + field + " field must be a valid email"); },
+  excluded: function (field) { return ("The " + field + " field must be a valid value"); },
+  ext: function (field) { return ("The " + field + " field must be a valid file"); },
+  image: function (field) { return ("The " + field + " field must be an image"); },
+  included: function (field) { return ("The " + field + " field must be a valid value"); },
+  integer: function (field) { return ("The " + field + " field must be an integer"); },
+  ip: function (field) { return ("The " + field + " field must be a valid ip address"); },
+  ip_or_fqdn: function (field) { return ("The " + field + " field must be a valid ip address or FQDN"); },
   length: function (field, ref) {
     var length = ref[0];
     var max = ref[1];
 
     if (max) {
-      return ("The " + field + " length must be between " + length + " and " + max + ".");
+      return ("The " + field + " length must be between " + length + " and " + max);
     }
 
-    return ("The " + field + " length must be " + length + ".");
+    return ("The " + field + " length must be " + length);
   },
   max: function (field, ref) {
     var length = ref[0];
 
-    return ("The " + field + " field may not be greater than " + length + " characters.");
+    return ("The " + field + " field may not be greater than " + length + " characters");
 },
   max_value: function (field, ref) {
     var max = ref[0];
 
-    return ("The " + field + " field must be " + max + " or less.");
+    return ("The " + field + " field must be " + max + " or less");
 },
-  mimes: function (field) { return ("The " + field + " field must have a valid file type."); },
+  mimes: function (field) { return ("The " + field + " field must have a valid file type"); },
   min: function (field, ref) {
     var length = ref[0];
 
-    return ("The " + field + " field must be at least " + length + " characters.");
+    return ("The " + field + " field must be at least " + length + " characters");
 },
   min_value: function (field, ref) {
     var min = ref[0];
 
-    return ("The " + field + " field must be " + min + " or more.");
+    return ("The " + field + " field must be " + min + " or more");
 },
-  numeric: function (field) { return ("The " + field + " field may only contain numeric characters."); },
-  regex: function (field) { return ("The " + field + " field format is invalid."); },
-  required: function (field) { return ("The " + field + " field is required."); },
+  numeric: function (field) { return ("The " + field + " field may only contain numeric characters"); },
+  regex: function (field) { return ("The " + field + " field format is invalid"); },
+  required: function (field) { return ("The " + field + " field is required"); },
   required_if: function (field, ref) {
     var target = ref[0];
 
-    return ("The " + field + " field is required when the " + target + " field has this value.");
+    return ("The " + field + " field is required when the " + target + " field has this value");
 },
   size: function (field, ref) {
     var size = ref[0];
 
-    return ("The " + field + " size must be less than " + (formatFileSize(size)) + ".");
+    return ("The " + field + " size must be less than " + (formatFileSize(size)));
 },
-  url: function (field) { return ("The " + field + " field is not a valid URL."); }
+  url: function (field) { return ("The " + field + " field is not a valid URL"); }
 };
 
 var locale = {
@@ -46148,7 +46718,7 @@ function parseTimezone (timezoneString) {
   if (token) {
     hours = parseInt(token[2], 10);
 
-    if (!validateTimezone(hours)) {
+    if (!validateTimezone()) {
       return NaN
     }
 
@@ -47824,7 +48394,7 @@ function dateTimeLongFormatter (pattern, formatLong, options) {
   var timePattern = matchResult[2];
 
   if (!timePattern) {
-    return dateLongFormatter(pattern, formatLong, options)
+    return dateLongFormatter(pattern, formatLong)
   }
 
   var dateTimeFormat;
@@ -47846,8 +48416,8 @@ function dateTimeLongFormatter (pattern, formatLong, options) {
   }
 
   return dateTimeFormat
-    .replace('{{date}}', dateLongFormatter(datePattern, formatLong, options))
-    .replace('{{time}}', timeLongFormatter(timePattern, formatLong, options))
+    .replace('{{date}}', dateLongFormatter(datePattern, formatLong))
+    .replace('{{time}}', timeLongFormatter(timePattern, formatLong))
 }
 
 var longFormatters = {
@@ -48382,40 +48952,6 @@ function isBefore (dirtyDate, dirtyDateToCompare, dirtyOptions) {
   var dateToCompare = toDate(dirtyDateToCompare, dirtyOptions);
   return date.getTime() < dateToCompare.getTime()
 }
-
-/**
- * @name isDate
- * @category Common Helpers
- * @summary Is the given value a date?
- *
- * @description
- * Returns true if the given value is an instance of Date. The function works for dates transferred across iframes.
- *
- * @param {*} value - the value to check
- * @param {Options} [options] - the object with options. Unused; present for FP submodule compatibility sake. See [Options]{@link https://date-fns.org/docs/Options}
- * @returns {boolean} true if the given value is a date
- * @throws {TypeError} 1 arguments required
- *
- * @example
- * // For a valid date:
- * var result = isDate(new Date())
- * //=> true
- *
- * @example
- * // For an invalid date:
- * var result = isDate(new Date(NaN))
- * //=> true
- *
- * @example
- * // For some value:
- * var result = isDate('2014-02-31')
- * //=> false
- *
- * @example
- * // For an object:
- * var result = isDate({})
- * //=> false
- */
 
 /**
  * @name isEqual
@@ -50139,8 +50675,6 @@ function cleanEscapedString$1(input) {
   return input.match(escapedStringRegExp$1)[1].replace(doubleQuoteRegExp$1, "'")
 }
 
-// This file is generated automatically by `scripts/build/indices.js`. Please, don't change it.
-
 // 
 
 /**
@@ -50209,6 +50743,7 @@ var alpha = {
   da: /^[A-ZÆØÅ]*$/i,
   de: /^[A-ZÄÖÜß]*$/i,
   es: /^[A-ZÁÉÍÑÓÚÜ]*$/i,
+  fa: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰپژگچکی]*$/,
   fr: /^[A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]*$/i,
   it: /^[A-Z\xC0-\xFF]*$/i,
   lt: /^[A-ZĄČĘĖĮŠŲŪŽ]*$/i,
@@ -50232,6 +50767,7 @@ var alphaSpaces = {
   da: /^[A-ZÆØÅ\s]*$/i,
   de: /^[A-ZÄÖÜß\s]*$/i,
   es: /^[A-ZÁÉÍÑÓÚÜ\s]*$/i,
+  fa: /^[ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰپژگچکی\s]*$/,
   fr: /^[A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ\s]*$/i,
   it: /^[A-Z\xC0-\xFF\s]*$/i,
   lt: /^[A-ZĄČĘĖĮŠŲŪŽ\s]*$/i,
@@ -50255,6 +50791,7 @@ var alphanumeric = {
   da: /^[0-9A-ZÆØÅ]$/i,
   de: /^[0-9A-ZÄÖÜß]*$/i,
   es: /^[0-9A-ZÁÉÍÑÓÚÜ]*$/i,
+  fa: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰپژگچکی]*$/,
   fr: /^[0-9A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ]*$/i,
   it: /^[0-9A-Z\xC0-\xFF]*$/i,
   lt: /^[0-9A-ZĄČĘĖĮŠŲŪŽ]*$/i,
@@ -50278,6 +50815,7 @@ var alphaDash = {
   da: /^[0-9A-ZÆØÅ_-]*$/i,
   de: /^[0-9A-ZÄÖÜß_-]*$/i,
   es: /^[0-9A-ZÁÉÍÑÓÚÜ_-]*$/i,
+  fa: /^[٠١٢٣٤٥٦٧٨٩0-9ءآأؤإئابةتثجحخدذرزسشصضطظعغفقكلمنهوىيًٌٍَُِّْٰپژگچکی_-]*$/,
   fr: /^[0-9A-ZÀÂÆÇÉÈÊËÏÎÔŒÙÛÜŸ_-]*$/i,
   it: /^[0-9A-Z\xC0-\xFF_-]*$/i,
   lt: /^[0-9A-ZĄČĘĖĮŠŲŪŽ_-]*$/i,
@@ -50471,29 +51009,34 @@ var assertString_1 = createCommonjsModule(function (module, exports) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 exports.default = assertString;
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 function assertString(input) {
   var isString = typeof input === 'string' || input instanceof String;
 
   if (!isString) {
-    var invalidType = void 0;
+    var invalidType;
+
     if (input === null) {
       invalidType = 'null';
     } else {
-      invalidType = typeof input === 'undefined' ? 'undefined' : _typeof(input);
+      invalidType = _typeof(input);
+
       if (invalidType === 'object' && input.constructor && input.constructor.hasOwnProperty('name')) {
         invalidType = input.constructor.name;
       } else {
-        invalidType = 'a ' + invalidType;
+        invalidType = "a ".concat(invalidType);
       }
     }
-    throw new TypeError('Expected string but received ' + invalidType + '.');
+
+    throw new TypeError("Expected string but received ".concat(invalidType, "."));
   }
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 unwrapExports(assertString_1);
@@ -50505,9 +51048,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = isCreditCard;
 
-
-
-var _assertString2 = _interopRequireDefault(assertString_1);
+var _assertString = _interopRequireDefault(assertString_1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50516,20 +51057,25 @@ var creditCard = /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|(222[1-9]|22[3-9][
 /* eslint-enable max-len */
 
 function isCreditCard(str) {
-  (0, _assertString2.default)(str);
+  (0, _assertString.default)(str);
   var sanitized = str.replace(/[- ]+/g, '');
+
   if (!creditCard.test(sanitized)) {
     return false;
   }
+
   var sum = 0;
-  var digit = void 0;
-  var tmpNum = void 0;
-  var shouldDouble = void 0;
+  var digit;
+  var tmpNum;
+  var shouldDouble;
+
   for (var i = sanitized.length - 1; i >= 0; i--) {
     digit = sanitized.substring(i, i + 1);
     tmpNum = parseInt(digit, 10);
+
     if (shouldDouble) {
       tmpNum *= 2;
+
       if (tmpNum >= 10) {
         sum += tmpNum % 10 + 1;
       } else {
@@ -50538,11 +51084,15 @@ function isCreditCard(str) {
     } else {
       sum += tmpNum;
     }
+
     shouldDouble = !shouldDouble;
   }
+
   return !!(sum % 10 === 0 ? sanitized : false);
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 var isCreditCard = unwrapExports(isCreditCard_1);
@@ -50708,18 +51258,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = merge;
+
 function merge() {
   var obj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var defaults = arguments[1];
+  var defaults = arguments.length > 1 ? arguments[1] : undefined;
 
   for (var key in defaults) {
     if (typeof obj[key] === 'undefined') {
       obj[key] = defaults[key];
     }
   }
+
   return obj;
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 unwrapExports(merge_1);
@@ -50729,23 +51283,21 @@ var isByteLength_1 = createCommonjsModule(function (module, exports) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 exports.default = isByteLength;
 
-
-
-var _assertString2 = _interopRequireDefault(assertString_1);
+var _assertString = _interopRequireDefault(assertString_1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /* eslint-disable prefer-rest-params */
 function isByteLength(str, options) {
-  (0, _assertString2.default)(str);
-  var min = void 0;
-  var max = void 0;
-  if ((typeof options === 'undefined' ? 'undefined' : _typeof(options)) === 'object') {
+  (0, _assertString.default)(str);
+  var min;
+  var max;
+
+  if (_typeof(options) === 'object') {
     min = options.min || 0;
     max = options.max;
   } else {
@@ -50753,10 +51305,13 @@ function isByteLength(str, options) {
     min = arguments[1];
     max = arguments[2];
   }
+
   var len = encodeURI(str).split(/%..|./).length - 1;
   return len >= min && (typeof max === 'undefined' || len <= max);
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 unwrapExports(isByteLength_1);
@@ -50768,13 +51323,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = isFQDN;
 
+var _assertString = _interopRequireDefault(assertString_1);
 
-
-var _assertString2 = _interopRequireDefault(assertString_1);
-
-
-
-var _merge2 = _interopRequireDefault(merge_1);
+var _merge = _interopRequireDefault(merge_1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50785,48 +51336,61 @@ var default_fqdn_options = {
 };
 
 function isFQDN(str, options) {
-  (0, _assertString2.default)(str);
-  options = (0, _merge2.default)(options, default_fqdn_options);
-
+  (0, _assertString.default)(str);
+  options = (0, _merge.default)(options, default_fqdn_options);
   /* Remove the optional trailing dot before checking validity */
+
   if (options.allow_trailing_dot && str[str.length - 1] === '.') {
     str = str.substring(0, str.length - 1);
   }
+
   var parts = str.split('.');
+
   for (var i = 0; i < parts.length; i++) {
     if (parts[i].length > 63) {
       return false;
     }
   }
+
   if (options.require_tld) {
     var tld = parts.pop();
+
     if (!parts.length || !/^([a-z\u00a1-\uffff]{2,}|xn[a-z0-9-]{2,})$/i.test(tld)) {
       return false;
-    }
-    // disallow spaces
+    } // disallow spaces
+
+
     if (/[\s\u2002-\u200B\u202F\u205F\u3000\uFEFF\uDB40\uDC20]/.test(tld)) {
       return false;
     }
   }
+
   for (var part, _i = 0; _i < parts.length; _i++) {
     part = parts[_i];
+
     if (options.allow_underscores) {
       part = part.replace(/_/g, '');
     }
+
     if (!/^[a-z\u00a1-\uffff0-9-]+$/i.test(part)) {
       return false;
-    }
-    // disallow full-width chars
+    } // disallow full-width chars
+
+
     if (/[\uff01-\uff5e]/.test(part)) {
       return false;
     }
+
     if (part[0] === '-' || part[part.length - 1] === '-') {
       return false;
     }
   }
+
   return true;
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 var isFQDN = unwrapExports(isFQDN_1);
@@ -50838,9 +51402,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = isIP;
 
-
-
-var _assertString2 = _interopRequireDefault(assertString_1);
+var _assertString = _interopRequireDefault(assertString_1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50849,15 +51411,16 @@ var ipv6Block = /^[0-9A-F]{1,4}$/i;
 
 function isIP(str) {
   var version = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-  (0, _assertString2.default)(str);
+  (0, _assertString.default)(str);
   version = String(version);
+
   if (!version) {
     return isIP(str, 4) || isIP(str, 6);
   } else if (version === '4') {
     if (!ipv4Maybe.test(str)) {
       return false;
     }
+
     var parts = str.split('.').sort(function (a, b) {
       return a - b;
     });
@@ -50865,18 +51428,19 @@ function isIP(str) {
   } else if (version === '6') {
     var blocks = str.split(':');
     var foundOmissionBlock = false; // marker to indicate ::
-
     // At least some OS accept the last 32 bits of an IPv6 address
     // (i.e. 2 of the blocks) in IPv4 notation, and RFC 3493 says
     // that '::ffff:a.b.c.d' is valid for IPv4-mapped IPv6 addresses,
     // and '::a.b.c.d' is deprecated, but also valid.
+
     var foundIPv4TransitionBlock = isIP(blocks[blocks.length - 1], 4);
     var expectedNumberOfBlocks = foundIPv4TransitionBlock ? 7 : 8;
 
     if (blocks.length > expectedNumberOfBlocks) {
       return false;
-    }
-    // initial or final ::
+    } // initial or final ::
+
+
     if (str === '::') {
       return true;
     } else if (str.substr(0, 2) === '::') {
@@ -50896,19 +51460,25 @@ function isIP(str) {
         if (foundOmissionBlock) {
           return false; // multiple :: in address
         }
+
         foundOmissionBlock = true;
       } else if (foundIPv4TransitionBlock && i === blocks.length - 1) ; else if (!ipv6Block.test(blocks[i])) {
         return false;
       }
     }
+
     if (foundOmissionBlock) {
       return blocks.length >= 1;
     }
+
     return blocks.length === expectedNumberOfBlocks;
   }
+
   return false;
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 var isIP = unwrapExports(isIP_1);
@@ -50920,25 +51490,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = isEmail;
 
+var _assertString = _interopRequireDefault(assertString_1);
 
+var _merge = _interopRequireDefault(merge_1);
 
-var _assertString2 = _interopRequireDefault(assertString_1);
+var _isByteLength = _interopRequireDefault(isByteLength_1);
 
+var _isFQDN = _interopRequireDefault(isFQDN_1);
 
-
-var _merge2 = _interopRequireDefault(merge_1);
-
-
-
-var _isByteLength2 = _interopRequireDefault(isByteLength_1);
-
-
-
-var _isFQDN2 = _interopRequireDefault(isFQDN_1);
-
-
-
-var _isIP2 = _interopRequireDefault(isIP_1);
+var _isIP = _interopRequireDefault(isIP_1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -50948,9 +51508,10 @@ var default_email_options = {
   allow_utf8_local_part: true,
   require_tld: true
 };
-
 /* eslint-disable max-len */
+
 /* eslint-disable no-control-regex */
+
 var displayName = /^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\.\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\,\.\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s]*<(.+)>$/i;
 var emailUserPart = /^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~]+$/i;
 var gmailUserPart = /^[a-z\d]+$/;
@@ -50958,14 +51519,16 @@ var quotedEmailUser = /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e
 var emailUserUtf8Part = /^[a-z\d!#\$%&'\*\+\-\/=\?\^_`{\|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+$/i;
 var quotedEmailUserUtf8 = /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$/i;
 /* eslint-enable max-len */
+
 /* eslint-enable no-control-regex */
 
 function isEmail(str, options) {
-  (0, _assertString2.default)(str);
-  options = (0, _merge2.default)(options, default_email_options);
+  (0, _assertString.default)(str);
+  options = (0, _merge.default)(options, default_email_options);
 
   if (options.require_display_name || options.allow_display_name) {
     var display_email = str.match(displayName);
+
     if (display_email) {
       str = display_email[1];
     } else if (options.require_display_name) {
@@ -50976,7 +51539,6 @@ function isEmail(str, options) {
   var parts = str.split('@');
   var domain = parts.pop();
   var user = parts.join('@');
-
   var lower_domain = domain.toLowerCase();
 
   if (options.domain_specific_validation && (lower_domain === 'gmail.com' || lower_domain === 'googlemail.com')) {
@@ -50987,17 +51549,19 @@ function isEmail(str, options) {
       Gmail only normalizes single dots, removing them from here is pointless,
       should be done in normalizeEmail
     */
-    user = user.toLowerCase();
+    user = user.toLowerCase(); // Removing sub-address from username before gmail validation
 
-    // Removing sub-address from username before gmail validation
-    var username = user.split('+')[0];
+    var username = user.split('+')[0]; // Dots are not included in gmail length restriction
 
-    // Dots are not included in gmail length restriction
-    if (!(0, _isByteLength2.default)(username.replace('.', ''), { min: 6, max: 30 })) {
+    if (!(0, _isByteLength.default)(username.replace('.', ''), {
+      min: 6,
+      max: 30
+    })) {
       return false;
     }
 
     var _user_parts = username.split('.');
+
     for (var i = 0; i < _user_parts.length; i++) {
       if (!gmailUserPart.test(_user_parts[i])) {
         return false;
@@ -51005,23 +51569,29 @@ function isEmail(str, options) {
     }
   }
 
-  if (!(0, _isByteLength2.default)(user, { max: 64 }) || !(0, _isByteLength2.default)(domain, { max: 254 })) {
+  if (!(0, _isByteLength.default)(user, {
+    max: 64
+  }) || !(0, _isByteLength.default)(domain, {
+    max: 254
+  })) {
     return false;
   }
 
-  if (!(0, _isFQDN2.default)(domain, { require_tld: options.require_tld })) {
+  if (!(0, _isFQDN.default)(domain, {
+    require_tld: options.require_tld
+  })) {
     if (!options.allow_ip_domain) {
       return false;
     }
 
-    if (!(0, _isIP2.default)(domain)) {
+    if (!(0, _isIP.default)(domain)) {
       if (!domain.startsWith('[') || !domain.endsWith(']')) {
         return false;
       }
 
       var noBracketdomain = domain.substr(1, domain.length - 2);
 
-      if (noBracketdomain.length === 0 || !(0, _isIP2.default)(noBracketdomain)) {
+      if (noBracketdomain.length === 0 || !(0, _isIP.default)(noBracketdomain)) {
         return false;
       }
     }
@@ -51033,8 +51603,8 @@ function isEmail(str, options) {
   }
 
   var pattern = options.allow_utf8_local_part ? emailUserUtf8Part : emailUserPart;
-
   var user_parts = user.split('.');
+
   for (var _i = 0; _i < user_parts.length; _i++) {
     if (!pattern.test(user_parts[_i])) {
       return false;
@@ -51043,7 +51613,9 @@ function isEmail(str, options) {
 
   return true;
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 var isEmail = unwrapExports(isEmail_1);
@@ -51428,21 +52000,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = isURL;
 
+var _assertString = _interopRequireDefault(assertString_1);
 
+var _isFQDN = _interopRequireDefault(isFQDN_1);
 
-var _assertString2 = _interopRequireDefault(assertString_1);
+var _isIP = _interopRequireDefault(isIP_1);
 
-
-
-var _isFQDN2 = _interopRequireDefault(isFQDN_1);
-
-
-
-var _isIP2 = _interopRequireDefault(isIP_1);
-
-
-
-var _merge2 = _interopRequireDefault(merge_1);
+var _merge = _interopRequireDefault(merge_1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51456,7 +52020,6 @@ var default_url_options = {
   allow_trailing_dot: false,
   allow_protocol_relative_urls: false
 };
-
 var wrapped_ipv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
 
 function isRegExp(obj) {
@@ -51466,40 +52029,37 @@ function isRegExp(obj) {
 function checkHost(host, matches) {
   for (var i = 0; i < matches.length; i++) {
     var match = matches[i];
+
     if (host === match || isRegExp(match) && match.test(host)) {
       return true;
     }
   }
+
   return false;
 }
 
 function isURL(url, options) {
-  (0, _assertString2.default)(url);
+  (0, _assertString.default)(url);
+
   if (!url || url.length >= 2083 || /[\s<>]/.test(url)) {
     return false;
   }
+
   if (url.indexOf('mailto:') === 0) {
     return false;
   }
-  options = (0, _merge2.default)(options, default_url_options);
-  var protocol = void 0,
-      auth = void 0,
-      host = void 0,
-      hostname = void 0,
-      port = void 0,
-      port_str = void 0,
-      split = void 0,
-      ipv6 = void 0;
 
+  options = (0, _merge.default)(options, default_url_options);
+  var protocol, auth, host, hostname, port, port_str, split, ipv6;
   split = url.split('#');
   url = split.shift();
-
   split = url.split('?');
   url = split.shift();
-
   split = url.split('://');
+
   if (split.length > 1) {
     protocol = split.shift().toLowerCase();
+
     if (options.require_valid_protocol && options.protocols.indexOf(protocol) === -1) {
       return false;
     }
@@ -51509,8 +52069,10 @@ function isURL(url, options) {
     if (!options.allow_protocol_relative_urls) {
       return false;
     }
+
     split[0] = url.substr(2);
   }
+
   url = split.join('://');
 
   if (url === '') {
@@ -51525,17 +52087,24 @@ function isURL(url, options) {
   }
 
   split = url.split('@');
+
   if (split.length > 1) {
+    if (options.disallow_auth) {
+      return false;
+    }
+
     auth = split.shift();
+
     if (auth.indexOf(':') >= 0 && auth.split(':').length > 2) {
       return false;
     }
   }
-  hostname = split.join('@');
 
+  hostname = split.join('@');
   port_str = null;
   ipv6 = null;
   var ipv6_match = hostname.match(wrapped_ipv6);
+
   if (ipv6_match) {
     host = '';
     ipv6 = ipv6_match[1];
@@ -51543,6 +52112,7 @@ function isURL(url, options) {
   } else {
     split = hostname.split(':');
     host = split.shift();
+
     if (split.length) {
       port_str = split.join(':');
     }
@@ -51550,12 +52120,13 @@ function isURL(url, options) {
 
   if (port_str !== null) {
     port = parseInt(port_str, 10);
+
     if (!/^[0-9]+$/.test(port_str) || port <= 0 || port > 65535) {
       return false;
     }
   }
 
-  if (!(0, _isIP2.default)(host) && !(0, _isFQDN2.default)(host, options) && (!ipv6 || !(0, _isIP2.default)(ipv6, 6))) {
+  if (!(0, _isIP.default)(host) && !(0, _isFQDN.default)(host, options) && (!ipv6 || !(0, _isIP.default)(ipv6, 6))) {
     return false;
   }
 
@@ -51564,13 +52135,16 @@ function isURL(url, options) {
   if (options.host_whitelist && !checkHost(host, options.host_whitelist)) {
     return false;
   }
+
   if (options.host_blacklist && checkHost(host, options.host_blacklist)) {
     return false;
   }
 
   return true;
 }
-module.exports = exports['default'];
+
+module.exports = exports.default;
+module.exports.default = exports.default;
 });
 
 var isURL = unwrapExports(isURL_1);
@@ -51830,6 +52404,10 @@ var ValidationProvider = {
     tag: {
       type: String,
       default: 'span'
+    },
+    slim: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -51919,7 +52497,7 @@ var ValidationProvider = {
     /* istanbul ignore next */
     if (!isCallable(slot)) {
       if (true) {
-        warn('ValidationProvider expects a scoped slot. Did you forget to add "slot-scope" to your slot?');
+        warn('ValidationProvider expects a scoped slot. Did you forget to add "v-slot" to your slot?');
       }
 
       return h(this.tag, this.$slots.default);
@@ -51931,7 +52509,7 @@ var ValidationProvider = {
       addListeners.call(this$1, input);
     });
 
-    return h(this.tag, nodes);
+    return this.slim ? createRenderless(h, nodes) : h(this.tag, nodes);
   },
   beforeDestroy: function beforeDestroy () {
     // cleanup reference.
@@ -52200,7 +52778,7 @@ function updateRenderingContextRefs (ctx) {
 
   // vid was changed.
   if (id !== vid && ctx.$_veeObserver.refs[id] === ctx) {
-    ctx.$_veeObserver.unsubscribe(ctx);
+    ctx.$_veeObserver.unsubscribe({ vid: id });
   }
 
   ctx.$_veeObserver.subscribe(ctx);
@@ -52285,12 +52863,17 @@ var ValidationObserver = {
     tag: {
       type: String,
       default: 'span'
+    },
+    slim: {
+      type: Boolean,
+      default: false
     }
   },
   data: function () { return ({
     vid: ("obs_" + (OBSERVER_COUNTER++)),
     refs: {},
     observers: [],
+    persistedStore: {}
   }); },
   computed: {
     ctx: function ctx () {
@@ -52303,7 +52886,7 @@ var ValidationObserver = {
 
           return {
             then: function then (thenable) {
-              promise.then(function (success) {
+              return promise.then(function (success) {
                 if (success && isCallable(thenable)) {
                   return Promise.resolve(thenable());
                 }
@@ -52316,7 +52899,14 @@ var ValidationObserver = {
         reset: function () { return this$1.reset(); }
       };
 
-      return values(this.refs).concat( this.observers ).reduce(function (acc, provider) {
+      return values(this.refs).concat( Object.keys(this.persistedStore).map(function (key) {
+          return {
+            vid: key,
+            flags: this$1.persistedStore[key].flags,
+            messages: this$1.persistedStore[key].errors
+          };
+        }),
+        this.observers ).reduce(function (acc, provider) {
         Object.keys(flagMergingStrategy).forEach(function (flag) {
           var flags = provider.flags || provider.ctx;
           if (!(flag in acc)) {
@@ -52356,16 +52946,12 @@ var ValidationObserver = {
     }
   },
   render: function render (h) {
-    var slots = this.$scopedSlots.default;
-    this._persistedStore = this._persistedStore || {};
-    if (!isCallable(slots)) {
-      return h(this.tag, this.$slots.default);
+    var slots = this.$slots.default || this.$scopedSlots.default || [];
+    if (isCallable(slots)) {
+      slots = slots(this.ctx);
     }
 
-    return h(this.tag, {
-      on: this.$listeners,
-      attrs: this.$attrs
-    }, slots(this.ctx));
+    return this.slim ? createRenderless(h, slots) : h(this.tag, { on: this.$listeners, attrs: this.$attrs }, slots);
   },
   methods: {
     subscribe: function subscribe (subscriber, kind) {
@@ -52378,7 +52964,7 @@ var ValidationObserver = {
       }
 
       this.refs = Object.assign({}, this.refs, ( obj = {}, obj[subscriber.vid] = subscriber, obj ));
-      if (subscriber.persist && this._persistedStore[subscriber.vid]) {
+      if (subscriber.persist && this.persistedStore[subscriber.vid]) {
         this.restoreProviderState(subscriber);
       }
     },
@@ -52403,15 +52989,22 @@ var ValidationObserver = {
       )).then(function (results) { return results.every(function (r) { return r; }); });
     },
     reset: function reset () {
+      var this$1 = this;
+
+      Object.keys(this.persistedStore).forEach(function (key) {
+        this$1.$delete(this$1.persistedStore, key);
+      });
       return values(this.refs).concat( this.observers).forEach(function (ref) { return ref.reset(); });
     },
     restoreProviderState: function restoreProviderState (provider) {
-      var state = this._persistedStore[provider.vid];
+      var state = this.persistedStore[provider.vid];
       provider.setFlags(state.flags);
       provider.applyResult(state);
-      delete this._persistedStore[provider.vid];
+      this.$delete(this.persistedStore, provider.vid);
     },
     removeProvider: function removeProvider (vid) {
+      var obj;
+
       var provider = this.refs[vid];
       // save it for the next time.
       if (provider && provider.persist) {
@@ -52422,11 +53015,11 @@ var ValidationObserver = {
           }
         }
 
-        this._persistedStore[vid] = {
-          flags: provider.flags,
-          errors: provider.messages,
-          failedRules: provider.failedRules
-        };
+        this.persistedStore = assign({}, this.persistedStore, ( obj = {}, obj[vid] = {
+            flags: provider.flags,
+            errors: provider.messages,
+            failedRules: provider.failedRules
+          }, obj ));
       }
 
       this.$delete(this.refs, vid);
@@ -52495,7 +53088,7 @@ function withValidation (component, ctxToProps) {
   return hoc;
 }
 
-var version = '2.2.8';
+var version = '2.2.15';
 
 Object.keys(Rules).forEach(function (rule) {
   Validator.extend(rule, Rules[rule].validate, assign({}, Rules[rule].options, { paramNames: Rules[rule].paramNames }));
@@ -54660,6 +55253,462 @@ var staticRenderFns = [
         },
         [_vm._v("Close")]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=template&id=5f444f3c&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/potluck/board.vue?vue&type=template&id=5f444f3c& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "responsive" }, [
+      _c("div", { staticClass: "mainSquare" }, [
+        _c("div", { staticClass: "row top" }, [
+          _c("div", { staticClass: "square2", attrs: { id: "20" } }, [
+            _c("span", { staticClass: "corner corner1" }, [
+              _vm._v("free "),
+              _c("br"),
+              _vm._v(" parking")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "21" } }, [
+            _c("div", { staticClass: "header header-top red" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-top rotation2" }, [
+              _vm._v("kentucky "),
+              _c("br"),
+              _vm._v(" avenue")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "22" } }, [
+            _c(
+              "div",
+              { staticClass: "firstLine firstLine-top no-color rotation2" },
+              [_vm._v("chance")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "23" } }, [
+            _c("div", { staticClass: "header header-top red" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-top rotation2" }, [
+              _vm._v("indiana "),
+              _c("br"),
+              _vm._v(" avenue")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "24" } }, [
+            _c("div", { staticClass: "header header-top red" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-top rotation2" }, [
+              _vm._v("illinios "),
+              _c("br"),
+              _vm._v(" avenue")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "25" } }, [
+            _c(
+              "div",
+              { staticClass: "firstLine firstLine-top no-color rotation2" },
+              [_vm._v("b. & o. "), _c("br"), _vm._v(" railroad")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "26" } }, [
+            _c("div", { staticClass: "header header-top yellow" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-top rotation2" }, [
+              _vm._v("atlantic "),
+              _c("br"),
+              _vm._v(" avenue")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "27" } }, [
+            _c("div", { staticClass: "header header-top yellow" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-top rotation2" }, [
+              _vm._v("ventnor "),
+              _c("br"),
+              _vm._v(" avenue")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "28" } }, [
+            _c(
+              "div",
+              { staticClass: "firstLine firstLine-top no-color rotation2" },
+              [_vm._v("water "), _c("br"), _vm._v(" works")]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "29" } }, [
+            _c("div", { staticClass: "header header-top yellow" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-top rotation2" }, [
+              _vm._v("marvin "),
+              _c("br"),
+              _vm._v(" gardens")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square2", attrs: { id: "30" } }, [
+            _c("span", { staticClass: "corner corner2" }, [
+              _vm._v("go to"),
+              _c("br"),
+              _vm._v("jail")
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row center" }, [
+          _c("div", { staticClass: "square2" }, [
+            _c("div", { staticClass: "squareSide", attrs: { id: "19" } }, [
+              _c("div", { staticClass: "headerSide header-left orange" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "firstLine firstLine-left rotation1" }, [
+                _vm._v("new york "),
+                _c("br"),
+                _vm._v(" avenue")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "18" } }, [
+              _c("div", { staticClass: "headerSide header-left orange" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "firstLine firstLine-left rotation1" }, [
+                _vm._v("tennessee "),
+                _c("br"),
+                _vm._v(" avenue")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "17" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-left no-color rotation1" },
+                [_vm._v("community"), _c("br"), _vm._v(" chest")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "16" } }, [
+              _c("div", { staticClass: "headerSide header-left orange" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "firstLine firstLine-left rotation1" }, [
+                _vm._v("st.james "),
+                _c("br"),
+                _vm._v("place")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "15" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-left no-color rotation1" },
+                [_vm._v("pennsylvania"), _c("br"), _vm._v(" railroad")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "14" } }, [
+              _c("div", { staticClass: "headerSide header-left purple" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "firstLine firstLine-left rotation1" }, [
+                _vm._v("virginia"),
+                _c("br"),
+                _vm._v(" avenue")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "13" } }, [
+              _c("div", { staticClass: "headerSide header-left purple" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "firstLine firstLine-left rotation1" }, [
+                _vm._v("states"),
+                _c("br"),
+                _vm._v(" avenue")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "12" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-left no-color rotation1" },
+                [_vm._v("electric"), _c("br"), _vm._v("company")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "11" } }, [
+              _c("div", { staticClass: "headerSide header-left white" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "firstLine firstLine-left rotation1" }, [
+                _vm._v("columbian"),
+                _c("br"),
+                _vm._v("chiba")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square9" }, [
+            _c("div", { staticClass: "card-box card-blue" }, [
+              _c("div", { staticClass: "card-blue-inside" })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "logoBox" }, [
+              _c("span", { staticClass: "logoName" }, [_vm._v("Pot Luck")])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-box card-orange" }, [
+              _c("div", { staticClass: "card-orange-inside" })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square2" }, [
+            _c("div", { staticClass: "squareSide", attrs: { id: "31" } }, [
+              _c("div", { staticClass: "headerSide header-right green" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right rotation3" },
+                [_vm._v("pacific"), _c("br"), _vm._v(" avenue")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "32" } }, [
+              _c("div", { staticClass: "headerSide header-right green" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right rotation3" },
+                [
+                  _vm._v("north"),
+                  _c("br"),
+                  _vm._v("carolina"),
+                  _c("br"),
+                  _vm._v("avenue")
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "33" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right no-color rotation3" },
+                [_vm._v("community"), _c("br"), _vm._v("chest")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "34" } }, [
+              _c("div", { staticClass: "headerSide header-right green" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right rotation3" },
+                [_vm._v("pennsylvania"), _c("br"), _vm._v(" avenue")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "35" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right no-color rotation3" },
+                [_vm._v("short"), _c("br"), _vm._v(" line")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "36" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right no-color rotation3" },
+                [_vm._v("chance")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "37" } }, [
+              _c("div", { staticClass: "headerSide header-right blue" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right rotation3" },
+                [_vm._v("park"), _c("br"), _vm._v(" place")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "38" } }, [
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right no-color rotation3" },
+                [_vm._v("luxury"), _c("br"), _vm._v(" tax")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "squareSide", attrs: { id: "39" } }, [
+              _c("div", { staticClass: "headerSide header-right yellowgreen" }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "firstLine firstLine-right rotation3" },
+                [_vm._v("michoacan")]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row top" }, [
+          _c("div", { staticClass: "square2", attrs: { id: "10" } }, [
+            _c(
+              "span",
+              {
+                staticClass: "corner corner4",
+                staticStyle: {
+                  "line-height": "18px",
+                  margin: "3.5em 0 0 1.5em"
+                }
+              },
+              [
+                _vm._v(" Hospital: "),
+                _c("br"),
+                _vm._v("lose a turn. pay 100x your roll")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "9" } }, [
+            _c("div", { staticClass: "header header-bottom red" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-bottom" }, [
+              _vm._v("columbian "),
+              _c("br"),
+              _vm._v("red bud")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "8" } }, [
+            _c("div", { staticClass: "header header-bottom blue" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-bottom" }, [
+              _vm._v("thai"),
+              _c("br"),
+              _vm._v("stick")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "7" } }, [
+            _c("div", { staticClass: "firstLine firstLine-bottom no-color" }, [
+              _vm._v("downtown"),
+              _c("br"),
+              _vm._v("pharmacy")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "6" } }, [
+            _c("div", { staticClass: "header header-bottom lightblue" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "header header-bottom lightolive" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-bottom" }, [
+              _vm._v("gainesville"),
+              _c("br"),
+              _vm._v(" green")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "5" } }, [
+            _c("div", { staticClass: "header header-bottom orange" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-bottom" }, [
+              _vm._v("wacky"),
+              _c("br"),
+              _vm._v(" weed")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "4" } }, [
+            _c("div", { staticClass: "firstLine firstLine-bottom no-color" }, [
+              _vm._v("Far "),
+              _c("br"),
+              _vm._v(" Out!")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "3" } }, [
+            _c("div", { staticClass: "header header-bottom green" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-bottom" }, [
+              _vm._v("home"),
+              _c("br"),
+              _vm._v(" grown")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "2" } }, [
+            _c("div", { staticClass: "firstLine firstLine-bottom no-color" }, [
+              _vm._v("Flying"),
+              _c("br"),
+              _vm._v(" Too High:"),
+              _c("br"),
+              _vm._v("Lose A"),
+              _c("br"),
+              _vm._v("Turn")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square1", attrs: { id: "1" } }, [
+            _c("div", { staticClass: "header header-bottom brown" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "firstLine firstLine-bottom" }, [
+              _vm._v("Columbian")
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "square2", attrs: { id: "40" } }, [
+            _c(
+              "span",
+              {
+                staticClass: "corner corner3",
+                staticStyle: { margin: "0 1.5em" }
+              },
+              [
+                _c("br"),
+                _vm._v("Straight "),
+                _c("br"),
+                _vm._v(" Space "),
+                _c("br"),
+                _vm._v("Collect"),
+                _c("br"),
+                _vm._v("$500"),
+                _c("br")
+              ]
+            )
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -66889,7 +67938,8 @@ var map = {
 	"./Raffle.vue": "./resources/js/components/Raffle.vue",
 	"./passport/AuthorizedClients.vue": "./resources/js/components/passport/AuthorizedClients.vue",
 	"./passport/Clients.vue": "./resources/js/components/passport/Clients.vue",
-	"./passport/PersonalAccessTokens.vue": "./resources/js/components/passport/PersonalAccessTokens.vue"
+	"./passport/PersonalAccessTokens.vue": "./resources/js/components/passport/PersonalAccessTokens.vue",
+	"./potluck/board.vue": "./resources/js/components/potluck/board.vue"
 };
 
 
@@ -67537,6 +68587,643 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/potluck/board.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/potluck/board.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _board_vue_vue_type_template_id_5f444f3c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./board.vue?vue&type=template&id=5f444f3c& */ "./resources/js/components/potluck/board.vue?vue&type=template&id=5f444f3c&");
+/* harmony import */ var _board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./board.vue?vue&type=script&lang=js& */ "./resources/js/components/potluck/board.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./board.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _board_vue_vue_type_template_id_5f444f3c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _board_vue_vue_type_template_id_5f444f3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/potluck/board.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/board.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/potluck/board.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./board.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./board.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/board.vue?vue&type=template&id=5f444f3c&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/potluck/board.vue?vue&type=template&id=5f444f3c& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_template_id_5f444f3c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./board.vue?vue&type=template&id=5f444f3c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/potluck/board.vue?vue&type=template&id=5f444f3c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_template_id_5f444f3c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_board_vue_vue_type_template_id_5f444f3c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/bummers.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/bummers.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "bummers": [{
+    "id": 1,
+    "title": "Sneezed instead of snorted - lost two grams of coke",
+    "effect": undefined
+  }, {
+    "id": 2,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 3,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 4,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 5,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 6,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 7,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 8,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 9,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 10,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 11,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 12,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 13,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 14,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 15,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 16,
+    "title": "Stoked!",
+    "effect": undefined
+  }]
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/farouts.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/farouts.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "farouts": [{
+    "id": 1,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 2,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 3,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 4,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 5,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 6,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 7,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 8,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 9,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 10,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 11,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 12,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 13,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 14,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 15,
+    "title": "Stoked!",
+    "effect": undefined
+  }, {
+    "id": 16,
+    "title": "Stoked!",
+    "effect": undefined
+  }]
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/players.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/players.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "players": [{
+    "name": "player1",
+    "token": "blue",
+    "cash": 2875,
+    "playing": false
+  }, {
+    "name": "player2",
+    "token": "green",
+    "cash": 2875,
+    "playing": false
+  }, {
+    "name": "player3",
+    "token": "yellow",
+    "cash": 2875,
+    "playing": false
+  }, {
+    "name": "player4",
+    "token": "orange",
+    "cash": 2875,
+    "playing": false
+  }, {
+    "name": "player5",
+    "token": "red",
+    "cash": 2875,
+    "playing": false
+  }, {
+    "name": "player6",
+    "token": "purple",
+    "cash": 2875,
+    "playing": false
+  }, {
+    "name": "player7",
+    "token": "black",
+    "cash": 2875,
+    "playing": false
+  }]
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/spaces.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/potluck/spaces.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "spaces": [{
+    "id": 1,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 2,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 3,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 4,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 5,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 6,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 7,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 8,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 9,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 10,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 11,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 12,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 13,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 14,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 15,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 16,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 17,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 18,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 19,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 20,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 21,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 22,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 23,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 24,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 25,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 26,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 27,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 28,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 29,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 30,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 31,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 32,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 33,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 34,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 35,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 36,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 37,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 38,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 39,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 40,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }]
+});
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/strains.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/strains.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  "strains": [{
+    "id": 1,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 2,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 3,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 4,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 5,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 6,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 7,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 8,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 9,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 10,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 11,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 12,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 13,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 14,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 15,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 16,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 17,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 18,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 19,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 20,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 21,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }, {
+    "id": 22,
+    "title": "Straight Space",
+    "image": "vagina.jpg",
+    "effect": undefined
+  }]
+});
+
+/***/ }),
+
 /***/ "./resources/js/script.js":
 /*!********************************!*\
   !*** ./resources/js/script.js ***!
@@ -67593,8 +69280,8 @@ document.getElementsByTagName('head')[0].appendChild(swa);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/jeremy/code/elbow/resources/js/script.js */"./resources/js/script.js");
-module.exports = __webpack_require__(/*! /home/jeremy/code/elbow/resources/sass/style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! /home/jeremy/Code/elbow/resources/js/script.js */"./resources/js/script.js");
+module.exports = __webpack_require__(/*! /home/jeremy/Code/elbow/resources/sass/style.scss */"./resources/sass/style.scss");
 
 
 /***/ })

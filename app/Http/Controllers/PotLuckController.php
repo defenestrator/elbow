@@ -14,7 +14,7 @@ class PotLuckController extends Controller
      */
     public function index()
     {
-        //
+       return view('potluck');
     }
 
     /**

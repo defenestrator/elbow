@@ -172,7 +172,7 @@
 
 </template>
 
-<style scoped>
+<style>
 div {
 	box-sizing: border-box;
 	text-transform: uppercase;
@@ -187,8 +187,8 @@ div {
 
 .mainSquare {
 	height: 100%;
-	outline: 1px dashed #c2dec5;
-	outline-offset: -13px;
+	position:relative;
+	left: 14px;
 }
 
 .row {
@@ -470,617 +470,73 @@ div {
 <script>
 "use strict"
 
+import players from './players.js'; 
+import spaces from './spaces.js';
+import bummers from './bummers.js';
+import farouts from './farouts.js';
+import strains from './strains.js';
+
+Vue.use([
+	players,
+	spaces,
+	bummers,
+	farouts,
+	strains
+	])
 export default {
     data() {
 		return {
-			"tokens": 
-			[
-				"blue", "green", "yellow", "orange", "red", "purple", "black"
-			],
 			"skipped": [],
 			"activePlayerId": 0,
-			"players": [
-				{
-					"name": "player1",
-					"token": "blue",
-					"cash": 2875,
-					"playing": false,
-				},
-				{
-					"name": "player2",
-					"token": "green",
-					"cash": 2875,
-					"playing": false,
-				}, {
-					"name": "player3",
-					"token": "yellow",
-					"cash": 2875,
-					"playing": false,
-				},	{
-					"name": "player4",
-					"token": "orange",
-					"cash": 2875,
-					"playing": false,
-				},	{
-					"name": "player5",
-					"token": "red",
-					"cash": 2875,
-					"playing": false,
-				}, {
-					"name": "player6",
-					"token": "purple",
-					"cash": 2875,
-					"playing": false,
-				},	{
-					"name": "player7",
-					"token": "black",
-					"cash": 2875,
-					"playing": false,
-				},
-			],
-			"spaces": [
-				{
-					"id": 1 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 2 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 3 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 4 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 5 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 6 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 7 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},  {
-					"id": 8 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 9 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 10 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},		{
-					"id": 11 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 12 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 13 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 14 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 15 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 16 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 17 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},  {
-					"id": 18 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 19 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 20 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	
-					{
-					"id": 21 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 22 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 23 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 24 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 25 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 26 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 27 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},  {
-					"id": 28 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 29 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 30 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	
-					{
-					"id": 31 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 32 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 33 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 34 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 35 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 36 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 37 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},  {
-					"id": 38 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 39 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 40 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				}	
-			],
-			"bummers": [
-				{
-					"id":1,
-					"title": "Sneezed instead of snorted - lost two grams of coke",
-					"effect": moveCash()
-				},
-					{
-					"id": 2,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 3,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 4,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 5,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":6,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":7,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":8,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":9,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":10,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":11,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":12,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":13,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":14,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":15,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-				{
-					"id":16,
-					"title": "Stoked!",
-					"effect": moveCash()
-				}
-			],
-			"farouts": [
-				{
-					"id":1,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 2,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 3,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 4,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id": 5,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":6,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":7,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":8,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":9,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":10,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":11,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":12,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":13,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":14,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-					{
-					"id":15,
-					"title": "Stoked!",
-					"effect": moveCash()
-				},
-				{
-					"id":16,
-					"title": "Stoked!",
-					"effect": moveCash()
-				}
-			],
-			"strains": [
-				{
-					"id": 1 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 2 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 3 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 4 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 5 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 6 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 7 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},  {
-					"id": 8 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 9 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 10 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},		{
-					"id": 11 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 12 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 13 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 14 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 15 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 16 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-					{
-					"id": 17 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},  {
-					"id": 18 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 19 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	{
-					"id": 20 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},	
-					{
-					"id": 21 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				},
-				{
-					"id": 22 ,
-					"title": "Straight Space",
-					"image": "vagina.jpg",
-					"effect": moveCash(),
-				}
-			]
+			"players": players,
+			"spaces": spaces,
+			"bummers": bummers,
+			"farouts": farouts,
+			"strains": strains
 		}
 	},
 	methods: {
-		sixSidedDie() {
-			min = Math.ceil(1);
-			max = Math.floor(6);
+		sixSidedDie(min,max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		},
-		gameRoll(player) {
-			let first = sixSidedDie() 
-			let second = sixSidedDie()
+		gameRoll() {
+			let first = this.sixSidedDie(1,6) 
+			let second = this.sixSidedDie(1,6)
 			return first + second
 		},
 		moveCash(amount, player) {
 			player.cash = player.cash - amount
 			bank = bank + amount
 			return player.cash
-
 		},
 		completeTurn() {
 			this.activePlayerId++
-
-			if (this.activePlayerId >= 7) {
+            
+			if (this.activePlayerId > 7) {
 				this.activePlayerId = 0
 			}
-
+			console.log("active player id: " + this.activePlayerId)
 			if (this.activePlayerId === this.players.indexOf()) {
-				let player = this.players[this.activePlayerId]
-
+				let player = players[activePlayerId]
 				if (player.playing !== true) {
 					return this.completeTurn()
 				}
 			}
 
-			if (this.skipped.in_array(this.activePlayerId)) {
-				this.skipped.pop()
+			if (this.skipped.includes(this.activePlayerId)) {
+				this.skipped.splice(this.skipped.indexOf(this.activePlayerId), 1)
+				console.log("end of turn, player id: " + this.activePlayerId)
+				console.log("skipped player id: " + this.activePlayerId)
 				return this.completeTurn()
 			}
-			return this.gameRoll()
+			console.log("end of turn, player id: " + this.activePlayerId)
+			return gameRoll()
 		},
 		loseTurn() {
-			skipped.push(this.ActivePlayerId)
-		},
+			return this.skipped.push(this.skipped[this.activePlayerId])
+		}
 	}  
 }
 </script>
