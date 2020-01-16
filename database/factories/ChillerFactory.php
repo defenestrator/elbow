@@ -3,11 +3,12 @@
 use Faker\Generator as Faker;
 
 $factory->define(Elbow\Chiller::class, function (Faker $faker) {
+    $nelement = [$faker->numberBetween(1,10), null];
+
     return [
         'uuid'              => $faker->unique()->uuid,
-        'name'              => $faker->word,
-        'model'             => $faker->word,
-        'description'       => $faker->paragraph,
-        'manufacturer_id'   => $faker->numberBetween(1,10)
+        'user_id'           => $faker->randomElement($nelement),  
+        'model'             => $faker->word . '_' . $faker->numberBetween(2, 5000),
+        'manufacturer_id'   => $faker->randomElement($nelement),   
     ];
 });

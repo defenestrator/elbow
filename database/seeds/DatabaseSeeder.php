@@ -86,7 +86,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         foreach ( $this->tables as $table ) {
-            factory('Elbow\\'. Str::studly(Str::singular($table)), 10)->create();
+            try {
+                factory('Elbow\\'. Str::studly(Str::singular($table)), 10)->create();
+            } catch (Exception $e) {
+                dd($e);
+            }
         }
     }
 }

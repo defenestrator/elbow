@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Elbow\Model;
+use Elbow\SensorType;
 use Faker\Generator as Faker;
 
 $factory->define(Elbow\SensorType::class, function (Faker $faker) {

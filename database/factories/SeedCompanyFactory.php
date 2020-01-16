@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Elbow\Model;
+use Elbow\SeedCompany;
 use Faker\Generator as Faker;
 
 $factory->define(Elbow\SeedCompany::class, function (Faker $faker) {
