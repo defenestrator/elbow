@@ -51,7 +51,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereUuid($value)
  */
-class Strain extends Model
+class Strain extends Prototype
 {
 //    use Searchable;
     /**

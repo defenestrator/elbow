@@ -35,7 +35,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereUuid($value)
  */
-class SeedCompany extends Model
+class SeedCompany extends Prototype
 {
     /**
      * @var string

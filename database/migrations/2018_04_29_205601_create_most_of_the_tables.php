@@ -23,6 +23,44 @@ class CreateMostOfTheTables extends Migration
         
         $this->pivots();
 
+        Schema::create('games', function(Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('title');
+            $table->string('slug');
+            $table->timestamps();
+        });
+
+        Schema::create('game_user', function(Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('game_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('game_id')
+                ->references('id')
+                ->on('games')
+                ->onDelete('cascade');
+            
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+        });
+        
+        Schema::create('game_move', function(Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('game_user_id');
+            $table->foreign('game_user_id')->references('id')->on('game_user')->onDelete('cascade');
+            $table->json('state'); 
+        });
+
+        Schema::create('pot_lucks', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('game_id');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
+            $table->unsignedBigInteger('winner_id');
+            $table->foreign('winner_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
+        });
+
         $this->populate();
     }
 
@@ -45,6 +83,11 @@ class CreateMostOfTheTables extends Migration
             Schema::dropIfExists($table);
         }
         
+        Schema::dropIfExists('games');
+        Schema::dropIfExists('game_player');
+        Schema::dropIfExists('game_move');
+        Schema::dropIfExists('pot_lucks');
+
         $permissionTableNames = config('permission.table_names');
 
         Schema::dropIfExists($permissionTableNames['role_has_permissions']);
@@ -67,7 +110,7 @@ class CreateMostOfTheTables extends Migration
         'seed_companies',
         'strains',
         'seeds',
-        'clones',
+        'cuttings',
         'cycles',
         'stages',
         'plants',
@@ -317,6 +360,17 @@ class CreateMostOfTheTables extends Migration
             $table->timestamps();
         });
 
+        Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
+            $table->morphs('commentable');
+            $table->text('title');
+            $table->longText('body');
+            $table->timestamps();
+        });
+
         Schema::create('raffles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('ticket_limit')->default(0);
@@ -329,18 +383,18 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('giveaways', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->uuid('uuid');
+            $table->uuid('uuid')->unique();
             $table->string('title');
             $table->longText('description');
             $table->string('image');
-            $table->dateTime('ends_at')->nullable()->change();
+            $table->dateTime('ends_at');
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::create('contest_entries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->uuid('uuid');
+            $table->uuid('uuid')->unique();
             $table->integer('giveaway_id')->unsigned()->default(0);
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
@@ -394,6 +448,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('farm_id');
             $table->foreign('farm_id')->references('id')->on('farms')->onDelete('cascade');
             $table->string('name');
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('floorspace_cm2')->nullable();
             $table->unsignedBigInteger('growspace_cm2')->nullable();
             $table->unsignedBigInteger('area_type_id')->nullable();
@@ -418,8 +473,8 @@ class CreateMostOfTheTables extends Migration
         Schema::create('strains', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique()->nullable();
-            $table->unsignedBigInteger('cannabis_seed_company_id')->nullable();
-            $table->foreign('cannabis_seed_company_id')
+            $table->unsignedBigInteger('seed_company_id')->nullable();
+            $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
             $table->string('name');
@@ -427,7 +482,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('lineage')->nullable();
             $table->string('genetics')->nullable();
             $table->string('seed_company')->nullable();
-            $table->text('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('url')->nullable();
             $table->string('qr')->nullable();
             $table->string('cannabis_reports_link')->nullable();
@@ -440,14 +495,16 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('seeds', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('cannabis_strain_id');
-            $table->foreign('cannabis_strain_id')
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('strain_id');
+            $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->unsignedBigInteger('cannabis_seed_company_id');
-            $table->foreign('cannabis_seed_company_id')
+            $table->unsignedBigInteger('seed_company_id');
+            $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('qty_per_pack')->default(12);
             $table->unsignedBigInteger('price')->default(100);
             $table->unsignedBigInteger('inventory')->default(0);
@@ -457,62 +514,26 @@ class CreateMostOfTheTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('clones', function (Blueprint $table) {
+        Schema::create('cuttings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
-            $table->unsignedBigInteger('cannabis_strain_id');
-            $table->foreign('cannabis_strain_id')
+            $table->unsignedBigInteger('strain_id');
+            $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->unsignedBigInteger('cannabis_seed_company_id')->nullable();
-            $table->foreign('cannabis_seed_company_id')
+            $table->unsignedBigInteger('seed_company_id')->nullable();
+            $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('price')->default(100);
             $table->unsignedBigInteger('inventory')->default(0);
             $table->timestamps();
         });
-
-        Schema::create('cycles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid')->unique();
-            $table->unsignedBigInteger('farm_id');
-            $table->foreign('farm_id')->references('id')->on('farms')->onDelete('cascade');
-            $table->string('name')->default('Default Cycle');
-            $table->unsignedBigInteger('medium_id')->nullable();
-            $table->unsignedBigInteger('harvest_id')->nullable();
-            $table->string('layout')->default('Horizontal');
-            $table->string('method')->default('Organic Soil');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('stages', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid')->unique();
-            $table->unsignedBigInteger('area_id')->nullable();
-            $table->foreign('area_id')->references('id')->on('areas');
-            $table->string('name')->default('default stage');
-            $table->unsignedBigInteger('photoperiod')->default(24);            
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('plants', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid')->unique();
-            $table->unsignedBigInteger('cannabis_strain_id');
-            $table->foreign('cannabis_strain_id')
-                ->references('id')
-                ->on('strains');
-            $table->unsignedBigInteger('cycle_id');
-            $table->foreign('cycle_id')
-                ->references('id')
-                ->on('cycles')
-                ->onDelete('cascade');
-            $table->softDeletes();
-            $table->timestamps();
-        }); 
 
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -529,10 +550,86 @@ class CreateMostOfTheTables extends Migration
             $table->timestamps();
         });
 
+        Schema::create('media', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
+            $table->string('name');
+            $table->longText('description')->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
+            $table->foreign('manufacturer_id')
+                ->references('id')
+                ->on('manufacturers');
+            $table->json('ingredients')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('cycles', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('farm_id');
+            $table->foreign('farm_id')->references('id')->on('farms')->onDelete('cascade');
+            $table->string('name')->default('Default Cycle');
+            $table->longText('description')->nullable();
+            $table->unsignedBigInteger('medium_id')->nullable();
+            $table->foreign('medium_id')
+                ->references('id')
+                ->on('media');
+            $table->string('layout')->default('Horizontal');
+            $table->string('method')->default('Organic Soil');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('harvests', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->date('date_of')->default(now('America/Denver'));
+            $table->unsignedBigInteger('cycle_id');
+            $table->foreign('cycle_id')
+                ->references('id')
+                ->on('cycles')
+                ->onDelete('cascade');
+            $table->unsignedInteger('grams')->default(454);
+            $table->string('notes')->default('great harvest!');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('stages', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('area_id')->nullable();
+            $table->foreign('area_id')->references('id')->on('areas');
+            $table->string('name')->default('default stage');
+            $table->text('description')->nullable();
+            $table->unsignedInteger('photoperiod')->default(24);            
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('plants', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('strain_id');
+            $table->foreign('strain_id')
+                ->references('id')
+                ->on('strains');
+            $table->unsignedBigInteger('cycle_id');
+            $table->foreign('cycle_id')
+                ->references('id')
+                ->on('cycles')
+                ->onDelete('cascade');
+            $table->json('notes')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        }); 
+
         Schema::create('sensor_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type')->unique();
-            $table->string('format')->default('');
+            $table->uuid('uuid');
+            $table->string('type');
+            $table->string('model')->nullable();
+            $table->json('specification')->nullable();
             // float ^[+-]?(\d*\.)?(\d+)?\b$
             //pH format ^((?![2-9])(1 {0,1})(\d){0,1})(\.)(\d{1,2})\b$
             $table->softDeletes();
@@ -555,6 +652,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('solutions', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->uuid('uuid')->unique();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('sensor_id')->nullable();
@@ -564,7 +662,6 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('level')->nullable();
             $table->unsignedBigInteger('temperature_c')->nullable();
             $table->unsignedBigInteger('dissolved_oxygen')->nullable();
-            $table->float('barometric_pressure', 4, 2)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -587,6 +684,10 @@ class CreateMostOfTheTables extends Migration
         Schema::create('light_fixtures', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -595,6 +696,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('type')->default('HID');
             $table->unsignedBigInteger('watts')->default(1000);
             $table->unsignedBigInteger('ppf')->default(1100);
+            $table->json('specification')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -657,6 +759,9 @@ class CreateMostOfTheTables extends Migration
         Schema::create('fans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
+            $table->unsignedBigInteger('btus')->default(0);
+            $table->unsignedBigInteger('watts')->default(0);
+            $table->unsignedBigInteger('cfm')->default(0);
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -690,6 +795,9 @@ class CreateMostOfTheTables extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
+            $table->string('model');
+            $table->string('name');
+            $table->longText('description');
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -701,6 +809,10 @@ class CreateMostOfTheTables extends Migration
         Schema::create('ballasts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
+            $table->string('model');
+            $table->string('name');
+            $table->longText('description');
+            $table->unsignedBigInteger('watts')->default(0);
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -716,33 +828,6 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('media', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid')->unique();
-            $table->string('name');
-            $table->unsignedBigInteger('manufacturer_id')->nullable();
-            $table->foreign('manufacturer_id')
-                ->references('id')
-                ->on('manufacturers');
-            $table->string('material')->default('¡Pura vida, baby!');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('harvests', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->date('date_of')->default(now('America/Denver'));
-            $table->unsignedBigInteger('cycle_id');
-            $table->foreign('cycle_id')
-                ->references('id')
-                ->on('cycles')
-                ->onDelete('cascade');
-            $table->unsignedInteger('grams')->default(454);
-            $table->string('notes')->default('great harvest!');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -938,7 +1023,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('content_id');
             $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
             $table->unsignedBigInteger('comment_id');
-            $table->foreign('comment_id')->references('id')->on('contents');
+            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
         });
 
         Schema::create('content_edit', function (Blueprint $table) {
@@ -947,7 +1032,7 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->longText('old_content'); // JSON formatted title, body, image_id array and tags, comments, whatever else.
+            $table->json('old_content'); // JSON formatted title, body, image_id array and tags, comments, whatever else.
             $table->timestamps();
         });
     }
@@ -957,5 +1042,25 @@ class CreateMostOfTheTables extends Migration
     {
         DB::unprepared(file_get_contents('database/seed_companies.sql'));
         DB::unprepared(file_get_contents('database/strains.sql'));
+        
+        $areaTypes = [
+            'grow tent'    => 'generic grow tent',
+            'outdoor'      => 'outdoor farm',
+            'hoop house'   => 'a simple hoop house',
+            'greenhouse'   => 'hard-sided greenhouse',
+            'open room'    => 'open-ventilation room',
+            'sealed room'  => 'sealed-ventilation room',
+            'warehouse'    => 'commercial warehouse building',
+            'grow cabinet' => 'hard-sided grow cabinet',
+            'closet'       => 'just a closet, yo.',
+            'container'    => 'shipping container',
+            'custom'       => 'some other, unlisted type'
+        ];
+
+        foreach(array_keys($areaTypes) as $areaType) { 
+            $description = $areaTypes[$areaType];
+            \Elbow\AreaType::create(['name' => $areaType, 'description' => $description]);
+        }
+
     }
 }

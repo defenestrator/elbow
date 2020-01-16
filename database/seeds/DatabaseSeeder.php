@@ -13,16 +13,17 @@ class DatabaseSeeder extends Seeder
 
         // Growing
         'farms',
-        'area_types',
         'areas',
         'seed_companies',
         'strains',
         'seeds',
-        'clones',
+        'cuttings',
+        'manufacturers',
+        'media',
         'cycles',
         'stages',
         'plants',
-        'manufacturers',
+
         'solutions',
         'environments',       
         'sensor_types',
@@ -37,12 +38,13 @@ class DatabaseSeeder extends Seeder
         'drivers',
         'ballasts',
         'reflector_hoods',
-        'media',
+
         'harvests',
 
         // Content
         'images',
         'contents',
+        'comments',
         'raffles',
         'giveaways',
         'contest_entries',

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Comment extends Model
 {
+    protected $table = 'contents';
     
     public function commentable()
     {
