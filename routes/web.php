@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-Auth::routes(['verify' => true]);
+// Auth::routes(['verify' => true]);
 
 Route::get('/potluck', 'PotLuckController@index');
 //Declare root domain route group for application-level sub-domain routing compatibility.
