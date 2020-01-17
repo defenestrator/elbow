@@ -2,7 +2,6 @@
 use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
-
 Route::get('/potluck', 'PotLuckController@index');
     Route::view('/', 'welcome')->name('welcome');
     Route::get('/potluck', 'PotLuckController@index');
@@ -25,7 +24,7 @@ Route::get('/potluck', 'PotLuckController@index');
     });
 
     //CMS Routes Group
-    Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verify'])->group( function () {
+    Route::name('cms.')->prefix('/cms')->middleware(['auth'])->group( function () {
         // Seeds CMS Routes
         Route::get('/seeds', 'SeedController@index')->name('seeds.index');
         Route::get('/seeds/new', 'SeedController@create')->name('seeds.create');

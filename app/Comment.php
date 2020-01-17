@@ -2,7 +2,7 @@
 
 namespace Elbow;
 
-use Illuminate\Database\Eloquent\Model;
+use Elbow\Prototype as Model;
 
 /**
  * Elbow\Comment

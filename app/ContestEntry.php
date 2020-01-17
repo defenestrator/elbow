@@ -3,7 +3,7 @@
 namespace Elbow;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+use Elbow\Prototype as Model;
 /**
  * Elbow\ContestEntry
  *

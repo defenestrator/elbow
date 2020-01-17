@@ -3,7 +3,7 @@
 namespace Elbow;
 
 use Elbow\Traits\Sluggable;
-use Illuminate\Database\Eloquent\Model;
+use Elbow\Prototype as Model;
 
 /*
  */
@@ -41,7 +41,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereUuid($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Content[] $comments
  */
-class Content extends Prototype
+class Content extends Model
 {
     // use Sluggable; // Attach the Sluggable trait to the model
 

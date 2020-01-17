@@ -2,9 +2,9 @@
 
 namespace Elbow;
 
-use Illuminate\Database\Eloquent\Model;
+use Elbow\Prototype as Model;
 
-class SensorType extends Prototype
+class SensorType extends Model
 {
     //
 }

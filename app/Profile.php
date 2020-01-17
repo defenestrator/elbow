@@ -2,9 +2,9 @@
 
 namespace Elbow;
 
-use Illuminate\Database\Eloquent\Model;
+use Elbow\Prototype as Model;
 
-class Profile extends Prototype
+class Profile extends Model
 {
     protected $table = 'profiles';
     // protected $fillable = [

@@ -24,7 +24,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/email/resend';
+    protected $redirectTo = '/home';
 
     /**
      * Get a validator for an incoming registration request.
@@ -49,7 +49,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $this->user->sendEmailVerificationNotification();
+        // $this->user->sendEmailVerificationNotification();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
