@@ -5,7 +5,6 @@ namespace Elbow;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasPermissions;
 use Laravel\Passport\HasApiTokens;
 
