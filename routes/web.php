@@ -1,18 +1,16 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/potluck', 'PotLuckController@index');
-//Declare root domain route group for application-level sub-domain routing compatibility.
-Route::domain( config('app.domain') )->group( function () {
     Route::view('/', 'welcome')->name('welcome');
     Route::get('/potluck', 'PotLuckController@index');
     // Contact Form
     Route::view('/contact', 'contact')->name('contact');
     Route::post('/contact','ContactFormController@create')->name('contact');
 
-    Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+    Route::get('/home', 'HomeController@index')->name('home')->middleware();
     Route::view('/hobbyist', 'hobbyist');
     Route::view('/commercial', 'commercial');
 
@@ -27,7 +25,7 @@ Route::domain( config('app.domain') )->group( function () {
     });
 
     //CMS Routes Group
-    Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verified'])->group( function () {
+    Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verify'])->group( function () {
         // Seeds CMS Routes
         Route::get('/seeds', 'SeedController@index')->name('seeds.index');
         Route::get('/seeds/new', 'SeedController@create')->name('seeds.create');
@@ -57,7 +55,3 @@ Route::domain( config('app.domain') )->group( function () {
     Route::get('/scrape-strains', 'Ingestion\CannabisReportsController@scrape');
     Route::get('/scrape-seed-companies-details', 'Ingestion\CannabisReportsController@seedco');
     Route::get('/scrape-strain-details', 'Ingestion\CannabisReportsController@getStrainDetails');
-
-
-});
-
