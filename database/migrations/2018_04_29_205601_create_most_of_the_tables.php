@@ -233,7 +233,9 @@ class CreateMostOfTheTables extends Migration
             $table->string('whatsapp')->default('elbow');
             $table->string('snapchat')->default('elbow');
             $table->string('cashtag')->default('elbow');
+            $table->string('user_title')->default('n00b');
             $table->longText('bio')->nullable();
+            $table->boolean('public')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -338,10 +340,11 @@ class CreateMostOfTheTables extends Migration
         // Content
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('large');
-            $table->text('small');
-            $table->text('thumb');
-            $table->morphs('imageable');
+            $table->uuid('uuid')->unique();
+            $table->text('large')->nullable();
+            $table->text('medium')->nullable();
+            $table->text('small')->nullable();
+            $table->nullableMorphs('imageable');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -352,20 +355,19 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('slug');
-            $table->morphs('contentable');
+            $table->nullableMorphs('commentable');
             $table->text('title');
             $table->longText('body');
-            $table->longText('fields')->nullable();
+            $table->json('fields')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
 
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->uuid('uuid')->unique();
+            $table->uuid('uuid')->unique();            
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
-            $table->morphs('commentable');
             $table->text('title');
             $table->longText('body');
             $table->timestamps();
@@ -610,7 +612,7 @@ class CreateMostOfTheTables extends Migration
                 ->on('cycles')
                 ->onDelete('cascade');
             $table->unsignedInteger('grams')->default(454);
-            $table->string('notes')->default('great harvest!');
+            $table->text('notes')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -858,8 +860,10 @@ class CreateMostOfTheTables extends Migration
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
             $table->string('model');
-            $table->string('name');
-            $table->longText('description');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -877,13 +881,17 @@ class CreateMostOfTheTables extends Migration
             $table->bigIncrements('id');
             $table->uuid('uuid')->unique();
             $table->string('model');
-            $table->string('name');
-            $table->longText('description');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
             $table->unsignedBigInteger('watts')->default(0);
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
+            $table->unsignedBigInteger('efficiency')->default(895);
+            $table->json('specification')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -895,6 +903,12 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+            $table->string('model');
+            $table->json('specification')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -1088,9 +1102,7 @@ class CreateMostOfTheTables extends Migration
         Schema::create('content_comment', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('content_id');
-            $table->foreign('content_id')->references('id')->on('contents')->onDelete('cascade');
             $table->unsignedBigInteger('comment_id');
-            $table->foreign('comment_id')->references('id')->on('comments')->onDelete('cascade');
         });
 
         Schema::create('content_edit', function (Blueprint $table) {
@@ -1105,29 +1117,10 @@ class CreateMostOfTheTables extends Migration
     }
 
 
-    protected function populate()
+    public function populate()
     {
         DB::unprepared(file_get_contents('database/seed_companies.sql'));
-        DB::unprepared(file_get_contents('database/strains.sql'));
-        
-        $areaTypes = [
-                'grow tent'    => 'generic grow tent',
-                'outdoor'      => 'outdoor farm',
-                'hoop house'   => 'a simple hoop house',
-                'greenhouse'   => 'hard-sided greenhouse',
-                'open room'    => 'open-ventilation room',
-                'sealed room'  => 'sealed-ventilation room',
-                'warehouse'    => 'commercial warehouse building',
-                'grow cabinet' => 'hard-sided grow cabinet',
-                'closet'       => 'just a closet, yo.',
-                'container'    => 'shipping container',
-                'custom'       => 'some other, unlisted type'
-            ];
-        
-        foreach(array_keys($areaTypes) as $areaType) { 
-            $description = $areaTypes[$areaType];
-            \Elbow\AreaType::create(['name' => $areaType, 'description' => $description]);
-        }
-        return ;
+        DB::unprepared(file_get_contents('database/strains.sql'));    
     }
+
 }

@@ -41,26 +41,26 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereUuid($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Content[] $comments
  */
-class Content extends Model
+class Content extends Prototype
 {
-    use Sluggable; // Attach the Sluggable trait to the model
+    // use Sluggable; // Attach the Sluggable trait to the model
 
-    protected $attributes = ['title', 'user_id', 'body'];
+    // protected $attributes = ['title', 'user_id', 'body'];
 
-	public function sluggable() {
-		return [
-			'source' => 'title',
-		];
-	}
+	// public function sluggable() {
+	// 	return [
+	// 		'source' => 'title',
+	// 	];
+	// }
     
-    public function images()
-    {
-        return $this->morphMany(Content::class, 'imageable');
-    }
+    // public function images()
+    // {
+    //     return $this->morphMany(Content::class, 'imageable');
+    // }
 
-    public function comments()
-    {
-        return $this->morphMany(Content::class, 'commentable');
-    }
+    // public function comments()
+    // {
+    //     return $this->morphMany(Content::class, 'commentable');
+    // }
 }
 

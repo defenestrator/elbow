@@ -2,7 +2,6 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Elbow\Strain;
 use Faker\Generator as Faker;
 
 $factory->define(Elbow\Strain::class, function (Faker $faker) {
