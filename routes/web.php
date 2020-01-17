@@ -1,10 +1,11 @@
 <?php
 use Illuminate\Support\Facades\Route;
 
+Auth::routes(['verify' => true]);
+
 Route::get('/potluck', 'PotLuckController@index');
 //Declare root domain route group for application-level sub-domain routing compatibility.
 Route::domain( config('app.domain') )->group( function () {
-    Auth::routes(['verify' => true]);
     Route::view('/', 'welcome')->name('welcome');
     Route::get('/potluck', 'PotLuckController@index');
     // Contact Form
