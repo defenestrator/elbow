@@ -5,7 +5,7 @@ namespace Elbow;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Auth\MustVerifyEmail as VerifyEmail;
+use Illuminate\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasPermissions;
 use Laravel\Passport\HasApiTokens;
 
@@ -55,7 +55,7 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, VerifyEmail, HasPermissions, HasApiTokens;
+    use Notifiable, HasPermissions, HasApiTokens;
     
     protected $guard_name = 'web';
     
