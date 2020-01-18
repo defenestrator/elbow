@@ -25,6 +25,10 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereCycleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUuid($value)
+ * @property int $strain_id
+ * @property mixed|null $notes
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereNotes($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereStrainId($value)
  */
 class Plant extends Model
 {

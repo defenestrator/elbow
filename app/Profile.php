@@ -4,6 +4,14 @@ namespace Elbow;
 
 use Elbow\Prototype as Model;
 
+/**
+ * Elbow\Profile
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile query()
+ * @mixin \Eloquent
+ */
 class Profile extends Model
 {
     protected $table = 'profiles';

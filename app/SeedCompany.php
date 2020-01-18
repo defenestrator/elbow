@@ -34,6 +34,9 @@ use Elbow\Prototype as Model;
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereUuid($value)
+ * @property int|null $user_id
+ * @property-read int|null $strains_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\SeedCompany whereUserId($value)
  */
 class SeedCompany extends Model
 {

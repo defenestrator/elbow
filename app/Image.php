@@ -34,6 +34,10 @@ use Elbow\Prototype as Model;
  * @property string|null $deleted_at
  * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $imageable
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereDeletedAt($value)
+ * @property string $uuid
+ * @property string|null $medium
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereMedium($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereUuid($value)
  */
 class Image extends Model
 {

@@ -12,6 +12,20 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment query()
  * @mixin \Eloquent
+ * @property int $id
+ * @property string $uuid
+ * @property int $author_id
+ * @property string $title
+ * @property string $body
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereAuthorId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereUuid($value)
  */
 class Comment extends Model
 {

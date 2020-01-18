@@ -33,6 +33,16 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereInventory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereQtyPerPack($value)
+ * @property string $uuid
+ * @property int|null $user_id
+ * @property int $strain_id
+ * @property int $seed_company_id
+ * @property string|null $description
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUuid($value)
  */
 class Seed extends Model
 {

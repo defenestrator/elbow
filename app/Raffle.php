@@ -29,6 +29,8 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereUpdatedAt($value)
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereDeletedAt($value)
+ * @property string $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereUuid($value)
  */
 class Raffle extends Model
 {

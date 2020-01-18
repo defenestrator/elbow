@@ -40,6 +40,10 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereUuid($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Content[] $comments
+ * @property string|null $commentable_type
+ * @property int|null $commentable_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereCommentableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereCommentableType($value)
  */
 class Content extends Model
 {

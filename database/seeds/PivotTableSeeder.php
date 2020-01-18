@@ -34,10 +34,11 @@ class PivotTableSeeder extends Seeder
             }
             
         }
-
-        DB::table('light_fixture_stage')->insert(['light_fixture_id' => $faker->numberBetween(1,10), 'stage_id' => $faker->numberBetween(1,10)]);
-        DB::table('ballast_light_fixture')->insert(['ballast_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
-        DB::table('driver_light_fixture')->insert(['driver_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
-        DB::table('lamp_light_fixture')->insert(['lamp_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
-    }
+        foreach ($tables as $pivot) {
+                DB::table('light_fixture_stage')->insert(['light_fixture_id' => $faker->numberBetween(1,10), 'stage_id' => $faker->numberBetween(1,10)]);
+                DB::table('ballast_light_fixture')->insert(['ballast_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
+                DB::table('driver_light_fixture')->insert(['driver_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
+                DB::table('lamp_light_fixture')->insert(['lamp_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
+            }
+        }
 }
