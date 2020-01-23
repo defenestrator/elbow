@@ -1,0 +1,20 @@
+<?php
+
+use DatabaseSeeder as Seeder;
+use Elbow\User;
+
+class FarmSeeder extends Seeder
+{
+    
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        factory(Elbow\Farm::class, 10)->create([
+            'user_id' => User::get('uuid')->first()->uuid
+        ]);
+    }
+}
