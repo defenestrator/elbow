@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\PotLuck
  *
- * @property int $id
  * @property int $game_id
  * @property int $winner_id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -21,6 +20,8 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\PotLuck whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\PotLuck whereWinnerId($value)
  * @mixin \Eloquent
+ * @property int $id
+ * @property mixed $uuid
  */
 class PotLuck extends Model
 {

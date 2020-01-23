@@ -3,7 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Elbow\SensorType;
-use Faker\Generator as Faker;
+use Faker\Generator as Faker; 
+use Illuminate\Support\Str;
 
 $factory->define(Elbow\SensorType::class, function (Faker $faker) {
     $nelement = [$faker->numberBetween(1,10), null];

@@ -11,6 +11,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile query()
  * @mixin \Eloquent
+ * @property mixed $uuid
  */
 class Profile extends Model
 {

@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Stage
  *
- * @property int $id
  * @property string $uuid
  * @property int|null $area_id
  * @property string $name

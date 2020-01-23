@@ -3,11 +3,11 @@
 namespace Elbow;
 
 use Elbow\Prototype as Model;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 /**
  * Elbow\Chiller
  *
- * @property int $id
  * @property string $uuid
  * @property string|null $model
  * @property int $capacity

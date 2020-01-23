@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Cycle
  *
- * @property int $id
  * @property string $uuid
  * @property int $farm_id
  * @property string $name
@@ -36,5 +35,8 @@ use Elbow\Prototype as Model;
  */
 class Cycle extends Model
 {
-    //
+    public function stages()
+    {
+        return $this->belongsToMany(Elbow\Stage::class, 'cycle_stage')->using(Elbow\CycleStage::class);
+    }
 }

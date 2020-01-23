@@ -21,6 +21,7 @@
         "laravel/framework": "^6.0",
         "laravel/helpers": "^1.1",
         "laravel/tinker": "^1.0",
+        "moontoast/math": "^1.2",
         "php-units-of-measure/php-units-of-measure": "^2.1",
         "predis/predis": "^1.1",
         "spatie/laravel-permission": "^3.3.0"

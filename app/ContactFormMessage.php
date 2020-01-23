@@ -8,7 +8,6 @@ use Elbow\Prototype as Model;
  * Elbow\ContactFormMessage
  *
  * @mixin \Eloquent
- * @property int $id
  * @property string $name
  * @property string $email_address
  * @property string $message

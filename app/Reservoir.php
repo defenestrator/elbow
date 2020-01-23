@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Reservoir
  *
- * @property int $id
  * @property string $uuid
  * @property int|null $user_id
  * @property int|null $manufacturer_id

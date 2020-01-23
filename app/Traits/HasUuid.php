@@ -10,7 +10,7 @@ trait HasUuid
         parent::boot();
 
         static::creating(function ($model) {
-            $model->uuid = (string) Str::uuid();
+            $model->uuid = preg_replace('/-/', '', Str::orderedUuid());
         });
     }
 }

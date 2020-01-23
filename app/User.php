@@ -11,7 +11,6 @@ use Elbow\Traits\HasUuid;
 /**
  * Elbow\User
  *
- * @property int $id
  * @property string $uuid
  * @property string $name
  * @property string $email
@@ -50,6 +49,8 @@ use Elbow\Traits\HasUuid;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUuid($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Farm[] $farms
+ * @property-read int|null $farms_count
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -75,8 +76,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function contents()
+    public function farms()
     {
-        return $this->morphMany(User::class, 'contentable');
+        return $this->hasMany(Farm::class);
     }
 }

@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Cutting
  *
- * @property int $id
  * @property string $uuid
  * @property int $strain_id
  * @property int|null $seed_company_id

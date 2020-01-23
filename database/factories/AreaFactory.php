@@ -1,6 +1,7 @@
 <?php
 
-use Faker\Generator as Faker;
+use Faker\Generator as Faker; 
+use Illuminate\Support\Str;
 
 $factory->define(Elbow\Area::class, function (Faker $faker) {
     return [
@@ -10,6 +11,5 @@ $factory->define(Elbow\Area::class, function (Faker $faker) {
             'floorspace_cm2'    => $faker->numberBetween(100, 100000),
             'growspace_cm2'     => $faker->numberBetween(100, 100000),
             'area_type_id'      => $faker->numberBetween(1, 10),
-            'uuid'              => $faker->unique()->uuid,
     ];
 });

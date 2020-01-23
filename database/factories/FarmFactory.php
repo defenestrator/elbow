@@ -1,8 +1,9 @@
 <?php
 
-use Faker\Generator as Faker;
+use Faker\Generator as Faker; 
+use Elbow\Farm;
 
-$factory->define(Elbow\Farm::class, function (Faker $faker) {
+$factory->define(Farm::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'description' => $faker->paragraph,
@@ -12,7 +13,5 @@ $factory->define(Elbow\Farm::class, function (Faker $faker) {
         'country' => $faker->country,
         'postcode' => $faker->postcode,
         'total_area_m2' => $faker->numberBetween(1,100000),
-        'team_id' => $faker->numberBetween(1,10),
-        'uuid' => $faker->unique()->uuid,
     ];
 });

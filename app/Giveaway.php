@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Giveaway
  *
- * @property int $id
  * @property string $uuid
  * @property string $title
  * @property string $description

@@ -3,11 +3,10 @@
 namespace Elbow;
 
 use Elbow\Prototype as Model;
-
+use Elbow\Traits\HasUuid;
 /**
  * Elbow\Area
  *
- * @property int $id
  * @property string $uuid
  * @property int $farm_id
  * @property string $name
@@ -36,5 +35,5 @@ use Elbow\Prototype as Model;
  */
 class Area extends Model
 {
-    //
+    use HasUuid;
 }

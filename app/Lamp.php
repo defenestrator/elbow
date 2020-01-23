@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Lamp
  *
- * @property int $id
  * @property string $uuid
  * @property int|null $manufacturer_id
  * @property int|null $user_id

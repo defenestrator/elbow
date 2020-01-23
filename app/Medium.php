@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Medium
  *
- * @property int $id
  * @property string $uuid
  * @property string $name
  * @property string|null $description

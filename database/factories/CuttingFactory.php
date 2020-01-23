@@ -3,7 +3,8 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Elbow\Cutting;
-use Faker\Generator as Faker;
+use Faker\Generator as Faker; 
+use Illuminate\Support\Str;
 
 $factory->define(Cutting::class, function (Faker $faker) {
     return [

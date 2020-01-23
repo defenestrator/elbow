@@ -14,7 +14,6 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content query()
  * @mixin \Eloquent
- * @property int $id
  * @property string $uuid
  * @property int $author_id
  * @property string $slug
@@ -62,9 +61,9 @@ class Content extends Model
     //     return $this->morphMany(Content::class, 'imageable');
     // }
 
-    // public function comments()
-    // {
-    //     return $this->morphMany(Content::class, 'commentable');
-    // }
+    public function comments()
+    {
+        return $this->belongsToMany(Comment::class, 'content_comment');
+    }
 }
 

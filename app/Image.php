@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Image
  *
- * @property int $id
  * @property string $large
  * @property string $thumbnail
  * @property string $stamp

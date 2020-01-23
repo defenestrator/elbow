@@ -12,7 +12,6 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment query()
  * @mixin \Eloquent
- * @property int $id
  * @property string $uuid
  * @property int $author_id
  * @property string $title
@@ -34,5 +33,10 @@ class Comment extends Model
     public function commentable()
     {
         return $this->morphTo();
+    }
+
+    public function contents()
+    {
+        return $this->belongsToMany(Content::class, 'content_comment')->using(ContentComment::class);
     }
 }

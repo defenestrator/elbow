@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Seed
  *
- * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed newModelQuery()

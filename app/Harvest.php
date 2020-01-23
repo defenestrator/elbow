@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Harvest
  *
- * @property int $id
  * @property string $uuid
  * @property string $date_of
  * @property int $cycle_id

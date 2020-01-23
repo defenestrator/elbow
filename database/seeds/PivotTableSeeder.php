@@ -1,44 +1,79 @@
 <?php
 
-use Illuminate\Database\Seeder;
+use DatabaseSeeder as Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Generator as Faker;
+use Elbow\Plan;
+use Elbow\Feature;
 
 class PivotTableSeeder extends Seeder
 {
+    public function featureId()
+    {
+        return Feature::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+    }
+    
+    public function planId()
+    {
+        return Plan::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+    }
+
+    public function generate()
+    {
+        $i = 0;
+        while ($i < 10) 
+        {
+            DB::table('cycle_stage')->insert([
+                'uuid' => $this->uuid(),                
+                'cycle_id' => $this->cycleId(), 
+                'stage_id' => $this->stageId()
+                ]);
+            DB::table('reservoir_stage')->insert([
+                'uuid' => $this->uuid(),
+                'reservoir_id' => $this->reservoirId(), 
+                'stage_id' => $this->stageId()
+                ]);
+            DB::table('harvest_plant')->insert([
+                'uuid' => $this->uuid(),
+                'harvest_id' => $this->harvestId(), 
+                'plant_id' => $this->plantId()
+                ]);
+            DB::table('feature_plan')->insert([
+                'uuid' => $this->uuid(),
+                'feature_id' => $this->featureId(), 
+                'plan_id' => $this->planId()
+                ]);
+            DB::table('light_fixture_stage')->insert([
+                'uuid' => $this->uuid(),
+                'light_fixture_id' => $this->lightFixtureId(), 
+                'stage_id' => $this->stageId()
+                ]);
+            DB::table('ballast_light_fixture')->insert([
+                'uuid' => $this->uuid(),
+                'ballast_id' => $this->ballastId(), 
+                'light_fixture_id' => $this->lightFixtureId()
+                ]);
+            DB::table('driver_light_fixture')->insert([
+                'uuid' => $this->uuid(),                
+                'driver_id' => $this->driverId(), 
+                'light_fixture_id' => $this->lightFixtureId()
+                ]);
+            DB::table('lamp_light_fixture')->insert([
+                'uuid' => $this->uuid(),
+                'lamp_id' => $this->lampId(), 
+                'light_fixture_id' => $this->lightFixtureId()
+                ]);
+
+            $i += 1;
+        }
+    }
+
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        $tables = [         
-        // Humans
-        'team_user',
-        // Growing
-        'cycle_stage',        
-        'reservoir_stage',
-        'harvest_plant',
-        // Content
-        'content_image',
-        'content_comment',
-        // Application
-        'feature_plan',
-        ];
-        foreach ($tables as $pivot) {
-            $parts = explode('_', $pivot, 2);
-            for ($i = 0; $i < 9; $i++) {
-                DB::table($pivot)
-                ->insert([$parts[0].'_id' => $faker->numberBetween(1,10), $parts[1].'_id' => $faker->numberBetween(1,10)]);
-            }
-            
-        }
-        foreach ($tables as $pivot) {
-                DB::table('light_fixture_stage')->insert(['light_fixture_id' => $faker->numberBetween(1,10), 'stage_id' => $faker->numberBetween(1,10)]);
-                DB::table('ballast_light_fixture')->insert(['ballast_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
-                DB::table('driver_light_fixture')->insert(['driver_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
-                DB::table('lamp_light_fixture')->insert(['lamp_id' => $faker->numberBetween(1,10), 'light_fixture_id' => $faker->numberBetween(1,10)]);
-            }
-        }
+        $this->generate();
+    }
 }

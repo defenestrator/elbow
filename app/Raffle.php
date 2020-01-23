@@ -11,7 +11,6 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle query()
  * @mixin \Eloquent
- * @property int $id
  * @property int $cannabis_strain_id
  * @property int $ticket_limit
  * @property string $title

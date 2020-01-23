@@ -7,7 +7,6 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Driver
  *
- * @property int $id
  * @property string $uuid
  * @property string $model
  * @property int|null $user_id

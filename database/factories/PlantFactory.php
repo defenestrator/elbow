@@ -1,6 +1,7 @@
 <?php
 
-use Faker\Generator as Faker;
+use Faker\Generator as Faker; 
+use Illuminate\Support\Str;
 
 $factory->define(Elbow\Plant::class, function (Faker $faker) {
     return [

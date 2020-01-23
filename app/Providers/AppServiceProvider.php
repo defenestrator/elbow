@@ -3,8 +3,11 @@
 namespace Elbow\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\DuskServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Schema\Blueprint;
+use Elbow\Persistence\MySqlGrammar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +18,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //        
+        DB::connection('mysql')->setSchemaGrammar(new MySqlGrammar());
+
+        Blueprint::macro('realBinary', function($column, $length) {
+            return $this->addColumn('realBinary', $column, compact('length'));
+        });
     }
 
     /**
