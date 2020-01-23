@@ -11,6 +11,6 @@ class EnvironmentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Environment::class, 10)->create();
     }
 }

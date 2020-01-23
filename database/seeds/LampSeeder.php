@@ -11,6 +11,6 @@ class LampSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Lamp::class, 10)->create();
     }
 }

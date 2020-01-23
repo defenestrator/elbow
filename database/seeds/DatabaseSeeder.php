@@ -13,6 +13,8 @@ use Elbow\Ballast;
 use Elbow\Reservoir;
 use Elbow\Harvest;
 use Elbow\Plant;
+use Elbow\Driver;
+use Elbow\Lamp;
 
 class DatabaseSeeder extends Seeder
 {
@@ -76,6 +78,16 @@ class DatabaseSeeder extends Seeder
         return Plant::select('uuid')->orderByRaw("RAND()")->first()->uuid;
     }
 
+    public function driverId()
+    {
+        return Driver::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+    }
+
+    public function lampId()
+    {
+        return Lamp::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+    }
+
     /**
      * Seed the application's database.
      *
@@ -94,6 +106,8 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
             CycleSeeder::class,  
             FeatureSeeder::class,
+            PlanSeeder::class,
+            LightFixtureSeeder::class, 
             SeedSeeder::class, 
             CuttingSeeder::class, 
             StageSeeder::class, 
@@ -102,7 +116,6 @@ class DatabaseSeeder extends Seeder
             EnvironmentSeeder::class, 
             SensorTypeSeeder::class, 
             SensorSeeder::class, 
-            LightFixtureSeeder::class, 
             BallastSeeder::class, 
             LampSeeder::class, 
             DriverSeeder::class, 

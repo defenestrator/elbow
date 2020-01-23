@@ -11,6 +11,6 @@ class ContestEntrySeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\ContestEntry::class, 10)->create();
     }
 }

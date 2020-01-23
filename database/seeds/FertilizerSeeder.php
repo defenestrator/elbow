@@ -11,6 +11,6 @@ class FertilizerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Fertilizer::class, 10)->create();
     }
 }

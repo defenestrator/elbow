@@ -11,6 +11,6 @@ class HvacApplianceSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\HvacAppliance::class, 10)->create();
     }
 }

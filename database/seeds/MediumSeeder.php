@@ -11,6 +11,6 @@ class MediumSeeder extends Seeder
      */
     public function run()
     {
-        factory(Elbow\Medium::class, 10)->create();
+        factory(Elbow\Medium::class, 10)->create(['manufacturer_id' => $this->manufacturerId()]);
     }
 }

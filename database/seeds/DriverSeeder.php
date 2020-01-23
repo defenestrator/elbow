@@ -11,6 +11,6 @@ class DriverSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Driver::class, 10)->create();
     }
 }

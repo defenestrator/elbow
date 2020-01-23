@@ -11,6 +11,6 @@ class CuttingSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Cutting::class, 10)->create();
     }
 }

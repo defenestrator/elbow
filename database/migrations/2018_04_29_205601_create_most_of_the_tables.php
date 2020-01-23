@@ -6,6 +6,69 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateMostOfTheTables extends Migration
 {
+    protected $tables = [
+        'api_keys',
+        'area_types',
+        'areas',
+        'ballast_light_fixture',
+        'ballasts',
+        'chillers',
+        'comments',
+        'contact_form_messages',
+        'content_edits',
+        'contents',
+        'contest_entries',
+        'cuttings',
+        'cycle_stage',
+        'cycles',
+        'driver_light_fixture',
+        'drivers',
+        'environments',
+        'failed_jobs',
+        'fans',
+        'farms',
+        'feature_plans',
+        'features',
+        'fertilizers',
+        'game_move',
+        'game_user',
+        'games',
+        'giveaways',
+        'harvest_plans',
+        'harvests',
+        'hvac_appliances',
+        'images',
+        'invoices',
+        'lamp_light_fixture',
+        'lamps',
+        'light_fixture_stage',
+        'light_fixtures',
+        'manufacturers',
+        'media',
+        'migrations',
+        'model_permissions',
+        'model_has_roles',
+        'password_resets',
+        'permissions',
+        'plans',
+        'plants',
+        'pot_lucks',
+        'profiles',
+        'raffles',
+        'reflector_hoods',
+        'reservoir_stage',
+        'reservoirs',
+        'role_has_permissions',
+        'roles',
+        'seeds',
+        'sensor_types',
+        'sensors',
+        'solutions',
+        'stages',
+        'subscriptions',
+        'users'        
+    ];
+
     /**
      * Run the migrations.
      *
@@ -13,53 +76,53 @@ class CreateMostOfTheTables extends Migration
      */
     public function up()
     {
-        $this->humans();
+        // $this->humans();
 
-        $this->growing();
+        // $this->growing();
         
-        $this->content();
+        // $this->content();
 
-        $this->application();
+        // $this->application();
         
-        $this->pivots();
-
-        Schema::create('games', function(Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('slug');
-            $table->timestamps();
-        });
-
-        Schema::create('game_user', function(Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('game_id');
-            $table->foreign('game_id')
-                ->references('id')
-                ->on('games');
-            $table->realBinary('user_id', 32);            
-            $table->foreign('user_id')
-                ->references('uuid')
-                ->on('users')
-                ;
-        });
-        
-        Schema::create('game_move', function(Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('game_user_id');
-            $table->foreign('game_user_id')->references('id')->on('game_user');
-            $table->json('state'); 
-        });
-
-        Schema::create('pot_lucks', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('game_id');
-            $table->foreign('game_id')->references('id')->on('games');
-            $table->realBinary('winner_id', 32);
-            $table->foreign('winner_id')->references('uuid')->on('users');
-            $table->timestamps();
-        });
+        // $this->pivots();
 
         $this->populate();
+
+        // Schema::create('games', function(Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->string('title');
+        //     $table->string('slug');
+        //     $table->timestamps();
+        // });
+
+        // Schema::create('game_user', function(Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->unsignedBigInteger('game_id');
+        //     $table->foreign('game_id')
+        //         ->references('id')
+        //         ->on('games');
+        //     $table->realBinary('user_id', 32);            
+        //     $table->foreign('user_id')
+        //         ->references('uuid')
+        //         ->on('users')
+        //         ;
+        // });
+        
+        // Schema::create('game_move', function(Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->unsignedBigInteger('game_user_id');
+        //     $table->foreign('game_user_id')->references('id')->on('game_user');
+        //     $table->json('state'); 
+        // });
+
+        // Schema::create('pot_lucks', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->unsignedBigInteger('game_id');
+        //     $table->foreign('game_id')->references('id')->on('games');
+        //     $table->realBinary('winner_id', 32);
+        //     $table->foreign('winner_id')->references('uuid')->on('users');
+        //     $table->timestamps();
+        // });
     }
 
 
@@ -71,28 +134,21 @@ class CreateMostOfTheTables extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oauth_auth_codes');
-        Schema::dropIfExists('oauth_access_tokens');
-        Schema::dropIfExists('oauth_refresh_tokens');
-        Schema::dropIfExists('oauth_clients');
-        Schema::dropIfExists('oauth_personal_access_clients');
+        Schema::drop();
 
         foreach ( $this->tables as $table ) {
-            Schema::dropIfExists($table);
+            if(Schema::hasTable($table)) {
+                Schema::dropIfExists($table);    
+            }            
         }
         
-        Schema::dropIfExists('games');
-        Schema::dropIfExists('game_player');
-        Schema::dropIfExists('game_move');
-        Schema::dropIfExists('pot_lucks');
+        // $permissionTableNames = config('permission.table_names');
 
-        $permissionTableNames = config('permission.table_names');
-
-        Schema::dropIfExists($permissionTableNames['role_has_permissions']);
-        Schema::dropIfExists($permissionTableNames['model_has_roles']);
-        Schema::dropIfExists($permissionTableNames['model_has_permissions']);
-        Schema::dropIfExists($permissionTableNames['roles']);
-        Schema::dropIfExists($permissionTableNames['permissions']);
+        // Schema::dropIfExists($permissionTableNames['role_has_permissions']);
+        // Schema::dropIfExists($permissionTableNames['model_has_roles']);
+        // Schema::dropIfExists($permissionTableNames['model_has_permissions']);
+        // Schema::dropIfExists($permissionTableNames['roles']);
+        // Schema::dropIfExists($permissionTableNames['permissions']);
     }
 
     protected function application()

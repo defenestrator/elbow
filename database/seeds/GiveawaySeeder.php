@@ -11,6 +11,6 @@ class GiveawaySeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Giveaway::class, 10)->create();
     }
 }

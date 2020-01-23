@@ -11,6 +11,6 @@ class ImageSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Image::class, 10)->create();
     }
 }

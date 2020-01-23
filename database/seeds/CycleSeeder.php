@@ -11,8 +11,6 @@ class CycleSeeder extends Seeder
      */
     public function run()
     {
-        factory(Elbow\Cycle::class, 10)->create([
-            'uuid' => $this->uuid()
-        ]);
+        factory(Elbow\Cycle::class, 10)->create();
     }
 }

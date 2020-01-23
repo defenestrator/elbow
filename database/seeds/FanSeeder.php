@@ -11,6 +11,6 @@ class FanSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Fan::class, 10)->create();
     }
 }

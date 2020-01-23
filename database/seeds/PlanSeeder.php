@@ -11,6 +11,6 @@ class PlanSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Plan::class, 10)->create();
     }
 }
