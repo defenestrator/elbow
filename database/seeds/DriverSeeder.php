@@ -11,6 +11,9 @@ class DriverSeeder extends Seeder
      */
     public function run()
     {
-        factory(Elbow\Driver::class, 10)->create();
+        factory(Elbow\Driver::class, 10)->create([
+            'user_id'           => $this->userId(),
+            'manufacturer_id'   => $this->manufacturerId()
+        ]);
     }
 }

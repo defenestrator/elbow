@@ -34,7 +34,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Passport::ignoreMigrations();
         
-        if (config('app.env') !== 'production') {
+        if (config('app.env') != 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
             $this->app->register(\Laravel\Dusk\DuskServiceProvider::class);
         }

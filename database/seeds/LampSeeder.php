@@ -11,6 +11,9 @@ class LampSeeder extends Seeder
      */
     public function run()
     {
-        factory(Elbow\Lamp::class, 10)->create();
+        factory(Elbow\Lamp::class, 10)->create([
+            'user_id'           => $this->userId(),
+            'manufacturer_id'   => $this->manufacturerId()
+        ]);
     }
 }

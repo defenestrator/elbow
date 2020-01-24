@@ -7,11 +7,18 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Cutting::class, function (Faker $faker) {
+
+    $seedco = Elbow\SeedCompany::get('uuid')->first()->uuid;
+    
+    $user = Elbow\User::get('uuid')->first()->uuid;
+    
+    $strain = Elbow\Strain::get('uuid')->first()->uuid;
+
     return [
-        'uuid'              => $faker->unique()->uuid,
-        'strain_id'         => $faker->numberBetween(1,8000),
-        'seed_company_id'   => $faker->numberBetween(1,500),
-        'user_id'           => $faker->numberBetween(1,10),
+        
+        'strain_id'         => $strain,
+        'seed_company_id'   => $faker->randomElement([$seedco, null]),
+        'user_id'           => $user,
         'price'             => $faker->numberBetween(1000,10000000),
         'description'       => $faker->paragraph,
         'inventory'         => $faker->numberBetween(1,87)

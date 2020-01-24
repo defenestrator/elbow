@@ -11,6 +11,9 @@ class ReservoirSeeder extends Seeder
      */
     public function run()
     {
-        factory(Elbow\Reservoir::class, 10)->create();
+        factory(Elbow\Reservoir::class, 10)->create([
+            'user_id'           => $this->userId(),
+            'manufacturer_id'   => $this->manufacturerId(),
+        ]);
     }
 }

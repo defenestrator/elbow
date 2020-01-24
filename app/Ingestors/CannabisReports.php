@@ -56,15 +56,15 @@ class CannabisReports
                 Strain::where('ucpc', '=', $data['data'][$i]['ucpc'])->firstOrFail();
             } catch (\Exception $e) {
                 $strain = new Strain([
-                    'name' =>                   $data['data'][$i]['name'],
-                    'ucpc' =>                   $data['data'][$i]['ucpc'],
-                    'seed_company' =>           $data['data'][$i]['seedCompany']['name'],
-                    'genetics' =>               $data['data'][$i]['genetics']['names'],
-                    'cannabis_reports_link' =>  $data['data'][$i]['url'],
-                    'ucpc' =>                   $data['data'][$i]['ucpc'],
-                    'image' =>                  $data['data'][$i]['image'],
-                    'url' =>                    $data['data'][$i]['url'],
-                    'qr' =>                     $data['data'][$i]['qr'],
+                    'name'                  => $data['data'][$i]['name'],
+                    'ucpc'                  => $data['data'][$i]['ucpc'],
+                    'seed_company'          => $data['data'][$i]['seedCompany']['name'],
+                    'genetics'              => $data['data'][$i]['genetics']['names'],
+                    'cannabis_reports_link' => $data['data'][$i]['url'],
+                    'ucpc'                  => $data['data'][$i]['ucpc'],
+                    'image'                 => $data['data'][$i]['image'],
+                    'url'                   => $data['data'][$i]['url'],
+                    'qr'                    => $data['data'][$i]['qr'],
                 ]);
                 $strain->save();
             }
@@ -77,7 +77,7 @@ class CannabisReports
 
     public function getSeedCompanyDetails()
     {
-        for ($i = 368; $i <= 570; ++$i) {
+        for ($i = 0; $i <= 570; ++$i) {
             try {
                 sleep(7);
                 $seedco = SeedCompany::where('id', '=', $i)->firstOrFail();
@@ -85,7 +85,7 @@ class CannabisReports
                 $response = $request->getBody();
                 $data = json_decode($response, true);
                 $seedco->image = $data['data']['image'];
-                // $seedco->description = $data['data']['description'];
+                $seedco->description = $data['data']['description'];
                 $seedco->url = $data['data']['url'];
                 $seedco->save();
             } catch (\Exception $e) {

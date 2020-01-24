@@ -28,7 +28,7 @@ class GrowStuff
 
     public function iterateOverPages()
     {
-        for ($i = 1; $i < 24; ++$i) {
+        for ($i = 0; $i < 24; ++$i) {
             $this->makeRequest($i);
             sleep(7);
         }

@@ -13,6 +13,7 @@ use Elbow\Ballast;
 use Elbow\Reservoir;
 use Elbow\Harvest;
 use Elbow\Plant;
+use Elbow\SeedCompany;
 use Elbow\Driver;
 use Elbow\Lamp;
 
@@ -46,6 +47,11 @@ class DatabaseSeeder extends Seeder
     public function cycleId()
     {
         return Cycle::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+    }
+
+    public function seedCompanyId()
+    {
+        return SeedCompany::select('uuid')->orderByRaw("RAND()")->first()->uuid;
     }
     
     public function stageId()
@@ -104,7 +110,10 @@ class DatabaseSeeder extends Seeder
             MediumSeeder::class, 
             ContentSeeder::class, 
             CommentSeeder::class,
-            CycleSeeder::class,  
+            CycleSeeder::class,
+            StageSeeder::class,
+            SeedCompanySeeder::class,
+            StrainSeeder::class, 
             FeatureSeeder::class,
             PlanSeeder::class,
             LightFixtureSeeder::class, 
@@ -132,9 +141,7 @@ class DatabaseSeeder extends Seeder
             ContestEntrySeeder::class, 
             ContactFormMessageSeeder::class, 
             ContentEditSeeder::class,
-            PivotTableSeeder::class,
-            SeedCompanySeeder::class,
-            StrainSeeder::class,         
+            PivotTableSeeder::class,  
         ]);       
     }
 }

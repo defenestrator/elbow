@@ -11,6 +11,8 @@ class HarvestSeeder extends Seeder
      */
     public function run()
     {
-        factory(Elbow\Harvest::class, 10)->create();
+        factory(Elbow\Harvest::class, 10)->create([
+            'cycle_id'   => $this->cycleId()
+        ]);
     }
 }

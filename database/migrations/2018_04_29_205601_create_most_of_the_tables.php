@@ -6,69 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateMostOfTheTables extends Migration
 {
-    protected $tables = [
-        'api_keys',
-        'area_types',
-        'areas',
-        'ballast_light_fixture',
-        'ballasts',
-        'chillers',
-        'comments',
-        'contact_form_messages',
-        'content_edits',
-        'contents',
-        'contest_entries',
-        'cuttings',
-        'cycle_stage',
-        'cycles',
-        'driver_light_fixture',
-        'drivers',
-        'environments',
-        'failed_jobs',
-        'fans',
-        'farms',
-        'feature_plans',
-        'features',
-        'fertilizers',
-        'game_move',
-        'game_user',
-        'games',
-        'giveaways',
-        'harvest_plans',
-        'harvests',
-        'hvac_appliances',
-        'images',
-        'invoices',
-        'lamp_light_fixture',
-        'lamps',
-        'light_fixture_stage',
-        'light_fixtures',
-        'manufacturers',
-        'media',
-        'migrations',
-        'model_permissions',
-        'model_has_roles',
-        'password_resets',
-        'permissions',
-        'plans',
-        'plants',
-        'pot_lucks',
-        'profiles',
-        'raffles',
-        'reflector_hoods',
-        'reservoir_stage',
-        'reservoirs',
-        'role_has_permissions',
-        'roles',
-        'seeds',
-        'sensor_types',
-        'sensors',
-        'solutions',
-        'stages',
-        'subscriptions',
-        'users'        
-    ];
-
     /**
      * Run the migrations.
      *
@@ -76,79 +13,15 @@ class CreateMostOfTheTables extends Migration
      */
     public function up()
     {
-        // $this->humans();
+        $this->humans();
 
-        // $this->growing();
+        $this->growing();
         
-        // $this->content();
+        $this->content();
 
-        // $this->application();
+        $this->application();
         
-        // $this->pivots();
-
-        $this->populate();
-
-        // Schema::create('games', function(Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->string('title');
-        //     $table->string('slug');
-        //     $table->timestamps();
-        // });
-
-        // Schema::create('game_user', function(Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->unsignedBigInteger('game_id');
-        //     $table->foreign('game_id')
-        //         ->references('id')
-        //         ->on('games');
-        //     $table->realBinary('user_id', 32);            
-        //     $table->foreign('user_id')
-        //         ->references('uuid')
-        //         ->on('users')
-        //         ;
-        // });
-        
-        // Schema::create('game_move', function(Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->unsignedBigInteger('game_user_id');
-        //     $table->foreign('game_user_id')->references('id')->on('game_user');
-        //     $table->json('state'); 
-        // });
-
-        // Schema::create('pot_lucks', function (Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->unsignedBigInteger('game_id');
-        //     $table->foreign('game_id')->references('id')->on('games');
-        //     $table->realBinary('winner_id', 32);
-        //     $table->foreign('winner_id')->references('uuid')->on('users');
-        //     $table->timestamps();
-        // });
-    }
-
-
-    /**
-     * 
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop();
-
-        foreach ( $this->tables as $table ) {
-            if(Schema::hasTable($table)) {
-                Schema::dropIfExists($table);    
-            }            
-        }
-        
-        // $permissionTableNames = config('permission.table_names');
-
-        // Schema::dropIfExists($permissionTableNames['role_has_permissions']);
-        // Schema::dropIfExists($permissionTableNames['model_has_roles']);
-        // Schema::dropIfExists($permissionTableNames['model_has_permissions']);
-        // Schema::dropIfExists($permissionTableNames['roles']);
-        // Schema::dropIfExists($permissionTableNames['permissions']);
+        $this->pivots();
     }
 
     protected function application()
@@ -389,6 +262,34 @@ class CreateMostOfTheTables extends Migration
             $table->timestamps();
         });
 
+        Schema::create('games', function (Blueprint $table) {
+            $table->realBinary('uuid', 32)->unique()->primary();
+            $table->string('game_title');
+            $table->realBinary('winner_id', 32);
+            $table->foreign('winner_id')->references('uuid')->on('users');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('game_user', function(Blueprint $table) {
+            $table->realBinary('uuid', 32)->unique()->primary();
+            $table->realBinary('game_id', 32);            
+            $table->foreign('game_id')
+                ->references('uuid')
+                ->on('games');
+            $table->realBinary('user_id', 32);            
+            $table->foreign('user_id')
+                ->references('uuid')
+                ->on('users');
+        });
+        
+        Schema::create('game_move', function(Blueprint $table) {
+            $table->realBinary('uuid', 32)->unique()->primary();
+            $table->realBinary('game_user_id', 32);   
+            $table->foreign('game_user_id')->references('uuid')->on('game_user');
+            $table->json('state'); 
+        });
+
     }
 
     protected function growing() 
@@ -438,15 +339,14 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('seed_companies', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid')->unique()->nullable();
+            $table->realBinary('uuid', 32)->unique()->primary();
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->realBinary('user_id', 32)->nullable();
             $table->foreign('user_id')
                 ->references('uuid')
                 ->on('users');
-            $table->string('name')->nullable();
             $table->string('ucpc')->nullable()->unique();
-            $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('url')->nullable();
             $table->string('cannabis_reports_link')->nullable();
@@ -455,21 +355,20 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('strains', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->uuid('uuid')->unique()->nullable();
+            $table->realBinary('uuid', 32)->unique()->primary();
             $table->realBinary('user_id', 32)->nullable();
             $table->foreign('user_id')
                 ->references('uuid')
                 ->on('users');
-            $table->unsignedBigInteger('seed_company_id')->nullable();
+            $table->realBinary('seed_company_id', 32)->nullable();
             $table->foreign('seed_company_id')
-                ->references('id')
+                ->references('uuid')
                 ->on('seed_companies');
+            $table->string('seed_company')->nullable();
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('lineage')->nullable();
             $table->string('genetics')->nullable();
-            $table->string('seed_company')->nullable();
             $table->longText('description')->nullable();
             $table->string('url')->nullable();
             $table->string('qr')->nullable();
@@ -480,6 +379,7 @@ class CreateMostOfTheTables extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+ 
 
         Schema::create('seeds', function (Blueprint $table) {
             $table->realBinary('uuid', 32)->unique()->primary();
@@ -487,13 +387,13 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('user_id')
                 ->references('uuid')
                 ->on('users');
-            $table->unsignedBigInteger('strain_id');
+            $table->realBinary('strain_id', 32);
             $table->foreign('strain_id')
-                ->references('id')
+                ->references('uuid')
                 ->on('strains');
-            $table->unsignedBigInteger('seed_company_id');
+            $table->realBinary('seed_company_id', 32);
             $table->foreign('seed_company_id')
-                ->references('id')
+                ->references('uuid')
                 ->on('seed_companies');
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('qty_per_pack')->default(12);
@@ -507,13 +407,13 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('cuttings', function (Blueprint $table) {
             $table->realBinary('uuid', 32)->unique()->primary();
-            $table->unsignedBigInteger('strain_id');
+            $table->realBinary('strain_id', 32);
             $table->foreign('strain_id')
-                ->references('id')
+                ->references('uuid')
                 ->on('strains');
-            $table->unsignedBigInteger('seed_company_id')->nullable();
+            $table->realBinary('seed_company_id', 32)->nullable();
             $table->foreign('seed_company_id')
-                ->references('id')
+                ->references('uuid')
                 ->on('seed_companies');
             $table->realBinary('user_id', 32)->nullable();
             $table->foreign('user_id')
@@ -594,15 +494,22 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('plants', function (Blueprint $table) {
             $table->realBinary('uuid', 32)->unique()->primary();
-            $table->unsignedBigInteger('strain_id');
+            $table->realBinary('strain_id', 32)->nullable();
             $table->foreign('strain_id')
-                ->references('id')
+                ->references('uuid')
                 ->on('strains');
+            $table->realBinary('seed_company_id', 32)->nullable();
+            $table->foreign('seed_company_id')
+                ->references('uuid')
+                ->on('seed_companies');
             $table->realBinary('cycle_id', 32);
             $table->foreign('cycle_id')
                 ->references('uuid')
-                ->on('cycles')
-                ;
+                ->on('cycles');
+            $table->realBinary('user_id', 32);
+            $table->foreign('user_id')
+                ->references('uuid')
+                ->on('users');
             $table->json('notes')->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -987,11 +894,79 @@ class CreateMostOfTheTables extends Migration
             $table->timestamps();
         });
     }
-
-    public function populate()
+    
+    /**
+     * 
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
     {
-        DB::unprepared(file_get_contents('database/seed_companies.sql'));
-        DB::unprepared(file_get_contents('database/strains.sql'));    
+        //
     }
+
+    protected $tables = [
+        'api_keys',
+        'area_types',
+        'areas',
+        'ballast_light_fixture',
+        'ballasts',
+        'chillers',
+        'comments',
+        'contact_form_messages',
+        'content_edits',
+        'contents',
+        'contest_entries',
+        'cuttings',
+        'cycle_stage',
+        'cycles',
+        'driver_light_fixture',
+        'drivers',
+        'environments',
+        'failed_jobs',
+        'fans',
+        'farms',
+        'feature_plans',
+        'features',
+        'fertilizers',
+        'game_move',
+        'game_user',
+        'games',
+        'giveaways',
+        'harvest_plans',
+        'harvests',
+        'hvac_appliances',
+        'images',
+        'invoices',
+        'lamp_light_fixture',
+        'lamps',
+        'light_fixture_stage',
+        'light_fixtures',
+        'manufacturers',
+        'media',
+        'migrations',
+        'model_permissions',
+        'model_has_roles',
+        'password_resets',
+        'permissions',
+        'plans',
+        'plants',
+        'pot_lucks',
+        'profiles',
+        'raffles',
+        'reflector_hoods',
+        'reservoir_stage',
+        'reservoirs',
+        'role_has_permissions',
+        'roles',
+        'seeds',
+        'sensor_types',
+        'sensors',
+        'solutions',
+        'stages',
+        'subscriptions',
+        'users'        
+    ];
 
 }
