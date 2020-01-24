@@ -32,11 +32,14 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cycle whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cycle whereUuid($value)
  * @mixin \Eloquent
+ * @property mixed $id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Stage[] $stages
+ * @property-read int|null $stages_count
  */
 class Cycle extends Model
 {
     public function stages()
     {
-        return $this->belongsToMany(Elbow\Stage::class, 'cycle_stage')->using(Elbow\CycleStage::class);
+        return $this->belongsToMany(Stage::class, 'cycle_stage')->using(CycleStage::class);
     }
 }

@@ -26,6 +26,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage whereDeletedAt($value)
  * @property string $uuid
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContactFormMessage whereUuid($value)
+ * @property mixed $id
  */
 class ContactFormMessage extends Model
 {

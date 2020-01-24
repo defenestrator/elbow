@@ -28,6 +28,11 @@ use Elbow\Prototype as Model;
  * @property mixed|null $notes
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereStrainId($value)
+ * @property mixed $id
+ * @property mixed|null $seed_company_id
+ * @property mixed $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUserId($value)
  */
 class Plant extends Model
 {

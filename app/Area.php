@@ -32,6 +32,7 @@ use Elbow\Traits\HasUuid;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Area whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Area whereUuid($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Area extends Model
 {

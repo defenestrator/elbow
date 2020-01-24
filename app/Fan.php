@@ -28,6 +28,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Fan whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Fan whereWatts($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Fan extends Model
 {

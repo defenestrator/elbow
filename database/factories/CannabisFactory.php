@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Cannabis::class, function (Faker $faker) {
     return [
-        //
+        
     ];
 });

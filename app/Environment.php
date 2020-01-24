@@ -34,6 +34,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Environment whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Environment whereUuid($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Environment extends Model
 {

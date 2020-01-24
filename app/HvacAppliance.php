@@ -34,6 +34,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\HvacAppliance whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\HvacAppliance whereWatts($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class HvacAppliance extends Model
 {

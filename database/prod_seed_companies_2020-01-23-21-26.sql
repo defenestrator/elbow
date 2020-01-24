@@ -26,7 +26,7 @@
 DROP TABLE IF EXISTS `seed_companies`;
 
 CREATE TABLE `seed_companies` (
-  `uuid` binary(32) NOT NULL,
+  `id` binary(32) NOT NULL,
   `user_id` bigint(20) unsigned DEFAULT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ucpc` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -37,8 +37,8 @@ CREATE TABLE `seed_companies` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`uuid`),
-  UNIQUE KEY `seed_companies_uuid_unique` (`uuid`),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `seed_companies_id_unique` (`id`),
   UNIQUE KEY `seed_companies_ucpc_unique` (`ucpc`),
   KEY `seed_companies_user_id_foreign` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -46,7 +46,7 @@ CREATE TABLE `seed_companies` (
 LOCK TABLES `seed_companies` WRITE;
 /*!40000 ALTER TABLE `seed_companies` DISABLE KEYS */;
 
-INSERT INTO `seed_companies` (`uuid`, `user_id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `deleted_at`, `created_at`, `updated_at`)
+INSERT INTO `seed_companies` (`id`, `user_id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `deleted_at`, `created_at`, `updated_at`)
 VALUES
 	(X'3866616630336264613039623437313562633432356566633239383933386361',NULL,'Riot Seeds','YFTYM00000000000000000000',NULL,'https://www.cannabisreports.com/images/profile/a/full_ad1c69c816993e47f0c87e8a2da3b5acb9531c68.jpg','https://www.cannabisreports.com/strain-reports/riot-seeds','https://www.cannabisreports.com/api/v1.0/seed-companies/YFTYM00000000000000000000',NULL,'2019-04-24 16:18:08','2020-01-23 15:27:28'),
 	(X'3866616630336264613237373466643462653062316639303365613632613132',NULL,'GreenMan Organics','3Q67M00000000000000000000',NULL,'https://www.cannabisreports.com/images/profile/d/full_dedd63644e415247b4c7f07ea140a97c93ab4f26.jpg','https://www.cannabisreports.com/strain-reports/greenman-organics','https://www.cannabisreports.com/api/v1.0/seed-companies/3Q67M00000000000000000000',NULL,'2019-04-24 16:18:08','2020-01-23 15:27:28'),

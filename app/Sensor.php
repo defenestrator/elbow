@@ -28,6 +28,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Sensor whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Sensor whereUuid($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Sensor extends Model
 {

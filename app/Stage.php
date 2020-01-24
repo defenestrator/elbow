@@ -7,14 +7,15 @@ use Elbow\Prototype as Model;
 /**
  * Elbow\Stage
  *
- * @property string $uuid
- * @property int|null $area_id
+ * @property mixed $id
+ * @property mixed|null $area_id
  * @property string $name
  * @property string|null $description
  * @property int $photoperiod
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-write mixed $uuid
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage query()
@@ -26,7 +27,6 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage wherePhotoperiod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage whereUuid($value)
  * @mixin \Eloquent
  */
 class Stage extends Model

@@ -36,6 +36,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Manufacturer whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Manufacturer whereUuid($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Manufacturer extends Model
 {

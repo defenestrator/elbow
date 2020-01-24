@@ -7,11 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasPermissions;
 use Elbow\Traits\HasUuid;
+use Illuminate\Support\Str;
 
 /**
  * Elbow\User
  *
- * @property string $uuid
+ * @property int $id
  * @property string $name
  * @property string $email
  * @property string $password
@@ -24,8 +25,8 @@ use Elbow\Traits\HasUuid;
  * @property string|null $deleted_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\User[] $contents
- * @property-read int|null $contents_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Farm[] $farms
+ * @property-read int|null $farms_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
@@ -47,22 +48,36 @@ use Elbow\Traits\HasUuid;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereStripeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereTrialEndsAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUuid($value)
  * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Farm[] $farms
- * @property-read int|null $farms_count
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasPermissions, HasUuid;
     
     protected $guard_name = 'web';
-    
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+    */
+    public $incrementing = false;
+
+    /**
+     * Sets Optimized Uuids
+     *
+     * @void
+    */
+    public function setIdAttribute($id)
+    {
+        $this->attributes['id'] = preg_replace('/-/', '', Str::orderedUuid());
+    }
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -76,8 +91,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    public function farms()
-    {
-        return $this->hasMany(Farm::class);
-    }
+    // public function farms()
+    // {
+    //     return $this->hasMany(Farm::class);
+    // }
 }

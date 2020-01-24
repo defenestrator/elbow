@@ -8,7 +8,6 @@ $factory->define(Elbow\Solution::class, function (Faker $faker) {
     $ph = $faker->numberBetween(1, 14) . '.' . $faker->NumberBetween(0,9);
 
     return [
-        'uuid'      => $faker->unique()->uuid,
         'ph'        => $faker->name,
         'user_id'   => $faker->numberBetween(1,10),
         'sensor_id' => $faker->randomElement($nelement),

@@ -28,6 +28,7 @@ use Elbow\Prototype as Model;
  * @mixin \Eloquent
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Giveaway whereDeletedAt($value)
+ * @property mixed $id
  */
 class Giveaway extends Model
 {

@@ -6,9 +6,9 @@ use Elbow\Farm;
 use Elbow\Medium;
 
 $factory->define(Elbow\Cycle::class, function (Faker $faker) {
-    $uuid   = preg_replace('/-/', '', Str::orderedUuid());
-    $farm   = Farm::select('uuid')->orderByRaw("RAND()")->first()->uuid; 
-    $medium = Medium::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+    $id   = preg_replace('/-/', '', Str::orderedUuid());
+    $farm   = Farm::select('id')->orderByRaw("RAND()")->first()->id; 
+    $medium = Medium::select('id')->orderByRaw("RAND()")->first()->id;
 
     return [
         'name'              => $faker->name,

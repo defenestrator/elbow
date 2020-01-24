@@ -7,7 +7,6 @@ $factory->define(Elbow\Reservoir::class, function (Faker $faker) {
     $nelement = [$faker->numberBetween(1,10), null];
 
     return [
-        'uuid'              => $faker->unique()->uuid,
         'user_id'           => $faker->randomElement($nelement),   
         'name'              => $faker->word,
         'specification'     => $faker->randomElement(['{ "'. $faker->word . '":' . '"' . $faker->paragraph . '"}', null]),

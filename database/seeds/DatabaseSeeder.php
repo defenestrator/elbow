@@ -26,72 +26,72 @@ class DatabaseSeeder extends Seeder
 
     public function userId()
     {
-        return User::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return User::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function manufacturerId()
     {
-        return Manufacturer::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Manufacturer::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function farmId()
     {
-        return Farm::select('uuid')->orderByRaw("RAND()")->first()->uuid; 
+        return Farm::select('id')->orderByRaw("RAND()")->first()->id; 
     }
 
     public function contentId()
     {
-        return Content::select('uuid')->orderByRaw("RAND()")->first()->uuid; 
+        return Content::select('id')->orderByRaw("RAND()")->first()->id; 
     }
 
     public function cycleId()
     {
-        return Cycle::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Cycle::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function seedCompanyId()
     {
-        return SeedCompany::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return SeedCompany::select('id')->orderByRaw("RAND()")->first()->id;
     }
     
     public function stageId()
     {
-        return Stage::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Stage::select('id')->orderByRaw("RAND()")->first()->id;
     }
     
     public function lightFixtureId()
     {
-        return LightFixture::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return LightFixture::select('id')->orderByRaw("RAND()")->first()->id;
     }
     
     public function reservoirId()
     {
-        return Reservoir::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Reservoir::select('id')->orderByRaw("RAND()")->first()->id;
     }
         
     public function harvestId()
     {
-        return Harvest::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Harvest::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function ballastId()
     {
-        return Ballast::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Ballast::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function plantId()
     {
-        return Plant::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Plant::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function driverId()
     {
-        return Driver::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Driver::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     public function lampId()
     {
-        return Lamp::select('uuid')->orderByRaw("RAND()")->first()->uuid;
+        return Lamp::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
     /**

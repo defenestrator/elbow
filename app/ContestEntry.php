@@ -28,6 +28,7 @@ use Elbow\Prototype as Model;
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\ContestEntry whereDeletedAt($value)
  * @property-read int|null $notifications_count
+ * @property mixed $id
  */
 class ContestEntry extends Model
 {

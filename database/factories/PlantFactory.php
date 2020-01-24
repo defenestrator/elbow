@@ -5,13 +5,13 @@ use Illuminate\Support\Str;
 
 $factory->define(Elbow\Plant::class, function (Faker $faker) {
     
-    $seedco = Elbow\SeedCompany::get('uuid')->first()->uuid;
+    $seedco = Elbow\SeedCompany::get('id')->first()->id;
     
-    $user = Elbow\User::get('uuid')->first()->uuid;
+    $user = Elbow\User::get('id')->first()->id;
     
-    $strain = Elbow\Strain::get('uuid')->first()->uuid;
+    $strain = Elbow\Strain::get('id')->first()->id;
     
-    $cycle  = Elbow\Cycle::get('uuid')->first()->uuid;
+    $cycle  = Elbow\Cycle::get('id')->first()->id;
     
     return [
         'strain_id'             => $faker->randomElement([$strain, null]),

@@ -32,6 +32,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Ballast whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Ballast whereWatts($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Ballast extends Model
 {

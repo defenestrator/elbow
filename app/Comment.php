@@ -25,6 +25,15 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereUuid($value)
+ * @property mixed $id
+ * @property mixed $user_id
+ * @property mixed $commentable_id
+ * @property string $commentable_type
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Content[] $contents
+ * @property-read int|null $contents_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereCommentableId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereCommentableType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Comment whereUserId($value)
  */
 class Comment extends Model
 {

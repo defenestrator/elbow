@@ -43,6 +43,8 @@ use Elbow\Prototype as Model;
  * @property int|null $commentable_id
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereCommentableId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereCommentableType($value)
+ * @property mixed $id
+ * @property-read int|null $comments_count
  */
 class Content extends Model
 {

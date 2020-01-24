@@ -13,7 +13,8 @@ use Illuminate\Support\Str;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Prototype newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Prototype query()
  * @mixin \Eloquent
- * @property mixed $uuid
+ * @property mixed $id
+ * @property-write mixed $uuid
  */
 class Prototype extends Model
 {
@@ -31,9 +32,9 @@ class Prototype extends Model
      *
      * @void
     */
-    public function setUuidAttribute($uuid)
+    public function setIdAttribute($id)
     {
-        $this->attributes['uuid'] = preg_replace('/-/', '', Str::orderedUuid());
+        $this->attributes['id'] = preg_replace('/-/', '', Str::orderedUuid());
     }
     
 }

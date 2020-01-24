@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Elbow\SeedCompany::class, function (Faker $faker) {
-    $user = Elbow\User::get('uuid')->first()->uuid;
+    $user = Elbow\User::get('id')->first()->id;
     return [
         'user_id'               => $faker->randomElement([$user, null]),
         'name'                  => $faker->word,

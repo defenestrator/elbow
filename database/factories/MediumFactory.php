@@ -5,7 +5,6 @@ use Illuminate\Support\Str;
 
 $factory->define(Elbow\Medium::class, function (Faker $faker) {
     return [
-        'uuid'              => $faker->unique()->uuid,
         'manufacturer_id'   => $faker->numberBetween(1,10),
         'name'              => $faker->word,
         'description'       => $faker->paragraph,

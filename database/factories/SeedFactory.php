@@ -8,7 +8,6 @@ $factory->define(Elbow\Seed::class, function (Faker $faker) {
     $qty = $faker->randomElement([5,6,10,12,15,20,30]);
     $price = $qty * 10000;
     return [
-        'uuid'              => $faker->unique()->uuid,
         'description'       => $faker->paragraph,
         'strain_id'         => $faker->numberBetween(1, 10),
         'seed_company_id'   => $faker->numberBetween(1, 10),

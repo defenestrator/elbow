@@ -15,7 +15,7 @@ class AreaSeeder extends Seeder
     {
         factory(Elbow\Area::class, 10)->create([
             'farm_id'       => $this->farmId(),
-            'area_type_id'  => AreaType::get('uuid')->first()->uuid
+            'area_type_id'  => AreaType::get('id')->first()->id
             ]);
     }
 }

@@ -42,6 +42,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUuid($value)
+ * @property mixed $id
  */
 class Seed extends Model
 {

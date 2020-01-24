@@ -22,7 +22,6 @@ $factory->define(Elbow\SensorType::class, function (Faker $faker) {
             'par',
         ];        
         return [
-            'uuid'          => $faker->uuid,
             'type'          => $faker->unique()->randomElement($sensorTypes),
             'model'         => $faker->randomElement($nelement),
             'specification' => $faker->randomElement($jsornull)

@@ -35,6 +35,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Chiller whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Chiller whereWatts($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Chiller extends Model
 {

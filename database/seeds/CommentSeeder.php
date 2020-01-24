@@ -12,8 +12,9 @@ class CommentSeeder extends Seeder
     public function run()
     {
         factory(Elbow\Comment::class, 10)->create([
-            'author_id'           => $this->userId(),
-            'content_id'        => $this->contentId()
+            'user_id'           => $this->userId(),
+            'commentable_id'    => $this->contentId(),
+            'commentable_type'  => "Comment\Model"
         ]);
     }
 }

@@ -37,6 +37,9 @@ use Elbow\Prototype as Model;
  * @property string|null $medium
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereMedium($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereUuid($value)
+ * @property mixed $id
+ * @property mixed|null $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Image whereUserId($value)
  */
 class Image extends Model
 {

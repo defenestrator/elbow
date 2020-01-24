@@ -8,11 +8,11 @@ use Illuminate\Support\Str;
 
 $factory->define(Cutting::class, function (Faker $faker) {
 
-    $seedco = Elbow\SeedCompany::get('uuid')->first()->uuid;
+    $seedco = Elbow\SeedCompany::get('id')->first()->id;
     
-    $user = Elbow\User::get('uuid')->first()->uuid;
+    $user = Elbow\User::get('id')->first()->id;
     
-    $strain = Elbow\Strain::get('uuid')->first()->uuid;
+    $strain = Elbow\Strain::get('id')->first()->id;
 
     return [
         

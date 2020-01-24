@@ -34,6 +34,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\LightFixture whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\LightFixture whereWatts($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class LightFixture extends Model
 {

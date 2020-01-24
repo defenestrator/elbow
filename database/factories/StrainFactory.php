@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Elbow\Strain::class, function (Faker $faker) {
-    $seedco = Elbow\SeedCompany::get('uuid')->first()->uuid;
+    $seedco = Elbow\SeedCompany::get('id')->first()->id;
     return [
         'seed_company_id'           => $faker->randomElement([$seedco, null]),
         'lineage'                   => $faker->sentence,

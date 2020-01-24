@@ -36,6 +36,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Lamp whereUuid($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Lamp whereWatts($value)
  * @mixin \Eloquent
+ * @property mixed $id
  */
 class Lamp extends Model
 {
