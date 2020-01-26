@@ -850,10 +850,6 @@ class CreateMostOfTheTables extends Migration
         Schema::create('teams', function ($table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->string('name');
-            $table->realBinary('owner_id', 32)->nullable();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
             $table->softDeletes();
             $table->timestampsTz();
         });
@@ -962,6 +958,7 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
+            $table->boolean('owner');
             $table->timestampsTz();
         });
     }

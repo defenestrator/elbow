@@ -36,6 +36,9 @@ class Team extends Model
 
     public function users()
     {
-        return $this->belongsToMany('Elbow\User', 'team_user');
+        return $this->belongsToMany('Elbow\User')
+                ->using('Elbow\TeamUser') 
+                ->withTimestamps()
+                ->withPivot('owner');
     }
 }

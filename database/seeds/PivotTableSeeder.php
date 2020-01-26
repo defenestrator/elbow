@@ -4,6 +4,7 @@ use DatabaseSeeder as Seeder;
 use Illuminate\Support\Facades\DB;
 use Elbow\Plan;
 use Elbow\Feature;
+use Elbow\Team;
 
 class PivotTableSeeder extends Seeder
 {
@@ -17,6 +18,11 @@ class PivotTableSeeder extends Seeder
         return Plan::select('id')->orderByRaw("RAND()")->first()->id;
     }
 
+    public function teamId()
+    {
+        return Team::select('id')->orderByRaw("RAND()")->first()->id;
+    }
+
     public function generate()
     {
         $i = 0;
@@ -26,43 +32,57 @@ class PivotTableSeeder extends Seeder
                 'id' => $this->uuid(),                
                 'cycle_id' => $this->cycleId(), 
                 'stage_id' => $this->stageId()
-                ]);
+            ]);
+
             DB::table('reservoir_stage')->insert([
                 'id' => $this->uuid(),
                 'reservoir_id' => $this->reservoirId(), 
                 'stage_id' => $this->stageId()
-                ]);
+            ]);
+
             DB::table('harvest_plant')->insert([
                 'id' => $this->uuid(),
                 'harvest_id' => $this->harvestId(), 
                 'plant_id' => $this->plantId()
-                ]);
+            ]);
+
             DB::table('feature_plan')->insert([
                 'id' => $this->uuid(),
                 'feature_id' => $this->featureId(), 
                 'plan_id' => $this->planId()
-                ]);
+            ]);
+            
             DB::table('light_fixture_stage')->insert([
                 'id' => $this->uuid(),
                 'light_fixture_id' => $this->lightFixtureId(), 
                 'stage_id' => $this->stageId()
-                ]);
+            ]);
+            
             DB::table('ballast_light_fixture')->insert([
                 'id' => $this->uuid(),
                 'ballast_id' => $this->ballastId(), 
                 'light_fixture_id' => $this->lightFixtureId()
-                ]);
+            ]);
+            
             DB::table('driver_light_fixture')->insert([
                 'id' => $this->uuid(),                
                 'driver_id' => $this->driverId(), 
                 'light_fixture_id' => $this->lightFixtureId()
-                ]);
+            ]);
+            
             DB::table('lamp_light_fixture')->insert([
                 'id' => $this->uuid(),
                 'lamp_id' => $this->lampId(), 
                 'light_fixture_id' => $this->lightFixtureId()
+            ]);
+            
+            DB::table('team_user')->insert([
+                    'id'            => $this->uuid(),
+                    'team_id'       => $this->teamId(), 
+                    'user_id' => $this->userId(),
+                    'owner'         => array_rand([true, false],1)  
                 ]);
-
+    
             $i += 1;
         }
     }

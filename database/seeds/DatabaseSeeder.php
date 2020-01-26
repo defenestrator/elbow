@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Elbow\Farm;
 use Elbow\User;
+use Elbow\Team;
 use Elbow\Manufacturer;
 use Elbow\Content;
 use Elbow\Cycle;
@@ -124,6 +125,7 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
             CycleSeeder::class,
             StageSeeder::class,
+            TeamSeeder::class,
             SeedCompanySeeder::class,
             StrainSeeder::class, 
             FeatureSeeder::class,

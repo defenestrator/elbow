@@ -98,6 +98,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function teams()
     {
-        return $this->belongsToMany('Elbow\Team', 'team_user');
+        return $this->belongsToMany('Elbow\Team')
+                ->using('Elbow\TeamUser') 
+                ->withTimestamps()
+                ->withPivot('owner');
     }
 }

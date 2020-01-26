@@ -11,6 +11,6 @@ class TeamSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Elbow\Team::class, 10)->create([]);
     }
 }
