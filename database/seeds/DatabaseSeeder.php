@@ -16,6 +16,7 @@ use Elbow\Plant;
 use Elbow\SeedCompany;
 use Elbow\Driver;
 use Elbow\Lamp;
+use Elbow\Edit;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,72 +27,83 @@ class DatabaseSeeder extends Seeder
 
     public function userId()
     {
-        return User::select('id')->orderByRaw("RAND()")->first()->id;
+        return User::select('id')->first()->id;
     }
 
     public function manufacturerId()
     {
-        return Manufacturer::select('id')->orderByRaw("RAND()")->first()->id;
+        return Manufacturer::select('id')->first()->id;
     }
 
     public function farmId()
     {
-        return Farm::select('id')->orderByRaw("RAND()")->first()->id; 
+        return Farm::select('id')->first()->id; 
     }
 
     public function contentId()
     {
-        return Content::select('id')->orderByRaw("RAND()")->first()->id; 
+        return Content::select('id')->first()->id; 
     }
 
+    public function content()
+    {
+
+        return Content::get('title', 'body', 'author_id', 'slug', 'fields')->first()->toJson(); 
+    }
+
+    public function hashed()
+    {
+        return  sha1($this->content());
+    }
+    
     public function cycleId()
     {
-        return Cycle::select('id')->orderByRaw("RAND()")->first()->id;
+        return Cycle::select('id')->first()->id;
     }
 
     public function seedCompanyId()
     {
-        return SeedCompany::select('id')->orderByRaw("RAND()")->first()->id;
+        return SeedCompany::select('id')->first()->id;
     }
     
     public function stageId()
     {
-        return Stage::select('id')->orderByRaw("RAND()")->first()->id;
+        return Stage::select('id')->first()->id;
     }
     
     public function lightFixtureId()
     {
-        return LightFixture::select('id')->orderByRaw("RAND()")->first()->id;
+        return LightFixture::select('id')->first()->id;
     }
     
     public function reservoirId()
     {
-        return Reservoir::select('id')->orderByRaw("RAND()")->first()->id;
+        return Reservoir::select('id')->first()->id;
     }
         
     public function harvestId()
     {
-        return Harvest::select('id')->orderByRaw("RAND()")->first()->id;
+        return Harvest::select('id')->first()->id;
     }
 
     public function ballastId()
     {
-        return Ballast::select('id')->orderByRaw("RAND()")->first()->id;
+        return Ballast::select('id')->first()->id;
     }
 
     public function plantId()
     {
-        return Plant::select('id')->orderByRaw("RAND()")->first()->id;
+        return Plant::select('id')->first()->id;
     }
 
     public function driverId()
     {
-        return Driver::select('id')->orderByRaw("RAND()")->first()->id;
+        return Driver::select('id')->first()->id;
     }
 
     public function lampId()
     {
-        return Lamp::select('id')->orderByRaw("RAND()")->first()->id;
+        return Lamp::select('id')->first()->id;
     }
 
     /**
@@ -140,7 +152,7 @@ class DatabaseSeeder extends Seeder
             GiveawaySeeder::class, 
             ContestEntrySeeder::class, 
             ContactFormMessageSeeder::class, 
-            ContentEditSeeder::class,
+            EditSeeder::class,
             PivotTableSeeder::class,  
         ]);       
     }

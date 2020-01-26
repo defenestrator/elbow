@@ -7,7 +7,7 @@ use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
-use Elbow\Persistence\MySqlGrammar;
+use Elbow\Persistence;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,9 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        DB::connection('mysql')->setSchemaGrammar(new MySqlGrammar());
+        DB::connection('mysql')->setSchemaGrammar(new Persistence\MySqlGrammar());
 
-        Blueprint::macro('realBinary', function($column, $length) {
+        Blueprint::macro('realBinary', function($column, $length = 32) {
             return $this->addColumn('realBinary', $column, compact('length'));
         });
     }
@@ -31,9 +31,7 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function register()
-    {
-        // Passport::ignoreMigrations();
-        
+    {        
         if (config('app.env') != 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
             $this->app->register(\Laravel\Dusk\DuskServiceProvider::class);

@@ -2,8 +2,9 @@
 
 namespace Elbow\Exceptions;
 
-use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+
+use Exception; 
 
 class Handler extends ExceptionHandler
 {

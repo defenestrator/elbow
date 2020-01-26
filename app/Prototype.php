@@ -16,10 +16,10 @@ use Illuminate\Support\Str;
  * @property mixed $id
  * @property-write mixed $uuid
  */
-class Prototype extends Model
+abstract class Prototype extends Model
 {
     use HasUuid;
-    
+
     /**
      * Indicates if the IDs are auto-incrementing.
      *
@@ -27,12 +27,13 @@ class Prototype extends Model
     */
     public $incrementing = false;
 
+    
     /**
      * Sets Optimized Uuids
      *
      * @void
     */
-    public function setIdAttribute($id)
+    public function setIdAttribute()
     {
         $this->attributes['id'] = preg_replace('/-/', '', Str::orderedUuid());
     }

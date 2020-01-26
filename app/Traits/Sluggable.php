@@ -6,12 +6,13 @@ trait Sluggable
 	public static function bootSluggable()
 	{
 		static::saving(function ($model) {
-			$settings = $model->sluggable();
-			$model->slug = $model->generateSlug($settings['source']);
+			$model->slug = $model->generateSlug($model->{$model->sluggable()});
 		});
 	}
 
-	abstract public function sluggable(): array;
+	protected function sluggableField() {
+		return 'title';
+	}
 
 	public function generateSlug($string)
 	{

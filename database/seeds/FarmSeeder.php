@@ -14,7 +14,7 @@ class FarmSeeder extends Seeder
     public function run()
     {
         factory(Elbow\Farm::class, 10)->create([
-            'user_id' => User::get('id')->first()->id
+            'user_id' => $this->userId()
         ]);
     }
 }

@@ -44,8 +44,4 @@ class Comment extends Model
         return $this->morphTo();
     }
 
-    public function contents()
-    {
-        return $this->belongsToMany(Content::class, 'content_comment')->using(ContentComment::class);
-    }
 }

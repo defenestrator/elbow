@@ -45,27 +45,45 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Content whereCommentableType($value)
  * @property mixed $id
  * @property-read int|null $comments_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Image[] $edits
+ * @property-read int|null $edits_count
+ * @property-read int|null $images_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Tag[] $tags
+ * @property-read int|null $tags_count
  */
 class Content extends Model
 {
-    // use Sluggable; // Attach the Sluggable trait to the model
-
-    // protected $attributes = ['title', 'user_id', 'body'];
-
-	// public function sluggable() {
-	// 	return [
-	// 		'source' => 'title',
-	// 	];
-	// }
+    use Sluggable; // Attach the Sluggable trait to the model
     
-    // public function images()
-    // {
-    //     return $this->morphMany(Content::class, 'imageable');
-    // }
+    protected function sluggable()
+    {
+        return 'title';
+    }    
 
+    /**
+     * Get all of the post's comments.
+     */
     public function comments()
     {
-        return $this->belongsToMany(Comment::class, 'content_comment');
+        return $this->morphMany('Elbow\Comment', 'commentable');
+    }
+
+    public function edits()
+    {
+        return $this->morphMany('Elbow\Edit', 'editable');
+    }
+
+    public function images()
+    {
+        return $this->morphMany('Elbow\Image', 'imageable');
+    }
+
+    /**
+     * Get all of the tags for the content.
+     */
+    public function tags()
+    {
+        return $this->morphToMany('Elbow\Tag', 'taggable');
     }
 }
 

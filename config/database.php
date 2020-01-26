@@ -33,18 +33,12 @@ return [
 
     'connections' => [
 
-        'sqlite' => [
-            'driver' => 'sqlite',
-            'database' => env('DB_DATABASE', 'storage/app/db/database.sqlite'),
-            'prefix' => '',
-        ],
-
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
+            'database' => env('DB_DATABASE', ''),
+            'username' => env('DB_USERNAME', ''),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
@@ -65,22 +59,6 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'disable',
-        ],
-
-        'sqlsrv' => [
-            'driver' => 'sqlsrv',
-            'host' => env('DB_HOST', 'localhost'),
-            'port' => env('DB_PORT', '1433'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
-            'prefix' => '',
-        ],
-        'dusk' => [
-            'driver' => 'sqlite',
-            'database' => env('DB_SQLITE_TEST', storage_path('testing.sqlite')),
-            'prefix' => '',
         ],
 
     ],
@@ -111,36 +89,42 @@ return [
 
     'redis' => [
         'client' => 'predis',
+
         'elbow_default' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 4,
         ],
+
         'elbow_session' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 5,
         ],
+
         'elbow_queue' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 6,
         ],
+
         'elbow_cache' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 7,
         ],
+
         'elbow_broadcast' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
             'database' => 14,
         ],
+
         'default' => [
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),

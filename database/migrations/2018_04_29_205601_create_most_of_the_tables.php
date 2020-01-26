@@ -41,7 +41,7 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->realBinary('sensor_id', 32)->nullable();
             $table->foreign('sensor_id')->references('id')->on('sensors');
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('subscriptions', function ($table) {
@@ -55,7 +55,7 @@ class CreateMostOfTheTables extends Migration
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('ends_at')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
         
         Schema::create('features', function (Blueprint $table) {
@@ -63,7 +63,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('name');
             $table->string('description')->default('super useful new feature!');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('plans', function (Blueprint $table) {
@@ -72,7 +72,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('stripe_plan');
             $table->boolean('archived')->default(false);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('profiles', function (Blueprint $table) {
@@ -90,7 +90,7 @@ class CreateMostOfTheTables extends Migration
             $table->longText('bio')->nullable();
             $table->boolean('public')->default(false);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('invoices', function (Blueprint $table) {
@@ -104,13 +104,13 @@ class CreateMostOfTheTables extends Migration
             $table->boolean('paid_in_full')->default(false);
             $table->date('due_date')->default( now('America/Boise') );
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('connection');
-            $table->text('queue');
+            $table->string('connection');
+            $table->string('queue');
             $table->longText('payload');
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
@@ -124,14 +124,14 @@ class CreateMostOfTheTables extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('guard_name');
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create($permissionTableNames['roles'], function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('guard_name');
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create($permissionTableNames['model_has_permissions'], function (Blueprint $table) use ($permissionTableNames, $permissionColumnNames) {
@@ -197,23 +197,23 @@ class CreateMostOfTheTables extends Migration
                 ->on('users');
             $table->realBinary('imageable_id', 32)->nullable();
             $table->string('imageable_type')->nullable();
-            $table->text('large')->nullable();
-            $table->text('medium')->nullable();
-            $table->text('small')->nullable();            
+            $table->string('large')->nullable();
+            $table->string('medium')->nullable();
+            $table->string('small')->nullable();            
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('contents', function (Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->realBinary('author_id', 32);
             $table->foreign('author_id')->references('id')->on('users');
-            $table->text('slug');
-            $table->text('title');
+            $table->string('slug', 240)->unique();
+            $table->string('title', 191);
             $table->longText('body');
             $table->json('fields')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('comments', function (Blueprint $table) {
@@ -222,15 +222,15 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->realBinary('commentable_id', 32);
             $table->string('commentable_type');
-            $table->text('title')->nullable();
+            $table->string('title')->nullable();
             $table->longText('body');
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('tags', function (Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->string('tag');
-            $table->string('slug');
+            $table->string('slug')->unique();
         });
 
         Schema::create('taggables', function (Blueprint $table) {
@@ -240,6 +240,17 @@ class CreateMostOfTheTables extends Migration
             $table->string('taggable_type');
         });
 
+        Schema::create('edits', function (Blueprint $table) {
+            $table->realBinary('id', 32)->unique()->primary();
+            $table->realBinary('editable_id', 32);
+            $table->string('editable_type');
+            $table->realBinary('user_id', 32);
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('hash', 40);
+            $table->longText('state');
+            $table->timestampTz('created_at', 0);
+        });
+
         Schema::create('raffles', function (Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->unsignedBigInteger('ticket_limit')->default(0);
@@ -247,7 +258,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('description');
             $table->timestamp('ends_at');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('giveaways', function (Blueprint $table) {
@@ -257,7 +268,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('image');
             $table->dateTime('ends_at');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('contest_entries', function (Blueprint $table) {
@@ -266,7 +277,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('contact_form_messages', function (Blueprint $table) {
@@ -275,7 +286,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('email_address');
             $table->string('message');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('games', function (Blueprint $table) {
@@ -284,7 +295,7 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('winner_id', 32);
             $table->foreign('winner_id')->references('id')->on('users');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('game_user', function(Blueprint $table) {
@@ -297,20 +308,23 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
+            $table->timestampsTz();
         });
         
-        Schema::create('game_move', function(Blueprint $table) {
+        Schema::create('game_moves', function(Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->realBinary('game_user_id', 32);   
             $table->foreign('game_user_id')->references('id')->on('game_user');
+            $table->binary('hash');
             $table->json('state'); 
+            $table->timestampTz('created_at', 0);
         });
         
         Schema::create('products', function (Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->string('type');
             $table->longText('description');            
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('cannabis', function (Blueprint $table) {
@@ -333,7 +347,7 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
@@ -355,7 +369,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('postcode')->default('80521');
             $table->string('total_area_m2')->default(40);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('area_types', function (Blueprint $table) {
@@ -366,7 +380,7 @@ class CreateMostOfTheTables extends Migration
                 ->on('users');
             $table->string('name')->default('generic grow tent');
             $table->string('description')->default('cheap and easy');
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('areas', function (Blueprint $table) {
@@ -380,13 +394,13 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('area_type_id', 32)->nullable();
             $table->foreign('area_type_id')->references('id')->on('area_types');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('seed_companies', function (Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->string('name')->nullable();
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->realBinary('user_id', 32)->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -396,7 +410,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('url')->nullable();
             $table->string('cannabis_reports_link')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('strains', function (Blueprint $table) {
@@ -422,7 +436,7 @@ class CreateMostOfTheTables extends Migration
             $table->integer('flowering_time_max')->unsigned()->nullable();
             $table->string('ucpc')->nullable()->unique();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
  
 
@@ -447,7 +461,7 @@ class CreateMostOfTheTables extends Migration
             $table->boolean('feminized');
             $table->boolean('autoflower');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('cuttings', function (Blueprint $table) {
@@ -467,7 +481,7 @@ class CreateMostOfTheTables extends Migration
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('price')->default(100);
             $table->unsignedBigInteger('inventory')->default(0);
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('manufacturers', function (Blueprint $table) {
@@ -481,7 +495,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('country')->default('United States');
             $table->string('postcode')->default('80521');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('media', function (Blueprint $table) {
@@ -494,7 +508,7 @@ class CreateMostOfTheTables extends Migration
                 ->on('manufacturers');
             $table->json('ingredients')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('cycles', function (Blueprint $table) {
@@ -510,7 +524,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('layout')->default('Horizontal');
             $table->string('method')->default('Organic Soil');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('harvests', function (Blueprint $table) {
@@ -521,9 +535,9 @@ class CreateMostOfTheTables extends Migration
                 ->references('id')
                 ->on('cycles');
             $table->unsignedInteger('grams')->default(454);
-            $table->text('notes')->nullable();
+            $table->string('notes')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('stages', function (Blueprint $table) {
@@ -531,10 +545,10 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('area_id', 32)->nullable();
             $table->foreign('area_id')->references('id')->on('areas');
             $table->string('name')->default('default stage');
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->unsignedInteger('photoperiod')->default(24);            
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('plants', function (Blueprint $table) {
@@ -557,7 +571,7 @@ class CreateMostOfTheTables extends Migration
                 ->on('users');
             $table->json('notes')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         }); 
 
         Schema::create('sensor_types', function (Blueprint $table) {
@@ -572,7 +586,7 @@ class CreateMostOfTheTables extends Migration
             // float ^[+-]?(\d*\.)?(\d+)?\b$
             //pH format ^((?![2-9])(1 {0,1})(\d){0,1})(\.)(\d{1,2})\b$
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('sensors', function (Blueprint $table) {
@@ -589,7 +603,7 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('sensor_type_id', 32)->nullable();
             $table->foreign('sensor_type_id')->references('id')->on('sensor_types');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('solutions', function (Blueprint $table) {
@@ -604,7 +618,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('temperature_c')->nullable();
             $table->unsignedBigInteger('dissolved_oxygen')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('environments', function (Blueprint $table) {
@@ -619,7 +633,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('relative_humidity')->nullable();
             $table->float('barometric_pressure', 4, 2)->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('light_fixtures', function (Blueprint $table) {
@@ -638,7 +652,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('ppf')->default(1100);
             $table->json('specification')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('reservoirs', function (Blueprint $table) {
@@ -656,7 +670,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('capacity')->default(0);
             $table->boolean('auto_dosing')->default(false);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('fertilizers', function (Blueprint $table) {
@@ -683,7 +697,7 @@ class CreateMostOfTheTables extends Migration
             $table->float('molybdenum', 6, 3)->default(0.008);
             $table->float('zinc', 6, 3)->default(0.04);
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('hvac_appliances', function (Blueprint $table) {
@@ -702,7 +716,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('name')->default(0);
             $table->string('appliance_type')->default('Air Conditioner');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('fans', function (Blueprint $table) {
@@ -718,7 +732,7 @@ class CreateMostOfTheTables extends Migration
                 ->references('id')
                 ->on('manufacturers');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('chillers', function (Blueprint $table) {
@@ -737,7 +751,7 @@ class CreateMostOfTheTables extends Migration
                 ->references('id')
                 ->on('users');
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('lamps', function (Blueprint $table) {
@@ -757,7 +771,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('lumens')->default(36000);
             $table->json('specification')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('drivers', function (Blueprint $table) {
@@ -777,7 +791,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('efficiency')->default(989);
             $table->json('specification')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('ballasts', function (Blueprint $table) {
@@ -795,7 +809,7 @@ class CreateMostOfTheTables extends Migration
             $table->unsignedBigInteger('efficiency')->default(895);
             $table->json('specification')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('reflector_hoods', function (Blueprint $table) {
@@ -811,7 +825,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('model');
             $table->json('specification')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
@@ -830,7 +844,7 @@ class CreateMostOfTheTables extends Migration
             $table->string('card_last_four')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
@@ -912,7 +926,7 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('id', 32)->unique()->primary();
             $table->realBinary('plan_id', 32);
             $table->realBinary('feature_id', 32);
-            $table->timestamps();
+            $table->timestampsTz();
         });
 
         Schema::create('harvest_plant', function (Blueprint $table) {
@@ -926,17 +940,6 @@ class CreateMostOfTheTables extends Migration
                 ->references('id')
                 ->on('plants')
                 ;
-        });
-        
-        Schema::create('content_edits', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('content_id', 32);
-            $table->foreign('content_id')->references('id')->on('contents');
-            $table->realBinary('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->json('old_content'); // JSON formatted title, body, image_id array and tags, comments, whatever else.
-            $table->string('old_hash', 64);
-            $table->timestamps();
         });
     }
     
