@@ -91,8 +91,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
-    // public function farms()
-    // {
-    //     return $this->hasMany(Farm::class);
-    // }
+    public function farms()
+    {
+        return $this->hasMany(Farm::class);
+    }
+
+    public function teams()
+    {
+        return $this->belongsToMany('Elbow\Team', 'team_user');
+    }
 }

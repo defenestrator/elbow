@@ -846,6 +846,17 @@ class CreateMostOfTheTables extends Migration
             $table->softDeletes();
             $table->timestampsTz();
         });
+
+        Schema::create('teams', function ($table) {
+            $table->realBinary('id', 32)->unique()->primary();
+            $table->string('name');
+            $table->realBinary('owner_id', 32)->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+            $table->softDeletes();
+            $table->timestampsTz();
+        });
     }
 
     protected function pivots()
@@ -938,8 +949,20 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('plant_id', 32);
             $table->foreign('plant_id')
                 ->references('id')
-                ->on('plants')
-                ;
+                ->on('plants');
+        });
+
+        Schema::create('team_user', function (Blueprint $table) {
+            $table->realBinary('id', 32)->unique()->primary();
+            $table->realBinary('team_id', 32);
+            $table->foreign('team_id')
+                ->references('id')
+                ->on('teams');
+            $table->realBinary('user_id', 32);
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users');
+            $table->timestampsTz();
         });
     }
     

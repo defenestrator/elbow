@@ -32,8 +32,10 @@ use Elbow\Prototype as Model;
  */
 class Team extends Model
 {
+    protected $table = 'teams';
+
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany('Elbow\User', 'team_user');
     }
 }
