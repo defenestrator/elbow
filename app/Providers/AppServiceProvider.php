@@ -3,11 +3,11 @@
 namespace Elbow\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Laravel\Dusk\DuskServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Schema\Blueprint;
 use Elbow\Persistence;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Inertia::version(function () {
+            return md5_file(public_path('mix-manifest.json'));
+        });
+
         DB::connection('mysql')->setSchemaGrammar(new Persistence\MySqlGrammar());
 
         Blueprint::macro('realBinary', function($column, $length = 32) {
@@ -34,7 +38,6 @@ class AppServiceProvider extends ServiceProvider
     {        
         if (config('app.env') != 'production') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-            $this->app->register(\Laravel\Dusk\DuskServiceProvider::class);
         }
     }
 }

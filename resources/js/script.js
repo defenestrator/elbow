@@ -6,26 +6,24 @@
  */
 
 require('./bootstrap');
+import { InertiaApp } from '@inertiajs/inertia-vue'
+import Vue from 'vue'
+import route from 'ziggy'
+import { Ziggy } from './ziggy'
 
-window.Vue = require('vue');
+Vue.use(InertiaApp)
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+const app = document.getElementById('app')
 
-const files = require.context('./components/', true, /\.vue$/i)
+Vue.prototype.$route = (...args) => route(...args).url()
 
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+new Vue({
+  render: h => h(InertiaApp, {
+    props: {
+      initialPage: JSON.parse(app.dataset.page),
+      resolveComponent: name => import(`./Pages/${name}`).then(module => module.default),
+    },
+  }),
+}).$mount(app)
 
-const app = new Vue({
-    el: '#app'
-});
 
-const swa=document.createElement('link');
-swa.href='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.css';
-swa.rel='stylesheet';
-document.getElementsByTagName('head')[0].appendChild(swa);

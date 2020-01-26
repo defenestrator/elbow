@@ -14,5 +14,13 @@ if (process.env.APP_ENV !== "production") {
 } else {
     mix.js('resources/js/script.js', 'public/js')
         .sass('resources/sass/style.scss', 'public/css')
-        .version();
+        .version()
+        .webpackConfig({
+            resolve: {
+                alias: {
+                    ziggy: path.resolve('vendor/tightenco/ziggy/dist/js/route.js'),
+                }
+            }
+        });
 }
+

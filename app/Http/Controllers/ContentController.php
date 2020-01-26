@@ -3,6 +3,8 @@
 namespace Elbow\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Elbow\Content;
 
 class ContentController extends Controller
 {
@@ -13,7 +15,17 @@ class ContentController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Users/Index', [
+            'content' => Content::all()->map(function ($content) {
+                return [
+                    'id' => $content->id,
+                    'author_id' => $content->author_id,
+                    'title' => $content->title,
+                    'body' => $content->body,
+                ];
+            }),
+            // 'create_url' => URL::route('users.create'),
+        ]);
     }
 
     /**
