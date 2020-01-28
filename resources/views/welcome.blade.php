@@ -1,28 +1,20 @@
 @extends('layouts.master')
     @section('content')
-    <board></board>
-        <div class="container-fluid" style="padding-left:0;padding-right:0;">
+        <div class="container-fluid p-6">
             <div class="center">
-                <div class="title m-b-md">
-                    <h1>Elbow</h1>
-                    <h2>For those who grow </h2>
-                     
-                </div>
-                <div class="title m-b-md">
-                    <img src="img/new-hero.png" style="width:360px;" alt="Hello, from elbow farm!" title="Hello, from elbow farm!" />
-                </div>
-                <div class="welcome-links m-b-md">
+                <div class="font-serif">
+                    <h1 class="header">Elbow</h1>
+                    <h2>For those who grow </h2>                     
                 </div>
             </div>
-
-            <div class="m-b-md dark" style="padding:2em 0;">
+            <div style="padding:2em 0;">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-sm-6">
+                    <div>
+                        <div>
                             <h3>Get your <a href="/register">free account</a> today<sup><a href="#no-cc">*</a></sup></h3>
                             <hr>
                         </div>
-                        <div class="col-sm-6">
+                        <div>
                             <h5>Optimize your garden</h5>
                             <h4 style="color:#2d94fa;">from seed to harvest</h4>
                         </div>
@@ -72,12 +64,7 @@
                         </form>
                     </div>
                     <hr>
-                    {{--<div class="welcome-links m-b-md">--}}
-                        {{--<a href="https://github.com/defenestrator/elbow" target="_blank">Github</a>--}}
-                        {{--<a href="https://docs.elbow.farm" target="_blank">Developer Documentation</a>--}}
-                    {{--</div>--}}
                 </div>
-
             </div>
         </div>
     @endsection

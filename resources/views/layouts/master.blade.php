@@ -1,82 +1,67 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', config('app.name'))</title>
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="icon" href="/favicon-100.png" sizes="100x100">
-    <!-- deferred loading of js -->
-    <script src="{{ mix('js/script.js') }}" defer></script>
-    <!-- Styles -->
-    <link href="{{ mix('css/style.css') }}" rel="stylesheet">
-    <!-- Page level Styles -->
-    @yield('page_styles', '')
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>@yield('title', config('app.name'))</title>
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="icon" href="/favicon-100.png" sizes="100x100">
+  <link href="{{ mix('css/style.css') }}" rel="stylesheet">
+  @yield('page_styles', '')
+  <script src="{{ mix('js/script.js') }}" defer></script>
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-elbow">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('welcome') }}">
-                    <img src="/img/hydro-gunblue-small.png">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+<body class="font-sans bg-blue-900 text-white width-100 h-100">
+  <div class="bg-white text-blue-900">
+  <div id="app" class="container-fluid mx-auto">
+    <nav x-data="{ openMenu: false }" class="flex items-center justify-between flex-wrap bg-white p-6 shadow">
+      <div class="flex items-center flex-shrink-0 text-blue-900 mr-6">
+      <a href="/">
+        <img src="/img/hydro-gunblue-small.png" alt="Elbow Farm">
+      </a>
+      </div>
+      <div class="flex items-center flex-shrink-0 text-blue-900 mr-6">
+        <p class="font-100 font-sans tracking-tight lg:hidden">Elbow Farm</p>
+      </div>
+      <div x-on:click="openMenu= true" class="block lg:hidden">
+        <button x-on:click="openMenu= true"        
+          class="flex items-center px-3 py-2 rounded text-blue-900 hover:text-gray-500">
+          <svg x-on:click="openMenu= true" class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+      <div x-cloak
+      x-bind:class="{'hidden': ! openMenu }"
+      x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div  
+        class="text-sm lg:flex-grow">
+          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+            Docs
+          </a>
+          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+            Examples
+          </a>
+          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900">
+            Blog
+          </a>
+        </div>
+        <div>
+          <a href="#"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-500 border-gray-200 hover:borderhover:text-green-600 hover:border mt-4 lg:mt-0">Download</a>
+        </div>
+      </nav>
 
-                    </ul>
+    @yield('content')
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a class="nav-link" href="{{ route('seeds.index') }}">{{ __('Seeds') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        @yield('top')
-        <main class="py-4">
-            @yield('message')
-            @yield('content')
-            @yield('bottom')
-            <div class="container">
-                <hr>
-                <p class="footer small">&copy; Elbow Farm {{ date('F jS, Y') }}</p>
-            </div>
-        </main>
+    <div class="flex-row-reverse">
+      @yield('bottom')
     </div>
-    @yield('page_scripts')
-
-    <script async src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.3.1/sweetalert2.min.js"></script>
+  </div>
+</div>
 </body>
+
 </html>

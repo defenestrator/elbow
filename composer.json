@@ -30,6 +30,7 @@
         "tightenco/ziggy": "^0.8.1"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.5",
         "defenestrator/test-printer": "^3.0",
         "filp/whoops": "^2.0",
