@@ -1,0 +1,28 @@
+/* Reset */
+@import "tailwindcss/base";
+@import "reset";
+
+/* Components */
+@import "tailwindcss/components";
+@import "buttons";
+@import "form";
+@import "nprogress";
+
+/* Utilities */
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,400|Spectral:400,700&display=swap');
+
+body{
+    font-weight: 200;
+}
+
+h1,h2,h3 {
+    font-weight: 700;
+}
+
+h4, h5, h6 {
+    font-weight: 400
+}
+
+[x-cloak] { display: none; }
