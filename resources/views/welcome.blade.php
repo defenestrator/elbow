@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div style="padding:2em 0;">
-                <div class="container">
+                <div class="container" id="banana">
                     <div>
                         <div>
                             <h3>Get your <a href="/register">free account</a> today<sup><a href="#no-cc">*</a></sup></h3>
@@ -43,23 +43,24 @@
                         </div>
                         <form class="contact" id="contact" style="margin-bottom:2em; " action="{{route('contact')}}" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                            <div class="form-group">
+                            <div class="block">
                                 <input type="text" name="contact-name"
-                                       class="form-control input-lg" placeholder="name"
+                                       class="form-input mt-1 block w-full" placeholder="name"
                                        value="{{ old('contact-name') }}" required>
                             </div>
-                            <div class="form-group">
-                                <input type="email" name="contact-email" class="form-control input-lg"
-                                       placeholder="email" value="{{ old('contact-email') }}"required>
+                            <div class="block">
+                                <input type="email" name="contact-email" class="text-gray-700"
+                                       placeholder="email" value="{{ old('contact-email') }}" required>
                             </div>
-                            <div class="form-group">
-                        <textarea name="contact-msg"
-                                  class="form-control input-lg"
-                                  rows="6"
-                                  placeholder="message" required>{{ old('contact-msg') }}</textarea>
+                            <div class="block">
+                                <label class="block">
+                                    <span class="text-gray-700">Textarea</span>
+                                    <textarea class="form-textarea mt-1 block w-full" placeholder="Message.">
+                                        {{ old('contact-msg') }}
+                                    </textarea>
                             </div>
-                            <div class="input-group">
-                                <button class="btn btn-primary input-lg" type="submit">Submit</button>
+                            <div class="block mt-2">
+                                <button class="btn-blue" type="submit">Submit</button>
                             </div>
                         </form>
                     </div>

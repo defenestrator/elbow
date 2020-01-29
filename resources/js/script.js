@@ -1,11 +1,10 @@
 
-import Alpine from 'alpinejs'
-import route from 'ziggy'
-import { Ziggy } from './ziggy'
+import App from "./components/App.svelte";
 
+const app = new App({
+  target: app
+});
 
+window.app = app;
 
-
-
-
-
+export default app;
