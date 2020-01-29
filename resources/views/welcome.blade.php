@@ -2,6 +2,7 @@
     @section('content')
         <div class="container-fluid p-6">
             <div class="center">
+                
                 <div class="font-serif">
                     <h1 class="header">Elbow</h1>
                     <h2>For those who grow </h2>                     
@@ -9,16 +10,7 @@
             </div>
             <div style="padding:2em 0;">
                 <div class="container" id="banana">
-                    <div>
-                        <div>
-                            <h3>Get your <a href="/register">free account</a> today<sup><a href="#no-cc">*</a></sup></h3>
-                            <hr>
-                        </div>
-                        <div>
-                            <h5>Optimize your garden</h5>
-                            <h4 style="color:#2d94fa;">from seed to harvest</h4>
-                        </div>
-                    </div>
+                    <div id="potluck" class="container block"></div>
                 </div>
             </div>
             <div class="container m-b-md">
@@ -65,6 +57,7 @@
                         </form>
                     </div>
                     <hr>
+                    
                 </div>
             </div>
         </div>

@@ -1,10 +1,16 @@
-
 import App from "./components/App.svelte";
+import board from './components/potluck/board.svelte'
 
 const app = new App({
-  target: app
-});
+  target: banana
+})
+
+const potluck = new board({
+  target: document.body
+})
 
 window.app = app;
 
-export default app;
+window.potluck = potluck;
+
+export default {}
