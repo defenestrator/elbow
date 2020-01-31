@@ -1,17 +1,18 @@
 @extends('layouts.master')
     @section('content')
-        <div class="container-fluid p-6">
+        <div class="container-fluid p-6" id="main">
             <div class="center">
-                
+                <div id="potluck" class="container flex"></div>
+            <div style="padding:2em 0;">
                 <div class="font-serif">
                     <h1 class="header">Elbow</h1>
                     <h2>For those who grow </h2>                     
                 </div>
             </div>
-            <div style="padding:2em 0;">
-                <div class="container" id="banana">
-                    <div id="potluck" class="container block"></div>
-                </div>
+            
+            <div class="container" id="banana">
+                
+            </div>
             </div>
             <div class="container m-b-md">
                 <p class="small" id="no-cc"><a href="#no-cc">*</a>no credit card required</p>
