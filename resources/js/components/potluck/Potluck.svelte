@@ -691,8 +691,8 @@ onMount(() => {
 
 	.responsive {
         background-color: offwhite;
-		width: 94vw;
-		height: 94vw;
+		width: 93.14vw;
+		height: 93.14vw;
 		margin: 10px auto;
 	}
 
