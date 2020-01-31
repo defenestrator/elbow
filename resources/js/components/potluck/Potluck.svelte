@@ -698,8 +698,8 @@ onMount(() => {
 
 	.responsive {
         background-color: offwhite;
-		width: 80vw;
-		height: 80vw;
+		width: 90vw;
+		height: 90vw;
 		margin: 10px auto;
 	}
 
@@ -920,7 +920,6 @@ onMount(() => {
         -webkit-text-stroke-width: 2px;
 		-webkit-text-stroke-color: black;
         text-shadow: -4px 3px 0px black;
-        text-shadow: -6px 4px 0px black;
 		-webkit-text-fill-color: transparent;
 		/* Will override color (regardless of order) */
 
