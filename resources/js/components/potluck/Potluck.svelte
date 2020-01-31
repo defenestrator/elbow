@@ -568,7 +568,7 @@ onMount(() => {
 					<div class="firstLine firstLine-left no-color rotation1">Dealing <br />Square</div>
 				</div>
 				<div class="squareSide" id="15">
-                <div class="headerSide header-left orange"></div>
+                <div class="headerSide header-left red"></div>
 					<div class="firstLine firstLine-left rotation1">Maui Wowie</div>
 				</div>
 				<div class="squareSide" id="14">                    
@@ -691,8 +691,8 @@ onMount(() => {
 
 	.responsive {
         background-color: offwhite;
-		width: 98vw;
-		height: 98vw;
+		width: 95.75vw;
+		height: 94.25vw;
 		margin: 10px auto;
 	}
 
@@ -893,7 +893,7 @@ onMount(() => {
 		width: 46%;
 		background: transparent;
 		position: absolute;
-		transform: rotateZ(-45deg) translateX(-32.5%) translateY(212.5%);
+		transform: rotateZ(-45deg) translateX(-26.5%) translateY(246.5%);
         border: 3px solid black;
         border-radius:1em;
         padding: 0, 0.1em, 0.2em 0.1em;
@@ -924,7 +924,7 @@ onMount(() => {
         background: rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;
         background-size:contain;
         border-radius:0.3em;
-		transform: rotateZ(-45deg) translateX(-12.5%) translateY(66.6%);
+		transform: rotateZ(-45deg) translateX(-5.5%) translateY(132.25%);
 	}
 
 	.card-blue-inside {
