@@ -684,13 +684,6 @@ onMount(() => {
 </main>
 
 <style>
-    /* Reset */
-    @import "tailwindcss/base";
-    @import "reset";
-
-    /* Components */
-    @import "tailwindcss/components";
-
 	div {
 		box-sizing: border-box;
 		text-transform: uppercase;
