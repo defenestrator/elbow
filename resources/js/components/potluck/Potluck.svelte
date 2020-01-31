@@ -875,11 +875,7 @@ onMount(() => {
 	.purple {
 		background-color: #d93a96;
     }
-    
-    .white {
-        background-color:white;
-        color:green;
-    }
+
 
 	.rotation1 {
 		transform: rotate(90deg);
