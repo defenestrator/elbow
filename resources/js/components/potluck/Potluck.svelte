@@ -893,7 +893,7 @@ onMount(() => {
 		width: 46%;
 		background: transparent;
 		position: absolute;
-		transform: rotateZ(-45deg) translateX(-24%) translateY(190%);
+		transform: rotateZ(-45deg) translateX(-32.5%) translateY(212.5%);
         border: 3px solid black;
         border-radius:1em;
         padding: 0, 0.1em, 0.2em 0.1em;
@@ -924,7 +924,7 @@ onMount(() => {
         background: rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;
         background-size:contain;
         border-radius:0.3em;
-		transform: rotateZ(-45deg) translateX(-13%) translateY(66%);
+		transform: rotateZ(-45deg) translateX(-12.5%) translateY(66.6%);
 	}
 
 	.card-blue-inside {
@@ -937,7 +937,7 @@ onMount(() => {
 	.card-orange {
         background:     rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;
         background-size:contain;
-        transform: rotateZ(-45deg) translateX(-13%) translateY(610%);
+        transform: rotateZ(-45deg) translateX(-25%) translateY(687.25%);
         border-radius:0.3em;
 	}
 
