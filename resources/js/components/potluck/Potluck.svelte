@@ -41,13 +41,17 @@ function gameRoll() {
 
 function moveCash(amount, from, to) {
 
-	from.cash = from.cash -= amount
-	to = to.cash += amount
-	return from.cash
+	// from.cash = from.cash -= amount
+	// to = to.cash += amount
+	// return from.cash
 }
 
-function payEach(activePlayers, amount) {
-
+function payEach(amount) {
+    // for (let i = 0; i < state.players.length;)
+    // {
+    //     moveCash(amount, state.players[i] )
+    //      i += 1 
+    // }
 }
 
 function completeTurn() {
@@ -276,15 +280,7 @@ const bummers = [
     ]
     let spaces = [{
             id: 1,
-            name: 'Colombian',
-            price: 400,
-            oz: 40,
-            "2lb": 120,
-            "3lb": 240,
-            "4lb": 360,
-            "bale": 400,
-            color: "brown",
-            "effect": "pot",
+            effect: "buy",
             space: 1,
         },
         {
@@ -545,7 +541,7 @@ onMount(() => {
 				<div class="firstLine firstLine-top rotation2">Far<br />Out</div>
 			</div>
 			<div class="square1" id="28">
-            <div class="header header-top white"></div>
+            <div class="header header-top lightblue"></div>
 				<div class="firstLine firstLine-top rotation2">Just <br>Good Pot</div>
 			</div>
 			<div class="square1" id="29">
@@ -586,7 +582,7 @@ onMount(() => {
 					<div class="firstLine firstLine-left no-color rotation1">You Pay<br />10x</div> 
 				</div>
 				<div class="squareSide" id="11">
-					<div class="headerSide header-left white"></div>
+					<div class="headerSide header-left lightblue"></div>
 					<div class="firstLine firstLine-left rotation1">colombian<br />chiba</div>
 				</div>
 			</div>
@@ -625,7 +621,7 @@ onMount(() => {
 					<div class="firstLine firstLine-right no-color rotation3">Dealing <br>Square</div>
 				</div>
 				<div class="squareSide" id="37">
-                <div class="headerSide header-right white"></div>
+                <div class="headerSide header-right lightblue"></div>
 					<div class="firstLine firstLine-right rotation3">Jamaican</div>
 				</div>
 				<div class="squareSide" id="38">
@@ -701,7 +697,7 @@ onMount(() => {
 	}
 
 	.responsive {
-		background: #cde6d0;
+        background-color: offwhite;
 		width: 80vw;
 		height: 80vw;
 		margin: 10px auto;
@@ -709,7 +705,8 @@ onMount(() => {
 
 	.mainSquare {
 		height: 100%;
-		position: relative;
+        position: relative;
+        background-color:offwhite;
 	}
 
 	.row {
@@ -728,7 +725,8 @@ onMount(() => {
 	.square1 {
 		outline: 1px solid black;
 		flex-grow: 1;
-		position: relative;
+        position: relative;
+        background:white;
 	}
 
 	.square2 {
@@ -736,12 +734,14 @@ onMount(() => {
 		outline: 1px solid black;
 		display: flex;
 		flex-direction: column;
-		position: relative;
+        position: relative;
+        background:white;
 	}
 
 	.square9 {
 		flex-grow: 9;
-		outline: 1px solid black;
+        outline: 1px solid black;
+        background:lightgoldenrodyellow;
 	}
 
 	.squareSide {
@@ -755,41 +755,49 @@ onMount(() => {
 		height: 21%;
 		position: absolute;
 		outline: 2px solid black;
-		background: grey;
-		/* width: 100%; */
+        background: grey;
+        background: transparent url('/img/leaf-bg.png') center center no-repeat;
+        background-position: contain;
 	}
 
 	.headerSide {
-		/* height: 100%; */
 		width: 21%;
-		position: absolute;
+        position: absolute;
 		outline: 2px solid black;
 	}
 
 	.header-top {
 		bottom: 1px;
 		left: 1px;
-		right: 1px;
+        right: 1px;
+        background: transparent url('/img/leaf-180-bg.png') center center no-repeat;
+        background-size: contain;
 	}
 
 	.header-bottom {
 		top: 1px;
 		left: 1px;
 		right: 1px;
+        background: transparent url('/img/leaf-bg.png') center center no-repeat;
+        background-size: contain;
 	}
 
 	.header-left {
 		top: 1px;
 		bottom: 1px;
 		right: 1px;
-		background: grey;
+        background: grey;
+        background: transparent url('/img/leaf-90-bg.png') center center no-repeat;
+        background-size: contain;
 	}
 
 	.header-right {
 		top: 1px;
 		bottom: 1px;
 		left: 1px;
-		background: grey;
+        background: grey;
+        background: transparent url('/img/leaf-270-bg.png') center center no-repeat;
+        background-size: contain;
 	}
 
 	.firstLine {
@@ -849,9 +857,9 @@ onMount(() => {
 		background-color: #fef200;
 	}
 
-	/* .lightblue {
+	.lightblue {
 		background-color: #aae0fa;
-	} */
+	}
 
 	.brown {
 		background-color: #955436;
@@ -894,23 +902,28 @@ onMount(() => {
 
 	.logoBox {
 		width: 46%;
-		background: green;
+		background: transparent;
 		position: absolute;
-		transform: rotateZ(-45deg) translateX(-25%) translateY(187%);
-		border: 3px solid black;
-		text-align: center;
-		box-shadow: inset 0px 2px 12px 0px white;
+		transform: rotateZ(-45deg) translateX(-24%) translateY(190%);
+        border: 3px solid black;
+        border-radius:1em;
+        padding: 0, 0.1em, 0.2em 0.1em;
+        text-align: center;
+        box-shadow: inset 0px 4px 24px 8px white;
+        box-shadow: inset 0px 2px 12px 0px greenyellow;
 	}
 
 	.logoName {
-		font-size: 7.1vw;
-		color: white;
-		font-family: futura;
-		text-shadow: -4px 3px 0px black;
-		-webkit-text-fill-color: white;
+		font-size: 7.0vw;
+		color: black;
+        font-family: futura;
+        -webkit-text-stroke-width: 2px;
+		-webkit-text-stroke-color: black;
+        text-shadow: -4px 3px 0px black;
+        text-shadow: -6px 4px 0px black;
+		-webkit-text-fill-color: transparent;
 		/* Will override color (regardless of order) */
-		-webkit-text-stroke-width: 2px;
-		-webkit-text-stroke-color: #cfc2c3;
+
 	}
 
 	.card-box {
@@ -920,8 +933,9 @@ onMount(() => {
 	}
 
 	.card-blue {
-        background: transparent url('/img/FarOut.jpg') center center no-repeat;
-        background-position:cover;
+        background: rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;
+        background-size:contain;
+        border-radius:0.3em;
 		transform: rotateZ(-45deg) translateX(-13%) translateY(66%);
 	}
 
@@ -933,9 +947,10 @@ onMount(() => {
 	}
 
 	.card-orange {
-        background:  transparent url('/img/BumOut.jpg') center center no-repeat;
-        background-position:cover;
-		transform: rotateZ(-45deg) translateX(-13%) translateY(610%);
+        background:     rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;
+        background-size:contain;
+        transform: rotateZ(-45deg) translateX(-13%) translateY(610%);
+        border-radius:0.3em;
 	}
 
 	.card-orange-inside {

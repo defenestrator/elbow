@@ -15,7 +15,7 @@
 
 <body class="font-sans bg-blue-900 text-white width-100 h-100">
   <div class="bg-white text-blue-900">
-  <div id="app" class="container-fluid mx-auto">
+  <div id="app" class="container-fluid flex-row mx-auto">
     <nav x-data="{ openMenu: false }" class="flex items-center justify-between flex-wrap bg-white p-6 shadow">
       <div class="flex items-center flex-shrink-0 text-blue-900 mr-6">
       <a href="/">
