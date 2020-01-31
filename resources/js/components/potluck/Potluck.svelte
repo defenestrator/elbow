@@ -919,7 +919,7 @@ onMount(() => {
         font-family: futura;
         -webkit-text-stroke-width: 2px;
 		-webkit-text-stroke-color: black;
-        text-shadow: -4px 3px 0px black;
+        text-shadow: -3px 2px 0px black;
 		-webkit-text-fill-color: transparent;
 		/* Will override color (regardless of order) */
 
