@@ -599,7 +599,7 @@ onMount(() => {
 			</div>
 			<div class="square2">
 				<div class="squareSide" id="31">
-					<div class="headerSide header-right green"></div>
+					<div class="headerSide header-right purple"></div>
 					<div class="firstLine firstLine-right rotation3">Vietnamese</div>
 				</div>
 				<div class="squareSide" id="32">
@@ -614,7 +614,7 @@ onMount(() => {
 					<div class="firstLine firstLine-right rotation3">Panama<br /> Red</div>
 				</div>
 				<div class="squareSide" id="35">
-                <div class="headerSide header-right green"></div>
+                <div class="headerSide header-right brown"></div>
 					<div class="firstLine firstLine-right rotation3">Mexican</div>
 				</div>
 				<div class="squareSide" id="36">
@@ -651,7 +651,7 @@ onMount(() => {
 				<div class="firstLine firstLine-bottom no-color">downtown<br>pharmacy</div>
 			</div>
 			<div class="square1" id="6">
-				<div class="header header-bottom lightolive"></div>
+				<div class="header header-bottom green"></div>
 				<div class="firstLine firstLine-bottom">gainesville<br /> green</div>
 			</div>
 			<div class="square1" id="5">
@@ -691,8 +691,8 @@ onMount(() => {
 
 	.responsive {
         background-color: offwhite;
-		width: 93.14vw;
-		height: 93.14vw;
+		width: 95vw;
+		height: 95vw;
 		margin: 10px auto;
 	}
 
