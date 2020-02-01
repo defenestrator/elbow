@@ -4,50 +4,71 @@ const players = [
         token: "blue",
         cash: 2875,       
         strains: [], 
-        playing: true,
-        space: 40
-    }, {
-    
+        playing: false,
+        space: 39,
+        discount: false,
+        getOutOfHospital: false
+    }, 
+    {
         name: "player2",
         token: "green",
         cash: 2875,
         strains: [], 
         playing: false,
-        space: 40
-    }, {
+        space: 39,
+        discount: false,
+        getOutOfHospital: false
+    }, 
+    {
         name: "player3",
         token: "yellow",
         cash: 2875,
         strains: [], 
         playing: true,
-        space: 40
-    }, {
+        space: 39,
+        discount: false,
+        getOutOfHospital: false
+    }, 
+    {
         name: "player4",
         token: "orange",
         cash: 2875,
         strains: [], 
         playing: false,
-        space: 40
-    }, {
+        space: 39,
+        discount: false,
+        getOutOfHospital: false
+    }, 
+    {
         name: "player5",
         token: "red",
         cash: 2875,
         strains: [], 
         playing: false,
-    }, {
+        space: 39,
+        discount: false,
+        getOutOfHospital: false
+    }, 
+    {
         name: "player6",
         token: "purple",
         cash: 2875,
         strains: [], 
         playing: false,
-        space: 40
-    }, {
+        space: 39,
+        discount: false,
+        getOutOfHospital: false,
+        discount: false,
+    }, 
+    {
         name: "player7",
         token: "black",
         cash: 2875,
         strains: [], 
         playing: false,
-        space: 40
+        space: 39,
+        discount: false,
+        getOutOfHospital: false
     },
     
 ]
