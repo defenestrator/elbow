@@ -414,7 +414,8 @@ onMount(() => {
 
     </div>
     <div class="container-fluid py-3 px-5 bg-white">
-        Open Developer Tools | Console and press <button on:click="{executeTurn}" class="btn-blue">Next Turn</button>
+        Open Developer Tools Console adn click<br> 
+        <button on:click="{executeTurn}" class="btn-blue">Next Turn</button>
     </div>
 </main>
 
