@@ -122,7 +122,7 @@ const spaces = [
         id: 22,
         title: "Bum Me Out",
         message: "",            
-        effect: "bummed",
+        effect: "bummer",
     },
     {
         id: 23,
@@ -215,13 +215,13 @@ const spaces = [
         id: 38,
         title: "Michoacan",
         message: "",            
-        effect: undefined,
+        effect: "pot",
     }, 
     {
         id: 39,
         title: "Straight Space",
         message: "",            
-        effect: undefined,
+        effect: "pot",
     }
 ]
 

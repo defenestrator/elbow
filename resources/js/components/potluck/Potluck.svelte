@@ -1,5 +1,6 @@
 <script>
 import { onMount } from "svelte";
+
 import activePlayers from './players';
 import strains from './strains';
 import spaces from './spaces';
@@ -20,11 +21,11 @@ let state = {
     }
 }
 
-function currentPlayer() {
+export function currentPlayer() {
     return state.players[state.activePlayerId]
 }
 
-function mapEvents(e) {
+export function mapEvents(e) {
 
     switch (e) {        
         case "pot":
@@ -36,29 +37,65 @@ function mapEvents(e) {
         break;
 
         case "loseTurn":
-            return loseTurn()
+            return loseTurn(1)
         break;
 
         case "bummer":
-            return bummer()
+            let b = bummer()
+            mapEvents(b.effect)
+            return console.log('Bummer: ' + b.effect)
         break;
 
         case "farout":
-            return farout()
+            let f = farout()
+            mapEvents(f.effect)            
+            return console.log('Far Out: ' + f.effect)
+        break;
+        
+        case "jackpot":
+            currentPlayer().cash += state.jackpot.cash
+            return "You won the jackpot!"
+        break;
+        
+        case "paraquat":
+           return alert('define paraquat()')
+        break;
+        
+        case "paraquat":
+           return alert('define getOutOfHospital()')
         break;
 
-        default:                
+        default:
+            console.log("handle: " + e)                
             if (e.substring(0,1) === "x") {
-                let pay = Number(e.substring(1,4)) * state.currentRoll
-                return moveCash(pay, currentPlayer().cash, state.bank.cash)
-            } else {
-                alert('unhandled case in mapEvents()')
+                let pay = Number(e.substring(1,5)) * state.currentRoll
+                currentPlayer().cash -= pay
+                state.bank.cash += pay
+                return currentPlayer().cash
+            } 
+            
+            if(e.substring(0,1) === "l") {
+                let lose = Number(e.substring(1,5))
+                currentPlayer().cash -= lose
+                state.bank.cash += lose
+                return currentPlayer().cash
+            } 
+            
+            if(e.substring(0,1) === "w") {
+                let win = Number(e.substring(1,5))
+                currentPlayer().cash += win
+                state.bank.cash -= win
+                return currentPlayer().cash
+            } 
+
+            else {
+                alert('unhandled case in mapEvents() ' + e)
             }
         break;
     }    
 }
 
-function potluck(id) {
+export function potluck(id) {
     let bankStrains = state.bank.strains
     for (let i = 0; i < bankStrains.length;) 
     {
@@ -69,50 +106,40 @@ function potluck(id) {
     }
 }
 
-function bummer() {
+export function bummer() {
     return bummers[Math.floor(Math.random()*bummers.length)];
 }
 
-function farout() {
+export function farout() {
     return farouts[Math.floor(Math.random()*farouts.length)];
 }
 
-function sixSidedDie (min, max) {
+export function sixSidedDie (min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function gameRoll() {
-    console.log('Rolling the dice.')
+export function gameRoll() {
     let first = sixSidedDie(1, 6)
-    console.log('first die ' + first)
     let second = sixSidedDie(1, 6)
-    console.log('second die ' + second)
 	return state.currentRoll = first + second
 }
 
-function moveCash(amount, from, to) {
-    console.log('moving ' + amount + ' from ' + from + ' to ' + to)
-	from = from - amount
-    to = to + amount
-    return [amount, from, to]
-}
-
-function payEach(players, amount) {
+export function payEach(players, amount) {
     for (let i = 0; i < players.length;)
     {
         moveCash(amount, currentPlayer().cash, players[i].cash )
          i += 1 
     }
 }
-function startGame() {
+export function startGame() {
     gameRoll()
     currentPlayer().space = state.currentRoll
-    console.log('first roll ' + state.currentRoll + ' ' + currentPlayer().name + ' is on space ' + currentPlayer().space )
+    console.log('First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' + currentPlayer().space + ', and has $' + currentPlayer().cash)
 }
 
-function calculateSpaceId() {
+export function calculateSpaceId() {
     const total = currentPlayer().space + state.currentRoll 
     const remainder = total % 40
     if (remainder === 0) {
@@ -120,74 +147,94 @@ function calculateSpaceId() {
     }
     return remainder
 }
+export function incrementPlayer() {
+    state.activePlayerId++  
+    // keep index in sync
+    if (state.activePlayerId >= state.players.length) {
+        state.activePlayerId = 0
+    }
+    return
+}
 
-function executeTurn() {
-    gameRoll()
-	state.activePlayerId++
-   
-    
-	if (state.activePlayerId >= state.players.length) {
-		state.activePlayerId = 0
+export function executeTurn() {
+    // Drop players with no cash from game.
+    state.players = state.players.filter(function(player) { 
+        if (player.cash >= 1) {
+            console.log(player.name + ' cash: ' + player.cash)
+            return player
+            }
+        })
+
+    // then check for a winner
+    if ( state.players.length === 1) {
+        return endGame()
     }
 
-    console.log('Player ' + currentPlayer().name + ' rolled a ' + state.currentRoll)
+    // increment state.activePlayerId 
+    incrementPlayer()
+    
+    //start the turn by rolling dice, and cleaning up turn based booleans
+    gameRoll()  
+    
 
-    currentPlayer().space = calculateSpaceId()
-
-    console.log("Current Space: " + currentPlayer().space)
-
-    let space = spaces[currentPlayer().space - 1 ] 
-
-    mapEvents(space.effect)
-
-	if (state.skipped.includes(state.activePlayerId)) {
+    if (state.skipped.includes(state.activePlayerId)) {
 		state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
 		console.log("end of turn, player id: " + state.activePlayerId)
 		console.log("skipped player id: " + state.activePlayerId)
 		return executeTurn()
     }
+        
+    console.log(currentPlayer().name + ' rolled a ' + state.currentRoll + ' is on space ' + currentPlayer().space  + ' and has $' + currentPlayer().cash)
 
-	console.log("end of turn, player id: " + state.activePlayerId)
+    currentPlayer().space = calculateSpaceId()
+
+    let space = spaces[currentPlayer().space - 1 ] 
+
+    let result = mapEvents(space.effect)
+
+    console.log("end of turn, " + currentPlayer().name + ' rolled ' + state.currentRoll + ', is on space ' + currentPlayer().space  + ',  and has $' + currentPlayer().cash)
 	return
 }
 
-
-function loseTurn(rounds = 1) {
+export function loseTurn(rounds = 1) {
     for (rounds > 0; rounds -= 1; ) {
         state.skipped.push(state.skipped[state.activePlayerId])
     }
 	return
 }
 
-function hospital() {
+export function hospital() {
     currentPlayer().space = 10
     return mapEvents("x100")
 }
 
-function getOutOfHospital() {
+export function getOutOfHospital() {
     return currentPlayer().getOutOfHospital = true
 }
 
-function reducePot() {
-    return "Give the next player to land on pot you own a 50% discount"
+export function reducePot() {
+    return currentPlayer().discount = true
 }
 
-function bumEveryoneOut(amount) {
+export function bumEveryoneOut(amount) {
     const others = state.players.reduce(function(player) {
         player.id != currentPlayer().id
     })
-
     payEach(others, amount)
 }
 
-function freePound() {
-    return
+export function endGame() {
+    let owned = 'nothing' 
+    let winner = state.players[0]
+    if (winner.strains.length > 0) {
+        owned = cwinner.strains.forEach(item => item + ', ')
+    }
+    
+    let message = "The Winner is " + winner.name + ' with $' + winner.cash + ', they owned ' + owned + '.'
+    
+    return alert(message)
 }
-
-function jackpot() {
-    return moveCash(state.jackpot.cash, state.jackpot.cash, currentPlayer().cash)
-}
-
+   
 onMount(() => {
   startGame();
 });
@@ -195,6 +242,8 @@ onMount(() => {
 </script>
 
 <main>
+    <div class="flex-row py-2 px-5 bg-white width-100">
+    </div>
     <div class="responsive">
         <div class="mainSquare">
             <div class="row top">
@@ -364,8 +413,8 @@ onMount(() => {
         </div>
 
     </div>
-    <div class="flex-row p-4 px-5">
-        <button on:click="{executeTurn}" class="btn-blue">Take Turn</button>
+    <div class="container-fluid py-3 px-5 bg-white">
+        Open Developer Tools | Console and press <button on:click="{executeTurn}" class="btn-blue">Next Turn</button>
     </div>
 </main>
 
@@ -550,9 +599,6 @@ onMount(() => {
 
 	.green {
 		background-color: #1fb25a;
-	}
-    .lightolive {
-		background-color: #7ab391;
 	}
 	.orange {
 		background-color: #f7941d;

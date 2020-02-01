@@ -1,10 +1,10 @@
-const players = [
+let players = [
     {
         name: "player1",      
         token: "blue",
         cash: 2875,       
         strains: [], 
-        playing: false,
+        playing: true,
         space: 39,
         discount: false,
         getOutOfHospital: false
@@ -12,9 +12,9 @@ const players = [
     {
         name: "player2",
         token: "green",
-        cash: 2875,
+        cash: 75,
         strains: [], 
-        playing: false,
+        playing: true,
         space: 39,
         discount: false,
         getOutOfHospital: false
@@ -22,7 +22,7 @@ const players = [
     {
         name: "player3",
         token: "yellow",
-        cash: 2875,
+        cash: 0,
         strains: [], 
         playing: true,
         space: 39,
@@ -32,9 +32,9 @@ const players = [
     {
         name: "player4",
         token: "orange",
-        cash: 2875,
+        cash: 25,
         strains: [], 
-        playing: false,
+        playing: true,
         space: 39,
         discount: false,
         getOutOfHospital: false
