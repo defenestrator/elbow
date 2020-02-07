@@ -12,7 +12,7 @@ let players = [
     {
         name: "player2",
         token: "green",
-        cash: 75,
+        cash: 2875,
         strains: [], 
         playing: true,
         space: 40,
@@ -22,7 +22,7 @@ let players = [
     {
         name: "player3",
         token: "yellow",
-        cash: 0,
+        cash: 2875,
         strains: [], 
         playing: true,
         space: 40,

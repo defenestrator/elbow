@@ -213,6 +213,7 @@ function payEach(players, amount) {
 
 function startGame() {
     gameRoll()
+    console.log("Turn #1")
     currentPlayer().space = state.currentRoll
     let event = spaces[currentPlayer().space - 1].effect
     mapEvents(event)
@@ -245,23 +246,32 @@ function incrementPlayer() {
 
 function deal() {
     //get all strains by player.
-
+    let owned = []
     for (let i = 0; i < state.players.length;) {
-        let strains;
-        strains.player[i].bought = player[i].strains 
-        console.log(strains.player[i])
+        state.players[i].strains.map(function(strain) {
+            owned.push({
+                playerIndex: i,
+                price: strain.price,
+                name: strain.name,
+                rent: strain.oz,
+                value: strain.oz * 5
+            })
+        })
+        i += 1
     }
-    
+    console.log(owned)
 }
 
 function executeTurn() {
     // Drop players with no cash from game.
     state.players = state.players.filter(function(player) { 
         if (player.cash >= 1) {
-            console.log(player.name + ' cash: ' + player.cash)
+            console.log(player.name + ' $' + player.cash)
             return player
         } else {
-            console.log(player.name + ' was dropped from the game for being broke at the beginning of their turn.')
+            // Give us your property and die a like a dog
+            state.bank.strains = state.bank.strains.concat(player.strains)
+            console.log(player.name + ' was dropped from the game for being broke at the beginning of their turn. Their strains are returned unto the fold.')
         }
     })
 
@@ -298,8 +308,12 @@ function executeTurn() {
 
     // report end of turn state
     console.log("At end of turn, " + currentPlayer().name + ' rolled ' + state.currentRoll + ', is on space ' + currentPlayer().space  + ',  and has $' + currentPlayer().cash)
+    turnCounter += 1
+    console.log('Turn #' + turnCounter)
 	return executeTurn()
 }
+
+let turnCounter = 1;
 
 function loseTurn() {
     console.log(currentPlayer().name  + ' lost a turn')
@@ -338,7 +352,9 @@ export function endGame() {
         }            
     }
     
-    let message = "The Winner is " + winner.name + ' with $' + winner.cash + '. They owned ' + owned + '.'
+    const turnNumber = turnCounter + 1
+
+    let message = "At the beginning of turn " + turnNumber + ": The Winner is " + winner.name + ' with $' + winner.cash + '. They owned ' + owned + '.'
     
     return alert(message)
 }
@@ -522,7 +538,7 @@ onMount(() => {
     </div>
     <div class="container-fluid py-3 px-5 bg-white">
         Open Developer Tools Console and click:  
-        <button on:click="{executeTurn}" class="btn-blue">Next Turn</button>
+        <button on:click="{executeTurn}" class="btn-blue"> Next Turn</button>
     </div>
 </main>
 
