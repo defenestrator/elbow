@@ -1,6 +1,5 @@
 <script>
 import { onMount } from "svelte";
-
 import activePlayers from './players';
 import strains from './strains';
 import spaces from './spaces';
@@ -14,22 +13,25 @@ let state = {
     players: activePlayers,
     bank: {
         strains:    strains,
-        cash:       10000
+        cash:       100000
     },
     jackpot: {
         cash:       2000
     }
 }
 
-export function currentPlayer() {
+function currentPlayer() {
     return state.players[state.activePlayerId]
 }
 
-export function mapEvents(e) {
+function mapEvents(e) {
+    switch (e) {    
+        case "hospital":
+            return hospital()
+        break;
 
-    switch (e) {        
         case "pot":
-            return potluck(currentPlayer().space)
+            return pot()             
         break;
 
         case "deal":
@@ -51,18 +53,42 @@ export function mapEvents(e) {
             mapEvents(f.effect)            
             return console.log('Far Out: ' + f.effect)
         break;
+
+        case "highRoller":
+                const roller = sixSidedDie(1, 6) + sixSidedDie(1, 6) * 100;
+                return mapEvents('w' + roller)
+        break;
         
+        case "payLefty":
+            const lefty = sixSidedDie(1, 6) + sixSidedDie(1, 6) * 100;
+            
+            currentPlayer().cash -= lefty
+            
+            let leftyId = Math.floor(Math.random()*state.players.length)
+            return state.players[leftyId].cash += lefty
+        break;
+
         case "jackpot":
             currentPlayer().cash += state.jackpot.cash
+            if (state.bank.cash >= 2000){
+                state.bank.cash -= 2000
+            }
+            
             return "You won the jackpot!"
         break;
         
         case "paraquat":
-           return alert('define paraquat()')
+            console.log(currentPlayer().name + ' got paraquat, this is going to suck.')
+            loseTurn()
+           if (currentPlayer().getOutOfHospital === true ) {
+               currentPlayer().getOutOfHospital = false
+               return;
+           }     
+           return hospital()
         break;
-        
-        case "paraquat":
-           return alert('define getOutOfHospital()')
+
+        case "getOutOfHospital":
+           return currentPlayer().getOutOfHospital = true
         break;
 
         default:
@@ -73,142 +99,220 @@ export function mapEvents(e) {
                 state.bank.cash += pay
                 return currentPlayer().cash
             } 
-            
             if(e.substring(0,1) === "l") {
                 let lose = Number(e.substring(1,5))
                 currentPlayer().cash -= lose
                 state.bank.cash += lose
                 return currentPlayer().cash
             } 
-            
             if(e.substring(0,1) === "w") {
                 let win = Number(e.substring(1,5))
                 currentPlayer().cash += win
                 state.bank.cash -= win
                 return currentPlayer().cash
             } 
-
             else {
-                alert('unhandled case in mapEvents() ' + e)
+                console.log('unhandled case in mapEvents() ' + e)
             }
         break;
     }    
 }
 
-export function potluck(id) {
+function pot() {
     let bankStrains = state.bank.strains
-    for (let i = 0; i < bankStrains.length;) 
-    {
-        if (bankStrains[i].space == id) {
-            return bankStrains[i]
-        }
-        i++
+    for (let i = 0; i < bankStrains.length;) {
+        if (bankStrains[i].space == currentPlayer().space) {
+            if (bankStrains[i].price < currentPlayer().cash){
+                buyPot(bankStrains[i]) 
+                return state.bank.strains.splice(i, 1)  
+            } else {
+                console.log(currentPlayer().name + 'did not have enough money for ' + bankStrains[i].name)
+            }          
+        } 
+        i += 1
+    }
+    
+    let owned = []
+
+    for (let i = 0; i < state.players.length;) {
+        state.players[i].strains.find(function(s){
+            if (s.space === currentPlayer().space) {
+                if(currentPlayer().strains.includes(s) && s.price < currentPlayer().cash) {
+                    
+                    currentPlayer().cash -= s.price
+                    state.bank.cash += s.price
+
+                    // watch this, lol
+                    if (s.oz >= s["5lb"]) {
+                        s.oz = s["5lb"] + s.price
+                        return console.log(s.name + ' is over 5lb ' + s.oz)
+                    }
+                    
+                    if (s.oz <= s["2lb"]) {
+                        if (s.oz === s["2lb"]) {
+                            return s.oz = s["3lb"]
+                        }
+                        return s.oz = s["2lb"]
+                    }
+                    
+                    if (s.oz > s["3lb"]) {
+                        if(s.oz === s["4lb"]) {
+                            return s.oz = s["5lb"]                            
+                        }
+                        return s.oz = s["4lb"]                        
+                    }
+                }
+                console.log(currentPlayer().name + ' paid ' + state.players[i].name + ' $' + s.oz + ' for ' + s.name)
+                currentPlayer().cash -= s.oz
+                state.players[i].cash += s.oz
+            }
+        })
+        i += 1
     }
 }
 
-export function bummer() {
+function buyPot(strain) {
+    currentPlayer().cash -= strain.price
+    state.bank.cash += strain.price
+    currentPlayer().strains.push(strain)
+    console.log(currentPlayer().name + " bought: " +  strain.name)
+}
+
+function buyPound(strain) {
+    // Move money
+    
+}
+
+function bummer() {
     return bummers[Math.floor(Math.random()*bummers.length)];
 }
 
-export function farout() {
+function farout() {
     return farouts[Math.floor(Math.random()*farouts.length)];
 }
 
-export function sixSidedDie (min, max) {
+function sixSidedDie (min, max) {
 	min = Math.ceil(min);
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export function gameRoll() {
+function gameRoll() {
     let first = sixSidedDie(1, 6)
     let second = sixSidedDie(1, 6)
 	return state.currentRoll = first + second
 }
 
-export function payEach(players, amount) {
-    for (let i = 0; i < players.length;)
-    {
-        moveCash(amount, currentPlayer().cash, players[i].cash )
-         i += 1 
+function payEach(players, amount) {
+    for (let i = 0; i < players.length;) {
+        currentPlayer().cash -= amount 
+        players[i].cash += amount
+        i += 1 
     }
 }
-export function startGame() {
+
+function startGame() {
     gameRoll()
     currentPlayer().space = state.currentRoll
+    let event = spaces[currentPlayer().space - 1].effect
+    mapEvents(event)
     console.log('First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' + currentPlayer().space + ', and has $' + currentPlayer().cash)
 }
 
-export function calculateSpaceId() {
+function calculateSpaceId() {
     const total = currentPlayer().space + state.currentRoll 
-    const remainder = total % 40
+    if (total >= 40) { mapEvents("w500") }
+    
+    //this is silly, why didn't I use zero indexing for the div ids? refactor that
+    let remainder = total % 40
+
     if (remainder === 0) {
-        return 1
+        remainder = 40
     }
     return remainder
 }
-export function incrementPlayer() {
-    state.activePlayerId++  
+
+function incrementPlayer() {
+    // advance current player index
+    state.activePlayerId += 1  
+
     // keep index in sync
     if (state.activePlayerId >= state.players.length) {
         state.activePlayerId = 0
     }
-    return
+    return currentPlayer()
 }
 
-export function executeTurn() {
+function deal() {
+    //get all strains by player.
+
+    for (let i = 0; i < state.players.length;) {
+        let strains;
+        strains.player[i].bought = player[i].strains 
+        console.log(strains.player[i])
+    }
+    
+}
+
+function executeTurn() {
     // Drop players with no cash from game.
     state.players = state.players.filter(function(player) { 
         if (player.cash >= 1) {
             console.log(player.name + ' cash: ' + player.cash)
             return player
-            }
-        })
+        } else {
+            console.log(player.name + ' was dropped from the game for being broke at the beginning of their turn.')
+        }
+    })
 
     // then check for a winner
     if ( state.players.length === 1) {
         return endGame()
     }
 
-    // increment state.activePlayerId 
+    // increment playerId 
     incrementPlayer()
-    
+
     //start the turn by rolling dice, and cleaning up turn based booleans
     gameRoll()  
     
-
+    // handle (multiple) skipped turns
     if (state.skipped.includes(state.activePlayerId)) {
 		state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
 		console.log("end of turn, player id: " + state.activePlayerId)
 		console.log("skipped player id: " + state.activePlayerId)
 		return executeTurn()
     }
-        
-    console.log(currentPlayer().name + ' rolled a ' + state.currentRoll + ' is on space ' + currentPlayer().space  + ' and has $' + currentPlayer().cash)
 
+    // report state    
+    console.log(currentPlayer().name + ' rolled a ' + state.currentRoll + ' started on space ' + currentPlayer().space  + ' and has $' + currentPlayer().cash)     
+
+    // move player to new space
     currentPlayer().space = calculateSpaceId()
 
-    let space = spaces[currentPlayer().space - 1 ] 
+    // get the event code
+    let event = spaces[currentPlayer().space -1].effect
+    
+    // and fire that shit off
+    mapEvents(event)
 
-    let result = mapEvents(space.effect)
-
-    console.log("end of turn, " + currentPlayer().name + ' rolled ' + state.currentRoll + ', is on space ' + currentPlayer().space  + ',  and has $' + currentPlayer().cash)
-	return
+    // report end of turn state
+    console.log("At end of turn, " + currentPlayer().name + ' rolled ' + state.currentRoll + ', is on space ' + currentPlayer().space  + ',  and has $' + currentPlayer().cash)
+	return executeTurn()
 }
 
-export function loseTurn(rounds = 1) {
-    for (rounds > 0; rounds -= 1; ) {
-        state.skipped.push(state.skipped[state.activePlayerId])
-    }
-	return
+function loseTurn() {
+    console.log(currentPlayer().name  + ' lost a turn')
+    return state.skipped.push(state.skipped[state.activePlayerId])	
 }
 
-export function hospital() {
+function hospital() {
     currentPlayer().space = 10
+    loseTurn()
     return mapEvents("x100")
 }
 
-export function getOutOfHospital() {
+function getOutOfHospital () {
     return currentPlayer().getOutOfHospital = true
 }
 
@@ -224,13 +328,17 @@ export function bumEveryoneOut(amount) {
 }
 
 export function endGame() {
-    let owned = 'nothing' 
+    let owned = '' 
+
     let winner = state.players[0]
     if (winner.strains.length > 0) {
-        owned = cwinner.strains.forEach(item => item + ', ')
+        for (let i = 0; i < winner.strains.length; ) {
+            owned += winner.strains[i].name  + ', '
+            i += 1; 
+        }            
     }
     
-    let message = "The Winner is " + winner.name + ' with $' + winner.cash + ', they owned ' + owned + '.'
+    let message = "The Winner is " + winner.name + ' with $' + winner.cash + '. They owned ' + owned + '.'
     
     return alert(message)
 }
@@ -239,46 +347,47 @@ onMount(() => {
   startGame();
 });
 
+
 </script>
 
 <main>
     <div class="flex-row py-2 px-5 bg-white width-100">
     </div>
-    <div class="responsive">
-        <div class="mainSquare">
+    <div class="potluck">
+        <div class="gameBoard">
             <div class="row top">
                 <div class="square2" id="20"><span class="corner corner1">JACKPOT!</div>
                 <div class="square1" id="21">
                     <div class="header header-top purple"></div>
-                    <div class="firstLine firstLine-top rotation2">Hawaiian</div>
+                    <div class="firstLine firstLine-top top-side">Hawaiian</div>
                 </div>
                 <div class="square1" id="22">
-                    <div class="firstLine firstLine-top no-color rotation2">Vacation<br>Time<br>Relax,<br> Lose a Turn</div>
+                    <div class="firstLine firstLine-top no-color top-side">Vacation<br>Time<br>Relax,<br> Lose a Turn</div>
                 </div>
                 <div class="square1" id="23">
-                    <div class="firstLine firstLine-top no-color rotation2">Bum Me Out</div>
+                    <div class="firstLine firstLine-top no-color top-side">Bum Me Out</div>
                 </div>
                 <div class="square1" id="24">
                     <div class="header header-top orange"></div>
-                    <div class="firstLine firstLine-top rotation2">Nicaraguan</div>
+                    <div class="firstLine firstLine-top top-side">Nicaraguan</div>
                 </div>
                 <div class="square1" id="25">
-                    <div class="firstLine firstLine-top no-color rotation2">MUNCHIES!<br /> Pay 10x your roll</div>
+                    <div class="firstLine firstLine-top no-color top-side">MUNCHIES!<br /> Pay 10x your roll</div>
                 </div>
                 <div class="square1" id="26">
                     <div class="header header-top yellow"></div>
-                    <div class="firstLine firstLine-top rotation2">Colombian Gold</div>
+                    <div class="firstLine firstLine-top top-side">Colombian Gold</div>
                 </div>
                 <div class="square1" id="27">
-                    <div class="firstLine firstLine-top rotation2">Far<br />Out</div>
+                    <div class="firstLine firstLine-top top-side">Far<br />Out</div>
                 </div>
                 <div class="square1" id="28">
                 <div class="header header-top lightblue"></div>
-                    <div class="firstLine firstLine-top rotation2">Just <br>Good Pot</div>
+                    <div class="firstLine firstLine-top top-side">Just <br>Good Pot</div>
                 </div>
                 <div class="square1" id="29">
                     <div class="header header-top blue"></div>
-                    <div class="firstLine firstLine-top rotation2">just<br> bad pot</div>
+                    <div class="firstLine firstLine-top top-side">just<br> bad pot</div>
                 </div>
                 <div class="square2" id="30"><span class="corner corner2">Busted...<br />lose 1 turn</span></div>
             </div>
@@ -287,35 +396,35 @@ onMount(() => {
                 <div class="square2">
                     <div class="squareSide" id="19">
                         <div class="headerSide header-left yellow"></div>
-                        <div class="firstLine firstLine-left rotation1">Acapulco<br>Gold</div>
+                        <div class="firstLine firstLine-left left-side">Acapulco<br>Gold</div>
                     </div>
                     <div class="squareSide" id="18">
-                        <div class="firstLine firstLine-left no-color rotation1">The Law: <br /> Pay 20x</div>
+                        <div class="firstLine firstLine-left no-color left-side">The Law: <br /> Pay 20x</div>
                     </div>
                     <div class="squareSide" id="17">
                     <div class="headerSide header-left yellow"></div>
-                        <div class="firstLine firstLine-left rotation1">Sinsemilla</div>
+                        <div class="firstLine firstLine-left left-side">Sinsemilla</div>
                     </div>
                     <div class="squareSide" id="16">
-                        <div class="firstLine firstLine-left no-color rotation1">Dealing <br />Square</div>
+                        <div class="firstLine firstLine-left no-color left-side">Dealing <br />Square</div>
                     </div>
                     <div class="squareSide" id="15">
                     <div class="headerSide header-left red"></div>
-                        <div class="firstLine firstLine-left rotation1">Maui Wowie</div>
+                        <div class="firstLine firstLine-left left-side">Maui Wowie</div>
                     </div>
                     <div class="squareSide" id="14">                    
-                        <div class="firstLine firstLine-left no-color rotation1">Midnight <br>Airstrip<br> Pay 40x</div>
+                        <div class="firstLine firstLine-left no-color left-side">Midnight <br>Airstrip<br> Pay 40x</div>
                     </div>
                     <div class="squareSide" id="13">
                         <div class="headerSide header-left green"></div>
-                        <div class="firstLine firstLine-left rotation1">Guerrero<br /> Green</div>
+                        <div class="firstLine firstLine-left left-side">Guerrero<br /> Green</div>
                     </div>
                     <div class="squareSide" id="12">
-                        <div class="firstLine firstLine-left no-color rotation1">You Pay<br />10x</div> 
+                        <div class="firstLine firstLine-left no-color left-side">You Pay<br />10x</div> 
                     </div>
                     <div class="squareSide" id="11">
                         <div class="headerSide header-left lightblue"></div>
-                        <div class="firstLine firstLine-left rotation1">colombian<br />chiba</div>
+                        <div class="firstLine firstLine-left left-side">colombian<br />chiba</div>
                     </div>
                 </div>
                 <div class="square9">
@@ -332,36 +441,36 @@ onMount(() => {
                 <div class="square2">
                     <div class="squareSide" id="31">
                         <div class="headerSide header-right purple"></div>
-                        <div class="firstLine firstLine-right rotation3">Vietnamese</div>
+                        <div class="firstLine firstLine-right right-side">Vietnamese</div>
                     </div>
                     <div class="squareSide" id="32">
                         <div class="headerSide header-right orange"></div>
-                        <div class="firstLine firstLine-right rotation3">Stickless<br />Thai</div>
+                        <div class="firstLine firstLine-right right-side">Stickless<br />Thai</div>
                     </div>
                     <div class="squareSide" id="33">
-                        <div class="firstLine firstLine-right no-color rotation3">No-Tell<br> Car Rental<br>pay 10x</div>
+                        <div class="firstLine firstLine-right no-color right-side">No-Tell<br> Car Rental<br>pay 10x</div>
                     </div>
                     <div class="squareSide" id="34">
                         <div class="headerSide header-right red"></div>
-                        <div class="firstLine firstLine-right rotation3">Panama<br /> Red</div>
+                        <div class="firstLine firstLine-right right-side">Panama<br /> Red</div>
                     </div>
                     <div class="squareSide" id="35">
                     <div class="headerSide header-right brown"></div>
-                        <div class="firstLine firstLine-right rotation3">Mexican</div>
+                        <div class="firstLine firstLine-right right-side">Mexican</div>
                     </div>
                     <div class="squareSide" id="36">
-                        <div class="firstLine firstLine-right no-color rotation3">Dealing <br>Square</div>
+                        <div class="firstLine firstLine-right no-color right-side">Dealing <br>Square</div>
                     </div>
                     <div class="squareSide" id="37">
                     <div class="headerSide header-right lightblue"></div>
-                        <div class="firstLine firstLine-right rotation3">Jamaican</div>
+                        <div class="firstLine firstLine-right right-side">Jamaican</div>
                     </div>
                     <div class="squareSide" id="38">
-                        <div class="firstLine firstLine-right no-color rotation3">bum<br>me out</div>
+                        <div class="firstLine firstLine-right no-color right-side">bum<br>me out</div>
                     </div>
                     <div class="squareSide" id="39">
                         <div class="headerSide header-right yellow"></div>
-                        <div class="firstLine firstLine-right rotation3">michoacan</div>
+                        <div class="firstLine firstLine-right right-side">michoacan</div>
                     </div>
                 </div>
             </div>
@@ -409,9 +518,7 @@ onMount(() => {
                         <br>Collect<br />$500<br /></span>
                 </div>
             </div>
-
         </div>
-
     </div>
     <div class="container-fluid py-3 px-5 bg-white">
         Open Developer Tools Console and click:  
@@ -425,17 +532,17 @@ onMount(() => {
 		text-transform: uppercase;
 	}
 
-	.responsive {
-        background-color: offwhite;
+	.potluck {
+        background-color: floralwhite;
 		width: 95.75vw;
 		height: 94.25vw;
 		margin: 10px auto;
 	}
 
-	.mainSquare {
+	.gameBoard {
 		height: 100%;
         position: relative;
-        background-color:offwhite;
+        background-color: floralwhite;
 	}
 
 	.row {
@@ -455,7 +562,7 @@ onMount(() => {
 		outline: 1px solid black;
 		flex-grow: 1;
         position: relative;
-        background:white;
+        background:floralwhite;
 	}
 
 	.square2 {
@@ -464,7 +571,7 @@ onMount(() => {
 		display: flex;
 		flex-direction: column;
         position: relative;
-        background:white;
+        background:floralwhite;
 	}
 
 	.square9 {
@@ -610,15 +717,15 @@ onMount(() => {
     }
 
 
-	.rotation1 {
+	.left-side {
 		transform: rotate(90deg);
 	}
 
-	.rotation2 {
+	.top-side {
 		transform: rotate(180deg);
 	}
 
-	.rotation3 {
+	.right-side {
 		transform: rotate(-90deg);
 	}
 

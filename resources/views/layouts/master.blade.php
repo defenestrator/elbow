@@ -39,23 +39,26 @@
       x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div  
         class="text-sm lg:flex-grow">
-          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+          <a href="/docs" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
             Docs
           </a>
-          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
-            Examples
+          <a href="/potluck" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+            Pot Luck
           </a>
-          <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900">
+          <a href="/blog" class="block mt-4 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900">
             Blog
           </a>
         </div>
         <div>
-          <a href="#"
+          <button class="button-blue"><a href="#"
             class="inline-block text-sm px-4 py-2 leading-none border rounded text-gray-500 border-gray-200 hover:borderhover:text-green-600 hover:border mt-4 lg:mt-0">Download</a>
+          </button>
         </div>
       </nav>
-
-    @yield('content')
+    <div id="rootComponent">
+      @yield('content')
+    </div>
+    
 
     <div class="flex-row-reverse">
       @yield('bottom')
