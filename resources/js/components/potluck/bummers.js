@@ -76,7 +76,7 @@ const bummers = [
     },
     {
         id:16,
-        title: "You bum everyone out",
+        title: "You bum everyone out. Each player pays you the number rolled x 10",
         effect: "bumEveryoneOut"
     }
 ]

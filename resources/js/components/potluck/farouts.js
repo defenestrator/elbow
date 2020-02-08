@@ -36,7 +36,7 @@ const farouts = [
     },
     {
         id: 8,
-        title: "This card entitles you to receive One Pound of Pot Free! (from the bank) to put on any square you own",
+        title: "This card entitles you to receive one Pound of Pot free! (from the bank) to put on any square you own",
         effect: "freePound"
     },
     {
