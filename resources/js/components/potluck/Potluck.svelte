@@ -58,7 +58,7 @@
                 owned = player.strains[0].name
             }
 
-            statusMessage += player.name + ' had $' + player.cash + '. With ' + player.strains.length +
+            statusMessage += player.name + ' had $' + player.cash + ' and ' + player.strains.length +
                 ' strains. They owned ' + owned + '. '
         })
 
