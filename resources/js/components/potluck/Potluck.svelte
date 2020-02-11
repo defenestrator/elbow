@@ -467,7 +467,7 @@
                 "state": endState
             }
         }));
-        // alert(message)
+        alert(message)
         return window.location.href = '/potluck'
     }
 
