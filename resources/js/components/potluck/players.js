@@ -1,6 +1,6 @@
 let players = [
     {
-        name: "player1",      
+        name: "Alice",      
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:blue; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,       
         strains: [], 
@@ -12,7 +12,7 @@ let players = [
         getOutOfHospital: false
     }, 
     {
-        name: "player2",
+        name: "Barbara",
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:green; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
@@ -24,7 +24,7 @@ let players = [
         getOutOfHospital: false
     }, 
     {
-        name: "player3",
+        name: "Carolyn",
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:yellow; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
@@ -36,7 +36,7 @@ let players = [
         getOutOfHospital: false
     }, 
     {
-        name: "player4",
+        name: "Dorothy",
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:orange; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
@@ -48,7 +48,7 @@ let players = [
         getOutOfHospital: false
     }, 
     {
-        name: "player5",
+        name: "Evelyn",
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:red; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
@@ -60,7 +60,7 @@ let players = [
         getOutOfHospital: false
     }, 
     {
-        name: "player6",
+        name: "Fatíma",
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:purple; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
@@ -73,7 +73,7 @@ let players = [
         discount: false,
     }, 
     {
-        name: "player7",
+        name: "Geraldine",
         token: '<div style="display:grid; align-items: center; justify-content: center; background-color:black; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 

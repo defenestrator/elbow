@@ -1,1 +1,3463 @@
-!function(g){var I={};function C(A){if(I[A])return I[A].exports;var e=I[A]={i:A,l:!1,exports:{}};return g[A].call(e.exports,e,e.exports,C),e.l=!0,e.exports}C.m=g,C.c=I,C.d=function(g,I,A){C.o(g,I)||Object.defineProperty(g,I,{enumerable:!0,get:A})},C.r=function(g){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(g,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(g,"__esModule",{value:!0})},C.t=function(g,I){if(1&I&&(g=C(g)),8&I)return g;if(4&I&&"object"==typeof g&&g&&g.__esModule)return g;var A=Object.create(null);if(C.r(A),Object.defineProperty(A,"default",{enumerable:!0,value:g}),2&I&&"string"!=typeof g)for(var e in g)C.d(A,e,function(I){return g[I]}.bind(null,e));return A},C.n=function(g){var I=g&&g.__esModule?function(){return g.default}:function(){return g};return C.d(I,"a",I),I},C.o=function(g,I){return Object.prototype.hasOwnProperty.call(g,I)},C.p="/",C(C.s=0)}({0:function(g,I,C){C("hzOI"),g.exports=C("N1nW")},N1nW:function(g,I){},hzOI:function(g,I,C){"use strict";function A(){}C.r(I);function e(g,I,C,A,e){g.__svelte_meta={loc:{file:I,line:C,column:A,char:e}}}function c(g){return g()}function l(){return Object.create(null)}function t(g){g.forEach(c)}function i(g){return"function"==typeof g}function s(g,I){return g!=g?I==I:g!==I||g&&"object"==typeof g||"function"==typeof g}new Set;function a(g,I,C){g.insertBefore(I,C||null)}function n(g){g.parentNode.removeChild(g)}function b(g,I){for(let C=0;C<g.length;C+=1)g[C]&&g[C].d(I)}function d(g){return document.createElement(g)}function o(g){return document.createTextNode(g)}function G(){return o(" ")}function u(g,I,C){null==C?g.removeAttribute(I):g.getAttribute(I)!==C&&g.setAttribute(I,C)}function B(g,I,C,A){g.style.setProperty(I,C,A?"important":"")}function r(g,I){const C=document.createEvent("CustomEvent");return C.initCustomEvent(g,!1,!1,I),C}class F{constructor(g,I=null){this.e=d("div"),this.a=I,this.u(g)}m(g,I=null){for(let C=0;C<this.n.length;C+=1)a(g,this.n[C],I);this.t=g}u(g){this.e.innerHTML=g,this.n=Array.from(this.e.childNodes)}p(g){this.d(),this.u(g),this.m(this.t,this.a)}d(){this.n.forEach(n)}}let x;function Q(g){x=g}function X(){if(!x)throw new Error("Function called outside component initialization");return x}const m=[],Z=[],j=[],U=[],p=Promise.resolve();let y=!1;function h(){y||(y=!0,p.then(f))}function V(g){j.push(g)}const Y=new Set;function f(){do{for(;m.length;){const g=m.shift();Q(g),N(g.$$)}for(;Z.length;)Z.pop()();for(let g=0;g<j.length;g+=1){const I=j[g];Y.has(I)||(Y.add(I),I())}j.length=0}while(m.length);for(;U.length;)U.pop()();y=!1,Y.clear()}function N(g){if(null!==g.fragment){g.update(),t(g.before_update);const I=g.dirty;g.dirty=[-1],g.fragment&&g.fragment.p(g.ctx,I),g.after_update.forEach(V)}}const v=new Set;function L(g,I){g&&g.i&&(v.delete(g),g.i(I))}const W="undefined"!=typeof window?window:global;new Set(["allowfullscreen","allowpaymentrequest","async","autofocus","autoplay","checked","controls","default","defer","disabled","formnovalidate","hidden","ismap","loop","multiple","muted","nomodule","novalidate","open","playsinline","readonly","required","reversed","selected"]);let R;function J(g,I){const C=g.$$;null!==C.fragment&&(t(C.on_destroy),C.fragment&&C.fragment.d(I),C.on_destroy=C.fragment=null,C.ctx=[])}function D(g,I,C,e,s,a,n=[-1]){const b=x;Q(g);const d=I.props||{},o=g.$$={fragment:null,ctx:null,props:a,update:A,not_equal:s,bound:l(),on_mount:[],on_destroy:[],before_update:[],after_update:[],context:new Map(b?b.$$.context:[]),callbacks:l(),dirty:n};let G=!1;var u;o.ctx=C?C(g,d,(I,C,...A)=>{const e=A.length?A[0]:C;return o.ctx&&s(o.ctx[I],o.ctx[I]=e)&&(o.bound[I]&&o.bound[I](e),G&&function(g,I){-1===g.$$.dirty[0]&&(m.push(g),h(),g.$$.dirty.fill(0)),g.$$.dirty[I/31|0]|=1<<I%31}(g,I)),C}):[],o.update(),G=!0,t(o.before_update),o.fragment=!!e&&e(o.ctx),I.target&&(I.hydrate?o.fragment&&o.fragment.l((u=I.target,Array.from(u.childNodes))):o.fragment&&o.fragment.c(),I.intro&&L(g.$$.fragment),function(g,I,C){const{fragment:A,on_mount:e,on_destroy:l,after_update:s}=g.$$;A&&A.m(I,C),V(()=>{const I=e.map(c).filter(i);l?l.push(...I):t(I),g.$$.on_mount=[]}),s.forEach(V)}(g,I.target,I.anchor),f()),Q(b)}"function"==typeof HTMLElement&&(R=class extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){for(const g in this.$$.slotted)this.appendChild(this.$$.slotted[g])}attributeChangedCallback(g,I,C){this[g]=C}$destroy(){J(this,1),this.$destroy=A}$on(g,I){const C=this.$$.callbacks[g]||(this.$$.callbacks[g]=[]);return C.push(I),()=>{const g=C.indexOf(I);-1!==g&&C.splice(g,1)}}$set(){}});function w(g,I){document.dispatchEvent(r(g,Object.assign({version:"3.18.1"},I)))}function z(g,I){w("SvelteDOMInsert",{target:g,node:I}),function(g,I){g.appendChild(I)}(g,I)}function S(g,I,C){w("SvelteDOMInsert",{target:g,node:I,anchor:C}),a(g,I,C)}function k(g){w("SvelteDOMRemove",{node:g}),n(g)}function H(g,I,C){u(g,I,C),null==C?w("SvelteDOMRemoveAttribute",{node:g,attribute:I}):w("SvelteDOMSetAttribute",{node:g,attribute:I,value:C})}function P(g,I){I=""+I,g.data!==I&&(w("SvelteDOMSetData",{node:g,data:I}),g.data=I)}var E,M,T;var q=[{name:"player1",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:blue; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1},{name:"player2",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:green; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1},{name:"player3",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:yellow; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1},{name:"player4",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:orange; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1},{name:"player5",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:red; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1},(E={name:"player6",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:purple; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1},M="discount",T=!1,M in E?Object.defineProperty(E,M,{value:T,enumerable:!0,configurable:!0,writable:!0}):E[M]=T,E),{name:"player7",token:'<div style="display:grid; align-items: center; justify-content: center; background-color:black; height:15px; width:15px; border-radius:50%;"></div>',cash:2875,strains:[],playing:!0,space:40,discount:!1,halfOff:!1,freePound:!1,getOutOfHospital:!1}].filter((function(g){return!0===g.playing})),K=[{name:"Colombian",price:400,oz:40,"2lb":120,"3lb":240,"4lb":360,bale:400,space:1},{name:"Homegrown",price:250,oz:25,"2lb":75,"3lb":150,"4lb":225,bale:250,space:3},{name:"Wacky Weed",price:900,oz:90,"2lb":270,"3lb":540,"4lb":810,bale:900,space:5},{name:"Gainesville Green",price:2e3,oz:200,"2lb":600,"3lb":1200,"4lb":1800,bale:2e3,space:6},{name:"Thai Stick",price:2200,oz:220,"2lb":660,"3lb":1320,"4lb":1980,bale:2200,space:8},{name:"Colombian Red Bud",price:500,oz:50,"2lb":150,"3lb":300,"4lb":450,bale:500,space:9},{name:"Colombian Chiba",price:600,oz:60,"2lb":180,"3lb":360,"4lb":540,bale:600,space:11},{name:"Guerrero Green",price:400,oz:40,"2lb":120,"3lb":240,"4lb":360,bale:400,space:13},{name:"Maui Wowie",price:2500,oz:250,"2lb":750,"3lb":1500,"4lb":2250,bale:2500,space:15},{name:"Sinsemilla",price:1400,oz:140,"2lb":375,"3lb":750,"4lb":1125,bale:1400,space:17},{name:"Aculpulco Gold",price:500,oz:50,"2lb":150,"3lb":300,"4lb":450,bale:500,space:19},{name:"Hawaiian",price:1600,oz:160,"2lb":480,"3lb":960,"4lb":1440,bale:1600,space:21},{name:"Nicaraguan",price:300,oz:30,"2lb":90,"3lb":180,"4lb":270,bale:300,space:24},{name:"Colombian Gold",price:650,oz:65,"2lb":195,"3lb":390,"4lb":585,bale:650,space:16},{name:"Just Good Pot",price:300,oz:30,"2lb":90,"3lb":180,"4lb":240,bale:300,space:28},{name:"Just Bad Pot",price:100,oz:10,"2lb":30,"3lb":60,"4lb":90,bale:100,space:29},{name:"Vietnamese Pot",price:1e3,oz:100,"2lb":300,"3lb":600,"4lb":900,bale:1e3,space:31},{name:"Stickless Thai",price:3e3,oz:300,"2lb":900,"3lb":1800,"4lb":2700,bale:3e3,space:32},{name:"Panama Red",price:800,oz:75,"2lb":225,"3lb":450,"4lb":675,bale:800,space:34},{name:"Mexican",price:150,oz:15,"2lb":45,"3lb":90,"4lb":135,bale:150,space:35},{name:"Jamaican",price:250,oz:25,"2lb":75,"3lb":150,"4lb":225,bale:250,space:37},{name:"Michoacan",price:450,oz:45,"2lb":135,"3lb":270,"4lb":405,bale:450,space:39}],O=[{id:1,title:"Colombian",message:"",effect:"pot"},{id:2,title:"Flying Too High",message:"Lose a turn",effect:"loseTurn"},{id:3,title:"Home Grown",message:"",effect:"pot"},{id:4,title:"Far Out",message:"Far Out!",effect:"farout"},{id:5,title:"Wacky Weed",message:"",effect:"pot"},{id:6,title:"Gainesville Green",message:"",effect:"pot"},{id:7,title:"Downtown Pharmacy",message:"",effect:"x5"},{id:8,title:"Thai Stick",message:"",effect:"pot"},{id:9,title:"Colombian Red Bud",message:"",effect:"pot"},{id:10,title:"Hospital",message:"Pay 100x your roll and lose a turn",effect:"hospital"},{id:11,title:"Colombian Chiba",message:"",effect:"pot"},{id:12,title:"Tax Man!",message:"You Pay 10x",effect:"x10"},{id:13,title:"Guerrero Green",message:"",effect:"pot"},{id:14,title:"Midnight Airstrip",message:"Pay 20x",effect:"x20"},{id:15,title:"Maui Wowie",message:"",effect:"pot"},{id:16,title:"Dealing Square",message:"",effect:"deal"},{id:17,title:"Sinsemilla",message:"",effect:"pot"},{id:18,title:"The Law:",message:"Pay 20x",effect:"x20"},{id:19,title:"Acapulco Gold",message:"",effect:"pot"},{id:20,title:"Jackpot",message:"You won!",effect:"jackpot"},{id:21,title:"Hawaiian",message:"",effect:"pot"},{id:22,title:"Vacation Time. Relax.",message:"Lose a Turn",effect:"loseTurn"},{id:23,title:"Bum Me Out",message:"",effect:"bummer"},{id:24,title:"Nicaraguan",message:"",effect:"pot"},{id:25,title:"Munchies!",message:"Pay 10x",effect:"x10"},{id:26,title:"Colombian Gold",message:"",effect:"pot"},{id:27,title:"Far Out!",message:"",effect:"farout"},{id:28,title:"Just Good Pot",message:"",effect:"pot"},{id:29,title:"Just Bad Pot",message:"",effect:"pot"},{id:30,title:"Busted...",message:"Lose 1 Turn",effect:"loseTurn"},{id:31,title:"Vietnamese",message:"",effect:"pot"},{id:32,title:"Stickless Thai",message:"",effect:"pot"},{id:33,title:"No Tell Car Rental",message:"Pay 10x",effect:"x10"},{id:34,title:"Panama Red",message:"",effect:"pot"},{id:35,title:"Mexican",message:"",effect:"pot"},{id:36,title:"Dealing Square",message:"",effect:"deal"},{id:37,title:"Jamaican",message:"",effect:"pot"},{id:38,title:"Bum Me Out",message:"",effect:"bummer"},{id:39,title:"Michoacan",message:"",effect:"pot"},{id:40,title:"Straight Space",message:"",effect:"w500"}],$=[{id:1,title:"Sneezed instead of snorted - lost two grams of coke",effect:"l200"},{id:2,title:"Posted bond money for 'lost friend'",effect:"l1000"},{id:3,title:"Misplaced your wallet",effect:"l200"},{id:4,title:"Got ripped off for $500",effect:"l500"},{id:5,title:"Dog eats your stash",effect:"l5000"},{id:6,title:"Transmission on your cars goes",effect:"l400"},{id:7,title:"Blew $500 at the track",effect:"l500"},{id:8,title:"Busted for public intoxication",effect:"loseTurn"},{id:9,title:"Your pot has paraquat  &mdash; go to hospital and miss two turns (do not collect $500 for passing Straight Spot)",effect:"paraquat"},{id:10,title:"Involved in car accident",effect:"l1000"},{id:11,title:"Your baggage (constaining 5 lbs. of pot) is lost at the airport",effect:"l2000"},{id:12,title:"Your pot went stale, give the next player to land on a space you own a discount of 50%",effect:"reducePot"},{id:13,title:"Got paranoid and flushed 2 lbs. down the toilet",effect:"l2000"},{id:14,title:"Roach burns your new suit",effect:"l300"},{id:15,title:"Uninsured motorist runs into your house",effect:"l2000"},{id:16,title:"You bum everyone out. Each player pays you the number rolled x 10",effect:"bumEveryoneOut"}],_=[{id:1,title:"Your wealthy relative died and left you $2000 in her will!",effect:"w2000"},{id:2,title:"You win the lottery",effect:"w800"},{id:3,title:"Get out of Hospital Free!",effect:"getOutOfHospital"},{id:4,title:"You win $500 playing cards",effect:"w500"},{id:5,title:"You win jackpot!",effect:"jackpot"},{id:6,title:"Some deadbeat pays you $1200 he has owed you for over a year",effect:"w1200"},{id:7,title:"Found your lost wallet",effect:"w200"},{id:8,title:"This card entitles you to receive one Pound of Pot free! (from the bank) to put on any square you own",effect:"freePound"},{id:9,title:"The bank makes a mistake in your favor!",effect:"w300"},{id:10,title:"Your horse comes through at the track",effect:"w1000"},{id:11,title:"Guy hits your car from behind. You collect $4000 from neck injury suit",effect:"w4000"},{id:12,title:"Your dog finds bag containing $600 in small bills",effect:"w600"},{id:13,title:"You receive income tax return of $1500",effect:"w1500"},{id:14,title:"This card entitles you to roll the dice and receive 100x the number rolled",effect:"highRoller"},{id:15,title:"Far Out &mdash; roll the dice and pay player to your left 100x the number rolled",effect:"payLefty"},{id:16,title:"This card entitles you to one deal at 50% discount on any dope (not already purchased) on the board",effect:"halfOff"}];const{document:gg}=W,Ig="resources/js/components/potluck/Potluck.svelte";function Cg(g,I,C){const A=g.slice();return A[19]=I[C],A}function Ag(g,I,C){const A=g.slice();return A[16]=I[C],A}function eg(g){let I,C,A,c,l,t,i,s,a,n=g[19].name+"",b=g[19].oz+"",u=g[19].price/10+"";const B={c:function(){I=d("p"),C=o(n),A=G(),c=d("span"),l=o("$"),t=o(b),i=o(" ($"),s=o(u),a=o(")"),H(c,"class","text-green-600"),e(c,Ig,504,34,17703),e(I,Ig,504,16,17685)},m:function(g,e){S(g,I,e),z(I,C),z(I,A),z(I,c),z(c,l),z(c,t),z(I,i),z(I,s),z(I,a)},p:function(g,I){1&I&&n!==(n=g[19].name+"")&&P(C,n),1&I&&b!==(b=g[19].oz+"")&&P(t,b),1&I&&u!==(u=g[19].price/10+"")&&P(s,u)},d:function(g){g&&k(I)}};return w("SvelteRegisterBlock",{block:B,id:eg.name,type:"each",source:"(504:16) {#each player.strains as strain}",ctx:g}),B}function cg(g){let I,C,A,c,l,t,i,s,a,n,u,r,x=g[16].name+"",Q=g[16].token+"",X=g[16].cash+"",m=g[16].strains,Z=[];for(let I=0;I<m.length;I+=1)Z[I]=eg(Cg(g,m,I));const j={c:function(){I=d("div"),C=d("div"),A=o(x),c=G(),t=G(),i=d("span"),s=o("$"),a=o(X),n=G(),u=d("div");for(let g=0;g<Z.length;g+=1)Z[g].c();r=G(),l=new F(Q,t),H(i,"class","text-green-600"),e(i,Ig,501,47,17495),H(C,"class","items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold svelte-1jfjjq1"),e(C,Ig,500,8,17330),H(u,"class","border-solid mx-1 bg-gray-100 rounded-sm svelte-1jfjjq1"),e(u,Ig,502,12,17565),H(I,"class","inline-block svelte-1jfjjq1"),B(I,"width",100/g[0].players.length+"%"),e(I,Ig,499,4,17251)},m:function(g,e){S(g,I,e),z(I,C),z(C,A),z(C,c),l.m(C),z(C,t),z(C,i),z(i,s),z(i,a),z(I,n),z(I,u);for(let g=0;g<Z.length;g+=1)Z[g].m(u,null);z(I,r)},p:function(g,C){if(1&C&&x!==(x=g[16].name+"")&&P(A,x),1&C&&Q!==(Q=g[16].token+"")&&l.p(Q),1&C&&X!==(X=g[16].cash+"")&&P(a,X),1&C){let I;for(m=g[16].strains,I=0;I<m.length;I+=1){const A=Cg(g,m,I);Z[I]?Z[I].p(A,C):(Z[I]=eg(A),Z[I].c(),Z[I].m(u,null))}for(;I<Z.length;I+=1)Z[I].d(1);Z.length=m.length}1&C&&B(I,"width",100/g[0].players.length+"%")},d:function(g){g&&k(I),b(Z,g)}};return w("SvelteRegisterBlock",{block:j,id:cg.name,type:"each",source:"(499:4) {#each state.players as player}",ctx:g}),j}function lg(g){let I,C,c,l,t,i,s,a,n,u,r,F,x,Q,X,m,Z,j,U,p,y,h,V,Y,f,N,v,L,W,R,J,D,P,E,M,T,q,K,O,$,_,Cg,eg,tg,ig,sg,ag,ng,bg,dg,og,Gg,ug,Bg,rg,Fg,xg,Qg,Xg,mg,Zg,jg,Ug,pg,yg,hg,Vg,Yg,fg,Ng,vg,Lg,Wg,Rg,Jg,Dg,wg,zg,Sg,kg,Hg,Pg,Eg,Mg,Tg,qg,Kg,Og,$g,_g,gI,II,CI,AI,eI,cI,lI,tI,iI,sI,aI,nI,bI,dI,oI,GI,uI,BI,rI,FI,xI,QI,XI,mI,ZI,jI,UI,pI,yI,hI,VI,YI,fI,NI,vI,LI,WI,RI,JI,DI,wI,zI,SI,kI,HI,PI,EI,MI,TI,qI,KI,OI,$I,_I,gC,IC,CC,AC,eC,cC,lC,tC,iC,sC,aC,nC,bC,dC,oC,GC,uC,BC,rC,FC,xC,QC,XC,mC,ZC,jC,UC,pC,yC,hC,VC,YC,fC,NC,vC,LC,WC,RC,JC,DC,wC,zC,SC,kC,HC,PC,EC,MC,TC,qC,KC,OC,$C,_C,gA,IA,CA,AA,eA,cA,lA,tA,iA,sA,aA,nA,bA,dA,oA,GA,uA,BA,rA,FA,xA,QA,XA,mA,ZA,jA,UA,pA,yA,hA,VA,YA,fA,NA,vA,LA,WA,RA,JA,DA,wA,zA,SA,kA,HA,PA,EA,MA,TA,qA,KA,OA,$A,_A,ge,Ie,Ce,Ae,ee,ce,le,te,ie,se,ae,ne,be,de,oe,Ge,ue,Be,re,Fe,xe,Qe,Xe,me,Ze,je,Ue,pe,ye,he,Ve,Ye,fe,Ne,ve,Le,We,Re,Je,De,we,ze,Se,ke,He,Pe,Ee,Me,Te,qe,Ke,Oe,$e,_e,gc,Ic,Cc,Ac,ec,cc,lc,tc,ic,sc,ac,nc,bc,dc,oc,Gc,uc,Bc,rc,Fc,xc,Qc,Xc,mc,Zc,jc,Uc,pc,yc,hc,Vc,Yc,fc,Nc,vc,Lc,Wc,Rc,Jc,Dc,wc,zc,Sc,kc,Hc,Pc,Ec,Mc,Tc,qc,Kc,Oc,$c,_c,gl,Il,Cl=g[0].players,Al=[];for(let I=0;I<Cl.length;I+=1)Al[I]=cg(Ag(g,Cl,I));const el={c:function(){I=d("link"),C=G(),c=d("main"),l=d("div"),t=d("button"),t.textContent="Start Game",i=G(),s=d("div"),a=d("div");for(let g=0;g<Al.length;g+=1)Al[g].c();n=G(),u=d("div"),r=d("div"),F=d("div"),x=d("div"),Q=d("span"),Q.textContent="JACKPOT!",X=G(),m=d("div"),Z=G(),j=d("div"),U=d("div"),p=G(),y=d("div"),y.textContent="Hawaiian",h=G(),V=d("div"),Y=G(),f=d("div"),N=d("div"),v=o("Vacation"),L=d("br"),W=o("Time"),R=d("br"),J=o("Relax,"),D=d("br"),P=o(" Lose a Turn"),E=G(),M=d("div"),T=G(),q=d("div"),K=d("div"),K.textContent="Bum Me Out",O=G(),$=d("div"),_=G(),Cg=d("div"),eg=d("div"),tg=G(),ig=d("div"),ig.textContent="Nicaraguan",sg=G(),ag=d("div"),ng=G(),bg=d("div"),dg=d("div"),og=o("MUNCHIES!"),Gg=d("br"),ug=o(" Pay 10x your roll"),Bg=G(),rg=d("div"),Fg=G(),xg=d("div"),Qg=d("div"),Xg=G(),mg=d("div"),mg.textContent="Colombian Gold",Zg=G(),jg=d("div"),Ug=G(),pg=d("div"),yg=d("div"),hg=o("Far"),Vg=d("br"),Yg=o("Out"),fg=G(),Ng=d("div"),vg=G(),Lg=d("div"),Wg=d("div"),Rg=G(),Jg=d("div"),Dg=o("Just "),wg=d("br"),zg=o("Good Pot"),Sg=G(),kg=d("div"),Hg=G(),Pg=d("div"),Eg=d("div"),Mg=G(),Tg=d("div"),qg=o("just"),Kg=d("br"),Og=o(" bad pot"),$g=G(),_g=d("div"),gI=G(),II=d("div"),CI=d("span"),AI=o("Busted..."),eI=d("br"),cI=o("lose 1 turn"),lI=G(),tI=d("div"),iI=G(),sI=d("div"),aI=d("div"),nI=d("div"),bI=d("div"),dI=G(),oI=d("div"),GI=o("Acapulco"),uI=d("br"),BI=o("Gold"),rI=G(),FI=d("div"),xI=G(),QI=d("div"),XI=d("div"),mI=o("The Law: "),ZI=d("br"),jI=o(" Pay 20x"),UI=G(),pI=d("div"),yI=G(),hI=d("div"),VI=d("div"),YI=G(),fI=d("div"),fI.textContent="Sinsemilla",NI=G(),vI=d("div"),LI=G(),WI=d("div"),RI=d("div"),JI=o("Dealing "),DI=d("br"),wI=o("Square"),zI=G(),SI=d("div"),kI=G(),HI=d("div"),PI=d("div"),EI=G(),MI=d("div"),MI.textContent="Maui Wowie",TI=G(),qI=d("div"),KI=G(),OI=d("div"),$I=d("div"),_I=o("Midnight "),gC=d("br"),IC=o("Airstrip"),CC=d("br"),AC=o(" Pay 40x"),eC=G(),cC=d("div"),lC=G(),tC=d("div"),iC=d("div"),sC=G(),aC=d("div"),nC=o("Guerrero"),bC=d("br"),dC=o(" Green"),oC=G(),GC=d("div"),uC=G(),BC=d("div"),rC=d("div"),FC=o("You Pay"),xC=d("br"),QC=o("10x"),XC=G(),mC=d("div"),ZC=G(),jC=d("div"),UC=d("div"),pC=G(),yC=d("div"),hC=o("colombian"),VC=d("br"),YC=o("chiba"),fC=G(),NC=d("div"),vC=G(),LC=d("div"),WC=d("div"),RC=d("div"),JC=G(),DC=d("div"),wC=d("span"),wC.textContent="Pot Luck",zC=G(),SC=d("div"),kC=d("div"),HC=G(),PC=d("div"),EC=d("div"),MC=d("div"),TC=G(),qC=d("div"),qC.textContent="Vietnamese",KC=G(),OC=d("div"),$C=G(),_C=d("div"),gA=d("div"),IA=G(),CA=d("div"),AA=o("Stickless"),eA=d("br"),cA=o("Thai"),lA=G(),tA=d("div"),iA=G(),sA=d("div"),aA=d("div"),nA=o("No-Tell"),bA=d("br"),dA=o(" Car Rental"),oA=d("br"),GA=o("pay 10x"),uA=G(),BA=d("div"),rA=G(),FA=d("div"),xA=d("div"),QA=G(),XA=d("div"),mA=o("Panama"),ZA=d("br"),jA=o(" Red"),UA=G(),pA=d("div"),yA=G(),hA=d("div"),VA=d("div"),YA=G(),fA=d("div"),fA.textContent="Mexican",NA=G(),vA=d("div"),LA=G(),WA=d("div"),RA=d("div"),JA=o("Dealing "),DA=d("br"),wA=o("Square"),zA=G(),SA=d("div"),kA=G(),HA=d("div"),PA=d("div"),EA=G(),MA=d("div"),MA.textContent="Jamaican",TA=G(),qA=d("div"),KA=G(),OA=d("div"),$A=d("div"),_A=o("bum"),ge=d("br"),Ie=o("me out"),Ce=G(),Ae=d("div"),ee=G(),ce=d("div"),le=d("div"),te=G(),ie=d("div"),ie.textContent="michoacan",se=G(),ae=d("div"),ne=G(),be=d("div"),de=d("div"),oe=d("span"),Ge=o("Hospital: "),ue=d("br"),Be=o("lose a\n                        turn. "),re=d("br"),Fe=o("pay 100x your roll"),xe=G(),Qe=d("div"),Xe=G(),me=d("div"),Ze=d("div"),je=G(),Ue=d("div"),pe=o("colombian "),ye=d("br"),he=o("red bud"),Ve=G(),Ye=d("div"),fe=G(),Ne=d("div"),ve=d("div"),Le=G(),We=d("div"),Re=o("thai"),Je=d("br"),De=o("stick"),we=G(),ze=d("div"),Se=G(),ke=d("div"),He=d("div"),Pe=o("downtown"),Ee=d("br"),Me=o("pharmacy "),Te=d("br"),qe=o("Pay 5x"),Ke=G(),Oe=d("div"),$e=G(),_e=d("div"),gc=d("div"),Ic=G(),Cc=d("div"),Ac=o("gainesville"),ec=d("br"),cc=o(" green"),lc=G(),tc=d("div"),ic=G(),sc=d("div"),ac=d("div"),nc=G(),bc=d("div"),dc=o("wacky"),oc=d("br"),Gc=o(" weed"),uc=G(),Bc=d("div"),rc=G(),Fc=d("div"),xc=d("div"),Qc=o("Far "),Xc=d("br"),mc=o(" Out!"),Zc=G(),jc=d("div"),Uc=G(),pc=d("div"),yc=d("div"),hc=G(),Vc=d("div"),Vc.textContent="Home Grown",Yc=G(),fc=d("div"),Nc=G(),vc=d("div"),Lc=d("div"),Wc=o("Flying"),Rc=d("br"),Jc=o(" Too High:"),Dc=d("br"),wc=o("Lose A"),zc=d("br"),Sc=o("Turn"),kc=G(),Hc=d("div"),Pc=G(),Ec=d("div"),Mc=d("div"),Tc=G(),qc=d("div"),qc.textContent="Colombian",Kc=G(),Oc=d("div"),$c=G(),_c=d("div"),gl=d("div"),H(I,"rel","stylesheet"),H(I,"href","/css/style.css"),e(I,Ig,1,4,18),H(t,"class","btn-blue"),e(t,Ig,494,8,17038),H(l,"class","container-fluid py-3 px-5 bg-white svelte-1jfjjq1"),e(l,Ig,493,0,16981),H(a,"class","flex-row items-top svelte-1jfjjq1"),e(a,Ig,497,4,17175),H(s,"class","container-fluid py-3 px-5 bg-white svelte-1jfjjq1"),e(s,Ig,496,4,17122),H(Q,"class","corner corner1 svelte-1jfjjq1"),e(Q,Ig,514,37,18007),H(m,"class","box svelte-1jfjjq1"),H(m,"id","20"),e(m,Ig,515,20,18072),H(x,"class","square2 svelte-1jfjjq1"),e(x,Ig,514,16,17986),H(U,"class","header header-top purple svelte-1jfjjq1"),e(U,Ig,518,20,18185),H(y,"class","firstLine firstLine-top top-side svelte-1jfjjq1"),e(y,Ig,519,20,18250),H(V,"class","box svelte-1jfjjq1"),H(V,"id","21"),e(V,Ig,520,20,18331),H(j,"class","square1 svelte-1jfjjq1"),e(j,Ig,517,16,18143),e(L,Ig,523,83,18507),e(R,Ig,523,91,18515),e(D,Ig,523,101,18525),H(N,"class","firstLine firstLine-top no-color top-side svelte-1jfjjq1"),e(N,Ig,523,20,18444),H(M,"class","box svelte-1jfjjq1"),H(M,"id","22"),e(M,Ig,525,20,18589),H(f,"class","square1 svelte-1jfjjq1"),e(f,Ig,522,16,18402),H(K,"class","firstLine firstLine-top no-color top-side svelte-1jfjjq1"),e(K,Ig,528,20,18702),H($,"class","box svelte-1jfjjq1"),H($,"id","23"),e($,Ig,529,20,18794),H(q,"class","square1 svelte-1jfjjq1"),e(q,Ig,527,16,18660),H(eg,"class","header header-top orange svelte-1jfjjq1"),e(eg,Ig,532,20,18907),H(ig,"class","firstLine firstLine-top top-side svelte-1jfjjq1"),e(ig,Ig,533,20,18972),H(ag,"class","box svelte-1jfjjq1"),H(ag,"id","24"),e(ag,Ig,534,20,19055),H(Cg,"class","square1 svelte-1jfjjq1"),e(Cg,Ig,531,16,18865),e(Gg,Ig,537,84,19232),H(dg,"class","firstLine firstLine-top no-color top-side svelte-1jfjjq1"),e(dg,Ig,537,20,19168),H(rg,"class","box svelte-1jfjjq1"),H(rg,"id","25"),e(rg,Ig,538,20,19283),H(bg,"class","square1 svelte-1jfjjq1"),e(bg,Ig,536,16,19126),H(Qg,"class","header header-top yellow svelte-1jfjjq1"),e(Qg,Ig,541,20,19396),H(mg,"class","firstLine firstLine-top top-side svelte-1jfjjq1"),e(mg,Ig,542,20,19461),H(jg,"class","box svelte-1jfjjq1"),H(jg,"id","26"),e(jg,Ig,543,20,19548),H(xg,"class","square1 svelte-1jfjjq1"),e(xg,Ig,540,16,19354),e(Vg,Ig,546,69,19710),H(yg,"class","firstLine firstLine-top top-side svelte-1jfjjq1"),e(yg,Ig,546,20,19661),H(Ng,"class","box svelte-1jfjjq1"),H(Ng,"id","27"),e(Ng,Ig,547,20,19746),H(pg,"class","square1 svelte-1jfjjq1"),e(pg,Ig,545,16,19619),H(Wg,"class","header header-top lightblue svelte-1jfjjq1"),e(Wg,Ig,550,20,19859),e(wg,Ig,551,71,19978),H(Jg,"class","firstLine firstLine-top top-side svelte-1jfjjq1"),e(Jg,Ig,551,20,19927),H(kg,"class","box svelte-1jfjjq1"),H(kg,"id","28"),e(kg,Ig,552,20,20017),H(Lg,"class","square1 svelte-1jfjjq1"),e(Lg,Ig,549,16,19817),H(Eg,"class","header header-top blue svelte-1jfjjq1"),e(Eg,Ig,555,20,20130),e(Kg,Ig,556,70,20243),H(Tg,"class","firstLine firstLine-top top-side svelte-1jfjjq1"),e(Tg,Ig,556,20,20193),H(_g,"class","box svelte-1jfjjq1"),H(_g,"id","29"),e(_g,Ig,557,20,20282),H(Pg,"class","square1 svelte-1jfjjq1"),e(Pg,Ig,554,16,20088),e(eI,Ig,559,75,20412),H(CI,"class","corner corner2 svelte-1jfjjq1"),e(CI,Ig,559,37,20374),H(II,"class","square2 svelte-1jfjjq1"),e(II,Ig,559,16,20353),H(tI,"class","box svelte-1jfjjq1"),H(tI,"id","30"),e(tI,Ig,560,16,20459),H(F,"class","row top svelte-1jfjjq1"),e(F,Ig,513,12,17948),H(bI,"class","headerSide header-left yellow svelte-1jfjjq1"),e(bI,Ig,566,24,20655),e(uI,Ig,567,80,20785),H(oI,"class","firstLine firstLine-left left-side svelte-1jfjjq1"),e(oI,Ig,567,24,20729),H(FI,"class","box svelte-1jfjjq1"),H(FI,"id","19"),e(FI,Ig,568,24,20824),H(nI,"class","squareSide svelte-1jfjjq1"),e(nI,Ig,565,20,20606),e(ZI,Ig,571,90,21018),H(XI,"class","firstLine firstLine-left no-color left-side svelte-1jfjjq1"),e(XI,Ig,571,24,20952),H(pI,"class","box svelte-1jfjjq1"),H(pI,"id","18"),e(pI,Ig,572,24,21063),H(QI,"class","squareSide svelte-1jfjjq1"),e(QI,Ig,570,20,20903),H(VI,"class","headerSide header-left yellow svelte-1jfjjq1"),e(VI,Ig,575,24,21191),H(fI,"class","firstLine firstLine-left left-side svelte-1jfjjq1"),e(fI,Ig,576,24,21265),H(vI,"class","box svelte-1jfjjq1"),H(vI,"id","17"),e(vI,Ig,577,24,21354),H(hI,"class","squareSide svelte-1jfjjq1"),e(hI,Ig,574,20,21142),e(DI,Ig,580,89,21547),H(RI,"class","firstLine firstLine-left no-color left-side svelte-1jfjjq1"),e(RI,Ig,580,24,21482),H(SI,"class","box svelte-1jfjjq1"),H(SI,"id","16"),e(SI,Ig,581,24,21590),H(WI,"class","squareSide svelte-1jfjjq1"),e(WI,Ig,579,20,21433),H(PI,"class","headerSide header-left red svelte-1jfjjq1"),e(PI,Ig,584,24,21718),H(MI,"class","firstLine firstLine-left left-side svelte-1jfjjq1"),e(MI,Ig,585,24,21789),H(qI,"class","box svelte-1jfjjq1"),H(qI,"id","15"),e(qI,Ig,586,24,21878),H(HI,"class","squareSide svelte-1jfjjq1"),e(HI,Ig,583,20,21669),e(gC,Ig,589,90,22072),e(CC,Ig,589,102,22084),H($I,"class","firstLine firstLine-left no-color left-side svelte-1jfjjq1"),e($I,Ig,589,24,22006),H(cC,"class","box svelte-1jfjjq1"),H(cC,"id","14"),e(cC,Ig,590,24,22127),H(OI,"class","squareSide svelte-1jfjjq1"),e(OI,Ig,588,20,21957),H(iC,"class","headerSide header-left green svelte-1jfjjq1"),e(iC,Ig,593,24,22255),e(bC,Ig,594,80,22384),H(aC,"class","firstLine firstLine-left left-side svelte-1jfjjq1"),e(aC,Ig,594,24,22328),H(GC,"class","box svelte-1jfjjq1"),H(GC,"id","13"),e(GC,Ig,595,24,22427),H(tC,"class","squareSide svelte-1jfjjq1"),e(tC,Ig,592,20,22206),e(xC,Ig,598,88,22619),H(rC,"class","firstLine firstLine-left no-color left-side svelte-1jfjjq1"),e(rC,Ig,598,24,22555),H(mC,"class","box svelte-1jfjjq1"),H(mC,"id","12"),e(mC,Ig,599,24,22659),H(BC,"class","squareSide svelte-1jfjjq1"),e(BC,Ig,597,20,22506),H(UC,"class","headerSide header-left lightblue svelte-1jfjjq1"),e(UC,Ig,602,24,22787),e(VC,Ig,603,81,22921),H(yC,"class","firstLine firstLine-left left-side svelte-1jfjjq1"),e(yC,Ig,603,24,22864),H(NC,"class","box svelte-1jfjjq1"),H(NC,"id","11"),e(NC,Ig,604,24,22963),H(jC,"class","squareSide svelte-1jfjjq1"),e(jC,Ig,601,20,22738),H(aI,"class","square2 svelte-1jfjjq1"),e(aI,Ig,564,16,20564),H(RC,"class","card-blue-inside svelte-1jfjjq1"),e(RC,Ig,609,24,23160),H(WC,"class","card-box card-blue svelte-1jfjjq1"),e(WC,Ig,608,20,23103),H(wC,"class","logoName svelte-1jfjjq1"),e(wC,Ig,612,24,23290),H(DC,"class","logoBox svelte-1jfjjq1"),e(DC,Ig,611,20,23244),H(kC,"class","card-orange-inside svelte-1jfjjq1"),e(kC,Ig,615,24,23435),H(SC,"class","card-box card-orange svelte-1jfjjq1"),e(SC,Ig,614,20,23376),H(LC,"class","square9 svelte-1jfjjq1"),e(LC,Ig,607,16,23061),H(MC,"class","headerSide header-right purple svelte-1jfjjq1"),e(MC,Ig,620,24,23631),H(qC,"class","firstLine firstLine-right right-side svelte-1jfjjq1"),e(qC,Ig,621,24,23706),H(OC,"class","box svelte-1jfjjq1"),H(OC,"id","31"),e(OC,Ig,622,24,23797),H(EC,"class","squareSide svelte-1jfjjq1"),e(EC,Ig,619,20,23582),H(gA,"class","headerSide header-right orange svelte-1jfjjq1"),e(gA,Ig,625,24,23925),e(eA,Ig,626,83,24059),H(CA,"class","firstLine firstLine-right right-side svelte-1jfjjq1"),e(CA,Ig,626,24,24e3),H(tA,"class","box svelte-1jfjjq1"),H(tA,"id","32"),e(tA,Ig,627,24,24100),H(_C,"class","squareSide svelte-1jfjjq1"),e(_C,Ig,624,20,23876),e(bA,Ig,630,90,24294),e(oA,Ig,630,105,24309),H(aA,"class","firstLine firstLine-right no-color right-side svelte-1jfjjq1"),e(aA,Ig,630,24,24228),H(BA,"class","box svelte-1jfjjq1"),H(BA,"id","33"),e(BA,Ig,632,24,24376),H(sA,"class","squareSide svelte-1jfjjq1"),e(sA,Ig,629,20,24179),H(xA,"class","headerSide header-right red svelte-1jfjjq1"),e(xA,Ig,635,24,24504),e(ZA,Ig,636,80,24632),H(XA,"class","firstLine firstLine-right right-side svelte-1jfjjq1"),e(XA,Ig,636,24,24576),H(pA,"class","box svelte-1jfjjq1"),H(pA,"id","34"),e(pA,Ig,637,24,24673),H(FA,"class","squareSide svelte-1jfjjq1"),e(FA,Ig,634,20,24455),H(VA,"class","headerSide header-right brown svelte-1jfjjq1"),e(VA,Ig,640,24,24801),H(fA,"class","firstLine firstLine-right right-side svelte-1jfjjq1"),e(fA,Ig,641,24,24875),H(vA,"class","box svelte-1jfjjq1"),H(vA,"id","35"),e(vA,Ig,642,24,24963),H(hA,"class","squareSide svelte-1jfjjq1"),e(hA,Ig,639,20,24752),e(DA,Ig,645,91,25158),H(RA,"class","firstLine firstLine-right no-color right-side svelte-1jfjjq1"),e(RA,Ig,645,24,25091),H(SA,"class","box svelte-1jfjjq1"),H(SA,"id","36"),e(SA,Ig,646,24,25199),H(WA,"class","squareSide svelte-1jfjjq1"),e(WA,Ig,644,20,25042),H(PA,"class","headerSide header-right lightblue svelte-1jfjjq1"),e(PA,Ig,649,24,25327),H(MA,"class","firstLine firstLine-right right-side svelte-1jfjjq1"),e(MA,Ig,650,24,25405),H(qA,"class","box svelte-1jfjjq1"),H(qA,"id","37"),e(qA,Ig,651,24,25494),H(HA,"class","squareSide svelte-1jfjjq1"),e(HA,Ig,648,20,25278),e(ge,Ig,654,86,25684),H($A,"class","firstLine firstLine-right no-color right-side svelte-1jfjjq1"),e($A,Ig,654,24,25622),H(Ae,"class","box svelte-1jfjjq1"),H(Ae,"id","38"),e(Ae,Ig,655,24,25725),H(OA,"class","squareSide svelte-1jfjjq1"),e(OA,Ig,653,20,25573),H(le,"class","headerSide header-right yellow svelte-1jfjjq1"),e(le,Ig,658,24,25853),H(ie,"class","firstLine firstLine-right right-side svelte-1jfjjq1"),e(ie,Ig,659,24,25928),H(ae,"class","box svelte-1jfjjq1"),H(ae,"id","39"),e(ae,Ig,660,24,26018),H(ce,"class","squareSide svelte-1jfjjq1"),e(ce,Ig,657,20,25804),H(PC,"class","square2 svelte-1jfjjq1"),e(PC,Ig,618,16,23540),H(sI,"class","row center svelte-1jfjjq1"),e(sI,Ig,563,12,20523),e(ue,Ig,667,85,26277),e(re,Ig,668,30,26318),H(oe,"class","corner corner4 svelte-1jfjjq1"),B(oe,"line-height","1em"),e(oe,Ig,667,20,26212),H(Qe,"class","box svelte-1jfjjq1"),H(Qe,"id","10"),e(Qe,Ig,670,20,26389),H(de,"class","square2 svelte-1jfjjq1"),e(de,Ig,666,16,26170),H(Ze,"class","header header-bottom red svelte-1jfjjq1"),e(Ze,Ig,673,20,26502),e(ye,Ig,674,70,26617),H(Ue,"class","firstLine firstLine-bottom svelte-1jfjjq1"),e(Ue,Ig,674,20,26567),H(Ye,"class","box svelte-1jfjjq1"),H(Ye,"id","9"),e(Ye,Ig,675,20,26655),H(me,"class","square1 svelte-1jfjjq1"),e(me,Ig,672,16,26460),H(ve,"class","header header-bottom blue svelte-1jfjjq1"),e(ve,Ig,678,20,26767),e(Je,Ig,679,64,26877),H(We,"class","firstLine firstLine-bottom svelte-1jfjjq1"),e(We,Ig,679,20,26833),H(ze,"class","box svelte-1jfjjq1"),H(ze,"id","8"),e(ze,Ig,680,20,26913),H(Ne,"class","square1 svelte-1jfjjq1"),e(Ne,Ig,677,16,26725),e(Ee,Ig,683,77,27082),e(Te,Ig,683,90,27095),H(He,"class","firstLine firstLine-bottom no-color svelte-1jfjjq1"),e(He,Ig,683,20,27025),H(Oe,"class","box svelte-1jfjjq1"),H(Oe,"id","7"),e(Oe,Ig,684,20,27132),H(ke,"class","square1 svelte-1jfjjq1"),e(ke,Ig,682,16,26983),H(gc,"class","header header-bottom green svelte-1jfjjq1"),e(gc,Ig,687,20,27244),e(ec,Ig,688,71,27362),H(Cc,"class","firstLine firstLine-bottom svelte-1jfjjq1"),e(Cc,Ig,688,20,27311),H(tc,"class","box svelte-1jfjjq1"),H(tc,"id","6"),e(tc,Ig,689,20,27401),H(_e,"class","square1 svelte-1jfjjq1"),e(_e,Ig,686,16,27202),H(ac,"class","header header-bottom orange svelte-1jfjjq1"),e(ac,Ig,692,20,27513),e(oc,Ig,693,65,27626),H(bc,"class","firstLine firstLine-bottom svelte-1jfjjq1"),e(bc,Ig,693,20,27581),H(Bc,"id","5"),H(Bc,"class","svelte-1jfjjq1"),e(Bc,Ig,694,20,27664),H(sc,"class","square1 svelte-1jfjjq1"),e(sc,Ig,691,16,27471),e(Xc,Ig,697,73,27817),H(xc,"class","firstLine firstLine-bottom no-color svelte-1jfjjq1"),e(xc,Ig,697,20,27764),H(jc,"class","box svelte-1jfjjq1"),H(jc,"id","4"),e(jc,Ig,698,20,27855),H(Fc,"class","square1 svelte-1jfjjq1"),e(Fc,Ig,696,16,27722),H(yc,"class","header header-bottom green svelte-1jfjjq1"),e(yc,Ig,701,20,27967),H(Vc,"class","firstLine firstLine-bottom svelte-1jfjjq1"),e(Vc,Ig,702,20,28034),H(fc,"class","box svelte-1jfjjq1"),H(fc,"id","3"),e(fc,Ig,703,20,28111),H(pc,"class","square1 svelte-1jfjjq1"),e(pc,Ig,700,16,27925),e(Rc,Ig,706,75,28278),e(Dc,Ig,706,91,28294),e(zc,Ig,706,101,28304),H(Lc,"class","firstLine firstLine-bottom no-color svelte-1jfjjq1"),e(Lc,Ig,706,20,28223),H(Hc,"class","box svelte-1jfjjq1"),H(Hc,"id","2"),e(Hc,Ig,707,20,28339),H(vc,"class","square1 svelte-1jfjjq1"),e(vc,Ig,705,16,28181),H(Mc,"class","header header-bottom brown svelte-1jfjjq1"),e(Mc,Ig,710,20,28451),H(qc,"class","firstLine firstLine-bottom svelte-1jfjjq1"),e(qc,Ig,711,20,28518),H(Oc,"class","box svelte-1jfjjq1"),H(Oc,"id","1"),e(Oc,Ig,712,20,28594),H(Ec,"class","square1 svelte-1jfjjq1"),e(Ec,Ig,709,16,28409),H(gl,"class","box svelte-1jfjjq1"),H(gl,"id","40"),e(gl,Ig,715,20,28780),H(_c,"class","square2 svelte-1jfjjq1"),B(_c,"background-image","url('/img/straight.jpg')"),B(_c,"background-size","cover"),e(_c,Ig,714,16,28664),H(be,"class","row top svelte-1jfjjq1"),e(be,Ig,665,12,26132),H(r,"class","gameBoard svelte-1jfjjq1"),e(r,Ig,512,8,17912),H(u,"class","potluck svelte-1jfjjq1"),e(u,Ig,511,4,17882),e(c,Ig,492,0,16974)},l:function(g){throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option")},m:function(A,e){z(gg.head,I),S(A,C,e),S(A,c,e),z(c,l),z(l,t),z(c,i),z(c,s),z(s,a);for(let g=0;g<Al.length;g+=1)Al[g].m(a,null);z(c,n),z(c,u),z(u,r),z(r,F),z(F,x),z(x,Q),z(x,X),z(x,m),z(F,Z),z(F,j),z(j,U),z(j,p),z(j,y),z(j,h),z(j,V),z(F,Y),z(F,f),z(f,N),z(N,v),z(N,L),z(N,W),z(N,R),z(N,J),z(N,D),z(N,P),z(f,E),z(f,M),z(F,T),z(F,q),z(q,K),z(q,O),z(q,$),z(F,_),z(F,Cg),z(Cg,eg),z(Cg,tg),z(Cg,ig),z(Cg,sg),z(Cg,ag),z(F,ng),z(F,bg),z(bg,dg),z(dg,og),z(dg,Gg),z(dg,ug),z(bg,Bg),z(bg,rg),z(F,Fg),z(F,xg),z(xg,Qg),z(xg,Xg),z(xg,mg),z(xg,Zg),z(xg,jg),z(F,Ug),z(F,pg),z(pg,yg),z(yg,hg),z(yg,Vg),z(yg,Yg),z(pg,fg),z(pg,Ng),z(F,vg),z(F,Lg),z(Lg,Wg),z(Lg,Rg),z(Lg,Jg),z(Jg,Dg),z(Jg,wg),z(Jg,zg),z(Lg,Sg),z(Lg,kg),z(F,Hg),z(F,Pg),z(Pg,Eg),z(Pg,Mg),z(Pg,Tg),z(Tg,qg),z(Tg,Kg),z(Tg,Og),z(Pg,$g),z(Pg,_g),z(F,gI),z(F,II),z(II,CI),z(CI,AI),z(CI,eI),z(CI,cI),z(F,lI),z(F,tI),z(r,iI),z(r,sI),z(sI,aI),z(aI,nI),z(nI,bI),z(nI,dI),z(nI,oI),z(oI,GI),z(oI,uI),z(oI,BI),z(nI,rI),z(nI,FI),z(aI,xI),z(aI,QI),z(QI,XI),z(XI,mI),z(XI,ZI),z(XI,jI),z(QI,UI),z(QI,pI),z(aI,yI),z(aI,hI),z(hI,VI),z(hI,YI),z(hI,fI),z(hI,NI),z(hI,vI),z(aI,LI),z(aI,WI),z(WI,RI),z(RI,JI),z(RI,DI),z(RI,wI),z(WI,zI),z(WI,SI),z(aI,kI),z(aI,HI),z(HI,PI),z(HI,EI),z(HI,MI),z(HI,TI),z(HI,qI),z(aI,KI),z(aI,OI),z(OI,$I),z($I,_I),z($I,gC),z($I,IC),z($I,CC),z($I,AC),z(OI,eC),z(OI,cC),z(aI,lC),z(aI,tC),z(tC,iC),z(tC,sC),z(tC,aC),z(aC,nC),z(aC,bC),z(aC,dC),z(tC,oC),z(tC,GC),z(aI,uC),z(aI,BC),z(BC,rC),z(rC,FC),z(rC,xC),z(rC,QC),z(BC,XC),z(BC,mC),z(aI,ZC),z(aI,jC),z(jC,UC),z(jC,pC),z(jC,yC),z(yC,hC),z(yC,VC),z(yC,YC),z(jC,fC),z(jC,NC),z(sI,vC),z(sI,LC),z(LC,WC),z(WC,RC),z(LC,JC),z(LC,DC),z(DC,wC),z(LC,zC),z(LC,SC),z(SC,kC),z(sI,HC),z(sI,PC),z(PC,EC),z(EC,MC),z(EC,TC),z(EC,qC),z(EC,KC),z(EC,OC),z(PC,$C),z(PC,_C),z(_C,gA),z(_C,IA),z(_C,CA),z(CA,AA),z(CA,eA),z(CA,cA),z(_C,lA),z(_C,tA),z(PC,iA),z(PC,sA),z(sA,aA),z(aA,nA),z(aA,bA),z(aA,dA),z(aA,oA),z(aA,GA),z(sA,uA),z(sA,BA),z(PC,rA),z(PC,FA),z(FA,xA),z(FA,QA),z(FA,XA),z(XA,mA),z(XA,ZA),z(XA,jA),z(FA,UA),z(FA,pA),z(PC,yA),z(PC,hA),z(hA,VA),z(hA,YA),z(hA,fA),z(hA,NA),z(hA,vA),z(PC,LA),z(PC,WA),z(WA,RA),z(RA,JA),z(RA,DA),z(RA,wA),z(WA,zA),z(WA,SA),z(PC,kA),z(PC,HA),z(HA,PA),z(HA,EA),z(HA,MA),z(HA,TA),z(HA,qA),z(PC,KA),z(PC,OA),z(OA,$A),z($A,_A),z($A,ge),z($A,Ie),z(OA,Ce),z(OA,Ae),z(PC,ee),z(PC,ce),z(ce,le),z(ce,te),z(ce,ie),z(ce,se),z(ce,ae),z(r,ne),z(r,be),z(be,de),z(de,oe),z(oe,Ge),z(oe,ue),z(oe,Be),z(oe,re),z(oe,Fe),z(de,xe),z(de,Qe),z(be,Xe),z(be,me),z(me,Ze),z(me,je),z(me,Ue),z(Ue,pe),z(Ue,ye),z(Ue,he),z(me,Ve),z(me,Ye),z(be,fe),z(be,Ne),z(Ne,ve),z(Ne,Le),z(Ne,We),z(We,Re),z(We,Je),z(We,De),z(Ne,we),z(Ne,ze),z(be,Se),z(be,ke),z(ke,He),z(He,Pe),z(He,Ee),z(He,Me),z(He,Te),z(He,qe),z(ke,Ke),z(ke,Oe),z(be,$e),z(be,_e),z(_e,gc),z(_e,Ic),z(_e,Cc),z(Cc,Ac),z(Cc,ec),z(Cc,cc),z(_e,lc),z(_e,tc),z(be,ic),z(be,sc),z(sc,ac),z(sc,nc),z(sc,bc),z(bc,dc),z(bc,oc),z(bc,Gc),z(sc,uc),z(sc,Bc),z(be,rc),z(be,Fc),z(Fc,xc),z(xc,Qc),z(xc,Xc),z(xc,mc),z(Fc,Zc),z(Fc,jc),z(be,Uc),z(be,pc),z(pc,yc),z(pc,hc),z(pc,Vc),z(pc,Yc),z(pc,fc),z(be,Nc),z(be,vc),z(vc,Lc),z(Lc,Wc),z(Lc,Rc),z(Lc,Jc),z(Lc,Dc),z(Lc,wc),z(Lc,zc),z(Lc,Sc),z(vc,kc),z(vc,Hc),z(be,Pc),z(be,Ec),z(Ec,Mc),z(Ec,Tc),z(Ec,qc),z(Ec,Kc),z(Ec,Oc),z(be,$c),z(be,_c),z(_c,gl),Il=function(g,I,C,A,e,c){const l=!0===A?["capture"]:A?Array.from(Object.keys(A)):[];e&&l.push("preventDefault"),c&&l.push("stopPropagation"),w("SvelteDOMAddEventListener",{node:g,event:I,handler:C,modifiers:l});const t=function(g,I,C,A){return g.addEventListener(I,C,A),()=>g.removeEventListener(I,C,A)}(g,I,C,A);return()=>{w("SvelteDOMRemoveEventListener",{node:g,event:I,handler:C,modifiers:l}),t()}}(t,"click",g[1],!1,!1,!1)},p:function(g,[I]){if(1&I){let C;for(Cl=g[0].players,C=0;C<Cl.length;C+=1){const A=Ag(g,Cl,C);Al[C]?Al[C].p(A,I):(Al[C]=cg(A),Al[C].c(),Al[C].m(a,null))}for(;C<Al.length;C+=1)Al[C].d(1);Al.length=Cl.length}},i:A,o:A,d:function(g){k(I),g&&k(C),g&&k(c),b(Al,g),Il()}};return w("SvelteRegisterBlock",{block:el,id:lg.name,type:"component",source:"",ctx:g}),el}function tg(g){return g.oz>=g["5lb"]?(g.oz=g["5lb"]+g.price,console.log(g.name+" is over 5lb "+g.oz)):g.oz<=g["2lb"]?g.oz===g["2lb"]?g.oz=g["3lb"]:g.oz=g["2lb"]:g.oz>g["3lb"]?g.oz===g["4lb"]?g.oz=g["5lb"]:g.oz=g["4lb"]:void 0}function ig(g,I){return g=Math.ceil(g),I=Math.floor(I),Math.floor(Math.random()*(I-g+1))+g}function sg(g,I,C){let A={turnNumber:1,skipped:[],activePlayerId:0,currentRoll:0,players:q,bank:{strains:K,cash:1e5},jackpot:{cash:2e3},farouts:_,bummers:$};function e(){return A.players[A.activePlayerId]}function c(g){switch(g){case"bumEveryoneOut":return A.players.forEach((function(g){g.cash-=200,e().cash+=200})),"Each player paid the bad bad bummer boy. $200";case"pot":return function(){let g=A.bank.strains;for(let I=0;I<g.length;){if(g[I].space==e().space){if(g[I].price<e().cash)return l(g[I]),void A.bank.strains.splice(I,1);console.log(e().name+"did not have enough money for "+g[I].name)}I+=1}for(let g=0;g<A.players.length;)A.players[g].strains.find((function(I){if(I.space===e().space){if(e().strains.includes(I))return!0===e().freePound?tg(I):I.price<e().cash?(e().cash-=I.price,C(0,A.bank.cash+=I.price,A),tg(I)):void 0;let c=I.oz;!0===e().discount&&(c=Math.round(I.oz/2)),console.log(e().name+" paid "+A.players[g].name+" $"+c+" for "+I.name),e().cash-=c,C(0,A.players[g].cash+=c,A)}})),g+=1}();case"reducePot":return e().discount=!0;case"freePound":return e().freePound=!0;case"halfOff":return e().halfOff=!0;case"deal":return function(){let g=[];return A.players.forEach((function(I){I.strains.map((function(C){return g.push({player:I,price:C.price,name:C.name,rent:C.oz,value:5*C.oz})}))})),console.log(g),g}();case"loseTurn":return console.log(e().name+" lost a turn"),A.skipped.push(A.skipped[A.activePlayerId]);case"bummer":let I=function(){let g=Math.floor(Math.random()*A.bummers.length),I=A.bummers[g];if(A.bummers.length>1)return A.bummers.splice(g,1),I;return console.log("Reset bummers to original state"),C(0,A.bummers=$,A),I}();return console.log("Bummer: "+I.effect),c(I.effect);case"farout":let t=function(){let g=Math.floor(Math.random()*A.farouts.length),I=A.farouts[g];if(A.farouts.length>1)return A.farouts.splice(g,1),I;return console.log("Reset farouts to original state"),C(0,A.farouts=_,A),I}();return console.log("Far Out: "+t.effect),c(t.effect);case"highRoller":return c("w"+(ig(1,6)+100*ig(1,6)));case"payLefty":const i=ig(1,6)+100*ig(1,6);e().cash-=i;let s=A.activePlayerId-1;return s<0&&(s=A.players.length-1),console.log("leftyId: "+s),C(0,A.players[s].cash+=i,A);case"jackpot":return console.log(e().name+" won $"+A.jackpot.cash+" from the jackpot!"),e().cash+=A.jackpot.cash,void C(0,A.jackpot.cash=0,A);case"paraquat":if(console.log(e().name+" got paraquat, this is going to suck."),console.log(e().name+" lost a turn to paraquat"),A.skipped.push(A.skipped[A.activePlayerId]),!0===e().getOutOfHospital)return e().getOutOfHospital=!1,console.log("You lucky dog");c("hospital");break;case"hospital":e().space=10,c("loseTurn"),c("x100");break;case"getOutOfHospital":return e().getOutOfHospital=!0;default:if(console.log("handle: "+g),"x"===g.substring(0,1)){let I=Number(g.substring(1,5))*A.currentRoll;return e().cash-=I,C(0,A.bank.cash+=I,A),e().cash}if("l"===g.substring(0,1)){let I=Number(g.substring(1,5));return e().cash-=I,C(0,A.bank.cash+=I,A),e().cash}if("w"===g.substring(0,1)){let I=Number(g.substring(1,5));return e().cash+=I,C(0,A.bank.cash-=I,A),e().cash}return console.error("unhandled case in mapEvents() "+g)}}function l(g){let I=g.price;!0===e().halfOff&&(I=Math.round(g.price/2)),e().cash-=I,C(0,A.bank.cash+=I,A),e().strains.push(g),console.log(e().name+" bought: "+g.name)}function t(){let g=ig(1,6),I=ig(1,6);return C(0,A.currentRoll=g+I,A)}function i(){for(let g=40;g>0;g-=1)document.getElementById(g).innerHTML="";A.players.forEach((function(g){document.getElementById(g.space).innerHTML+=g.token}))}var s;return s=()=>{i()},X().$$.on_mount.push(s),g.$capture_state=()=>({}),g.$inject_state=g=>{"state"in g&&C(0,A=g.state)},[A,function(){return t(),console.log("Turn #1"),e().space=A.currentRoll,i(),c(O[e().space-1].effect),console.log("First roll "+A.currentRoll+" by "+e().name+" is on space "+e().space+", and has $"+e().cash),setTimeout(()=>function g(){if(C(0,A.players=A.players.filter((function(g){if(g.cash>=1)return console.log(g.name+" $"+g.cash),g;g.strains.forEach(g=>g.oz=g.price/10),C(0,A.bank.strains=A.bank.strains.concat(g.strains),A),console.log(g.name+" was dropped from the game for being broke at the beginning of their turn. Their strains are returned unto the fold. ")})),A),console.log("Bank $"+A.bank.cash),1===A.players.length)return function(){let g="",I=A.players[0];1===I.strains.length&&(g=I.strains[0].name);if(I.strains.length>1){for(let C=0;C<I.strains.length-1;)g+=I.strains[C].name+", ",C+=1;g+="and "+I.strains[I.strains.length-1].name+". "}let C="At the beginning of turn "+A.turnNumber+": The Winner is "+I.name+" with $"+I.cash+". With "+I.strains.length+" strains. They owned "+g+"The bank had $"+A.bank.cash+". ",e={turnNumber:A.turnNumber,skipped:A.skipped.length,players:A.players,bank:{strains:A.strains,cash:A.bank.cash},jackpot:{cash:A.jackpot.cash}};var c=new XMLHttpRequest;return c.open("POST","/api/potluck_log",!0),c.setRequestHeader("Content-Type","application/json"),c.send(JSON.stringify({value:{message:C,state:e}})),alert(C),setTimeout(()=>{window.location.href="/potluck"},5e3)}();if(A.bank.cash<1)return function(g){let I="";if(A.bank.strains.length>1){for(let g=0;g<A.bank.strains.length-1;)I+=A.bank.strains[g].name+", ",g+=1;I+="and "+A.bank.strains[A.bank.strains.length-1].name}C(0,A.bank.strains.length=1,A)&&(I=A.bank.strains[0].name);let e="The bank had $"+A.bank.cash+" and "+A.bank.strains.length+" strains. "+I+". ";A.players.forEach((function(g){let I="";if(g.strains.length>1){for(let C=0;C<g.strains.length-1;)I+=g.strains[C].name+", ",C+=1;I+="and "+g.strains[g.strains.length-1].name}1===g.strains.length&&(I=g.strains[0].name),e+=g.name+" had $"+g.cash+". With "+g.strains.length+" strains. They owned "+I+". "}));let c="On or about turn #"+A.turnNumber+": The game was aborted for "+g+". "+e,l={turnNumber:A.turnNumber,skipped:A.skipped.length,players:A.players,bank:{strains:A.strains,cash:A.bank.cash},jackpot:{cash:A.jackpot.cash}};var t=new XMLHttpRequest;t.open("POST","/api/potluck_log",!0),t.setRequestHeader("Content-Type","application/json"),t.send(JSON.stringify({value:{message:c,state:l}})),console.error("Bank Bailout! $"+A.bank.cash+" "+c),alert(c),setTimeout(()=>{window.location.href="/potluck"},5e3)}("bank failure");if(function(){C(0,A.activePlayerId+=1,A),A.activePlayerId>=A.players.length&&C(0,A.activePlayerId=0,A);e()}(),A.skipped.includes(A.activePlayerId))return A.skipped.splice(A.skipped.indexOf(A.activePlayerId),1),console.log("end of turn, player id: "+A.activePlayerId),console.log("skipped player id: "+A.activePlayerId),g();return t(),console.log(e().name+" rolled a "+A.currentRoll+" started on space "+e().space+" and has $"+e().cash),e().space=function(){const g=e().space+A.currentRoll;g>=40&&c("w500");let I=g%40;0===I&&(I=40);return I}(),i(),c(O[e().space-1].effect),console.log("At end of turn, "+e().name+" rolled "+A.currentRoll+", is on space "+e().space+",  and has $"+e().cash),C(0,A.turnNumber+=1,A),console.log("Turn #"+A.turnNumber),setTimeout(()=>g(),100)}(),1e3)}]}var ag=new class extends class extends class{$destroy(){J(this,1),this.$destroy=A}$on(g,I){const C=this.$$.callbacks[g]||(this.$$.callbacks[g]=[]);return C.push(I),()=>{const g=C.indexOf(I);-1!==g&&C.splice(g,1)}}$set(){}}{constructor(g){if(!g||!g.target&&!g.$$inline)throw new Error("'target' is a required option");super()}$destroy(){super.$destroy(),this.$destroy=()=>{console.warn("Component was already destroyed")}}}{constructor(g){var I;super(g),gg.getElementById("svelte-1jfjjq1-style")||((I=d("style")).id="svelte-1jfjjq1-style",I.textContent="div.svelte-1jfjjq1{box-sizing:border-box;text-transform:uppercase}.box.svelte-1jfjjq1{position:relative;top:26%;left:23%;right:23%;bottom:auto;overflow:hidden}.potluck.svelte-1jfjjq1{background-color:floralwhite;width:95.75vw;height:94.25vw;margin:10px auto}.gameBoard.svelte-1jfjjq1{height:100%;position:relative;background-color:floralwhite}.row.svelte-1jfjjq1{width:100%;display:flex}.top.svelte-1jfjjq1{height:15.384615385%}.center.svelte-1jfjjq1{height:69.23076923%}.square1.svelte-1jfjjq1{outline:1px solid black;flex-grow:1;position:relative;background:floralwhite}.square2.svelte-1jfjjq1{flex-grow:2;outline:1px solid black;display:flex;flex-direction:column;position:relative;background:floralwhite}.square9.svelte-1jfjjq1{flex-grow:9;outline:1px solid black;background:lightgoldenrodyellow}.squareSide.svelte-1jfjjq1{outline:1px solid black;width:100%;flex-grow:1;position:relative}.header.svelte-1jfjjq1{height:21%;position:absolute;outline:2px solid black;background:grey;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-position:contain}.headerSide.svelte-1jfjjq1{width:21%;position:absolute;outline:2px solid black}.header-top.svelte-1jfjjq1{bottom:1px;left:1px;right:1px;background:transparent url('/img/leaf-180-bg.png') center center no-repeat;background-size:contain}.header-bottom.svelte-1jfjjq1{top:1px;left:1px;right:1px;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-size:contain}.header-left.svelte-1jfjjq1{top:1px;bottom:1px;right:1px;background:grey;background:transparent url('/img/leaf-90-bg.png') center center no-repeat;background-size:contain}.header-right.svelte-1jfjjq1{top:1px;bottom:1px;left:1px;background:grey;background:transparent url('/img/leaf-270-bg.png') center center no-repeat;background-size:contain}.firstLine.svelte-1jfjjq1{position:absolute;font-size:0.7vw;font-weight:500;line-height:1vw;text-align:center}.firstLine-top.svelte-1jfjjq1{left:1px;right:1px;bottom:30%;height:10%}.firstLine-top.no-color.svelte-1jfjjq1{bottom:12%}.firstLine-left.svelte-1jfjjq1{top:0px;bottom:0px;right:42%}.firstLine-left.no-color.svelte-1jfjjq1{right:23%}.firstLine-right.svelte-1jfjjq1{top:0;bottom:0;left:42%}.firstLine-right.no-color.svelte-1jfjjq1{left:23%}.firstLine-bottom.svelte-1jfjjq1{left:0;right:0;top:30%}.firstLine-bottom.no-color.svelte-1jfjjq1{top:12%}.red.svelte-1jfjjq1{background-color:#ed1b24}.yellow.svelte-1jfjjq1{background-color:#fef200}.lightblue.svelte-1jfjjq1{background-color:#aae0fa}.brown.svelte-1jfjjq1{background-color:#955436}.blue.svelte-1jfjjq1{background-color:#0072bb}.green.svelte-1jfjjq1{background-color:#1fb25a}.orange.svelte-1jfjjq1{background-color:#f7941d}.purple.svelte-1jfjjq1{background-color:#d93a96}.left-side.svelte-1jfjjq1{transform:rotate(90deg)}.top-side.svelte-1jfjjq1{transform:rotate(180deg)}.right-side.svelte-1jfjjq1{transform:rotate(-90deg)}.logoBox.svelte-1jfjjq1{width:46%;background:transparent;position:absolute;transform:rotateZ(-45deg) translateX(-26.5%) translateY(246.5%);border:3px solid black;border-radius:1em;padding:0, 0.1em, 0.2em 0.1em;text-align:center;box-shadow:inset 0px 4px 24px 8px white;box-shadow:inset 0px 2px 12px 0px greenyellow}.logoName.svelte-1jfjjq1{font-size:7.0vw;color:black;font-family:futura;-webkit-text-stroke-width:2px;-webkit-text-stroke-color:black;text-shadow:-3px 2px 0px black;-webkit-text-fill-color:transparent}.card-box.svelte-1jfjjq1{position:absolute;width:15%;height:9vw}.card-blue.svelte-1jfjjq1{background:rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;background-size:contain;border-radius:0.3em;transform:rotateZ(-45deg) translateX(-5.5%) translateY(132.25%)}.card-blue-inside.svelte-1jfjjq1{width:94%;height:94%;margin:0.3vw auto;position:relative}.card-orange.svelte-1jfjjq1{background:rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;background-size:contain;transform:rotateZ(-45deg) translateX(-25%) translateY(687.25%);border-radius:0.3em}.card-orange-inside.svelte-1jfjjq1{width:94%;height:94%;margin:0.3vw auto;position:relative}.corner.svelte-1jfjjq1{position:absolute;text-align:center;line-height:8vw;font-size:1.2vw;font-weight:500}.corner1.svelte-1jfjjq1{transform:rotateZ(135deg) translateX(-22%) translateY(-107%)}.corner2.svelte-1jfjjq1{transform:rotateZ(-135deg) translateX(-75%) translateY(-75%);line-height:1em}.corner4.svelte-1jfjjq1{transform:rotateZ(45deg) translateX(32%) translateY(0%);line-height:1em}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiUG90bHVjay5zdmVsdGUiLCJzb3VyY2VzIjpbIlBvdGx1Y2suc3ZlbHRlIl0sInNvdXJjZXNDb250ZW50IjpbIjxzdmVsdGU6aGVhZD5cbiAgICA8bGluayByZWw9XCJzdHlsZXNoZWV0XCIgaHJlZj1cIi9jc3Mvc3R5bGUuY3NzXCI+XG48L3N2ZWx0ZTpoZWFkPlxuPHNjcmlwdD5cbiAgICBpbXBvcnQge29uTW91bnR9IGZyb20gXCJzdmVsdGVcIjtcbiAgICBpbXBvcnQgYWN0aXZlUGxheWVycyBmcm9tICcuL3BsYXllcnMnO1xuICAgIGltcG9ydCBzdHJhaW5zIGZyb20gJy4vc3RyYWlucyc7XG4gICAgaW1wb3J0IHNwYWNlcyBmcm9tICcuL3NwYWNlcyc7XG4gICAgaW1wb3J0IGJ1bW1lcnMgZnJvbSAnLi9idW1tZXJzJztcbiAgICBpbXBvcnQgZmFyb3V0cyBmcm9tICcuL2Zhcm91dHMnO1xuXG4gICAgbGV0IHN0YXRlID0ge1xuICAgICAgICB0dXJuTnVtYmVyOiAxLFxuICAgICAgICBza2lwcGVkOiBbXSxcbiAgICAgICAgYWN0aXZlUGxheWVySWQ6IDAsXG4gICAgICAgIGN1cnJlbnRSb2xsOiAwLFxuICAgICAgICBwbGF5ZXJzOiBhY3RpdmVQbGF5ZXJzLFxuICAgICAgICBiYW5rOiB7XG4gICAgICAgICAgICBzdHJhaW5zOiBzdHJhaW5zLFxuICAgICAgICAgICAgY2FzaDogMTAwMDAwXG4gICAgICAgIH0sXG4gICAgICAgIGphY2twb3Q6IHtcbiAgICAgICAgICAgIGNhc2g6IDIwMDBcbiAgICAgICAgfSxcbiAgICAgICAgZmFyb3V0czogZmFyb3V0cyxcbiAgICAgICAgYnVtbWVyczogYnVtbWVyc1xuICAgIH1cblxuICAgIGZ1bmN0aW9uIGFib3J0R2FtZShyZWFzb24pIHtcbiAgICAgICAgbGV0IGJ3bmVkID0gJydcbiAgICAgICAgaWYgKHN0YXRlLmJhbmsuc3RyYWlucy5sZW5ndGggPiAxKSB7XG5cbiAgICAgICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgc3RhdGUuYmFuay5zdHJhaW5zLmxlbmd0aCAtIDE7KSB7XG4gICAgICAgICAgICAgICAgYnduZWQgKz0gc3RhdGUuYmFuay5zdHJhaW5zW2ldLm5hbWUgKyAnLCAnXG4gICAgICAgICAgICAgICAgaSArPSAxO1xuICAgICAgICAgICAgfVxuICAgICAgICAgICAgYnduZWQgKz0gJ2FuZCAnICsgc3RhdGUuYmFuay5zdHJhaW5zW3N0YXRlLmJhbmsuc3RyYWlucy5sZW5ndGggLSAxXS5uYW1lXG4gICAgICAgIH1cblxuICAgICAgICBpZiAoc3RhdGUuYmFuay5zdHJhaW5zLmxlbmd0aCA9IDEpIHtcbiAgICAgICAgICAgIGJ3bmVkID0gc3RhdGUuYmFuay5zdHJhaW5zWzBdLm5hbWVcbiAgICAgICAgfVxuXG4gICAgICAgIGxldCBzdGF0dXNNZXNzYWdlID0gXCJUaGUgYmFuayBoYWQgJFwiICsgc3RhdGUuYmFuay5jYXNoICsgJyBhbmQgJyArIHN0YXRlLmJhbmsuc3RyYWlucy5sZW5ndGggKyAnIHN0cmFpbnMuICcgK1xuICAgICAgICAgICAgYnduZWQgKyAnLiAnXG5cbiAgICAgICAgc3RhdGUucGxheWVycy5mb3JFYWNoKGZ1bmN0aW9uIChwbGF5ZXIpIHtcbiAgICAgICAgICAgIGxldCBvd25lZCA9ICcnXG4gICAgICAgICAgICBpZiAocGxheWVyLnN0cmFpbnMubGVuZ3RoID4gMSkge1xuICAgICAgICAgICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgcGxheWVyLnN0cmFpbnMubGVuZ3RoIC0gMTspIHtcbiAgICAgICAgICAgICAgICAgICAgb3duZWQgKz0gcGxheWVyLnN0cmFpbnNbaV0ubmFtZSArICcsICdcbiAgICAgICAgICAgICAgICAgICAgaSArPSAxO1xuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBvd25lZCArPSAnYW5kICcgKyBwbGF5ZXIuc3RyYWluc1twbGF5ZXIuc3RyYWlucy5sZW5ndGggLSAxXS5uYW1lXG4gICAgICAgICAgICB9XG5cbiAgICAgICAgICAgIGlmIChwbGF5ZXIuc3RyYWlucy5sZW5ndGggPT09IDEpIHtcbiAgICAgICAgICAgICAgICBvd25lZCA9IHBsYXllci5zdHJhaW5zWzBdLm5hbWVcbiAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgc3RhdHVzTWVzc2FnZSArPSBwbGF5ZXIubmFtZSArICcgaGFkICQnICsgcGxheWVyLmNhc2ggKyAnLiBXaXRoICcgKyBwbGF5ZXIuc3RyYWlucy5sZW5ndGggK1xuICAgICAgICAgICAgICAgICcgc3RyYWlucy4gVGhleSBvd25lZCAnICsgb3duZWQgKyAnLiAnXG4gICAgICAgIH0pXG5cbiAgICAgICAgbGV0IG1lc3NhZ2UgPSBcIk9uIG9yIGFib3V0IHR1cm4gI1wiICsgc3RhdGUudHVybk51bWJlciArIFwiOiBUaGUgZ2FtZSB3YXMgYWJvcnRlZCBmb3IgXCIgKyByZWFzb24gKyAnLiAnICtcbiAgICAgICAgICAgIHN0YXR1c01lc3NhZ2VcblxuICAgICAgICBsZXQgZW5kU3RhdGUgPSB7XG4gICAgICAgICAgICB0dXJuTnVtYmVyOiBzdGF0ZS50dXJuTnVtYmVyLFxuICAgICAgICAgICAgc2tpcHBlZDogc3RhdGUuc2tpcHBlZC5sZW5ndGgsXG4gICAgICAgICAgICBwbGF5ZXJzOiBzdGF0ZS5wbGF5ZXJzLFxuICAgICAgICAgICAgYmFuazoge1xuICAgICAgICAgICAgICAgIHN0cmFpbnM6IHN0YXRlLnN0cmFpbnMsXG4gICAgICAgICAgICAgICAgY2FzaDogc3RhdGUuYmFuay5jYXNoXG4gICAgICAgICAgICB9LFxuICAgICAgICAgICAgamFja3BvdDoge1xuICAgICAgICAgICAgICAgIGNhc2g6IHN0YXRlLmphY2twb3QuY2FzaFxuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIFxuICAgICAgICB2YXIgeGhyID0gbmV3IFhNTEh0dHBSZXF1ZXN0KCk7XG4gICAgICAgIHhoci5vcGVuKFwiUE9TVFwiLCAnL2FwaS9wb3RsdWNrX2xvZycsIHRydWUpO1xuICAgICAgICB4aHIuc2V0UmVxdWVzdEhlYWRlcignQ29udGVudC1UeXBlJywgJ2FwcGxpY2F0aW9uL2pzb24nKTtcbiAgICAgICAgeGhyLnNlbmQoSlNPTi5zdHJpbmdpZnkoe1xuICAgICAgICAgICAgdmFsdWU6IHtcbiAgICAgICAgICAgICAgICBcIm1lc3NhZ2VcIjogbWVzc2FnZSxcbiAgICAgICAgICAgICAgICBcInN0YXRlXCI6IGVuZFN0YXRlXG4gICAgICAgICAgICB9XG4gICAgICAgIH0pKTtcbiAgICAgICAgY29uc29sZS5lcnJvcignQmFuayBCYWlsb3V0ISAkJyArIHN0YXRlLmJhbmsuY2FzaCArICcgJyArIG1lc3NhZ2UpIFxuICAgICAgICBhbGVydChtZXNzYWdlKVxuICAgICAgICBzZXRUaW1lb3V0KCgpID0+IHt3aW5kb3cubG9jYXRpb24uaHJlZiA9ICcvcG90bHVjayd9LCA1MDAwKVxuICAgIH1cblxuICAgIGZ1bmN0aW9uIGN1cnJlbnRQbGF5ZXIoKSB7XG4gICAgICAgIHJldHVybiBzdGF0ZS5wbGF5ZXJzW3N0YXRlLmFjdGl2ZVBsYXllcklkXVxuICAgIH1cblxuICAgIGZ1bmN0aW9uIG1hcEV2ZW50cyhlKSB7XG4gICAgICAgIHN3aXRjaCAoZSkge1xuICAgICAgICAgICAgY2FzZSBcImJ1bUV2ZXJ5b25lT3V0XCI6XG4gICAgICAgICAgICAgICAgc3RhdGUucGxheWVycy5mb3JFYWNoKGZ1bmN0aW9uIChwbGF5ZXIpIHtcbiAgICAgICAgICAgICAgICAgICAgcGxheWVyLmNhc2ggLT0gMjAwXG4gICAgICAgICAgICAgICAgICAgIGN1cnJlbnRQbGF5ZXIoKS5jYXNoICs9IDIwMFxuICAgICAgICAgICAgICAgIH0pXG4gICAgICAgICAgICAgICAgcmV0dXJuICdFYWNoIHBsYXllciBwYWlkIHRoZSBiYWQgYmFkIGJ1bW1lciBib3kuICQyMDAnXG5cbiAgICAgICAgICAgIGNhc2UgXCJwb3RcIjpcbiAgICAgICAgICAgICAgICByZXR1cm4gcG90KClcblxuICAgICAgICAgICAgY2FzZSBcInJlZHVjZVBvdFwiOlxuICAgICAgICAgICAgICAgIHJldHVybiBjdXJyZW50UGxheWVyKCkuZGlzY291bnQgPSB0cnVlXG4gICAgICAgICAgICBjYXNlIFwiZnJlZVBvdW5kXCI6XG4gICAgICAgICAgICAgICAgcmV0dXJuIGN1cnJlbnRQbGF5ZXIoKS5mcmVlUG91bmQgPSB0cnVlXG4gICAgICAgICAgICBjYXNlIFwiaGFsZk9mZlwiOlxuICAgICAgICAgICAgICAgIHJldHVybiBjdXJyZW50UGxheWVyKCkuaGFsZk9mZiA9IHRydWVcblxuICAgICAgICAgICAgY2FzZSBcImRlYWxcIjpcbiAgICAgICAgICAgICAgICByZXR1cm4gb3duZWQoKVxuICAgICAgICAgICAgICAgIGJyZWFrO1xuXG4gICAgICAgICAgICBjYXNlIFwibG9zZVR1cm5cIjpcbiAgICAgICAgICAgICAgICBjb25zb2xlLmxvZyhjdXJyZW50UGxheWVyKCkubmFtZSArICcgbG9zdCBhIHR1cm4nKVxuICAgICAgICAgICAgICAgIHJldHVybiBzdGF0ZS5za2lwcGVkLnB1c2goc3RhdGUuc2tpcHBlZFtzdGF0ZS5hY3RpdmVQbGF5ZXJJZF0pXG4gICAgICAgICAgICAgICAgXG4gICAgICAgICAgICBjYXNlIFwiYnVtbWVyXCI6XG4gICAgICAgICAgICAgICAgbGV0IGIgPSBidW1tZXIoKVxuICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCdCdW1tZXI6ICcgKyBiLmVmZmVjdClcbiAgICAgICAgICAgICAgICByZXR1cm4gbWFwRXZlbnRzKGIuZWZmZWN0KVxuXG4gICAgICAgICAgICBjYXNlIFwiZmFyb3V0XCI6XG4gICAgICAgICAgICAgICAgbGV0IGYgPSBmYXJvdXQoKVxuICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCdGYXIgT3V0OiAnICsgZi5lZmZlY3QpXG4gICAgICAgICAgICAgICAgcmV0dXJuIG1hcEV2ZW50cyhmLmVmZmVjdClcbiAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgIGNhc2UgXCJoaWdoUm9sbGVyXCI6XG4gICAgICAgICAgICAgICAgY29uc3Qgcm9sbGVyID0gZGllUm9sbCgxLCA2KSArIGRpZVJvbGwoMSwgNikgKiAxMDA7XG4gICAgICAgICAgICAgICAgcmV0dXJuIG1hcEV2ZW50cygndycgKyByb2xsZXIpICAgICAgICAgICAgICAgIFxuXG4gICAgICAgICAgICBjYXNlIFwicGF5TGVmdHlcIjpcbiAgICAgICAgICAgICAgICBjb25zdCBsZWZ0eSA9IGRpZVJvbGwoMSwgNikgKyBkaWVSb2xsKDEsIDYpICogMTAwO1xuICAgICAgICAgICAgICAgIGN1cnJlbnRQbGF5ZXIoKS5jYXNoIC09IGxlZnR5XG4gICAgICAgICAgICAgICAgbGV0IGxlZnR5SWQgPSBzdGF0ZS5hY3RpdmVQbGF5ZXJJZCAtIDFcbiAgICAgICAgICAgICAgICBpZiAobGVmdHlJZCA8IDApIHtcbiAgICAgICAgICAgICAgICAgICAgbGVmdHlJZCA9IHN0YXRlLnBsYXllcnMubGVuZ3RoIC0gMVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICBjb25zb2xlLmxvZyhcImxlZnR5SWQ6IFwiICsgbGVmdHlJZClcbiAgICAgICAgICAgICAgICByZXR1cm4gc3RhdGUucGxheWVyc1tsZWZ0eUlkXS5jYXNoICs9IGxlZnR5XG5cbiAgICAgICAgICAgIGNhc2UgXCJqYWNrcG90XCI6XG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2coY3VycmVudFBsYXllcigpLm5hbWUgKyBcIiB3b24gJFwiICsgc3RhdGUuamFja3BvdC5jYXNoICsgXCIgZnJvbSB0aGUgamFja3BvdCFcIilcbiAgICAgICAgICAgICAgICBjdXJyZW50UGxheWVyKCkuY2FzaCArPSAgc3RhdGUuamFja3BvdC5jYXNoXG4gICAgICAgICAgICAgICAgc3RhdGUuamFja3BvdC5jYXNoID0gMFxuICAgICAgICAgICAgICAgIHJldHVybjtcblxuICAgICAgICAgICAgY2FzZSBcInBhcmFxdWF0XCI6XG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2coY3VycmVudFBsYXllcigpLm5hbWUgKyAnIGdvdCBwYXJhcXVhdCwgdGhpcyBpcyBnb2luZyB0byBzdWNrLicpXG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2coY3VycmVudFBsYXllcigpLm5hbWUgKyAnIGxvc3QgYSB0dXJuIHRvIHBhcmFxdWF0JylcbiAgICAgICAgICAgICAgICBzdGF0ZS5za2lwcGVkLnB1c2goc3RhdGUuc2tpcHBlZFtzdGF0ZS5hY3RpdmVQbGF5ZXJJZF0pXG4gICAgICAgICAgICAgICAgaWYgKGN1cnJlbnRQbGF5ZXIoKS5nZXRPdXRPZkhvc3BpdGFsID09PSB0cnVlKSB7XG4gICAgICAgICAgICAgICAgICAgIGN1cnJlbnRQbGF5ZXIoKS5nZXRPdXRPZkhvc3BpdGFsID0gZmFsc2VcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGNvbnNvbGUubG9nKFwiWW91IGx1Y2t5IGRvZ1wiKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgbWFwRXZlbnRzKFwiaG9zcGl0YWxcIilcbiAgICAgICAgICAgICAgICBicmVhaztcblxuICAgICAgICAgICAgY2FzZSBcImhvc3BpdGFsXCI6XG4gICAgICAgICAgICAgICAgY3VycmVudFBsYXllcigpLnNwYWNlID0gMTBcbiAgICAgICAgICAgICAgICBtYXBFdmVudHMoXCJsb3NlVHVyblwiKVxuICAgICAgICAgICAgICAgIG1hcEV2ZW50cyhcIngxMDBcIilcbiAgICAgICAgICAgICAgICBicmVhaztcblxuICAgICAgICAgICAgY2FzZSBcImdldE91dE9mSG9zcGl0YWxcIjpcbiAgICAgICAgICAgICAgICByZXR1cm4gY3VycmVudFBsYXllcigpLmdldE91dE9mSG9zcGl0YWwgPSB0cnVlXG5cbiAgICAgICAgICAgIGRlZmF1bHQ6XG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2coXCJoYW5kbGU6IFwiICsgZSlcbiAgICAgICAgICAgICAgICBpZiAoZS5zdWJzdHJpbmcoMCwgMSkgPT09IFwieFwiKSB7XG4gICAgICAgICAgICAgICAgICAgIGxldCBwYXkgPSBOdW1iZXIoZS5zdWJzdHJpbmcoMSwgNSkpICogc3RhdGUuY3VycmVudFJvbGxcbiAgICAgICAgICAgICAgICAgICAgY3VycmVudFBsYXllcigpLmNhc2ggLT0gcGF5XG4gICAgICAgICAgICAgICAgICAgIHN0YXRlLmJhbmsuY2FzaCArPSBwYXlcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGN1cnJlbnRQbGF5ZXIoKS5jYXNoXG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIGlmIChlLnN1YnN0cmluZygwLCAxKSA9PT0gXCJsXCIpIHtcbiAgICAgICAgICAgICAgICAgICAgbGV0IGxvc2UgPSBOdW1iZXIoZS5zdWJzdHJpbmcoMSwgNSkpXG4gICAgICAgICAgICAgICAgICAgIGN1cnJlbnRQbGF5ZXIoKS5jYXNoIC09IGxvc2VcbiAgICAgICAgICAgICAgICAgICAgc3RhdGUuYmFuay5jYXNoICs9IGxvc2VcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGN1cnJlbnRQbGF5ZXIoKS5jYXNoXG4gICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgIGlmIChlLnN1YnN0cmluZygwLCAxKSA9PT0gXCJ3XCIpIHtcbiAgICAgICAgICAgICAgICAgICAgbGV0IHdpbiA9IE51bWJlcihlLnN1YnN0cmluZygxLCA1KSlcbiAgICAgICAgICAgICAgICAgICAgY3VycmVudFBsYXllcigpLmNhc2ggKz0gd2luXG4gICAgICAgICAgICAgICAgICAgIHN0YXRlLmJhbmsuY2FzaCAtPSB3aW5cbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGN1cnJlbnRQbGF5ZXIoKS5jYXNoXG4gICAgICAgICAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIGNvbnNvbGUuZXJyb3IoJ3VuaGFuZGxlZCBjYXNlIGluIG1hcEV2ZW50cygpICcgKyBlKVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIH1cblxuICAgIGZ1bmN0aW9uIG93bmVkKCkge1xuICAgICAgICAvL2dldCBhbGwgc3RyYWlucyBieSBwbGF5ZXIuXG4gICAgICAgIGxldCBvd25lZCA9IFtdXG4gICAgICAgICAgICBzdGF0ZS5wbGF5ZXJzLmZvckVhY2goZnVuY3Rpb24gKHBsYXllcikge1xuICAgICAgICAgICAgICAgIHBsYXllci5zdHJhaW5zLm1hcChmdW5jdGlvbiAoc3RyYWluKSB7XG4gICAgICAgICAgICAgICAgcmV0dXJuIG93bmVkLnB1c2goe1xuICAgICAgICAgICAgICAgICAgICBwbGF5ZXI6IHBsYXllcixcbiAgICAgICAgICAgICAgICAgICAgcHJpY2U6IHN0cmFpbi5wcmljZSxcbiAgICAgICAgICAgICAgICAgICAgbmFtZTogc3RyYWluLm5hbWUsXG4gICAgICAgICAgICAgICAgICAgIHJlbnQ6IHN0cmFpbi5veixcbiAgICAgICAgICAgICAgICAgICAgdmFsdWU6IHN0cmFpbi5veiAqIDVcbiAgICAgICAgICAgICAgICB9KVxuICAgICAgICAgICAgICAgIH0pXG4gICAgICAgICAgICB9KVxuICAgICAgICBjb25zb2xlLmxvZyhvd25lZClcbiAgICAgICAgcmV0dXJuIG93bmVkXG4gICAgfVxuXG4gICAgZnVuY3Rpb24gcG90KCkge1xuICAgICAgICBsZXQgYmFua1N0cmFpbnMgPSBzdGF0ZS5iYW5rLnN0cmFpbnNcbiAgICAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBiYW5rU3RyYWlucy5sZW5ndGg7KSB7XG4gICAgICAgICAgICBpZiAoYmFua1N0cmFpbnNbaV0uc3BhY2UgPT0gY3VycmVudFBsYXllcigpLnNwYWNlKSB7XG4gICAgICAgICAgICAgICAgaWYgKGJhbmtTdHJhaW5zW2ldLnByaWNlIDwgY3VycmVudFBsYXllcigpLmNhc2gpIHsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICBidXlQb3QoYmFua1N0cmFpbnNbaV0pXG4gICAgICAgICAgICAgICAgICAgIHN0YXRlLmJhbmsuc3RyYWlucy5zcGxpY2UoaSwgMSkgXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBcbiAgICAgICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgICAgICBjb25zb2xlLmxvZyhjdXJyZW50UGxheWVyKCkubmFtZSArICdkaWQgbm90IGhhdmUgZW5vdWdoIG1vbmV5IGZvciAnICsgYmFua1N0cmFpbnNbaV0ubmFtZSlcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBpICs9IDFcbiAgICAgICAgfVxuXG4gICAgICAgIGZvciAobGV0IGkgPSAwOyBpIDwgc3RhdGUucGxheWVycy5sZW5ndGg7KSB7XG4gICAgICAgICAgICBzdGF0ZS5wbGF5ZXJzW2ldLnN0cmFpbnMuZmluZChmdW5jdGlvbiAocykge1xuICAgICAgICAgICAgICAgIGlmIChzLnNwYWNlID09PSBjdXJyZW50UGxheWVyKCkuc3BhY2UpIHtcbiAgICAgICAgICAgICAgICAgICAgaWYgKGN1cnJlbnRQbGF5ZXIoKS5zdHJhaW5zLmluY2x1ZGVzKHMpKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICBpZiAoY3VycmVudFBsYXllcigpLmZyZWVQb3VuZCA9PT0gdHJ1ZSkge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiBwb3VuZChzKVxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgaWYgKHMucHJpY2UgPCBjdXJyZW50UGxheWVyKCkuY2FzaCkge1xuICAgICAgICAgICAgICAgICAgICAgICAgICAgIGN1cnJlbnRQbGF5ZXIoKS5jYXNoIC09IHMucHJpY2VcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICBzdGF0ZS5iYW5rLmNhc2ggKz0gcy5wcmljZVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIHJldHVybiBwb3VuZChzKVxuICAgICAgICAgICAgICAgICAgICAgICAgfVxuICAgICAgICAgICAgICAgICAgICAgICAgcmV0dXJuXG4gICAgICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgICAgICAgICAgLy8gYW5kIGlmIG5vbmUgb2YgdGhhdCBpcyB0cnVlLCBidXQgdGhlIHNwYWNlIGlzIG93bmVkIGJ5IGEgcGxheWVyLCBjdXJyZW50UGxheWVyIGhhcyB0byBwYXkgJ3JlbnQnIG9uIGl0IGJ5IGJ1eWluZyBhbiBvdW5jZS5cbiAgICAgICAgICAgICAgICAgICAgbGV0IGNoYXJnZSA9IHMub3pcbiAgICAgICAgICAgICAgICAgICAgLy91bmxlc3MgdGhleSBoYXZlIGEgZGlzY291bnQuXG4gICAgICAgICAgICAgICAgICAgIGlmIChjdXJyZW50UGxheWVyKCkuZGlzY291bnQgPT09IHRydWUpIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGNoYXJnZSA9IE1hdGgucm91bmQocy5veiAvIDIpXG4gICAgICAgICAgICAgICAgICAgIH1cblxuICAgICAgICAgICAgICAgICAgICBjb25zb2xlLmxvZyhjdXJyZW50UGxheWVyKCkubmFtZSArICcgcGFpZCAnICsgc3RhdGUucGxheWVyc1tpXS5uYW1lICsgJyAkJyArIGNoYXJnZSArXG4gICAgICAgICAgICAgICAgICAgICAgICAnIGZvciAnICsgcy5uYW1lKVxuICAgICAgICAgICAgICAgICAgICBjdXJyZW50UGxheWVyKCkuY2FzaCAtPSBjaGFyZ2VcbiAgICAgICAgICAgICAgICAgICAgc3RhdGUucGxheWVyc1tpXS5jYXNoICs9IGNoYXJnZVxuICAgICAgICAgICAgICAgIH1cbiAgICAgICAgICAgIH0pXG4gICAgICAgICAgICBpICs9IDFcbiAgICAgICAgfVxuICAgIH1cblxuICAgIGZ1bmN0aW9uIHBvdW5kKHN0cmFpbikge1xuICAgICAgICAvLyB3YXRjaCB0aGlzLCBsb2xcbiAgICAgICAgaWYgKHN0cmFpbi5veiA+PSBzdHJhaW5bXCI1bGJcIl0pIHtcbiAgICAgICAgICAgIHN0cmFpbi5veiA9IHN0cmFpbltcIjVsYlwiXSArIHN0cmFpbi5wcmljZVxuICAgICAgICAgICAgcmV0dXJuIGNvbnNvbGUubG9nKHN0cmFpbi5uYW1lICsgJyBpcyBvdmVyIDVsYiAnICsgc3RyYWluLm96KVxuICAgICAgICB9XG5cbiAgICAgICAgaWYgKHN0cmFpbi5veiA8PSBzdHJhaW5bXCIybGJcIl0pIHtcbiAgICAgICAgICAgIGlmIChzdHJhaW4ub3ogPT09IHN0cmFpbltcIjJsYlwiXSkge1xuICAgICAgICAgICAgICAgIHJldHVybiBzdHJhaW4ub3ogPSBzdHJhaW5bXCIzbGJcIl1cbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIHJldHVybiBzdHJhaW4ub3ogPSBzdHJhaW5bXCIybGJcIl1cbiAgICAgICAgfVxuXG4gICAgICAgIGlmIChzdHJhaW4ub3ogPiBzdHJhaW5bXCIzbGJcIl0pIHtcbiAgICAgICAgICAgIGlmIChzdHJhaW4ub3ogPT09IHN0cmFpbltcIjRsYlwiXSkge1xuICAgICAgICAgICAgICAgIHJldHVybiBzdHJhaW4ub3ogPSBzdHJhaW5bXCI1bGJcIl1cbiAgICAgICAgICAgIH1cbiAgICAgICAgICAgIHJldHVybiBzdHJhaW4ub3ogPSBzdHJhaW5bXCI0bGJcIl1cbiAgICAgICAgfVxuICAgIH1cblxuICAgIGZ1bmN0aW9uIGJ1eVBvdChzdHJhaW4pIHtcbiAgICAgICAgbGV0IGNoYXJnZSA9IHN0cmFpbi5wcmljZVxuICAgICAgICBpZiAoY3VycmVudFBsYXllcigpLmhhbGZPZmYgPT09IHRydWUpIHtcbiAgICAgICAgICAgIGNoYXJnZSA9IE1hdGgucm91bmQoc3RyYWluLnByaWNlIC8gMilcbiAgICAgICAgfVxuICAgICAgICBjdXJyZW50UGxheWVyKCkuY2FzaCAtPSBjaGFyZ2VcbiAgICAgICAgc3RhdGUuYmFuay5jYXNoICs9IGNoYXJnZVxuICAgICAgICBjdXJyZW50UGxheWVyKCkuc3RyYWlucy5wdXNoKHN0cmFpbilcbiAgICAgICAgY29uc29sZS5sb2coY3VycmVudFBsYXllcigpLm5hbWUgKyBcIiBib3VnaHQ6IFwiICsgc3RyYWluLm5hbWUpXG4gICAgfVxuXG4gICAgZnVuY3Rpb24gYnVtbWVyKCkge1xuICAgICAgICBsZXQgaW5kZXggPSBNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiBzdGF0ZS5idW1tZXJzLmxlbmd0aClcbiAgICAgICAgbGV0IGNhcmQgPSBzdGF0ZS5idW1tZXJzW2luZGV4XTtcbiAgICAgICAgaWYgKHN0YXRlLmJ1bW1lcnMubGVuZ3RoID4gMSkge1xuICAgICAgICAgICAgc3RhdGUuYnVtbWVycy5zcGxpY2UoaW5kZXgsIDEpXG4gICAgICAgICAgICByZXR1cm4gY2FyZFxuICAgICAgICB9XG4gICAgICAgIGNvbnNvbGUubG9nKFwiUmVzZXQgYnVtbWVycyB0byBvcmlnaW5hbCBzdGF0ZVwiKVxuICAgICAgICBzdGF0ZS5idW1tZXJzID0gYnVtbWVyc1xuICAgICAgICByZXR1cm4gY2FyZFxuICAgIH1cblxuICAgIGZ1bmN0aW9uIGZhcm91dCgpIHtcbiAgICAgICAgbGV0IGluZGV4ID0gTWF0aC5mbG9vcihNYXRoLnJhbmRvbSgpICogc3RhdGUuZmFyb3V0cy5sZW5ndGgpXG4gICAgICAgIGxldCBjYXJkID0gc3RhdGUuZmFyb3V0c1tpbmRleF07XG4gICAgICAgIGlmIChzdGF0ZS5mYXJvdXRzLmxlbmd0aCA+IDEpIHtcbiAgICAgICAgICAgIHN0YXRlLmZhcm91dHMuc3BsaWNlKGluZGV4LCAxKVxuICAgICAgICAgICAgcmV0dXJuIGNhcmRcbiAgICAgICAgfVxuICAgICAgICBjb25zb2xlLmxvZyhcIlJlc2V0IGZhcm91dHMgdG8gb3JpZ2luYWwgc3RhdGVcIilcbiAgICAgICAgc3RhdGUuZmFyb3V0cyA9IGZhcm91dHNcbiAgICAgICAgcmV0dXJuIGNhcmRcbiAgICB9XG5cbiAgICBmdW5jdGlvbiBkaWVSb2xsKG1pbiwgbWF4KSB7XG4gICAgICAgIC8vIGFueSBudW1iZXIgcmFuZ2UgeW91IGNhcmUgZm9yXG4gICAgICAgIG1pbiA9IE1hdGguY2VpbChtaW4pO1xuICAgICAgICBtYXggPSBNYXRoLmZsb29yKG1heCk7XG4gICAgICAgIHJldHVybiBNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiAobWF4IC0gbWluICsgMSkpICsgbWluO1xuICAgIH1cblxuICAgIGZ1bmN0aW9uIGdhbWVSb2xsKCkge1xuICAgICAgICBsZXQgZmlyc3QgPSBkaWVSb2xsKDEsIDYpXG4gICAgICAgIGxldCBzZWNvbmQgPSBkaWVSb2xsKDEsIDYpXG4gICAgICAgIHJldHVybiBzdGF0ZS5jdXJyZW50Um9sbCA9IGZpcnN0ICsgc2Vjb25kXG4gICAgfVxuXG4gICAgZnVuY3Rpb24gc3RhcnRHYW1lKCkge1xuICAgICAgICBnYW1lUm9sbCgpXG4gICAgICAgIGNvbnNvbGUubG9nKFwiVHVybiAjMVwiKVxuICAgICAgICBjdXJyZW50UGxheWVyKCkuc3BhY2UgPSBzdGF0ZS5jdXJyZW50Um9sbFxuICAgICAgICBkcmF3UGxheWVyUGllY2VzKClcbiAgICAgICAgbGV0IGV2ZW50ID0gc3BhY2VzW2N1cnJlbnRQbGF5ZXIoKS5zcGFjZSAtIDFdLmVmZmVjdFxuICAgICAgICBtYXBFdmVudHMoZXZlbnQpXG4gICAgICAgIGNvbnNvbGUubG9nKCdGaXJzdCByb2xsICcgKyBzdGF0ZS5jdXJyZW50Um9sbCArICcgYnkgJyArIGN1cnJlbnRQbGF5ZXIoKS5uYW1lICsgJyBpcyBvbiBzcGFjZSAnICtcbiAgICAgICAgICAgIGN1cnJlbnRQbGF5ZXIoKS5zcGFjZSArICcsIGFuZCBoYXMgJCcgKyBjdXJyZW50UGxheWVyKCkuY2FzaClcbiAgICAgICAgcmV0dXJuIHNldFRpbWVvdXQoKCkgPT4gZXhlY3V0ZVR1cm4oKSwgMTAwMCk7XG4gICAgfVxuXG4gICAgZnVuY3Rpb24gY2FsY3VsYXRlU3BhY2VJZCgpIHtcbiAgICAgICAgY29uc3QgdG90YWwgPSBjdXJyZW50UGxheWVyKCkuc3BhY2UgKyBzdGF0ZS5jdXJyZW50Um9sbFxuICAgICAgICBpZiAodG90YWwgPj0gNDApIHtcbiAgICAgICAgICAgIG1hcEV2ZW50cyhcInc1MDBcIilcbiAgICAgICAgfVxuICAgICAgICBsZXQgcmVtYWluZGVyID0gdG90YWwgJSA0MFxuICAgICAgICAvL3RoaXMgaXMgc2lsbHksIHdoeSBkaWRuJ3QgSSB1c2UgemVybyBpbmRleGluZyBmb3IgdGhlIGRpdiBcbiAgICAgICAgLy9pZHM/IHJlZmFjdG9yIGh0bWwgYW5kIGJlbG93IHNvbWVkYXkuLi5cbiAgICAgICAgaWYgKHJlbWFpbmRlciA9PT0gMCkge1xuICAgICAgICAgICAgcmVtYWluZGVyID0gNDBcbiAgICAgICAgfVxuICAgICAgICByZXR1cm4gcmVtYWluZGVyXG4gICAgfVxuXG4gICAgZnVuY3Rpb24gaW5jcmVtZW50UGxheWVyKCkge1xuICAgICAgICAvLyBhZHZhbmNlIGN1cnJlbnQgcGxheWVyIGluZGV4XG4gICAgICAgIHN0YXRlLmFjdGl2ZVBsYXllcklkICs9IDFcblxuICAgICAgICAvLyBrZWVwIGluZGV4IGluIHN5bmNcbiAgICAgICAgaWYgKHN0YXRlLmFjdGl2ZVBsYXllcklkID49IHN0YXRlLnBsYXllcnMubGVuZ3RoKSB7XG4gICAgICAgICAgICBzdGF0ZS5hY3RpdmVQbGF5ZXJJZCA9IDBcbiAgICAgICAgfVxuICAgICAgICByZXR1cm4gY3VycmVudFBsYXllcigpXG4gICAgfVxuXG4gICAgZnVuY3Rpb24gZXhlY3V0ZVR1cm4oKSB7XG4gICAgICAgIC8vIERyb3AgcGxheWVycyB3aXRoIG5vIGNhc2ggZnJvbSBnYW1lLlxuICAgICAgICBzdGF0ZS5wbGF5ZXJzID0gc3RhdGUucGxheWVycy5maWx0ZXIoZnVuY3Rpb24gKHBsYXllcikge1xuICAgICAgICAgICAgaWYgKHBsYXllci5jYXNoID49IDEpIHtcbiAgICAgICAgICAgICAgICBjb25zb2xlLmxvZyhwbGF5ZXIubmFtZSArICcgJCcgKyBwbGF5ZXIuY2FzaClcbiAgICAgICAgICAgICAgICByZXR1cm4gcGxheWVyXG4gICAgICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgICAgIC8vIEdpdmUgdXMgeW91ciBwcm9wZXJ0eSBhbmQgZGllIGEgbGlrZSBhIGRvZ1xuICAgICAgICAgICAgICAgIHBsYXllci5zdHJhaW5zLmZvckVhY2goc3RyYWluID0+IHN0cmFpbi5veiA9IHN0cmFpbi5wcmljZSAvIDEwKVxuICAgICAgICAgICAgICAgIHN0YXRlLmJhbmsuc3RyYWlucyA9IHN0YXRlLmJhbmsuc3RyYWlucy5jb25jYXQocGxheWVyLnN0cmFpbnMpXG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2cocGxheWVyLm5hbWUgK1xuICAgICAgICAgICAgICAgICAgICAnIHdhcyBkcm9wcGVkIGZyb20gdGhlIGdhbWUgZm9yIGJlaW5nIGJyb2tlIGF0IHRoZSBiZWdpbm5pbmcgb2YgdGhlaXIgdHVybi4gJyArXG4gICAgICAgICAgICAgICAgICAgICdUaGVpciBzdHJhaW5zIGFyZSByZXR1cm5lZCB1bnRvIHRoZSBmb2xkLiAnXG4gICAgICAgICAgICAgICAgKVxuICAgICAgICAgICAgfVxuICAgICAgICB9KVxuICAgICAgICBjb25zb2xlLmxvZyhcIkJhbmsgJFwiICsgc3RhdGUuYmFuay5jYXNoKVxuICAgICAgICAvLyB0aGVuIGNoZWNrIGZvciBhIHdpbm5lclxuICAgICAgICBpZiAoc3RhdGUucGxheWVycy5sZW5ndGggPT09IDEpIHtcbiAgICAgICAgICAgIHJldHVybiBlbmRHYW1lKClcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIGNoZWNrIGZvciBiYW5rIGluc29sdmVuY3kgKGRvbmUgcnVubmVkIG91dCBvZiBjYXNoISlcbiAgICAgICAgaWYgKHN0YXRlLmJhbmsuY2FzaCA8IDEpIHtcbiAgICAgICAgICAgIHJldHVybiBhYm9ydEdhbWUoJ2JhbmsgZmFpbHVyZScpXG4gICAgICAgIH1cbiAgICAgICAgLy8gaW5jcmVtZW50IHBsYXllcklkIFxuICAgICAgICBpbmNyZW1lbnRQbGF5ZXIoKVxuXG4gICAgICAgIC8vIGhhbmRsZSAobXVsdGlwbGUpIHNraXBwZWQgdHVybnNcbiAgICAgICAgaWYgKHN0YXRlLnNraXBwZWQuaW5jbHVkZXMoc3RhdGUuYWN0aXZlUGxheWVySWQpKSB7XG4gICAgICAgICAgICBzdGF0ZS5za2lwcGVkLnNwbGljZShzdGF0ZS5za2lwcGVkLmluZGV4T2Yoc3RhdGUuYWN0aXZlUGxheWVySWQpLCAxKVxuICAgICAgICAgICAgY29uc29sZS5sb2coXCJlbmQgb2YgdHVybiwgcGxheWVyIGlkOiBcIiArIHN0YXRlLmFjdGl2ZVBsYXllcklkKVxuICAgICAgICAgICAgY29uc29sZS5sb2coXCJza2lwcGVkIHBsYXllciBpZDogXCIgKyBzdGF0ZS5hY3RpdmVQbGF5ZXJJZClcbiAgICAgICAgICAgIHJldHVybiBleGVjdXRlVHVybigpXG4gICAgICAgIH1cblxuICAgICAgICAvL3N0YXJ0IHRoZSB0dXJuIGJ5IHJvbGxpbmcgZGljZSwgYW5kIGNsZWFuaW5nIHVwIHR1cm4gYmFzZWQgYm9vbGVhbnNcbiAgICAgICAgZ2FtZVJvbGwoKVxuXG4gICAgICAgIC8vIHJlcG9ydCBzdGF0ZSAgICBcbiAgICAgICAgY29uc29sZS5sb2coY3VycmVudFBsYXllcigpLm5hbWUgKyAnIHJvbGxlZCBhICcgKyBzdGF0ZS5jdXJyZW50Um9sbCArICcgc3RhcnRlZCBvbiBzcGFjZSAnICsgY3VycmVudFBsYXllcigpXG4gICAgICAgICAgICAuc3BhY2UgKyAnIGFuZCBoYXMgJCcgKyBjdXJyZW50UGxheWVyKCkuY2FzaClcblxuICAgICAgICAvLyBtb3ZlIHBsYXllciB0byBuZXcgc3BhY2VcbiAgICAgICAgY3VycmVudFBsYXllcigpLnNwYWNlID0gY2FsY3VsYXRlU3BhY2VJZCgpXG4gICAgICAgIGRyYXdQbGF5ZXJQaWVjZXMoKVxuICAgICAgICAvLyBnZXQgdGhlIGV2ZW50IGNvZGVcbiAgICAgICAgbGV0IGV2ZW50ID0gc3BhY2VzW2N1cnJlbnRQbGF5ZXIoKS5zcGFjZSAtIDFdLmVmZmVjdFxuXG4gICAgICAgIC8vIGFuZCBmaXJlIHRoYXQgc2hpdCBvZmZcbiAgICAgICAgbWFwRXZlbnRzKGV2ZW50KVxuXG4gICAgICAgIC8vIHJlcG9ydCBlbmQgb2YgdHVybiBzdGF0ZVxuICAgICAgICBjb25zb2xlLmxvZyhcIkF0IGVuZCBvZiB0dXJuLCBcIiArIGN1cnJlbnRQbGF5ZXIoKS5uYW1lICsgJyByb2xsZWQgJyArIHN0YXRlLmN1cnJlbnRSb2xsICsgJywgaXMgb24gc3BhY2UgJyArXG4gICAgICAgICAgICBjdXJyZW50UGxheWVyKCkuc3BhY2UgKyAnLCAgYW5kIGhhcyAkJyArIGN1cnJlbnRQbGF5ZXIoKS5jYXNoKVxuICAgICAgICBzdGF0ZS50dXJuTnVtYmVyICs9IDFcbiAgICAgICAgY29uc29sZS5sb2coJ1R1cm4gIycgKyBzdGF0ZS50dXJuTnVtYmVyKVxuICAgICAgICByZXR1cm4gc2V0VGltZW91dCgoKSA9PiBleGVjdXRlVHVybigpLCAxMDApO1xuICAgIH1cblxuICAgIGZ1bmN0aW9uIGVuZEdhbWUoKSB7XG4gICAgICAgIGxldCBvd25lZCA9ICcnXG5cbiAgICAgICAgbGV0IHdpbm5lciA9IHN0YXRlLnBsYXllcnNbMF1cbiAgICAgICAgaWYgKHdpbm5lci5zdHJhaW5zLmxlbmd0aCA9PT0gMSkge1xuICAgICAgICAgICAgICAgIG93bmVkID0gd2lubmVyLnN0cmFpbnNbMF0ubmFtZVxuICAgICAgICAgICAgfVxuXG4gICAgICAgIGlmICh3aW5uZXIuc3RyYWlucy5sZW5ndGggPiAxKSB7XG4gICAgICAgICAgICBmb3IgKGxldCBpID0gMDsgaSA8IHdpbm5lci5zdHJhaW5zLmxlbmd0aCAtIDE7KSB7XG4gICAgICAgICAgICAgICAgb3duZWQgKz0gd2lubmVyLnN0cmFpbnNbaV0ubmFtZSArICcsICdcbiAgICAgICAgICAgICAgICBpICs9IDE7XG4gICAgICAgICAgICB9XG4gICAgICAgICAgICBvd25lZCArPSAnYW5kICcgKyB3aW5uZXIuc3RyYWluc1t3aW5uZXIuc3RyYWlucy5sZW5ndGggLSAxXS5uYW1lICsgJy4gJ1xuICAgICAgICB9XG4gICAgICAgIGNvbnN0IHR1cm4gPSBzdGF0ZS50dXJuTnVtYmVyXG4gICAgICAgIGxldCBtZXNzYWdlID0gXCJBdCB0aGUgYmVnaW5uaW5nIG9mIHR1cm4gXCIgKyB0dXJuICsgXCI6IFRoZSBXaW5uZXIgaXMgXCIgKyB3aW5uZXIubmFtZSArICcgd2l0aCAkJyArIHdpbm5lclxuICAgICAgICAgICAgLmNhc2ggKyAnLiBXaXRoICcgKyB3aW5uZXIuc3RyYWlucy5sZW5ndGggKyAnIHN0cmFpbnMuIFRoZXkgb3duZWQgJyArIG93bmVkXG4gICAgICAgICAgICArICdUaGUgYmFuayBoYWQgJCcgKyBzdGF0ZS5iYW5rLmNhc2ggKyAnLiAnXG5cbiAgICAgICAgbGV0IGVuZFN0YXRlID0ge1xuICAgICAgICAgICAgdHVybk51bWJlcjogc3RhdGUudHVybk51bWJlcixcbiAgICAgICAgICAgIHNraXBwZWQ6IHN0YXRlLnNraXBwZWQubGVuZ3RoLFxuICAgICAgICAgICAgcGxheWVyczogc3RhdGUucGxheWVycyxcbiAgICAgICAgICAgIGJhbms6IHtcbiAgICAgICAgICAgICAgICBzdHJhaW5zOiBzdGF0ZS5zdHJhaW5zLFxuICAgICAgICAgICAgICAgIGNhc2g6IHN0YXRlLmJhbmsuY2FzaFxuICAgICAgICAgICAgfSxcbiAgICAgICAgICAgIGphY2twb3Q6IHtcbiAgICAgICAgICAgICAgICBjYXNoOiBzdGF0ZS5qYWNrcG90LmNhc2hcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuXG4gICAgICAgIHZhciB4aHIgPSBuZXcgWE1MSHR0cFJlcXVlc3QoKTtcbiAgICAgICAgeGhyLm9wZW4oXCJQT1NUXCIsICcvYXBpL3BvdGx1Y2tfbG9nJywgdHJ1ZSk7XG4gICAgICAgIHhoci5zZXRSZXF1ZXN0SGVhZGVyKCdDb250ZW50LVR5cGUnLCAnYXBwbGljYXRpb24vanNvbicpO1xuICAgICAgICB4aHIuc2VuZChKU09OLnN0cmluZ2lmeSh7XG4gICAgICAgICAgICB2YWx1ZToge1xuICAgICAgICAgICAgICAgIFwibWVzc2FnZVwiOiBtZXNzYWdlLFxuICAgICAgICAgICAgICAgIFwic3RhdGVcIjogZW5kU3RhdGVcbiAgICAgICAgICAgIH1cbiAgICAgICAgfSkpO1xuICAgICAgICBhbGVydChtZXNzYWdlKVxuICAgICAgICByZXR1cm4gc2V0VGltZW91dCgoKSA9PiB7d2luZG93LmxvY2F0aW9uLmhyZWYgPSAnL3BvdGx1Y2snfSwgNTAwMClcbiAgICB9XG5cbiAgICBmdW5jdGlvbiBkcmF3UGxheWVyUGllY2VzKCkge1xuICAgICAgICBmb3IgKGxldCBpID0gNDA7IGkgPiAwOyBpIC09IDEpIHtcbiAgICAgICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGkpLmlubmVySFRNTCA9ICcnXG4gICAgICAgIH1cbiAgICAgICAgc3RhdGUucGxheWVycy5mb3JFYWNoKGZ1bmN0aW9uIChwbGF5ZXIpIHtcbiAgICAgICAgICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKHBsYXllci5zcGFjZSkuaW5uZXJIVE1MICs9IHBsYXllci50b2tlblxuICAgICAgICB9KVxuICAgIH1cblxuICAgIG9uTW91bnQoKCkgPT4ge2RyYXdQbGF5ZXJQaWVjZXMoKX0pO1xuPC9zY3JpcHQ+XG5cblxuXG48bWFpbj5cbjxkaXYgY2xhc3M9XCJjb250YWluZXItZmx1aWQgcHktMyBweC01IGJnLXdoaXRlXCI+XG4gICAgICAgIDxidXR0b24gb246Y2xpY2s9XCJ7c3RhcnRHYW1lfVwiIGNsYXNzPVwiYnRuLWJsdWVcIj4gU3RhcnQgR2FtZTwvYnV0dG9uPlxuICAgIDwvZGl2PlxuICAgIDxkaXYgY2xhc3M9XCJjb250YWluZXItZmx1aWQgcHktMyBweC01IGJnLXdoaXRlXCI+XG4gICAgPGRpdiBjbGFzcz1cImZsZXgtcm93IGl0ZW1zLXRvcFwiPlxuICAgIHsjZWFjaCBzdGF0ZS5wbGF5ZXJzIGFzIHBsYXllcn0gICBcbiAgICA8ZGl2IGNsYXNzPVwiaW5saW5lLWJsb2NrXCIgc3R5bGU9XCJ3aWR0aDp7MTAwIC8gc3RhdGUucGxheWVycy5sZW5ndGh9JVwiPlxuICAgICAgICA8ZGl2IGNsYXNzPVwiaXRlbXMtdG9wIHRleHQtYmx1ZS04MDAgcC0xIG14LTEgYmctZ3JheS0yMDAgYm9yZGVyLXNvbGlkIGJvcmRlci0xIGJvcmRlci1ncmF5LTYwMCByb3VuZGVkLXNtIGZvbnQtYm9sZFwiPlxuICAgICAgICAgICAge3BsYXllci5uYW1lfSB7QGh0bWwgcGxheWVyLnRva2VufSA8c3BhbiBjbGFzcz1cInRleHQtZ3JlZW4tNjAwXCI+ICR7cGxheWVyLmNhc2h9PC9zcGFuPjwvZGl2PlxuICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJvcmRlci1zb2xpZCBteC0xIGJnLWdyYXktMTAwIHJvdW5kZWQtc21cIj5cbiAgICAgICAgICAgICAgICB7I2VhY2ggcGxheWVyLnN0cmFpbnMgYXMgc3RyYWlufVxuICAgICAgICAgICAgICAgIDxwPiB7c3RyYWluLm5hbWV9IDxzcGFuIGNsYXNzPVwidGV4dC1ncmVlbi02MDBcIj4gJHtzdHJhaW4ub3p9IDwvc3Bhbj4gKCR7c3RyYWluLnByaWNlIC8gMTB9KTwvcD5cbiAgICAgICAgICAgICAgICB7L2VhY2h9XG4gICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgPC9kaXY+XG4gICAgey9lYWNofVxuICAgIDwvZGl2PiBcbiAgICA8L2Rpdj4gICAgXG4gICAgPGRpdiBjbGFzcz1cInBvdGx1Y2tcIj5cbiAgICAgICAgPGRpdiBjbGFzcz1cImdhbWVCb2FyZFwiPlxuICAgICAgICAgICAgPGRpdiBjbGFzcz1cInJvdyB0b3BcIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMlwiPjxzcGFuIGNsYXNzPVwiY29ybmVyIGNvcm5lcjFcIj5KQUNLUE9UITwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMjBcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyIGhlYWRlci10b3AgcHVycGxlXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLXRvcCB0b3Atc2lkZVwiPkhhd2FpaWFuPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjIxXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtdG9wIG5vLWNvbG9yIHRvcC1zaWRlXCI+VmFjYXRpb248YnI+VGltZTxicj5SZWxheCw8YnI+IExvc2UgYSBUdXJuXG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIyMlwiPjwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmUxXCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLXRvcCBuby1jb2xvciB0b3Atc2lkZVwiPkJ1bSBNZSBPdXQ8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMjNcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyIGhlYWRlci10b3Agb3JhbmdlXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLXRvcCB0b3Atc2lkZVwiPk5pY2FyYWd1YW48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMjRcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS10b3Agbm8tY29sb3IgdG9wLXNpZGVcIj5NVU5DSElFUyE8YnIgLz4gUGF5IDEweCB5b3VyIHJvbGw8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMjVcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyIGhlYWRlci10b3AgeWVsbG93XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLXRvcCB0b3Atc2lkZVwiPkNvbG9tYmlhbiBHb2xkPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjI2XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtdG9wIHRvcC1zaWRlXCI+RmFyPGJyIC8+T3V0PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjI3XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlciBoZWFkZXItdG9wIGxpZ2h0Ymx1ZVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS10b3AgdG9wLXNpZGVcIj5KdXN0IDxicj5Hb29kIFBvdDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIyOFwiPjwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmUxXCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXIgaGVhZGVyLXRvcCBibHVlXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLXRvcCB0b3Atc2lkZVwiPmp1c3Q8YnI+IGJhZCBwb3Q8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMjlcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMlwiPjxzcGFuIGNsYXNzPVwiY29ybmVyIGNvcm5lcjJcIj5CdXN0ZWQuLi48YnIgLz5sb3NlIDEgdHVybjwvc3Bhbj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIzMFwiPjwvZGl2PlxuICAgICAgICAgICAgPC9kaXY+XG5cbiAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJyb3cgY2VudGVyXCI+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTJcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZVNpZGVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXJTaWRlIGhlYWRlci1sZWZ0IHllbGxvd1wiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtbGVmdCBsZWZ0LXNpZGVcIj5BY2FwdWxjbzxicj5Hb2xkPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIxOVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZVNpZGVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLWxlZnQgbm8tY29sb3IgbGVmdC1zaWRlXCI+VGhlIExhdzogPGJyIC8+IFBheSAyMHg8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjE4XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlclNpZGUgaGVhZGVyLWxlZnQgeWVsbG93XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1sZWZ0IGxlZnQtc2lkZVwiPlNpbnNlbWlsbGE8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjE3XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtbGVmdCBuby1jb2xvciBsZWZ0LXNpZGVcIj5EZWFsaW5nIDxiciAvPlNxdWFyZTwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMTZcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmVTaWRlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyU2lkZSBoZWFkZXItbGVmdCByZWRcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLWxlZnQgbGVmdC1zaWRlXCI+TWF1aSBXb3dpZTwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMTVcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmVTaWRlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1sZWZ0IG5vLWNvbG9yIGxlZnQtc2lkZVwiPk1pZG5pZ2h0IDxicj5BaXJzdHJpcDxicj4gUGF5IDQweDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMTRcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmVTaWRlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyU2lkZSBoZWFkZXItbGVmdCBncmVlblwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtbGVmdCBsZWZ0LXNpZGVcIj5HdWVycmVybzxiciAvPiBHcmVlbjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMTNcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmVTaWRlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1sZWZ0IG5vLWNvbG9yIGxlZnQtc2lkZVwiPllvdSBQYXk8YnIgLz4xMHg8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjEyXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlclNpZGUgaGVhZGVyLWxlZnQgbGlnaHRibHVlXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1sZWZ0IGxlZnQtc2lkZVwiPmNvbG9tYmlhbjxiciAvPmNoaWJhPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIxMVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlOVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY2FyZC1ib3ggY2FyZC1ibHVlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiY2FyZC1ibHVlLWluc2lkZVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImxvZ29Cb3hcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxzcGFuIGNsYXNzPVwibG9nb05hbWVcIj5Qb3QgTHVjazwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJjYXJkLWJveCBjYXJkLW9yYW5nZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImNhcmQtb3JhbmdlLWluc2lkZVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMlwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlclNpZGUgaGVhZGVyLXJpZ2h0IHB1cnBsZVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgcmlnaHQtc2lkZVwiPlZpZXRuYW1lc2U8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjMxXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlclNpZGUgaGVhZGVyLXJpZ2h0IG9yYW5nZVwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgcmlnaHQtc2lkZVwiPlN0aWNrbGVzczxiciAvPlRoYWk8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjMyXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgbm8tY29sb3IgcmlnaHQtc2lkZVwiPk5vLVRlbGw8YnI+IENhciBSZW50YWw8YnI+cGF5IDEweFxuICAgICAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIzM1wiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZVNpZGVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXJTaWRlIGhlYWRlci1yaWdodCByZWRcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLXJpZ2h0IHJpZ2h0LXNpZGVcIj5QYW5hbWE8YnIgLz4gUmVkPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCIzNFwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZVNpZGVcIj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXJTaWRlIGhlYWRlci1yaWdodCBicm93blwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgcmlnaHQtc2lkZVwiPk1leGljYW48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjM1XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgbm8tY29sb3IgcmlnaHQtc2lkZVwiPkRlYWxpbmcgPGJyPlNxdWFyZTwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMzZcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmVTaWRlXCI+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyU2lkZSBoZWFkZXItcmlnaHQgbGlnaHRibHVlXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1yaWdodCByaWdodC1zaWRlXCI+SmFtYWljYW48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjM3XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgbm8tY29sb3IgcmlnaHQtc2lkZVwiPmJ1bTxicj5tZSBvdXQ8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjM4XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlU2lkZVwiPlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlclNpZGUgaGVhZGVyLXJpZ2h0IHllbGxvd1wiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtcmlnaHQgcmlnaHQtc2lkZVwiPm1pY2hvYWNhbjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMzlcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICA8L2Rpdj5cblxuICAgICAgICAgICAgPGRpdiBjbGFzcz1cInJvdyB0b3BcIj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMlwiPlxuICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzcz1cImNvcm5lciBjb3JuZXI0XCIgc3R5bGU9XCJsaW5lLWhlaWdodDoxZW07XCI+IEhvc3BpdGFsOiA8YnI+bG9zZSBhXG4gICAgICAgICAgICAgICAgICAgICAgICB0dXJuLiA8YnI+cGF5IDEwMHggeW91ciByb2xsXG4gICAgICAgICAgICAgICAgICAgIDwvc3Bhbj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiMTBcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyIGhlYWRlci1ib3R0b20gcmVkXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLWJvdHRvbVwiPmNvbG9tYmlhbiA8YnI+cmVkIGJ1ZDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCI5XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlciBoZWFkZXItYm90dG9tIGJsdWVcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtYm90dG9tXCI+dGhhaTxicj5zdGljazwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCI4XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtYm90dG9tIG5vLWNvbG9yXCI+ZG93bnRvd248YnI+cGhhcm1hY3kgPGJyPlBheSA1eDwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiYm94XCIgaWQ9XCI3XCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgPC9kaXY+XG4gICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cInNxdWFyZTFcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImhlYWRlciBoZWFkZXItYm90dG9tIGdyZWVuXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLWJvdHRvbVwiPmdhaW5lc3ZpbGxlPGJyIC8+IGdyZWVuPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjZcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyIGhlYWRlci1ib3R0b20gb3JhbmdlXCI+PC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJmaXJzdExpbmUgZmlyc3RMaW5lLWJvdHRvbVwiPndhY2t5PGJyIC8+IHdlZWQ8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBpZD1cIjVcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1ib3R0b20gbm8tY29sb3JcIj5GYXIgPGJyIC8+IE91dCE8L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiNFwiPjwvZGl2PlxuICAgICAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJzcXVhcmUxXCI+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJoZWFkZXIgaGVhZGVyLWJvdHRvbSBncmVlblwiPjwvZGl2PlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1ib3R0b21cIj5Ib21lIEdyb3duPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjNcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiZmlyc3RMaW5lIGZpcnN0TGluZS1ib3R0b20gbm8tY29sb3JcIj5GbHlpbmc8YnIgLz4gVG9vIEhpZ2g6PGJyPkxvc2UgQTxicj5UdXJuPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjJcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMVwiPlxuICAgICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwiaGVhZGVyIGhlYWRlci1ib3R0b20gYnJvd25cIj48L2Rpdj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImZpcnN0TGluZSBmaXJzdExpbmUtYm90dG9tXCI+Q29sb21iaWFuPC9kaXY+XG4gICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJib3hcIiBpZD1cIjFcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzPVwic3F1YXJlMlwiIHN0eWxlPVwiYmFja2dyb3VuZC1pbWFnZTp1cmwoJy9pbWcvc3RyYWlnaHQuanBnJyk7IGJhY2tncm91bmQtc2l6ZTpjb3ZlcjtcIj5cbiAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz1cImJveFwiIGlkPVwiNDBcIj48L2Rpdj5cbiAgICAgICAgICAgICAgICA8L2Rpdj5cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICA8L2Rpdj5cbiAgICA8L2Rpdj5cbiAgICBcbjwvbWFpbj5cblxuPHN0eWxlPlxuXG4gICAgZGl2IHtcbiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICB9XG5cbiAgICAuYm94IHtcbiAgICAgICAgcG9zaXRpb246cmVsYXRpdmU7XG4gICAgICAgIHRvcDoyNiU7XG4gICAgICAgIGxlZnQ6MjMlO1xuICAgICAgICByaWdodDoyMyU7XG4gICAgICAgIGJvdHRvbTphdXRvO1xuICAgICAgICBvdmVyZmxvdzpoaWRkZW47XG4gICAgfVxuXG4gICAgLnBvdGx1Y2sge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiBmbG9yYWx3aGl0ZTtcbiAgICAgICAgd2lkdGg6IDk1Ljc1dnc7XG4gICAgICAgIGhlaWdodDogOTQuMjV2dztcbiAgICAgICAgbWFyZ2luOiAxMHB4IGF1dG87XG4gICAgfVxuXG4gICAgLmdhbWVCb2FyZCB7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiBmbG9yYWx3aGl0ZTtcbiAgICB9XG5cbiAgICAucm93IHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgfVxuXG4gICAgLnRvcCB7XG4gICAgICAgIGhlaWdodDogMTUuMzg0NjE1Mzg1JTtcbiAgICB9XG5cbiAgICAuY2VudGVyIHtcbiAgICAgICAgaGVpZ2h0OiA2OS4yMzA3NjkyMyU7XG4gICAgfVxuXG4gICAgLnNxdWFyZTEge1xuICAgICAgICBvdXRsaW5lOiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgIGZsZXgtZ3JvdzogMTtcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICBiYWNrZ3JvdW5kOiBmbG9yYWx3aGl0ZTtcbiAgICB9XG5cbiAgICAuc3F1YXJlMiB7XG4gICAgICAgIGZsZXgtZ3JvdzogMjtcbiAgICAgICAgb3V0bGluZTogMXB4IHNvbGlkIGJsYWNrO1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgIGJhY2tncm91bmQ6IGZsb3JhbHdoaXRlO1xuICAgIH1cblxuICAgIC5zcXVhcmU5IHtcbiAgICAgICAgZmxleC1ncm93OiA5O1xuICAgICAgICBvdXRsaW5lOiAxcHggc29saWQgYmxhY2s7XG4gICAgICAgIGJhY2tncm91bmQ6IGxpZ2h0Z29sZGVucm9keWVsbG93O1xuICAgIH1cblxuICAgIC5zcXVhcmVTaWRlIHtcbiAgICAgICAgb3V0bGluZTogMXB4IHNvbGlkIGJsYWNrO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgZmxleC1ncm93OiAxO1xuICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgfVxuXG4gICAgLmhlYWRlciB7XG4gICAgICAgIGhlaWdodDogMjElO1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIG91dGxpbmU6IDJweCBzb2xpZCBibGFjaztcbiAgICAgICAgYmFja2dyb3VuZDogZ3JleTtcbiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgdXJsKCcvaW1nL2xlYWYtYmcucG5nJykgY2VudGVyIGNlbnRlciBuby1yZXBlYXQ7XG4gICAgICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNvbnRhaW47XG4gICAgfVxuXG4gICAgLmhlYWRlclNpZGUge1xuICAgICAgICB3aWR0aDogMjElO1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIG91dGxpbmU6IDJweCBzb2xpZCBibGFjaztcbiAgICB9XG5cbiAgICAuaGVhZGVyLXRvcCB7XG4gICAgICAgIGJvdHRvbTogMXB4O1xuICAgICAgICBsZWZ0OiAxcHg7XG4gICAgICAgIHJpZ2h0OiAxcHg7XG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50IHVybCgnL2ltZy9sZWFmLTE4MC1iZy5wbmcnKSBjZW50ZXIgY2VudGVyIG5vLXJlcGVhdDtcbiAgICAgICAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICAgIH1cblxuICAgIC5oZWFkZXItYm90dG9tIHtcbiAgICAgICAgdG9wOiAxcHg7XG4gICAgICAgIGxlZnQ6IDFweDtcbiAgICAgICAgcmlnaHQ6IDFweDtcbiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgdXJsKCcvaW1nL2xlYWYtYmcucG5nJykgY2VudGVyIGNlbnRlciBuby1yZXBlYXQ7XG4gICAgICAgIGJhY2tncm91bmQtc2l6ZTogY29udGFpbjtcbiAgICB9XG5cbiAgICAuaGVhZGVyLWxlZnQge1xuICAgICAgICB0b3A6IDFweDtcbiAgICAgICAgYm90dG9tOiAxcHg7XG4gICAgICAgIHJpZ2h0OiAxcHg7XG4gICAgICAgIGJhY2tncm91bmQ6IGdyZXk7XG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50IHVybCgnL2ltZy9sZWFmLTkwLWJnLnBuZycpIGNlbnRlciBjZW50ZXIgbm8tcmVwZWF0O1xuICAgICAgICBiYWNrZ3JvdW5kLXNpemU6IGNvbnRhaW47XG4gICAgfVxuXG4gICAgLmhlYWRlci1yaWdodCB7XG4gICAgICAgIHRvcDogMXB4O1xuICAgICAgICBib3R0b206IDFweDtcbiAgICAgICAgbGVmdDogMXB4O1xuICAgICAgICBiYWNrZ3JvdW5kOiBncmV5O1xuICAgICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCB1cmwoJy9pbWcvbGVhZi0yNzAtYmcucG5nJykgY2VudGVyIGNlbnRlciBuby1yZXBlYXQ7XG4gICAgICAgIGJhY2tncm91bmQtc2l6ZTogY29udGFpbjtcbiAgICB9XG5cbiAgICAuZmlyc3RMaW5lIHtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICBmb250LXNpemU6IDAuN3Z3O1xuICAgICAgICBmb250LXdlaWdodDogNTAwO1xuICAgICAgICBsaW5lLWhlaWdodDogMXZ3O1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgfVxuXG4gICAgLmZpcnN0TGluZS10b3Age1xuICAgICAgICBsZWZ0OiAxcHg7XG4gICAgICAgIHJpZ2h0OiAxcHg7XG4gICAgICAgIGJvdHRvbTogMzAlO1xuICAgICAgICBoZWlnaHQ6IDEwJTtcbiAgICB9XG5cbiAgICAuZmlyc3RMaW5lLXRvcC5uby1jb2xvciB7XG4gICAgICAgIGJvdHRvbTogMTIlO1xuICAgIH1cblxuICAgIC5maXJzdExpbmUtbGVmdCB7XG4gICAgICAgIHRvcDogMHB4O1xuICAgICAgICBib3R0b206IDBweDtcbiAgICAgICAgcmlnaHQ6IDQyJTtcbiAgICB9XG5cbiAgICAuZmlyc3RMaW5lLWxlZnQubm8tY29sb3Ige1xuICAgICAgICByaWdodDogMjMlO1xuICAgIH1cblxuICAgIC5maXJzdExpbmUtcmlnaHQge1xuICAgICAgICB0b3A6IDA7XG4gICAgICAgIGJvdHRvbTogMDtcbiAgICAgICAgbGVmdDogNDIlO1xuICAgIH1cblxuICAgIC5maXJzdExpbmUtcmlnaHQubm8tY29sb3Ige1xuICAgICAgICBsZWZ0OiAyMyU7XG4gICAgfVxuXG4gICAgLmZpcnN0TGluZS1ib3R0b20ge1xuICAgICAgICBsZWZ0OiAwO1xuICAgICAgICByaWdodDogMDtcbiAgICAgICAgdG9wOiAzMCU7XG4gICAgfVxuXG4gICAgLmZpcnN0TGluZS1ib3R0b20ubm8tY29sb3Ige1xuICAgICAgICB0b3A6IDEyJTtcbiAgICB9XG5cbiAgICAucmVkIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2VkMWIyNDtcbiAgICB9XG5cbiAgICAueWVsbG93IHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2ZlZjIwMDtcbiAgICB9XG5cbiAgICAubGlnaHRibHVlIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2FhZTBmYTtcbiAgICB9XG5cbiAgICAuYnJvd24ge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjOTU1NDM2O1xuICAgIH1cblxuICAgIC5ibHVlIHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogIzAwNzJiYjtcbiAgICB9XG5cbiAgICAuZ3JlZW4ge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMWZiMjVhO1xuICAgIH1cblxuICAgIC5vcmFuZ2Uge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjc5NDFkO1xuICAgIH1cblxuICAgIC5wdXJwbGUge1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZDkzYTk2O1xuICAgIH1cblxuXG4gICAgLmxlZnQtc2lkZSB7XG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlKDkwZGVnKTtcbiAgICB9XG5cbiAgICAudG9wLXNpZGUge1xuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpO1xuICAgIH1cblxuICAgIC5yaWdodC1zaWRlIHtcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGUoLTkwZGVnKTtcbiAgICB9XG5cbiAgICAubG9nb0JveCB7XG4gICAgICAgIHdpZHRoOiA0NiU7XG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50O1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlWigtNDVkZWcpIHRyYW5zbGF0ZVgoLTI2LjUlKSB0cmFuc2xhdGVZKDI0Ni41JSk7XG4gICAgICAgIGJvcmRlcjogM3B4IHNvbGlkIGJsYWNrO1xuICAgICAgICBib3JkZXItcmFkaXVzOiAxZW07XG4gICAgICAgIHBhZGRpbmc6IDAsIDAuMWVtLCAwLjJlbSAwLjFlbTtcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICBib3gtc2hhZG93OiBpbnNldCAwcHggNHB4IDI0cHggOHB4IHdoaXRlO1xuICAgICAgICBib3gtc2hhZG93OiBpbnNldCAwcHggMnB4IDEycHggMHB4IGdyZWVueWVsbG93O1xuICAgIH1cblxuICAgIC5sb2dvTmFtZSB7XG4gICAgICAgIGZvbnQtc2l6ZTogNy4wdnc7XG4gICAgICAgIGNvbG9yOiBibGFjaztcbiAgICAgICAgZm9udC1mYW1pbHk6IGZ1dHVyYTtcbiAgICAgICAgLXdlYmtpdC10ZXh0LXN0cm9rZS13aWR0aDogMnB4O1xuICAgICAgICAtd2Via2l0LXRleHQtc3Ryb2tlLWNvbG9yOiBibGFjaztcbiAgICAgICAgdGV4dC1zaGFkb3c6IC0zcHggMnB4IDBweCBibGFjaztcbiAgICAgICAgLXdlYmtpdC10ZXh0LWZpbGwtY29sb3I6IHRyYW5zcGFyZW50O1xuICAgICAgICAvKiBXaWxsIG92ZXJyaWRlIGNvbG9yIChyZWdhcmRsZXNzIG9mIG9yZGVyKSAqL1xuXG4gICAgfVxuXG4gICAgLmNhcmQtYm94IHtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICB3aWR0aDogMTUlO1xuICAgICAgICBoZWlnaHQ6IDl2dztcbiAgICB9XG5cbiAgICAuY2FyZC1ibHVlIHtcbiAgICAgICAgYmFja2dyb3VuZDogcmdiKDY2LCAxNjYsIDI0MCkgdXJsKCcvaW1nL0Zhck91dC5qcGcnKSBjZW50ZXIgY2VudGVyIG5vLXJlcGVhdDtcbiAgICAgICAgYmFja2dyb3VuZC1zaXplOiBjb250YWluO1xuICAgICAgICBib3JkZXItcmFkaXVzOiAwLjNlbTtcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGVaKC00NWRlZykgdHJhbnNsYXRlWCgtNS41JSkgdHJhbnNsYXRlWSgxMzIuMjUlKTtcbiAgICB9XG5cbiAgICAuY2FyZC1ibHVlLWluc2lkZSB7XG4gICAgICAgIHdpZHRoOiA5NCU7XG4gICAgICAgIGhlaWdodDogOTQlO1xuICAgICAgICBtYXJnaW46IDAuM3Z3IGF1dG87XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB9XG5cbiAgICAuY2FyZC1vcmFuZ2Uge1xuICAgICAgICBiYWNrZ3JvdW5kOiByZ2IoNjYsIDE2NiwgMjQwKSB1cmwoJy9pbWcvQnVtT3V0LmpwZycpIGNlbnRlciBjZW50ZXIgbm8tcmVwZWF0O1xuICAgICAgICBiYWNrZ3JvdW5kLXNpemU6IGNvbnRhaW47XG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlWigtNDVkZWcpIHRyYW5zbGF0ZVgoLTI1JSkgdHJhbnNsYXRlWSg2ODcuMjUlKTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMC4zZW07XG4gICAgfVxuXG4gICAgLmNhcmQtb3JhbmdlLWluc2lkZSB7XG4gICAgICAgIHdpZHRoOiA5NCU7XG4gICAgICAgIGhlaWdodDogOTQlO1xuICAgICAgICBtYXJnaW46IDAuM3Z3IGF1dG87XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB9XG5cbiAgICAuY29ybmVyIHtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgIGxpbmUtaGVpZ2h0OiA4dnc7XG4gICAgICAgIGZvbnQtc2l6ZTogMS4ydnc7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiA1MDA7XG4gICAgfVxuXG4gICAgLmNvcm5lcjEge1xuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZVooMTM1ZGVnKSB0cmFuc2xhdGVYKC0yMiUpIHRyYW5zbGF0ZVkoLTEwNyUpO1xuICAgIH1cblxuICAgIC5jb3JuZXIyIHtcbiAgICAgICAgdHJhbnNmb3JtOiByb3RhdGVaKC0xMzVkZWcpIHRyYW5zbGF0ZVgoLTc1JSkgdHJhbnNsYXRlWSgtNzUlKTtcbiAgICAgICAgbGluZS1oZWlnaHQ6IDFlbTtcbiAgICB9XG5cbiAgICAuY29ybmVyNCB7XG4gICAgICAgIHRyYW5zZm9ybTogcm90YXRlWig0NWRlZykgdHJhbnNsYXRlWCgzMiUpIHRyYW5zbGF0ZVkoMCUpO1xuICAgICAgICBsaW5lLWhlaWdodDogMWVtO1xuICAgIH1cbjwvc3R5bGU+Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQXF0QkksR0FBRyxlQUFDLENBQUMsQUFDRCxVQUFVLENBQUUsVUFBVSxDQUN0QixjQUFjLENBQUUsU0FBUyxBQUM3QixDQUFDLEFBRUQsSUFBSSxlQUFDLENBQUMsQUFDRixTQUFTLFFBQVEsQ0FDakIsSUFBSSxHQUFHLENBQ1AsS0FBSyxHQUFHLENBQ1IsTUFBTSxHQUFHLENBQ1QsT0FBTyxJQUFJLENBQ1gsU0FBUyxNQUFNLEFBQ25CLENBQUMsQUFFRCxRQUFRLGVBQUMsQ0FBQyxBQUNOLGdCQUFnQixDQUFFLFdBQVcsQ0FDN0IsS0FBSyxDQUFFLE9BQU8sQ0FDZCxNQUFNLENBQUUsT0FBTyxDQUNmLE1BQU0sQ0FBRSxJQUFJLENBQUMsSUFBSSxBQUNyQixDQUFDLEFBRUQsVUFBVSxlQUFDLENBQUMsQUFDUixNQUFNLENBQUUsSUFBSSxDQUNaLFFBQVEsQ0FBRSxRQUFRLENBQ2xCLGdCQUFnQixDQUFFLFdBQVcsQUFDakMsQ0FBQyxBQUVELElBQUksZUFBQyxDQUFDLEFBQ0YsS0FBSyxDQUFFLElBQUksQ0FDWCxPQUFPLENBQUUsSUFBSSxBQUNqQixDQUFDLEFBRUQsSUFBSSxlQUFDLENBQUMsQUFDRixNQUFNLENBQUUsYUFBYSxBQUN6QixDQUFDLEFBRUQsT0FBTyxlQUFDLENBQUMsQUFDTCxNQUFNLENBQUUsWUFBWSxBQUN4QixDQUFDLEFBRUQsUUFBUSxlQUFDLENBQUMsQUFDTixPQUFPLENBQUUsR0FBRyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQ3hCLFNBQVMsQ0FBRSxDQUFDLENBQ1osUUFBUSxDQUFFLFFBQVEsQ0FDbEIsVUFBVSxDQUFFLFdBQVcsQUFDM0IsQ0FBQyxBQUVELFFBQVEsZUFBQyxDQUFDLEFBQ04sU0FBUyxDQUFFLENBQUMsQ0FDWixPQUFPLENBQUUsR0FBRyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQ3hCLE9BQU8sQ0FBRSxJQUFJLENBQ2IsY0FBYyxDQUFFLE1BQU0sQ0FDdEIsUUFBUSxDQUFFLFFBQVEsQ0FDbEIsVUFBVSxDQUFFLFdBQVcsQUFDM0IsQ0FBQyxBQUVELFFBQVEsZUFBQyxDQUFDLEFBQ04sU0FBUyxDQUFFLENBQUMsQ0FDWixPQUFPLENBQUUsR0FBRyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQ3hCLFVBQVUsQ0FBRSxvQkFBb0IsQUFDcEMsQ0FBQyxBQUVELFdBQVcsZUFBQyxDQUFDLEFBQ1QsT0FBTyxDQUFFLEdBQUcsQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUN4QixLQUFLLENBQUUsSUFBSSxDQUNYLFNBQVMsQ0FBRSxDQUFDLENBQ1osUUFBUSxDQUFFLFFBQVEsQUFDdEIsQ0FBQyxBQUVELE9BQU8sZUFBQyxDQUFDLEFBQ0wsTUFBTSxDQUFFLEdBQUcsQ0FDWCxRQUFRLENBQUUsUUFBUSxDQUNsQixPQUFPLENBQUUsR0FBRyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQ3hCLFVBQVUsQ0FBRSxJQUFJLENBQ2hCLFVBQVUsQ0FBRSxXQUFXLENBQUMsSUFBSSxrQkFBa0IsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUN2RSxtQkFBbUIsQ0FBRSxPQUFPLEFBQ2hDLENBQUMsQUFFRCxXQUFXLGVBQUMsQ0FBQyxBQUNULEtBQUssQ0FBRSxHQUFHLENBQ1YsUUFBUSxDQUFFLFFBQVEsQ0FDbEIsT0FBTyxDQUFFLEdBQUcsQ0FBQyxLQUFLLENBQUMsS0FBSyxBQUM1QixDQUFDLEFBRUQsV0FBVyxlQUFDLENBQUMsQUFDVCxNQUFNLENBQUUsR0FBRyxDQUNYLElBQUksQ0FBRSxHQUFHLENBQ1QsS0FBSyxDQUFFLEdBQUcsQ0FDVixVQUFVLENBQUUsV0FBVyxDQUFDLElBQUksc0JBQXNCLENBQUMsQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FDM0UsZUFBZSxDQUFFLE9BQU8sQUFDNUIsQ0FBQyxBQUVELGNBQWMsZUFBQyxDQUFDLEFBQ1osR0FBRyxDQUFFLEdBQUcsQ0FDUixJQUFJLENBQUUsR0FBRyxDQUNULEtBQUssQ0FBRSxHQUFHLENBQ1YsVUFBVSxDQUFFLFdBQVcsQ0FBQyxJQUFJLGtCQUFrQixDQUFDLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQ3ZFLGVBQWUsQ0FBRSxPQUFPLEFBQzVCLENBQUMsQUFFRCxZQUFZLGVBQUMsQ0FBQyxBQUNWLEdBQUcsQ0FBRSxHQUFHLENBQ1IsTUFBTSxDQUFFLEdBQUcsQ0FDWCxLQUFLLENBQUUsR0FBRyxDQUNWLFVBQVUsQ0FBRSxJQUFJLENBQ2hCLFVBQVUsQ0FBRSxXQUFXLENBQUMsSUFBSSxxQkFBcUIsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUMxRSxlQUFlLENBQUUsT0FBTyxBQUM1QixDQUFDLEFBRUQsYUFBYSxlQUFDLENBQUMsQUFDWCxHQUFHLENBQUUsR0FBRyxDQUNSLE1BQU0sQ0FBRSxHQUFHLENBQ1gsSUFBSSxDQUFFLEdBQUcsQ0FDVCxVQUFVLENBQUUsSUFBSSxDQUNoQixVQUFVLENBQUUsV0FBVyxDQUFDLElBQUksc0JBQXNCLENBQUMsQ0FBQyxNQUFNLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FDM0UsZUFBZSxDQUFFLE9BQU8sQUFDNUIsQ0FBQyxBQUVELFVBQVUsZUFBQyxDQUFDLEFBQ1IsUUFBUSxDQUFFLFFBQVEsQ0FDbEIsU0FBUyxDQUFFLEtBQUssQ0FDaEIsV0FBVyxDQUFFLEdBQUcsQ0FDaEIsV0FBVyxDQUFFLEdBQUcsQ0FDaEIsVUFBVSxDQUFFLE1BQU0sQUFDdEIsQ0FBQyxBQUVELGNBQWMsZUFBQyxDQUFDLEFBQ1osSUFBSSxDQUFFLEdBQUcsQ0FDVCxLQUFLLENBQUUsR0FBRyxDQUNWLE1BQU0sQ0FBRSxHQUFHLENBQ1gsTUFBTSxDQUFFLEdBQUcsQUFDZixDQUFDLEFBRUQsY0FBYyxTQUFTLGVBQUMsQ0FBQyxBQUNyQixNQUFNLENBQUUsR0FBRyxBQUNmLENBQUMsQUFFRCxlQUFlLGVBQUMsQ0FBQyxBQUNiLEdBQUcsQ0FBRSxHQUFHLENBQ1IsTUFBTSxDQUFFLEdBQUcsQ0FDWCxLQUFLLENBQUUsR0FBRyxBQUNkLENBQUMsQUFFRCxlQUFlLFNBQVMsZUFBQyxDQUFDLEFBQ3RCLEtBQUssQ0FBRSxHQUFHLEFBQ2QsQ0FBQyxBQUVELGdCQUFnQixlQUFDLENBQUMsQUFDZCxHQUFHLENBQUUsQ0FBQyxDQUNOLE1BQU0sQ0FBRSxDQUFDLENBQ1QsSUFBSSxDQUFFLEdBQUcsQUFDYixDQUFDLEFBRUQsZ0JBQWdCLFNBQVMsZUFBQyxDQUFDLEFBQ3ZCLElBQUksQ0FBRSxHQUFHLEFBQ2IsQ0FBQyxBQUVELGlCQUFpQixlQUFDLENBQUMsQUFDZixJQUFJLENBQUUsQ0FBQyxDQUNQLEtBQUssQ0FBRSxDQUFDLENBQ1IsR0FBRyxDQUFFLEdBQUcsQUFDWixDQUFDLEFBRUQsaUJBQWlCLFNBQVMsZUFBQyxDQUFDLEFBQ3hCLEdBQUcsQ0FBRSxHQUFHLEFBQ1osQ0FBQyxBQUVELElBQUksZUFBQyxDQUFDLEFBQ0YsZ0JBQWdCLENBQUUsT0FBTyxBQUM3QixDQUFDLEFBRUQsT0FBTyxlQUFDLENBQUMsQUFDTCxnQkFBZ0IsQ0FBRSxPQUFPLEFBQzdCLENBQUMsQUFFRCxVQUFVLGVBQUMsQ0FBQyxBQUNSLGdCQUFnQixDQUFFLE9BQU8sQUFDN0IsQ0FBQyxBQUVELE1BQU0sZUFBQyxDQUFDLEFBQ0osZ0JBQWdCLENBQUUsT0FBTyxBQUM3QixDQUFDLEFBRUQsS0FBSyxlQUFDLENBQUMsQUFDSCxnQkFBZ0IsQ0FBRSxPQUFPLEFBQzdCLENBQUMsQUFFRCxNQUFNLGVBQUMsQ0FBQyxBQUNKLGdCQUFnQixDQUFFLE9BQU8sQUFDN0IsQ0FBQyxBQUVELE9BQU8sZUFBQyxDQUFDLEFBQ0wsZ0JBQWdCLENBQUUsT0FBTyxBQUM3QixDQUFDLEFBRUQsT0FBTyxlQUFDLENBQUMsQUFDTCxnQkFBZ0IsQ0FBRSxPQUFPLEFBQzdCLENBQUMsQUFHRCxVQUFVLGVBQUMsQ0FBQyxBQUNSLFNBQVMsQ0FBRSxPQUFPLEtBQUssQ0FBQyxBQUM1QixDQUFDLEFBRUQsU0FBUyxlQUFDLENBQUMsQUFDUCxTQUFTLENBQUUsT0FBTyxNQUFNLENBQUMsQUFDN0IsQ0FBQyxBQUVELFdBQVcsZUFBQyxDQUFDLEFBQ1QsU0FBUyxDQUFFLE9BQU8sTUFBTSxDQUFDLEFBQzdCLENBQUMsQUFFRCxRQUFRLGVBQUMsQ0FBQyxBQUNOLEtBQUssQ0FBRSxHQUFHLENBQ1YsVUFBVSxDQUFFLFdBQVcsQ0FDdkIsUUFBUSxDQUFFLFFBQVEsQ0FDbEIsU0FBUyxDQUFFLFFBQVEsTUFBTSxDQUFDLENBQUMsV0FBVyxNQUFNLENBQUMsQ0FBQyxXQUFXLE1BQU0sQ0FBQyxDQUNoRSxNQUFNLENBQUUsR0FBRyxDQUFDLEtBQUssQ0FBQyxLQUFLLENBQ3ZCLGFBQWEsQ0FBRSxHQUFHLENBQ2xCLE9BQU8sQ0FBRSxDQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQyxLQUFLLENBQUMsS0FBSyxDQUM5QixVQUFVLENBQUUsTUFBTSxDQUNsQixVQUFVLENBQUUsS0FBSyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEdBQUcsQ0FBQyxLQUFLLENBQ3hDLFVBQVUsQ0FBRSxLQUFLLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsR0FBRyxDQUFDLFdBQVcsQUFDbEQsQ0FBQyxBQUVELFNBQVMsZUFBQyxDQUFDLEFBQ1AsU0FBUyxDQUFFLEtBQUssQ0FDaEIsS0FBSyxDQUFFLEtBQUssQ0FDWixXQUFXLENBQUUsTUFBTSxDQUNuQix5QkFBeUIsQ0FBRSxHQUFHLENBQzlCLHlCQUF5QixDQUFFLEtBQUssQ0FDaEMsV0FBVyxDQUFFLElBQUksQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLEtBQUssQ0FDL0IsdUJBQXVCLENBQUUsV0FBVyxBQUd4QyxDQUFDLEFBRUQsU0FBUyxlQUFDLENBQUMsQUFDUCxRQUFRLENBQUUsUUFBUSxDQUNsQixLQUFLLENBQUUsR0FBRyxDQUNWLE1BQU0sQ0FBRSxHQUFHLEFBQ2YsQ0FBQyxBQUVELFVBQVUsZUFBQyxDQUFDLEFBQ1IsVUFBVSxDQUFFLElBQUksRUFBRSxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUMsSUFBSSxpQkFBaUIsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxNQUFNLENBQUMsU0FBUyxDQUM1RSxlQUFlLENBQUUsT0FBTyxDQUN4QixhQUFhLENBQUUsS0FBSyxDQUNwQixTQUFTLENBQUUsUUFBUSxNQUFNLENBQUMsQ0FBQyxXQUFXLEtBQUssQ0FBQyxDQUFDLFdBQVcsT0FBTyxDQUFDLEFBQ3BFLENBQUMsQUFFRCxpQkFBaUIsZUFBQyxDQUFDLEFBQ2YsS0FBSyxDQUFFLEdBQUcsQ0FDVixNQUFNLENBQUUsR0FBRyxDQUNYLE1BQU0sQ0FBRSxLQUFLLENBQUMsSUFBSSxDQUNsQixRQUFRLENBQUUsUUFBUSxBQUN0QixDQUFDLEFBRUQsWUFBWSxlQUFDLENBQUMsQUFDVixVQUFVLENBQUUsSUFBSSxFQUFFLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxJQUFJLGlCQUFpQixDQUFDLENBQUMsTUFBTSxDQUFDLE1BQU0sQ0FBQyxTQUFTLENBQzVFLGVBQWUsQ0FBRSxPQUFPLENBQ3hCLFNBQVMsQ0FBRSxRQUFRLE1BQU0sQ0FBQyxDQUFDLFdBQVcsSUFBSSxDQUFDLENBQUMsV0FBVyxPQUFPLENBQUMsQ0FDL0QsYUFBYSxDQUFFLEtBQUssQUFDeEIsQ0FBQyxBQUVELG1CQUFtQixlQUFDLENBQUMsQUFDakIsS0FBSyxDQUFFLEdBQUcsQ0FDVixNQUFNLENBQUUsR0FBRyxDQUNYLE1BQU0sQ0FBRSxLQUFLLENBQUMsSUFBSSxDQUNsQixRQUFRLENBQUUsUUFBUSxBQUN0QixDQUFDLEFBRUQsT0FBTyxlQUFDLENBQUMsQUFDTCxRQUFRLENBQUUsUUFBUSxDQUNsQixVQUFVLENBQUUsTUFBTSxDQUNsQixXQUFXLENBQUUsR0FBRyxDQUNoQixTQUFTLENBQUUsS0FBSyxDQUNoQixXQUFXLENBQUUsR0FBRyxBQUNwQixDQUFDLEFBRUQsUUFBUSxlQUFDLENBQUMsQUFDTixTQUFTLENBQUUsUUFBUSxNQUFNLENBQUMsQ0FBQyxXQUFXLElBQUksQ0FBQyxDQUFDLFdBQVcsS0FBSyxDQUFDLEFBQ2pFLENBQUMsQUFFRCxRQUFRLGVBQUMsQ0FBQyxBQUNOLFNBQVMsQ0FBRSxRQUFRLE9BQU8sQ0FBQyxDQUFDLFdBQVcsSUFBSSxDQUFDLENBQUMsV0FBVyxJQUFJLENBQUMsQ0FDN0QsV0FBVyxDQUFFLEdBQUcsQUFDcEIsQ0FBQyxBQUVELFFBQVEsZUFBQyxDQUFDLEFBQ04sU0FBUyxDQUFFLFFBQVEsS0FBSyxDQUFDLENBQUMsV0FBVyxHQUFHLENBQUMsQ0FBQyxXQUFXLEVBQUUsQ0FBQyxDQUN4RCxXQUFXLENBQUUsR0FBRyxBQUNwQixDQUFDIn0= */",z(gg.head,I)),D(this,g,sg,lg,s,{}),w("SvelteRegisterComponent",{component:this,tagName:"Potluck",options:g,id:lg.name})}}({target:document.querySelector("#potluck")});window.potluck=ag;I.default={}}});
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./node_modules/svelte/index.mjs":
+/*!***************************************!*\
+  !*** ./node_modules/svelte/index.mjs ***!
+  \***************************************/
+/*! exports provided: SvelteComponent, afterUpdate, beforeUpdate, createEventDispatcher, getContext, onDestroy, onMount, setContext, tick */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./internal */ "./node_modules/svelte/internal/index.mjs");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SvelteComponent", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["SvelteComponentDev"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "afterUpdate", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["afterUpdate"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "beforeUpdate", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["beforeUpdate"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "createEventDispatcher", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["createEventDispatcher"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "getContext", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["getContext"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onDestroy", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["onDestroy"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "onMount", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["onMount"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "setContext", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["setContext"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "tick", function() { return _internal__WEBPACK_IMPORTED_MODULE_0__["tick"]; });
+
+
+
+
+/***/ }),
+
+/***/ "./node_modules/svelte/internal/index.mjs":
+/*!************************************************!*\
+  !*** ./node_modules/svelte/internal/index.mjs ***!
+  \************************************************/
+/*! exports provided: HtmlTag, SvelteComponent, SvelteComponentDev, SvelteElement, action_destroyer, add_attribute, add_classes, add_flush_callback, add_location, add_render_callback, add_resize_listener, add_transform, afterUpdate, append, append_dev, assign, attr, attr_dev, beforeUpdate, bind, binding_callbacks, blank_object, bubble, check_outros, children, claim_component, claim_element, claim_space, claim_text, clear_loops, component_subscribe, createEventDispatcher, create_animation, create_bidirectional_transition, create_component, create_in_transition, create_out_transition, create_slot, create_ssr_component, current_component, custom_event, dataset_dev, debug, destroy_block, destroy_component, destroy_each, detach, detach_after_dev, detach_before_dev, detach_between_dev, detach_dev, dirty_components, dispatch_dev, each, element, element_is, empty, escape, escaped, exclude_internal_props, fix_and_destroy_block, fix_and_outro_and_destroy_block, fix_position, flush, getContext, get_binding_group_value, get_current_component, get_slot_changes, get_slot_context, get_spread_object, get_spread_update, get_store_value, globals, group_outros, handle_promise, has_prop, identity, init, insert, insert_dev, intros, invalid_attribute_name_character, is_client, is_function, is_promise, listen, listen_dev, loop, loop_guard, missing_component, mount_component, noop, not_equal, now, null_to_empty, object_without_properties, onDestroy, onMount, once, outro_and_destroy_block, prevent_default, prop_dev, query_selector_all, raf, run, run_all, safe_not_equal, schedule_update, select_multiple_value, select_option, select_options, select_value, self, setContext, set_attributes, set_current_component, set_custom_element_data, set_data, set_data_dev, set_input_type, set_input_value, set_now, set_raf, set_store_value, set_style, set_svg_attributes, space, spread, stop_propagation, subscribe, svg_element, text, tick, time_ranges_to_array, to_number, toggle_class, transition_in, transition_out, update_keyed_each, validate_component, validate_each_keys, validate_store, xlink_attr */
+/***/ (function(__webpack_module__, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HtmlTag", function() { return HtmlTag; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvelteComponent", function() { return SvelteComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvelteComponentDev", function() { return SvelteComponentDev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SvelteElement", function() { return SvelteElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "action_destroyer", function() { return action_destroyer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_attribute", function() { return add_attribute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_classes", function() { return add_classes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_flush_callback", function() { return add_flush_callback; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_location", function() { return add_location; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_render_callback", function() { return add_render_callback; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_resize_listener", function() { return add_resize_listener; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "add_transform", function() { return add_transform; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "afterUpdate", function() { return afterUpdate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "append", function() { return append; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "append_dev", function() { return append_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "assign", function() { return assign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "attr", function() { return attr; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "attr_dev", function() { return attr_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "beforeUpdate", function() { return beforeUpdate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bind", function() { return bind; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "binding_callbacks", function() { return binding_callbacks; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "blank_object", function() { return blank_object; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bubble", function() { return bubble; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "check_outros", function() { return check_outros; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "children", function() { return children; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "claim_component", function() { return claim_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "claim_element", function() { return claim_element; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "claim_space", function() { return claim_space; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "claim_text", function() { return claim_text; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clear_loops", function() { return clear_loops; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "component_subscribe", function() { return component_subscribe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createEventDispatcher", function() { return createEventDispatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_animation", function() { return create_animation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_bidirectional_transition", function() { return create_bidirectional_transition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_component", function() { return create_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_in_transition", function() { return create_in_transition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_out_transition", function() { return create_out_transition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_slot", function() { return create_slot; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "create_ssr_component", function() { return create_ssr_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "current_component", function() { return current_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "custom_event", function() { return custom_event; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dataset_dev", function() { return dataset_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "debug", function() { return debug; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroy_block", function() { return destroy_block; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroy_component", function() { return destroy_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroy_each", function() { return destroy_each; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "detach", function() { return detach; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "detach_after_dev", function() { return detach_after_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "detach_before_dev", function() { return detach_before_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "detach_between_dev", function() { return detach_between_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "detach_dev", function() { return detach_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dirty_components", function() { return dirty_components; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dispatch_dev", function() { return dispatch_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "each", function() { return each; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element", function() { return element; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "element_is", function() { return element_is; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "empty", function() { return empty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escape", function() { return escape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "escaped", function() { return escaped; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "exclude_internal_props", function() { return exclude_internal_props; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fix_and_destroy_block", function() { return fix_and_destroy_block; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fix_and_outro_and_destroy_block", function() { return fix_and_outro_and_destroy_block; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fix_position", function() { return fix_position; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "flush", function() { return flush; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getContext", function() { return getContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_binding_group_value", function() { return get_binding_group_value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_current_component", function() { return get_current_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_slot_changes", function() { return get_slot_changes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_slot_context", function() { return get_slot_context; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_spread_object", function() { return get_spread_object; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_spread_update", function() { return get_spread_update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get_store_value", function() { return get_store_value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "globals", function() { return globals; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "group_outros", function() { return group_outros; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "handle_promise", function() { return handle_promise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "has_prop", function() { return has_prop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "identity", function() { return identity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "init", function() { return init; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "insert", function() { return insert; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "insert_dev", function() { return insert_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "intros", function() { return intros; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "invalid_attribute_name_character", function() { return invalid_attribute_name_character; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "is_client", function() { return is_client; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "is_function", function() { return is_function; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "is_promise", function() { return is_promise; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listen", function() { return listen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listen_dev", function() { return listen_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loop", function() { return loop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "loop_guard", function() { return loop_guard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "missing_component", function() { return missing_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mount_component", function() { return mount_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "noop", function() { return noop; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "not_equal", function() { return not_equal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "now", function() { return now; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "null_to_empty", function() { return null_to_empty; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "object_without_properties", function() { return object_without_properties; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onDestroy", function() { return onDestroy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onMount", function() { return onMount; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "once", function() { return once; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "outro_and_destroy_block", function() { return outro_and_destroy_block; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prevent_default", function() { return prevent_default; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "prop_dev", function() { return prop_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "query_selector_all", function() { return query_selector_all; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "raf", function() { return raf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run", function() { return run; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "run_all", function() { return run_all; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "safe_not_equal", function() { return safe_not_equal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "schedule_update", function() { return schedule_update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "select_multiple_value", function() { return select_multiple_value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "select_option", function() { return select_option; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "select_options", function() { return select_options; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "select_value", function() { return select_value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "self", function() { return self; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setContext", function() { return setContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_attributes", function() { return set_attributes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_current_component", function() { return set_current_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_custom_element_data", function() { return set_custom_element_data; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_data", function() { return set_data; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_data_dev", function() { return set_data_dev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_input_type", function() { return set_input_type; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_input_value", function() { return set_input_value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_now", function() { return set_now; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_raf", function() { return set_raf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_store_value", function() { return set_store_value; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_style", function() { return set_style; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "set_svg_attributes", function() { return set_svg_attributes; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "space", function() { return space; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "spread", function() { return spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "stop_propagation", function() { return stop_propagation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "subscribe", function() { return subscribe; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "svg_element", function() { return svg_element; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "text", function() { return text; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tick", function() { return tick; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "time_ranges_to_array", function() { return time_ranges_to_array; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "to_number", function() { return to_number; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "toggle_class", function() { return toggle_class; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transition_in", function() { return transition_in; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transition_out", function() { return transition_out; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "update_keyed_each", function() { return update_keyed_each; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validate_component", function() { return validate_component; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validate_each_keys", function() { return validate_each_keys; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "validate_store", function() { return validate_store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xlink_attr", function() { return xlink_attr; });
+function noop() { }
+const identity = x => x;
+function assign(tar, src) {
+    // @ts-ignore
+    for (const k in src)
+        tar[k] = src[k];
+    return tar;
+}
+function is_promise(value) {
+    return value && typeof value === 'object' && typeof value.then === 'function';
+}
+function add_location(element, file, line, column, char) {
+    element.__svelte_meta = {
+        loc: { file, line, column, char }
+    };
+}
+function run(fn) {
+    return fn();
+}
+function blank_object() {
+    return Object.create(null);
+}
+function run_all(fns) {
+    fns.forEach(run);
+}
+function is_function(thing) {
+    return typeof thing === 'function';
+}
+function safe_not_equal(a, b) {
+    return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+}
+function not_equal(a, b) {
+    return a != a ? b == b : a !== b;
+}
+function validate_store(store, name) {
+    if (store != null && typeof store.subscribe !== 'function') {
+        throw new Error(`'${name}' is not a store with a 'subscribe' method`);
+    }
+}
+function subscribe(store, ...callbacks) {
+    if (store == null) {
+        return noop;
+    }
+    const unsub = store.subscribe(...callbacks);
+    return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+}
+function get_store_value(store) {
+    let value;
+    subscribe(store, _ => value = _)();
+    return value;
+}
+function component_subscribe(component, store, callback) {
+    component.$$.on_destroy.push(subscribe(store, callback));
+}
+function create_slot(definition, ctx, $$scope, fn) {
+    if (definition) {
+        const slot_ctx = get_slot_context(definition, ctx, $$scope, fn);
+        return definition[0](slot_ctx);
+    }
+}
+function get_slot_context(definition, ctx, $$scope, fn) {
+    return definition[1] && fn
+        ? assign($$scope.ctx.slice(), definition[1](fn(ctx)))
+        : $$scope.ctx;
+}
+function get_slot_changes(definition, $$scope, dirty, fn) {
+    if (definition[2] && fn) {
+        const lets = definition[2](fn(dirty));
+        if (typeof $$scope.dirty === 'object') {
+            const merged = [];
+            const len = Math.max($$scope.dirty.length, lets.length);
+            for (let i = 0; i < len; i += 1) {
+                merged[i] = $$scope.dirty[i] | lets[i];
+            }
+            return merged;
+        }
+        return $$scope.dirty | lets;
+    }
+    return $$scope.dirty;
+}
+function exclude_internal_props(props) {
+    const result = {};
+    for (const k in props)
+        if (k[0] !== '$')
+            result[k] = props[k];
+    return result;
+}
+function once(fn) {
+    let ran = false;
+    return function (...args) {
+        if (ran)
+            return;
+        ran = true;
+        fn.call(this, ...args);
+    };
+}
+function null_to_empty(value) {
+    return value == null ? '' : value;
+}
+function set_store_value(store, ret, value = ret) {
+    store.set(value);
+    return ret;
+}
+const has_prop = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+function action_destroyer(action_result) {
+    return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
+}
+
+const is_client = typeof window !== 'undefined';
+let now = is_client
+    ? () => window.performance.now()
+    : () => Date.now();
+let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+// used internally for testing
+function set_now(fn) {
+    now = fn;
+}
+function set_raf(fn) {
+    raf = fn;
+}
+
+const tasks = new Set();
+function run_tasks(now) {
+    tasks.forEach(task => {
+        if (!task.c(now)) {
+            tasks.delete(task);
+            task.f();
+        }
+    });
+    if (tasks.size !== 0)
+        raf(run_tasks);
+}
+/**
+ * For testing purposes only!
+ */
+function clear_loops() {
+    tasks.clear();
+}
+/**
+ * Creates a new task that runs on each raf frame
+ * until it returns a falsy value or is aborted
+ */
+function loop(callback) {
+    let task;
+    if (tasks.size === 0)
+        raf(run_tasks);
+    return {
+        promise: new Promise(fulfill => {
+            tasks.add(task = { c: callback, f: fulfill });
+        }),
+        abort() {
+            tasks.delete(task);
+        }
+    };
+}
+
+function append(target, node) {
+    target.appendChild(node);
+}
+function insert(target, node, anchor) {
+    target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+    node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+    for (let i = 0; i < iterations.length; i += 1) {
+        if (iterations[i])
+            iterations[i].d(detaching);
+    }
+}
+function element(name) {
+    return document.createElement(name);
+}
+function element_is(name, is) {
+    return document.createElement(name, { is });
+}
+function object_without_properties(obj, exclude) {
+    const target = {};
+    for (const k in obj) {
+        if (has_prop(obj, k)
+            // @ts-ignore
+            && exclude.indexOf(k) === -1) {
+            // @ts-ignore
+            target[k] = obj[k];
+        }
+    }
+    return target;
+}
+function svg_element(name) {
+    return document.createElementNS('http://www.w3.org/2000/svg', name);
+}
+function text(data) {
+    return document.createTextNode(data);
+}
+function space() {
+    return text(' ');
+}
+function empty() {
+    return text('');
+}
+function listen(node, event, handler, options) {
+    node.addEventListener(event, handler, options);
+    return () => node.removeEventListener(event, handler, options);
+}
+function prevent_default(fn) {
+    return function (event) {
+        event.preventDefault();
+        // @ts-ignore
+        return fn.call(this, event);
+    };
+}
+function stop_propagation(fn) {
+    return function (event) {
+        event.stopPropagation();
+        // @ts-ignore
+        return fn.call(this, event);
+    };
+}
+function self(fn) {
+    return function (event) {
+        // @ts-ignore
+        if (event.target === this)
+            fn.call(this, event);
+    };
+}
+function attr(node, attribute, value) {
+    if (value == null)
+        node.removeAttribute(attribute);
+    else if (node.getAttribute(attribute) !== value)
+        node.setAttribute(attribute, value);
+}
+function set_attributes(node, attributes) {
+    // @ts-ignore
+    const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
+    for (const key in attributes) {
+        if (attributes[key] == null) {
+            node.removeAttribute(key);
+        }
+        else if (key === 'style') {
+            node.style.cssText = attributes[key];
+        }
+        else if (descriptors[key] && descriptors[key].set) {
+            node[key] = attributes[key];
+        }
+        else {
+            attr(node, key, attributes[key]);
+        }
+    }
+}
+function set_svg_attributes(node, attributes) {
+    for (const key in attributes) {
+        attr(node, key, attributes[key]);
+    }
+}
+function set_custom_element_data(node, prop, value) {
+    if (prop in node) {
+        node[prop] = value;
+    }
+    else {
+        attr(node, prop, value);
+    }
+}
+function xlink_attr(node, attribute, value) {
+    node.setAttributeNS('http://www.w3.org/1999/xlink', attribute, value);
+}
+function get_binding_group_value(group) {
+    const value = [];
+    for (let i = 0; i < group.length; i += 1) {
+        if (group[i].checked)
+            value.push(group[i].__value);
+    }
+    return value;
+}
+function to_number(value) {
+    return value === '' ? undefined : +value;
+}
+function time_ranges_to_array(ranges) {
+    const array = [];
+    for (let i = 0; i < ranges.length; i += 1) {
+        array.push({ start: ranges.start(i), end: ranges.end(i) });
+    }
+    return array;
+}
+function children(element) {
+    return Array.from(element.childNodes);
+}
+function claim_element(nodes, name, attributes, svg) {
+    for (let i = 0; i < nodes.length; i += 1) {
+        const node = nodes[i];
+        if (node.nodeName === name) {
+            let j = 0;
+            while (j < node.attributes.length) {
+                const attribute = node.attributes[j];
+                if (attributes[attribute.name]) {
+                    j++;
+                }
+                else {
+                    node.removeAttribute(attribute.name);
+                }
+            }
+            return nodes.splice(i, 1)[0];
+        }
+    }
+    return svg ? svg_element(name) : element(name);
+}
+function claim_text(nodes, data) {
+    for (let i = 0; i < nodes.length; i += 1) {
+        const node = nodes[i];
+        if (node.nodeType === 3) {
+            node.data = '' + data;
+            return nodes.splice(i, 1)[0];
+        }
+    }
+    return text(data);
+}
+function claim_space(nodes) {
+    return claim_text(nodes, ' ');
+}
+function set_data(text, data) {
+    data = '' + data;
+    if (text.data !== data)
+        text.data = data;
+}
+function set_input_value(input, value) {
+    if (value != null || input.value) {
+        input.value = value;
+    }
+}
+function set_input_type(input, type) {
+    try {
+        input.type = type;
+    }
+    catch (e) {
+        // do nothing
+    }
+}
+function set_style(node, key, value, important) {
+    node.style.setProperty(key, value, important ? 'important' : '');
+}
+function select_option(select, value) {
+    for (let i = 0; i < select.options.length; i += 1) {
+        const option = select.options[i];
+        if (option.__value === value) {
+            option.selected = true;
+            return;
+        }
+    }
+}
+function select_options(select, value) {
+    for (let i = 0; i < select.options.length; i += 1) {
+        const option = select.options[i];
+        option.selected = ~value.indexOf(option.__value);
+    }
+}
+function select_value(select) {
+    const selected_option = select.querySelector(':checked') || select.options[0];
+    return selected_option && selected_option.__value;
+}
+function select_multiple_value(select) {
+    return [].map.call(select.querySelectorAll(':checked'), option => option.__value);
+}
+function add_resize_listener(element, fn) {
+    if (getComputedStyle(element).position === 'static') {
+        element.style.position = 'relative';
+    }
+    const object = document.createElement('object');
+    object.setAttribute('style', 'display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;');
+    object.setAttribute('aria-hidden', 'true');
+    object.type = 'text/html';
+    object.tabIndex = -1;
+    let win;
+    object.onload = () => {
+        win = object.contentDocument.defaultView;
+        win.addEventListener('resize', fn);
+    };
+    if (/Trident/.test(navigator.userAgent)) {
+        element.appendChild(object);
+        object.data = 'about:blank';
+    }
+    else {
+        object.data = 'about:blank';
+        element.appendChild(object);
+    }
+    return {
+        cancel: () => {
+            win && win.removeEventListener && win.removeEventListener('resize', fn);
+            element.removeChild(object);
+        }
+    };
+}
+function toggle_class(element, name, toggle) {
+    element.classList[toggle ? 'add' : 'remove'](name);
+}
+function custom_event(type, detail) {
+    const e = document.createEvent('CustomEvent');
+    e.initCustomEvent(type, false, false, detail);
+    return e;
+}
+function query_selector_all(selector, parent = document.body) {
+    return Array.from(parent.querySelectorAll(selector));
+}
+class HtmlTag {
+    constructor(html, anchor = null) {
+        this.e = element('div');
+        this.a = anchor;
+        this.u(html);
+    }
+    m(target, anchor = null) {
+        for (let i = 0; i < this.n.length; i += 1) {
+            insert(target, this.n[i], anchor);
+        }
+        this.t = target;
+    }
+    u(html) {
+        this.e.innerHTML = html;
+        this.n = Array.from(this.e.childNodes);
+    }
+    p(html) {
+        this.d();
+        this.u(html);
+        this.m(this.t, this.a);
+    }
+    d() {
+        this.n.forEach(detach);
+    }
+}
+
+let stylesheet;
+let active = 0;
+let current_rules = {};
+// https://github.com/darkskyapp/string-hash/blob/master/index.js
+function hash(str) {
+    let hash = 5381;
+    let i = str.length;
+    while (i--)
+        hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+    return hash >>> 0;
+}
+function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+    const step = 16.666 / duration;
+    let keyframes = '{\n';
+    for (let p = 0; p <= 1; p += step) {
+        const t = a + (b - a) * ease(p);
+        keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+    }
+    const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+    const name = `__svelte_${hash(rule)}_${uid}`;
+    if (!current_rules[name]) {
+        if (!stylesheet) {
+            const style = element('style');
+            document.head.appendChild(style);
+            stylesheet = style.sheet;
+        }
+        current_rules[name] = true;
+        stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+    }
+    const animation = node.style.animation || '';
+    node.style.animation = `${animation ? `${animation}, ` : ``}${name} ${duration}ms linear ${delay}ms 1 both`;
+    active += 1;
+    return name;
+}
+function delete_rule(node, name) {
+    node.style.animation = (node.style.animation || '')
+        .split(', ')
+        .filter(name
+        ? anim => anim.indexOf(name) < 0 // remove specific animation
+        : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+    )
+        .join(', ');
+    if (name && !--active)
+        clear_rules();
+}
+function clear_rules() {
+    raf(() => {
+        if (active)
+            return;
+        let i = stylesheet.cssRules.length;
+        while (i--)
+            stylesheet.deleteRule(i);
+        current_rules = {};
+    });
+}
+
+function create_animation(node, from, fn, params) {
+    if (!from)
+        return noop;
+    const to = node.getBoundingClientRect();
+    if (from.left === to.left && from.right === to.right && from.top === to.top && from.bottom === to.bottom)
+        return noop;
+    const { delay = 0, duration = 300, easing = identity, 
+    // @ts-ignore todo: should this be separated from destructuring? Or start/end added to public api and documentation?
+    start: start_time = now() + delay, 
+    // @ts-ignore todo:
+    end = start_time + duration, tick = noop, css } = fn(node, { from, to }, params);
+    let running = true;
+    let started = false;
+    let name;
+    function start() {
+        if (css) {
+            name = create_rule(node, 0, 1, duration, delay, easing, css);
+        }
+        if (!delay) {
+            started = true;
+        }
+    }
+    function stop() {
+        if (css)
+            delete_rule(node, name);
+        running = false;
+    }
+    loop(now => {
+        if (!started && now >= start_time) {
+            started = true;
+        }
+        if (started && now >= end) {
+            tick(1, 0);
+            stop();
+        }
+        if (!running) {
+            return false;
+        }
+        if (started) {
+            const p = now - start_time;
+            const t = 0 + 1 * easing(p / duration);
+            tick(t, 1 - t);
+        }
+        return true;
+    });
+    start();
+    tick(0, 1);
+    return stop;
+}
+function fix_position(node) {
+    const style = getComputedStyle(node);
+    if (style.position !== 'absolute' && style.position !== 'fixed') {
+        const { width, height } = style;
+        const a = node.getBoundingClientRect();
+        node.style.position = 'absolute';
+        node.style.width = width;
+        node.style.height = height;
+        add_transform(node, a);
+    }
+}
+function add_transform(node, a) {
+    const b = node.getBoundingClientRect();
+    if (a.left !== b.left || a.top !== b.top) {
+        const style = getComputedStyle(node);
+        const transform = style.transform === 'none' ? '' : style.transform;
+        node.style.transform = `${transform} translate(${a.left - b.left}px, ${a.top - b.top}px)`;
+    }
+}
+
+let current_component;
+function set_current_component(component) {
+    current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error(`Function called outside component initialization`);
+    return current_component;
+}
+function beforeUpdate(fn) {
+    get_current_component().$$.before_update.push(fn);
+}
+function onMount(fn) {
+    get_current_component().$$.on_mount.push(fn);
+}
+function afterUpdate(fn) {
+    get_current_component().$$.after_update.push(fn);
+}
+function onDestroy(fn) {
+    get_current_component().$$.on_destroy.push(fn);
+}
+function createEventDispatcher() {
+    const component = get_current_component();
+    return (type, detail) => {
+        const callbacks = component.$$.callbacks[type];
+        if (callbacks) {
+            // TODO are there situations where events could be dispatched
+            // in a server (non-DOM) environment?
+            const event = custom_event(type, detail);
+            callbacks.slice().forEach(fn => {
+                fn.call(component, event);
+            });
+        }
+    };
+}
+function setContext(key, context) {
+    get_current_component().$$.context.set(key, context);
+}
+function getContext(key) {
+    return get_current_component().$$.context.get(key);
+}
+// TODO figure out if we still want to support
+// shorthand events, or if we want to implement
+// a real bubbling mechanism
+function bubble(component, event) {
+    const callbacks = component.$$.callbacks[event.type];
+    if (callbacks) {
+        callbacks.slice().forEach(fn => fn(event));
+    }
+}
+
+const dirty_components = [];
+const intros = { enabled: false };
+const binding_callbacks = [];
+const render_callbacks = [];
+const flush_callbacks = [];
+const resolved_promise = Promise.resolve();
+let update_scheduled = false;
+function schedule_update() {
+    if (!update_scheduled) {
+        update_scheduled = true;
+        resolved_promise.then(flush);
+    }
+}
+function tick() {
+    schedule_update();
+    return resolved_promise;
+}
+function add_render_callback(fn) {
+    render_callbacks.push(fn);
+}
+function add_flush_callback(fn) {
+    flush_callbacks.push(fn);
+}
+const seen_callbacks = new Set();
+function flush() {
+    do {
+        // first, call beforeUpdate functions
+        // and update components
+        while (dirty_components.length) {
+            const component = dirty_components.shift();
+            set_current_component(component);
+            update(component.$$);
+        }
+        while (binding_callbacks.length)
+            binding_callbacks.pop()();
+        // then, once components are updated, call
+        // afterUpdate functions. This may cause
+        // subsequent updates...
+        for (let i = 0; i < render_callbacks.length; i += 1) {
+            const callback = render_callbacks[i];
+            if (!seen_callbacks.has(callback)) {
+                // ...so guard against infinite loops
+                seen_callbacks.add(callback);
+                callback();
+            }
+        }
+        render_callbacks.length = 0;
+    } while (dirty_components.length);
+    while (flush_callbacks.length) {
+        flush_callbacks.pop()();
+    }
+    update_scheduled = false;
+    seen_callbacks.clear();
+}
+function update($$) {
+    if ($$.fragment !== null) {
+        $$.update();
+        run_all($$.before_update);
+        const dirty = $$.dirty;
+        $$.dirty = [-1];
+        $$.fragment && $$.fragment.p($$.ctx, dirty);
+        $$.after_update.forEach(add_render_callback);
+    }
+}
+
+let promise;
+function wait() {
+    if (!promise) {
+        promise = Promise.resolve();
+        promise.then(() => {
+            promise = null;
+        });
+    }
+    return promise;
+}
+function dispatch(node, direction, kind) {
+    node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+}
+const outroing = new Set();
+let outros;
+function group_outros() {
+    outros = {
+        r: 0,
+        c: [],
+        p: outros // parent group
+    };
+}
+function check_outros() {
+    if (!outros.r) {
+        run_all(outros.c);
+    }
+    outros = outros.p;
+}
+function transition_in(block, local) {
+    if (block && block.i) {
+        outroing.delete(block);
+        block.i(local);
+    }
+}
+function transition_out(block, local, detach, callback) {
+    if (block && block.o) {
+        if (outroing.has(block))
+            return;
+        outroing.add(block);
+        outros.c.push(() => {
+            outroing.delete(block);
+            if (callback) {
+                if (detach)
+                    block.d(1);
+                callback();
+            }
+        });
+        block.o(local);
+    }
+}
+const null_transition = { duration: 0 };
+function create_in_transition(node, fn, params) {
+    let config = fn(node, params);
+    let running = false;
+    let animation_name;
+    let task;
+    let uid = 0;
+    function cleanup() {
+        if (animation_name)
+            delete_rule(node, animation_name);
+    }
+    function go() {
+        const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+        if (css)
+            animation_name = create_rule(node, 0, 1, duration, delay, easing, css, uid++);
+        tick(0, 1);
+        const start_time = now() + delay;
+        const end_time = start_time + duration;
+        if (task)
+            task.abort();
+        running = true;
+        add_render_callback(() => dispatch(node, true, 'start'));
+        task = loop(now => {
+            if (running) {
+                if (now >= end_time) {
+                    tick(1, 0);
+                    dispatch(node, true, 'end');
+                    cleanup();
+                    return running = false;
+                }
+                if (now >= start_time) {
+                    const t = easing((now - start_time) / duration);
+                    tick(t, 1 - t);
+                }
+            }
+            return running;
+        });
+    }
+    let started = false;
+    return {
+        start() {
+            if (started)
+                return;
+            delete_rule(node);
+            if (is_function(config)) {
+                config = config();
+                wait().then(go);
+            }
+            else {
+                go();
+            }
+        },
+        invalidate() {
+            started = false;
+        },
+        end() {
+            if (running) {
+                cleanup();
+                running = false;
+            }
+        }
+    };
+}
+function create_out_transition(node, fn, params) {
+    let config = fn(node, params);
+    let running = true;
+    let animation_name;
+    const group = outros;
+    group.r += 1;
+    function go() {
+        const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+        if (css)
+            animation_name = create_rule(node, 1, 0, duration, delay, easing, css);
+        const start_time = now() + delay;
+        const end_time = start_time + duration;
+        add_render_callback(() => dispatch(node, false, 'start'));
+        loop(now => {
+            if (running) {
+                if (now >= end_time) {
+                    tick(0, 1);
+                    dispatch(node, false, 'end');
+                    if (!--group.r) {
+                        // this will result in `end()` being called,
+                        // so we don't need to clean up here
+                        run_all(group.c);
+                    }
+                    return false;
+                }
+                if (now >= start_time) {
+                    const t = easing((now - start_time) / duration);
+                    tick(1 - t, t);
+                }
+            }
+            return running;
+        });
+    }
+    if (is_function(config)) {
+        wait().then(() => {
+            // @ts-ignore
+            config = config();
+            go();
+        });
+    }
+    else {
+        go();
+    }
+    return {
+        end(reset) {
+            if (reset && config.tick) {
+                config.tick(1, 0);
+            }
+            if (running) {
+                if (animation_name)
+                    delete_rule(node, animation_name);
+                running = false;
+            }
+        }
+    };
+}
+function create_bidirectional_transition(node, fn, params, intro) {
+    let config = fn(node, params);
+    let t = intro ? 0 : 1;
+    let running_program = null;
+    let pending_program = null;
+    let animation_name = null;
+    function clear_animation() {
+        if (animation_name)
+            delete_rule(node, animation_name);
+    }
+    function init(program, duration) {
+        const d = program.b - t;
+        duration *= Math.abs(d);
+        return {
+            a: t,
+            b: program.b,
+            d,
+            duration,
+            start: program.start,
+            end: program.start + duration,
+            group: program.group
+        };
+    }
+    function go(b) {
+        const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+        const program = {
+            start: now() + delay,
+            b
+        };
+        if (!b) {
+            // @ts-ignore todo: improve typings
+            program.group = outros;
+            outros.r += 1;
+        }
+        if (running_program) {
+            pending_program = program;
+        }
+        else {
+            // if this is an intro, and there's a delay, we need to do
+            // an initial tick and/or apply CSS animation immediately
+            if (css) {
+                clear_animation();
+                animation_name = create_rule(node, t, b, duration, delay, easing, css);
+            }
+            if (b)
+                tick(0, 1);
+            running_program = init(program, duration);
+            add_render_callback(() => dispatch(node, b, 'start'));
+            loop(now => {
+                if (pending_program && now > pending_program.start) {
+                    running_program = init(pending_program, duration);
+                    pending_program = null;
+                    dispatch(node, running_program.b, 'start');
+                    if (css) {
+                        clear_animation();
+                        animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                    }
+                }
+                if (running_program) {
+                    if (now >= running_program.end) {
+                        tick(t = running_program.b, 1 - t);
+                        dispatch(node, running_program.b, 'end');
+                        if (!pending_program) {
+                            // we're done
+                            if (running_program.b) {
+                                // intro — we can tidy up immediately
+                                clear_animation();
+                            }
+                            else {
+                                // outro — needs to be coordinated
+                                if (!--running_program.group.r)
+                                    run_all(running_program.group.c);
+                            }
+                        }
+                        running_program = null;
+                    }
+                    else if (now >= running_program.start) {
+                        const p = now - running_program.start;
+                        t = running_program.a + running_program.d * easing(p / running_program.duration);
+                        tick(t, 1 - t);
+                    }
+                }
+                return !!(running_program || pending_program);
+            });
+        }
+    }
+    return {
+        run(b) {
+            if (is_function(config)) {
+                wait().then(() => {
+                    // @ts-ignore
+                    config = config();
+                    go(b);
+                });
+            }
+            else {
+                go(b);
+            }
+        },
+        end() {
+            clear_animation();
+            running_program = pending_program = null;
+        }
+    };
+}
+
+function handle_promise(promise, info) {
+    const token = info.token = {};
+    function update(type, index, key, value) {
+        if (info.token !== token)
+            return;
+        info.resolved = value;
+        let child_ctx = info.ctx;
+        if (key !== undefined) {
+            child_ctx = child_ctx.slice();
+            child_ctx[key] = value;
+        }
+        const block = type && (info.current = type)(child_ctx);
+        let needs_flush = false;
+        if (info.block) {
+            if (info.blocks) {
+                info.blocks.forEach((block, i) => {
+                    if (i !== index && block) {
+                        group_outros();
+                        transition_out(block, 1, 1, () => {
+                            info.blocks[i] = null;
+                        });
+                        check_outros();
+                    }
+                });
+            }
+            else {
+                info.block.d(1);
+            }
+            block.c();
+            transition_in(block, 1);
+            block.m(info.mount(), info.anchor);
+            needs_flush = true;
+        }
+        info.block = block;
+        if (info.blocks)
+            info.blocks[index] = block;
+        if (needs_flush) {
+            flush();
+        }
+    }
+    if (is_promise(promise)) {
+        const current_component = get_current_component();
+        promise.then(value => {
+            set_current_component(current_component);
+            update(info.then, 1, info.value, value);
+            set_current_component(null);
+        }, error => {
+            set_current_component(current_component);
+            update(info.catch, 2, info.error, error);
+            set_current_component(null);
+        });
+        // if we previously had a then/catch block, destroy it
+        if (info.current !== info.pending) {
+            update(info.pending, 0);
+            return true;
+        }
+    }
+    else {
+        if (info.current !== info.then) {
+            update(info.then, 1, info.value, promise);
+            return true;
+        }
+        info.resolved = promise;
+    }
+}
+
+const globals = (typeof window !== 'undefined' ? window : global);
+
+function destroy_block(block, lookup) {
+    block.d(1);
+    lookup.delete(block.key);
+}
+function outro_and_destroy_block(block, lookup) {
+    transition_out(block, 1, 1, () => {
+        lookup.delete(block.key);
+    });
+}
+function fix_and_destroy_block(block, lookup) {
+    block.f();
+    destroy_block(block, lookup);
+}
+function fix_and_outro_and_destroy_block(block, lookup) {
+    block.f();
+    outro_and_destroy_block(block, lookup);
+}
+function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+    let o = old_blocks.length;
+    let n = list.length;
+    let i = o;
+    const old_indexes = {};
+    while (i--)
+        old_indexes[old_blocks[i].key] = i;
+    const new_blocks = [];
+    const new_lookup = new Map();
+    const deltas = new Map();
+    i = n;
+    while (i--) {
+        const child_ctx = get_context(ctx, list, i);
+        const key = get_key(child_ctx);
+        let block = lookup.get(key);
+        if (!block) {
+            block = create_each_block(key, child_ctx);
+            block.c();
+        }
+        else if (dynamic) {
+            block.p(child_ctx, dirty);
+        }
+        new_lookup.set(key, new_blocks[i] = block);
+        if (key in old_indexes)
+            deltas.set(key, Math.abs(i - old_indexes[key]));
+    }
+    const will_move = new Set();
+    const did_move = new Set();
+    function insert(block) {
+        transition_in(block, 1);
+        block.m(node, next);
+        lookup.set(block.key, block);
+        next = block.first;
+        n--;
+    }
+    while (o && n) {
+        const new_block = new_blocks[n - 1];
+        const old_block = old_blocks[o - 1];
+        const new_key = new_block.key;
+        const old_key = old_block.key;
+        if (new_block === old_block) {
+            // do nothing
+            next = new_block.first;
+            o--;
+            n--;
+        }
+        else if (!new_lookup.has(old_key)) {
+            // remove old block
+            destroy(old_block, lookup);
+            o--;
+        }
+        else if (!lookup.has(new_key) || will_move.has(new_key)) {
+            insert(new_block);
+        }
+        else if (did_move.has(old_key)) {
+            o--;
+        }
+        else if (deltas.get(new_key) > deltas.get(old_key)) {
+            did_move.add(new_key);
+            insert(new_block);
+        }
+        else {
+            will_move.add(old_key);
+            o--;
+        }
+    }
+    while (o--) {
+        const old_block = old_blocks[o];
+        if (!new_lookup.has(old_block.key))
+            destroy(old_block, lookup);
+    }
+    while (n)
+        insert(new_blocks[n - 1]);
+    return new_blocks;
+}
+function validate_each_keys(ctx, list, get_context, get_key) {
+    const keys = new Set();
+    for (let i = 0; i < list.length; i++) {
+        const key = get_key(get_context(ctx, list, i));
+        if (keys.has(key)) {
+            throw new Error(`Cannot have duplicate keys in a keyed each`);
+        }
+        keys.add(key);
+    }
+}
+
+function get_spread_update(levels, updates) {
+    const update = {};
+    const to_null_out = {};
+    const accounted_for = { $$scope: 1 };
+    let i = levels.length;
+    while (i--) {
+        const o = levels[i];
+        const n = updates[i];
+        if (n) {
+            for (const key in o) {
+                if (!(key in n))
+                    to_null_out[key] = 1;
+            }
+            for (const key in n) {
+                if (!accounted_for[key]) {
+                    update[key] = n[key];
+                    accounted_for[key] = 1;
+                }
+            }
+            levels[i] = n;
+        }
+        else {
+            for (const key in o) {
+                accounted_for[key] = 1;
+            }
+        }
+    }
+    for (const key in to_null_out) {
+        if (!(key in update))
+            update[key] = undefined;
+    }
+    return update;
+}
+function get_spread_object(spread_props) {
+    return typeof spread_props === 'object' && spread_props !== null ? spread_props : {};
+}
+
+// source: https://html.spec.whatwg.org/multipage/indices.html
+const boolean_attributes = new Set([
+    'allowfullscreen',
+    'allowpaymentrequest',
+    'async',
+    'autofocus',
+    'autoplay',
+    'checked',
+    'controls',
+    'default',
+    'defer',
+    'disabled',
+    'formnovalidate',
+    'hidden',
+    'ismap',
+    'loop',
+    'multiple',
+    'muted',
+    'nomodule',
+    'novalidate',
+    'open',
+    'playsinline',
+    'readonly',
+    'required',
+    'reversed',
+    'selected'
+]);
+
+const invalid_attribute_name_character = /[\s'">/=\u{FDD0}-\u{FDEF}\u{FFFE}\u{FFFF}\u{1FFFE}\u{1FFFF}\u{2FFFE}\u{2FFFF}\u{3FFFE}\u{3FFFF}\u{4FFFE}\u{4FFFF}\u{5FFFE}\u{5FFFF}\u{6FFFE}\u{6FFFF}\u{7FFFE}\u{7FFFF}\u{8FFFE}\u{8FFFF}\u{9FFFE}\u{9FFFF}\u{AFFFE}\u{AFFFF}\u{BFFFE}\u{BFFFF}\u{CFFFE}\u{CFFFF}\u{DFFFE}\u{DFFFF}\u{EFFFE}\u{EFFFF}\u{FFFFE}\u{FFFFF}\u{10FFFE}\u{10FFFF}]/u;
+// https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
+// https://infra.spec.whatwg.org/#noncharacter
+function spread(args, classes_to_add) {
+    const attributes = Object.assign({}, ...args);
+    if (classes_to_add) {
+        if (attributes.class == null) {
+            attributes.class = classes_to_add;
+        }
+        else {
+            attributes.class += ' ' + classes_to_add;
+        }
+    }
+    let str = '';
+    Object.keys(attributes).forEach(name => {
+        if (invalid_attribute_name_character.test(name))
+            return;
+        const value = attributes[name];
+        if (value === true)
+            str += " " + name;
+        else if (boolean_attributes.has(name.toLowerCase())) {
+            if (value)
+                str += " " + name;
+        }
+        else if (value != null) {
+            str += ` ${name}="${String(value).replace(/"/g, '&#34;').replace(/'/g, '&#39;')}"`;
+        }
+    });
+    return str;
+}
+const escaped = {
+    '"': '&quot;',
+    "'": '&#39;',
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;'
+};
+function escape(html) {
+    return String(html).replace(/["'&<>]/g, match => escaped[match]);
+}
+function each(items, fn) {
+    let str = '';
+    for (let i = 0; i < items.length; i += 1) {
+        str += fn(items[i], i);
+    }
+    return str;
+}
+const missing_component = {
+    $$render: () => ''
+};
+function validate_component(component, name) {
+    if (!component || !component.$$render) {
+        if (name === 'svelte:component')
+            name += ' this={...}';
+        throw new Error(`<${name}> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules`);
+    }
+    return component;
+}
+function debug(file, line, column, values) {
+    console.log(`{@debug} ${file ? file + ' ' : ''}(${line}:${column})`); // eslint-disable-line no-console
+    console.log(values); // eslint-disable-line no-console
+    return '';
+}
+let on_destroy;
+function create_ssr_component(fn) {
+    function $$render(result, props, bindings, slots) {
+        const parent_component = current_component;
+        const $$ = {
+            on_destroy,
+            context: new Map(parent_component ? parent_component.$$.context : []),
+            // these will be immediately discarded
+            on_mount: [],
+            before_update: [],
+            after_update: [],
+            callbacks: blank_object()
+        };
+        set_current_component({ $$ });
+        const html = fn(result, props, bindings, slots);
+        set_current_component(parent_component);
+        return html;
+    }
+    return {
+        render: (props = {}, options = {}) => {
+            on_destroy = [];
+            const result = { title: '', head: '', css: new Set() };
+            const html = $$render(result, props, {}, options);
+            run_all(on_destroy);
+            return {
+                html,
+                css: {
+                    code: Array.from(result.css).map(css => css.code).join('\n'),
+                    map: null // TODO
+                },
+                head: result.title + result.head
+            };
+        },
+        $$render
+    };
+}
+function add_attribute(name, value, boolean) {
+    if (value == null || (boolean && !value))
+        return '';
+    return ` ${name}${value === true ? '' : `=${typeof value === 'string' ? JSON.stringify(escape(value)) : `"${value}"`}`}`;
+}
+function add_classes(classes) {
+    return classes ? ` class="${classes}"` : ``;
+}
+
+function bind(component, name, callback) {
+    const index = component.$$.props[name];
+    if (index !== undefined) {
+        component.$$.bound[index] = callback;
+        callback(component.$$.ctx[index]);
+    }
+}
+function create_component(block) {
+    block && block.c();
+}
+function claim_component(block, parent_nodes) {
+    block && block.l(parent_nodes);
+}
+function mount_component(component, target, anchor) {
+    const { fragment, on_mount, on_destroy, after_update } = component.$$;
+    fragment && fragment.m(target, anchor);
+    // onMount happens before the initial afterUpdate
+    add_render_callback(() => {
+        const new_on_destroy = on_mount.map(run).filter(is_function);
+        if (on_destroy) {
+            on_destroy.push(...new_on_destroy);
+        }
+        else {
+            // Edge case - component was destroyed immediately,
+            // most likely as a result of a binding initialising
+            run_all(new_on_destroy);
+        }
+        component.$$.on_mount = [];
+    });
+    after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+    const $$ = component.$$;
+    if ($$.fragment !== null) {
+        run_all($$.on_destroy);
+        $$.fragment && $$.fragment.d(detaching);
+        // TODO null out other refs, including component.$$ (but need to
+        // preserve final state?)
+        $$.on_destroy = $$.fragment = null;
+        $$.ctx = [];
+    }
+}
+function make_dirty(component, i) {
+    if (component.$$.dirty[0] === -1) {
+        dirty_components.push(component);
+        schedule_update();
+        component.$$.dirty.fill(0);
+    }
+    component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+}
+function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+    const parent_component = current_component;
+    set_current_component(component);
+    const prop_values = options.props || {};
+    const $$ = component.$$ = {
+        fragment: null,
+        ctx: null,
+        // state
+        props,
+        update: noop,
+        not_equal,
+        bound: blank_object(),
+        // lifecycle
+        on_mount: [],
+        on_destroy: [],
+        before_update: [],
+        after_update: [],
+        context: new Map(parent_component ? parent_component.$$.context : []),
+        // everything else
+        callbacks: blank_object(),
+        dirty
+    };
+    let ready = false;
+    $$.ctx = instance
+        ? instance(component, prop_values, (i, ret, ...rest) => {
+            const value = rest.length ? rest[0] : ret;
+            if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                if ($$.bound[i])
+                    $$.bound[i](value);
+                if (ready)
+                    make_dirty(component, i);
+            }
+            return ret;
+        })
+        : [];
+    $$.update();
+    ready = true;
+    run_all($$.before_update);
+    // `false` as a special case of no DOM component
+    $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+    if (options.target) {
+        if (options.hydrate) {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment && $$.fragment.l(children(options.target));
+        }
+        else {
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            $$.fragment && $$.fragment.c();
+        }
+        if (options.intro)
+            transition_in(component.$$.fragment);
+        mount_component(component, options.target, options.anchor);
+        flush();
+    }
+    set_current_component(parent_component);
+}
+let SvelteElement;
+if (typeof HTMLElement === 'function') {
+    SvelteElement = class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+        }
+        connectedCallback() {
+            // @ts-ignore todo: improve typings
+            for (const key in this.$$.slotted) {
+                // @ts-ignore todo: improve typings
+                this.appendChild(this.$$.slotted[key]);
+            }
+        }
+        attributeChangedCallback(attr, _oldValue, newValue) {
+            this[attr] = newValue;
+        }
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            // TODO should this delegate to addEventListener?
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set() {
+            // overridden by instance, if it has props
+        }
+    };
+}
+class SvelteComponent {
+    $destroy() {
+        destroy_component(this, 1);
+        this.$destroy = noop;
+    }
+    $on(type, callback) {
+        const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+        callbacks.push(callback);
+        return () => {
+            const index = callbacks.indexOf(callback);
+            if (index !== -1)
+                callbacks.splice(index, 1);
+        };
+    }
+    $set() {
+        // overridden by instance, if it has props
+    }
+}
+
+function dispatch_dev(type, detail) {
+    document.dispatchEvent(custom_event(type, Object.assign({ version: '3.18.1' }, detail)));
+}
+function append_dev(target, node) {
+    dispatch_dev("SvelteDOMInsert", { target, node });
+    append(target, node);
+}
+function insert_dev(target, node, anchor) {
+    dispatch_dev("SvelteDOMInsert", { target, node, anchor });
+    insert(target, node, anchor);
+}
+function detach_dev(node) {
+    dispatch_dev("SvelteDOMRemove", { node });
+    detach(node);
+}
+function detach_between_dev(before, after) {
+    while (before.nextSibling && before.nextSibling !== after) {
+        detach_dev(before.nextSibling);
+    }
+}
+function detach_before_dev(after) {
+    while (after.previousSibling) {
+        detach_dev(after.previousSibling);
+    }
+}
+function detach_after_dev(before) {
+    while (before.nextSibling) {
+        detach_dev(before.nextSibling);
+    }
+}
+function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation) {
+    const modifiers = options === true ? ["capture"] : options ? Array.from(Object.keys(options)) : [];
+    if (has_prevent_default)
+        modifiers.push('preventDefault');
+    if (has_stop_propagation)
+        modifiers.push('stopPropagation');
+    dispatch_dev("SvelteDOMAddEventListener", { node, event, handler, modifiers });
+    const dispose = listen(node, event, handler, options);
+    return () => {
+        dispatch_dev("SvelteDOMRemoveEventListener", { node, event, handler, modifiers });
+        dispose();
+    };
+}
+function attr_dev(node, attribute, value) {
+    attr(node, attribute, value);
+    if (value == null)
+        dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
+    else
+        dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+}
+function prop_dev(node, property, value) {
+    node[property] = value;
+    dispatch_dev("SvelteDOMSetProperty", { node, property, value });
+}
+function dataset_dev(node, property, value) {
+    node.dataset[property] = value;
+    dispatch_dev("SvelteDOMSetDataset", { node, property, value });
+}
+function set_data_dev(text, data) {
+    data = '' + data;
+    if (text.data === data)
+        return;
+    dispatch_dev("SvelteDOMSetData", { node: text, data });
+    text.data = data;
+}
+class SvelteComponentDev extends SvelteComponent {
+    constructor(options) {
+        if (!options || (!options.target && !options.$$inline)) {
+            throw new Error(`'target' is a required option`);
+        }
+        super();
+    }
+    $destroy() {
+        super.$destroy();
+        this.$destroy = () => {
+            console.warn(`Component was already destroyed`); // eslint-disable-line no-console
+        };
+    }
+}
+function loop_guard(timeout) {
+    const start = Date.now();
+    return () => {
+        if (Date.now() - start > timeout) {
+            throw new Error(`Infinite loop detected`);
+        }
+    };
+}
+
+
+
+
+/***/ }),
+
+/***/ "./resources/css/style.css":
+/*!*********************************!*\
+  !*** ./resources/css/style.css ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/Potluck.svelte":
+/*!********************************************************!*\
+  !*** ./resources/js/components/potluck/Potluck.svelte ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
+/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
+/* harmony import */ var _players__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./players */ "./resources/js/components/potluck/players.js");
+/* harmony import */ var _strains__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./strains */ "./resources/js/components/potluck/strains.js");
+/* harmony import */ var _spaces__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./spaces */ "./resources/js/components/potluck/spaces.js");
+/* harmony import */ var _bummers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./bummers */ "./resources/js/components/potluck/bummers.js");
+/* harmony import */ var _farouts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./farouts */ "./resources/js/components/potluck/farouts.js");
+/* resources/js/components/potluck/Potluck.svelte generated by Svelte v3.18.1 */
+
+
+const { document: document_1 } = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["globals"];
+
+
+
+
+
+
+
+function add_css() {
+	var style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("style");
+	style.id = "svelte-1jfjjq1-style";
+	style.textContent = "div.svelte-1jfjjq1{box-sizing:border-box;text-transform:uppercase}.box.svelte-1jfjjq1{position:relative;top:26%;left:23%;right:23%;bottom:auto;overflow:hidden}.potluck.svelte-1jfjjq1{background-color:floralwhite;width:95.75vw;height:94.25vw;margin:10px auto}.gameBoard.svelte-1jfjjq1{height:100%;position:relative;background-color:floralwhite}.row.svelte-1jfjjq1{width:100%;display:flex}.top.svelte-1jfjjq1{height:15.384615385%}.center.svelte-1jfjjq1{height:69.23076923%}.square1.svelte-1jfjjq1{outline:1px solid black;flex-grow:1;position:relative;background:floralwhite}.square2.svelte-1jfjjq1{flex-grow:2;outline:1px solid black;display:flex;flex-direction:column;position:relative;background:floralwhite}.square9.svelte-1jfjjq1{flex-grow:9;outline:1px solid black;background:lightgoldenrodyellow}.squareSide.svelte-1jfjjq1{outline:1px solid black;width:100%;flex-grow:1;position:relative}.header.svelte-1jfjjq1{height:21%;position:absolute;outline:2px solid black;background:grey;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-position:contain}.headerSide.svelte-1jfjjq1{width:21%;position:absolute;outline:2px solid black}.header-top.svelte-1jfjjq1{bottom:1px;left:1px;right:1px;background:transparent url('/img/leaf-180-bg.png') center center no-repeat;background-size:contain}.header-bottom.svelte-1jfjjq1{top:1px;left:1px;right:1px;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-size:contain}.header-left.svelte-1jfjjq1{top:1px;bottom:1px;right:1px;background:grey;background:transparent url('/img/leaf-90-bg.png') center center no-repeat;background-size:contain}.header-right.svelte-1jfjjq1{top:1px;bottom:1px;left:1px;background:grey;background:transparent url('/img/leaf-270-bg.png') center center no-repeat;background-size:contain}.firstLine.svelte-1jfjjq1{position:absolute;font-size:0.7vw;font-weight:500;line-height:1vw;text-align:center}.firstLine-top.svelte-1jfjjq1{left:1px;right:1px;bottom:30%;height:10%}.firstLine-top.no-color.svelte-1jfjjq1{bottom:12%}.firstLine-left.svelte-1jfjjq1{top:0px;bottom:0px;right:42%}.firstLine-left.no-color.svelte-1jfjjq1{right:23%}.firstLine-right.svelte-1jfjjq1{top:0;bottom:0;left:42%}.firstLine-right.no-color.svelte-1jfjjq1{left:23%}.firstLine-bottom.svelte-1jfjjq1{left:0;right:0;top:30%}.firstLine-bottom.no-color.svelte-1jfjjq1{top:12%}.red.svelte-1jfjjq1{background-color:#ed1b24}.yellow.svelte-1jfjjq1{background-color:#fef200}.lightblue.svelte-1jfjjq1{background-color:#aae0fa}.brown.svelte-1jfjjq1{background-color:#955436}.blue.svelte-1jfjjq1{background-color:#0072bb}.green.svelte-1jfjjq1{background-color:#1fb25a}.orange.svelte-1jfjjq1{background-color:#f7941d}.purple.svelte-1jfjjq1{background-color:#d93a96}.left-side.svelte-1jfjjq1{transform:rotate(90deg)}.top-side.svelte-1jfjjq1{transform:rotate(180deg)}.right-side.svelte-1jfjjq1{transform:rotate(-90deg)}.logoBox.svelte-1jfjjq1{width:46%;background:transparent;position:absolute;transform:rotateZ(-45deg) translateX(-26.5%) translateY(246.5%);border:3px solid black;border-radius:1em;padding:0, 0.1em, 0.2em 0.1em;text-align:center;box-shadow:inset 0px 4px 24px 8px white;box-shadow:inset 0px 2px 12px 0px greenyellow}.logoName.svelte-1jfjjq1{font-size:7.0vw;color:black;font-family:futura;-webkit-text-stroke-width:2px;-webkit-text-stroke-color:black;text-shadow:-3px 2px 0px black;-webkit-text-fill-color:transparent}.card-box.svelte-1jfjjq1{position:absolute;width:15%;height:9vw}.card-blue.svelte-1jfjjq1{background:rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;background-size:contain;border-radius:0.3em;transform:rotateZ(-45deg) translateX(-5.5%) translateY(132.25%)}.card-blue-inside.svelte-1jfjjq1{width:94%;height:94%;margin:0.3vw auto;position:relative}.card-orange.svelte-1jfjjq1{background:rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;background-size:contain;transform:rotateZ(-45deg) translateX(-25%) translateY(687.25%);border-radius:0.3em}.card-orange-inside.svelte-1jfjjq1{width:94%;height:94%;margin:0.3vw auto;position:relative}.corner.svelte-1jfjjq1{position:absolute;text-align:center;line-height:8vw;font-size:1.2vw;font-weight:500}.corner1.svelte-1jfjjq1{transform:rotateZ(135deg) translateX(-22%) translateY(-107%)}.corner2.svelte-1jfjjq1{transform:rotateZ(-135deg) translateX(-75%) translateY(-75%);line-height:1em}.corner4.svelte-1jfjjq1{transform:rotateZ(45deg) translateX(32%) translateY(0%);line-height:1em}";
+	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(document_1.head, style);
+}
+
+function get_each_context_1(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[19] = list[i];
+	return child_ctx;
+}
+
+function get_each_context(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[16] = list[i];
+	return child_ctx;
+}
+
+// (504:16) {#each player.strains as strain}
+function create_each_block_1(ctx) {
+	let p;
+	let t0_value = /*strain*/ ctx[19].name + "";
+	let t0;
+	let t1;
+	let span;
+	let t2;
+	let t3_value = /*strain*/ ctx[19].oz + "";
+	let t3;
+	let t4;
+	let t5_value = /*strain*/ ctx[19].price / 10 + "";
+	let t5;
+	let t6;
+
+	return {
+		c() {
+			p = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
+			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t0_value);
+			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
+			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" ($");
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t5_value);
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(")");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", "text-green-600");
+		},
+		m(target, anchor) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, span);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(span, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(span, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t4);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t6);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*strain*/ ctx[19].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
+			if (dirty & /*state*/ 1 && t3_value !== (t3_value = /*strain*/ ctx[19].oz + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t3, t3_value);
+			if (dirty & /*state*/ 1 && t5_value !== (t5_value = /*strain*/ ctx[19].price / 10 + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t5, t5_value);
+		},
+		d(detaching) {
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(p);
+		}
+	};
+}
+
+// (499:4) {#each state.players as player}
+function create_each_block(ctx) {
+	let div2;
+	let div0;
+	let t0_value = /*player*/ ctx[16].name + "";
+	let t0;
+	let t1;
+	let html_tag;
+	let raw_value = /*player*/ ctx[16].token + "";
+	let t2;
+	let span;
+	let t3;
+	let t4_value = /*player*/ ctx[16].cash + "";
+	let t4;
+	let t5;
+	let div1;
+	let t6;
+	let each_value_1 = /*player*/ ctx[16].strains;
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	}
+
+	return {
+		c() {
+			div2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t0_value);
+			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			span = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("span");
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("$");
+			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t4_value);
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			html_tag = new svelte_internal__WEBPACK_IMPORTED_MODULE_0__["HtmlTag"](raw_value, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", "text-green-600");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "border-solid mx-1 bg-gray-100 rounded-sm svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "inline-block svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div2, "width", 100 / /*state*/ ctx[0].players.length + "%");
+		},
+		m(target, anchor) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, div2, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, div0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t1);
+			html_tag.m(div0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, span);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(span, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(span, t4);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, div1);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(div1, null);
+			}
+
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, t6);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*player*/ ctx[16].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
+			if (dirty & /*state*/ 1 && raw_value !== (raw_value = /*player*/ ctx[16].token + "")) html_tag.p(raw_value);
+			if (dirty & /*state*/ 1 && t4_value !== (t4_value = /*player*/ ctx[16].cash + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
+
+			if (dirty & /*state*/ 1) {
+				each_value_1 = /*player*/ ctx[16].strains;
+				let i;
+
+				for (i = 0; i < each_value_1.length; i += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block_1(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(div1, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value_1.length;
+			}
+
+			if (dirty & /*state*/ 1) {
+				Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div2, "width", 100 / /*state*/ ctx[0].players.length + "%");
+			}
+		},
+		d(detaching) {
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(div2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_each"])(each_blocks, detaching);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let link;
+	let t0;
+	let main;
+	let div0;
+	let button;
+	let t2;
+	let div2;
+	let div1;
+	let t3;
+	let div153;
+	let dispose;
+	let each_value = /*state*/ ctx[0].players;
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+	}
+
+	return {
+		c() {
+			link = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("link");
+			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			main = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("main");
+			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
+			button.textContent = "Start Game";
+			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			div2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			div153 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+
+			div153.innerHTML = `<div class="gameBoard svelte-1jfjjq1"><div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner1 svelte-1jfjjq1">JACKPOT!</span> 
+                    <div class="box svelte-1jfjjq1" id="20"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-top purple svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Hawaiian</div> 
+                    <div class="box svelte-1jfjjq1" id="21"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top no-color top-side svelte-1jfjjq1">Vacation<br>Time<br>Relax,<br> Lose a Turn
+                    </div> 
+                    <div class="box svelte-1jfjjq1" id="22"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top no-color top-side svelte-1jfjjq1">Bum Me Out</div> 
+                    <div class="box svelte-1jfjjq1" id="23"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-top orange svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Nicaraguan</div> 
+                    <div class="box svelte-1jfjjq1" id="24"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top no-color top-side svelte-1jfjjq1">MUNCHIES!<br> Pay 10x your roll</div> 
+                    <div class="box svelte-1jfjjq1" id="25"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-top yellow svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Colombian Gold</div> 
+                    <div class="box svelte-1jfjjq1" id="26"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top top-side svelte-1jfjjq1">Far<br>Out</div> 
+                    <div class="box svelte-1jfjjq1" id="27"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-top lightblue svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Just <br>Good Pot</div> 
+                    <div class="box svelte-1jfjjq1" id="28"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-top blue svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">just<br> bad pot</div> 
+                    <div class="box svelte-1jfjjq1" id="29"></div></div> 
+                <div class="square2 svelte-1jfjjq1"><span class="corner corner2 svelte-1jfjjq1">Busted...<br>lose 1 turn</span></div> 
+                <div class="box svelte-1jfjjq1" id="30"></div></div> 
+
+            <div class="row center svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left yellow svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Acapulco<br>Gold</div> 
+                        <div class="box svelte-1jfjjq1" id="19"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">The Law: <br> Pay 20x</div> 
+                        <div class="box svelte-1jfjjq1" id="18"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left yellow svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Sinsemilla</div> 
+                        <div class="box svelte-1jfjjq1" id="17"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">Dealing <br>Square</div> 
+                        <div class="box svelte-1jfjjq1" id="16"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left red svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Maui Wowie</div> 
+                        <div class="box svelte-1jfjjq1" id="15"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">Midnight <br>Airstrip<br> Pay 40x</div> 
+                        <div class="box svelte-1jfjjq1" id="14"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left green svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Guerrero<br> Green</div> 
+                        <div class="box svelte-1jfjjq1" id="13"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">You Pay<br>10x</div> 
+                        <div class="box svelte-1jfjjq1" id="12"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left lightblue svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">colombian<br>chiba</div> 
+                        <div class="box svelte-1jfjjq1" id="11"></div></div></div> 
+                <div class="square9 svelte-1jfjjq1"><div class="card-box card-blue svelte-1jfjjq1"><div class="card-blue-inside svelte-1jfjjq1"></div></div> 
+                    <div class="logoBox svelte-1jfjjq1"><span class="logoName svelte-1jfjjq1">Pot Luck</span></div> 
+                    <div class="card-box card-orange svelte-1jfjjq1"><div class="card-orange-inside svelte-1jfjjq1"></div></div></div> 
+                <div class="square2 svelte-1jfjjq1"><div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right purple svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Vietnamese</div> 
+                        <div class="box svelte-1jfjjq1" id="31"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right orange svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Stickless<br>Thai</div> 
+                        <div class="box svelte-1jfjjq1" id="32"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-right no-color right-side svelte-1jfjjq1">No-Tell<br> Car Rental<br>pay 10x
+                        </div> 
+                        <div class="box svelte-1jfjjq1" id="33"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right red svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Panama<br> Red</div> 
+                        <div class="box svelte-1jfjjq1" id="34"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right brown svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Mexican</div> 
+                        <div class="box svelte-1jfjjq1" id="35"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-right no-color right-side svelte-1jfjjq1">Dealing <br>Square</div> 
+                        <div class="box svelte-1jfjjq1" id="36"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right lightblue svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Jamaican</div> 
+                        <div class="box svelte-1jfjjq1" id="37"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-right no-color right-side svelte-1jfjjq1">bum<br>me out</div> 
+                        <div class="box svelte-1jfjjq1" id="38"></div></div> 
+                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right yellow svelte-1jfjjq1"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">michoacan</div> 
+                        <div class="box svelte-1jfjjq1" id="39"></div></div></div></div> 
+
+            <div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner4 svelte-1jfjjq1" style="line-height:1em;"> Hospital: <br>lose a
+                        turn. <br>pay 100x your roll
+                    </span> 
+                    <div class="box svelte-1jfjjq1" id="10"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom red svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">colombian <br>red bud</div> 
+                    <div class="box svelte-1jfjjq1" id="9"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom blue svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">thai<br>stick</div> 
+                    <div class="box svelte-1jfjjq1" id="8"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-bottom no-color svelte-1jfjjq1">downtown<br>pharmacy <br>Pay 5x</div> 
+                    <div class="box svelte-1jfjjq1" id="7"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom green svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">gainesville<br> green</div> 
+                    <div class="box svelte-1jfjjq1" id="6"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom orange svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">wacky<br> weed</div> 
+                    <div id="5" class="svelte-1jfjjq1"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-bottom no-color svelte-1jfjjq1">Far <br> Out!</div> 
+                    <div class="box svelte-1jfjjq1" id="4"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom green svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">Home Grown</div> 
+                    <div class="box svelte-1jfjjq1" id="3"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-bottom no-color svelte-1jfjjq1">Flying<br> Too High:<br>Lose A<br>Turn</div> 
+                    <div class="box svelte-1jfjjq1" id="2"></div></div> 
+                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom brown svelte-1jfjjq1"></div> 
+                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">Colombian</div> 
+                    <div class="box svelte-1jfjjq1" id="1"></div></div> 
+                <div class="square2 svelte-1jfjjq1" style="background-image:url(&#39;/img/straight.jpg&#39;); background-size:cover;"><div class="box svelte-1jfjjq1" id="40"></div></div></div></div>`;
+
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "rel", "stylesheet");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "href", "/css/style.css");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "btn-blue");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "flex-row items-top svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div153, "class", "potluck svelte-1jfjjq1");
+		},
+		m(target, anchor) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(document_1.head, link);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, t0, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, main, anchor);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, button);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, div1);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(div1, null);
+			}
+
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div153);
+			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button, "click", /*startGame*/ ctx[1]);
+		},
+		p(ctx, [dirty]) {
+			if (dirty & /*state*/ 1) {
+				each_value = /*state*/ ctx[0].players;
+				let i;
+
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(div1, null);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value.length;
+			}
+		},
+		i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
+		o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__["noop"],
+		d(detaching) {
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(link);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t0);
+			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(main);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_each"])(each_blocks, detaching);
+			dispose();
+		}
+	};
+}
+
+function pound(strain) {
+	// watch this, lol
+	if (strain.oz >= strain["5lb"]) {
+		strain.oz = strain["5lb"] + strain.price;
+		return console.log(strain.name + " is over 5lb " + strain.oz);
+	}
+
+	if (strain.oz <= strain["2lb"]) {
+		if (strain.oz === strain["2lb"]) {
+			return strain.oz = strain["3lb"];
+		}
+
+		return strain.oz = strain["2lb"];
+	}
+
+	if (strain.oz > strain["3lb"]) {
+		if (strain.oz === strain["4lb"]) {
+			return strain.oz = strain["5lb"];
+		}
+
+		return strain.oz = strain["4lb"];
+	}
+}
+
+function dieRoll(min, max) {
+	// any number range you care for
+	min = Math.ceil(min);
+
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function instance($$self, $$props, $$invalidate) {
+	let state = {
+		turnNumber: 1,
+		skipped: [],
+		activePlayerId: 0,
+		currentRoll: 0,
+		players: _players__WEBPACK_IMPORTED_MODULE_2__["default"],
+		bank: { strains: _strains__WEBPACK_IMPORTED_MODULE_3__["default"], cash: 100000 },
+		jackpot: { cash: 2000 },
+		farouts: _farouts__WEBPACK_IMPORTED_MODULE_6__["default"],
+		bummers: _bummers__WEBPACK_IMPORTED_MODULE_5__["default"]
+	};
+
+	function abortGame(reason) {
+		let bwned = "";
+
+		if (state.bank.strains.length > 1) {
+			for (let i = 0; i < state.bank.strains.length - 1; ) {
+				bwned += state.bank.strains[i].name + ", ";
+				i += 1;
+			}
+
+			bwned += "and " + state.bank.strains[state.bank.strains.length - 1].name;
+		}
+
+		if ($$invalidate(0, state.bank.strains.length = 1, state)) {
+			bwned = state.bank.strains[0].name;
+		}
+
+		let statusMessage = "The bank had $" + state.bank.cash + " and " + state.bank.strains.length + " strains. " + bwned + ". ";
+
+		state.players.forEach(function (player) {
+			let owned = "";
+
+			if (player.strains.length > 1) {
+				for (let i = 0; i < player.strains.length - 1; ) {
+					owned += player.strains[i].name + ", ";
+					i += 1;
+				}
+
+				owned += "and " + player.strains[player.strains.length - 1].name;
+			}
+
+			if (player.strains.length === 1) {
+				owned = player.strains[0].name;
+			}
+
+			statusMessage += player.name + " had $" + player.cash + " and " + player.strains.length + " strains. They owned " + owned + ". ";
+		});
+
+		let message = "On or about turn #" + state.turnNumber + ": The game was aborted for " + reason + ". " + statusMessage;
+
+		let endState = {
+			turnNumber: state.turnNumber,
+			skipped: state.skipped.length,
+			players: state.players,
+			bank: {
+				strains: state.strains,
+				cash: state.bank.cash
+			},
+			jackpot: { cash: state.jackpot.cash }
+		};
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/api/potluck_log", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ value: { message, "state": endState } }));
+		console.error("Bank Bailout! $" + state.bank.cash + " " + message);
+		alert(message);
+
+		setTimeout(
+			() => {
+				window.location.href = "/potluck";
+			},
+			3000
+		);
+	}
+
+	function currentPlayer() {
+		return state.players[state.activePlayerId];
+	}
+
+	function mapEvents(e) {
+		switch (e) {
+			case "bumEveryoneOut":
+				state.players.forEach(function (player) {
+					player.cash -= 200;
+					currentPlayer().cash += 200;
+				});
+				return "Each player paid the bad bad bummer boy. $200";
+			case "pot":
+				return pot();
+			case "reducePot":
+				return currentPlayer().discount = true;
+			case "freePound":
+				return currentPlayer().freePound = true;
+			case "halfOff":
+				return currentPlayer().halfOff = true;
+			case "deal":
+				return owned();
+				break;
+			case "loseTurn":
+				console.log(currentPlayer().name + " lost a turn");
+				return state.skipped.push(state.skipped[state.activePlayerId]);
+			case "bummer":
+				let b = bummer();
+				console.log("Bummer: " + b.effect);
+				return mapEvents(b.effect);
+			case "farout":
+				let f = farout();
+				console.log("Far Out: " + f.effect);
+				return mapEvents(f.effect);
+			case "highRoller":
+				const roller = dieRoll(1, 6) + dieRoll(1, 6) * 100;
+				return mapEvents("w" + roller);
+			case "payLefty":
+				const lefty = dieRoll(1, 6) + dieRoll(1, 6) * 100;
+				currentPlayer().cash -= lefty;
+				let leftyId = state.activePlayerId - 1;
+				if (leftyId < 0) {
+					leftyId = state.players.length - 1;
+				}
+				console.log("leftyId: " + leftyId);
+				return $$invalidate(0, state.players[leftyId].cash += lefty, state);
+			case "jackpot":
+				console.log(currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!");
+				currentPlayer().cash += state.jackpot.cash;
+				$$invalidate(0, state.jackpot.cash = 0, state);
+				return;
+			case "paraquat":
+				console.log(currentPlayer().name + " got paraquat, this is going to suck.");
+				console.log(currentPlayer().name + " lost a turn to paraquat");
+				state.skipped.push(state.skipped[state.activePlayerId]);
+				if (currentPlayer().getOutOfHospital === true) {
+					currentPlayer().getOutOfHospital = false;
+					return console.log("You lucky dog");
+				}
+				mapEvents("hospital");
+				break;
+			case "hospital":
+				currentPlayer().space = 10;
+				mapEvents("loseTurn");
+				mapEvents("x100");
+				break;
+			case "getOutOfHospital":
+				return currentPlayer().getOutOfHospital = true;
+			default:
+				console.log("handle: " + e);
+				if (e.substring(0, 1) === "x") {
+					let pay = Number(e.substring(1, 5)) * state.currentRoll;
+					currentPlayer().cash -= pay;
+					$$invalidate(0, state.bank.cash += pay, state);
+					return currentPlayer().cash;
+				}
+				if (e.substring(0, 1) === "l") {
+					let lose = Number(e.substring(1, 5));
+					currentPlayer().cash -= lose;
+					$$invalidate(0, state.bank.cash += lose, state);
+					return currentPlayer().cash;
+				}
+				if (e.substring(0, 1) === "w") {
+					let win = Number(e.substring(1, 5));
+					currentPlayer().cash += win;
+					$$invalidate(0, state.bank.cash -= win, state);
+					return currentPlayer().cash;
+				} else {
+					return console.error("unhandled case in mapEvents() " + e);
+				}
+		}
+	}
+
+	function owned() {
+		//get all strains by player.
+		let owned = [];
+
+		state.players.forEach(function (player) {
+			player.strains.map(function (strain) {
+				return owned.push({
+					player,
+					price: strain.price,
+					name: strain.name,
+					rent: strain.oz,
+					value: strain.oz * 5
+				});
+			});
+		});
+
+		console.log(owned);
+		return owned;
+	}
+
+	function pot() {
+		let bankStrains = state.bank.strains;
+
+		for (let i = 0; i < bankStrains.length; ) {
+			if (bankStrains[i].space == currentPlayer().space) {
+				if (bankStrains[i].price < currentPlayer().cash) {
+					buyPot(bankStrains[i]);
+					state.bank.strains.splice(i, 1);
+					return;
+				} else {
+					console.log(currentPlayer().name + "did not have enough money for " + bankStrains[i].name);
+				}
+			}
+
+			i += 1;
+		}
+
+		for (let i = 0; i < state.players.length; ) {
+			state.players[i].strains.find(function (s) {
+				if (s.space === currentPlayer().space) {
+					if (currentPlayer().strains.includes(s)) {
+						if (currentPlayer().freePound === true) {
+							return pound(s);
+						}
+
+						if (s.price < currentPlayer().cash) {
+							currentPlayer().cash -= s.price;
+							$$invalidate(0, state.bank.cash += s.price, state);
+							return pound(s);
+						}
+
+						return;
+					}
+
+					// and if none of that is true, but the space is owned by a player, currentPlayer has to pay 'rent' on it by buying an ounce.
+					let charge = s.oz;
+
+					//unless they have a discount.
+					if (currentPlayer().discount === true) {
+						charge = Math.round(s.oz / 2);
+					}
+
+					console.log(currentPlayer().name + " paid " + state.players[i].name + " $" + charge + " for " + s.name);
+					currentPlayer().cash -= charge;
+					$$invalidate(0, state.players[i].cash += charge, state);
+				}
+			});
+
+			i += 1;
+		}
+	}
+
+	function buyPot(strain) {
+		let charge = strain.price;
+
+		if (currentPlayer().halfOff === true) {
+			charge = Math.round(strain.price / 2);
+		}
+
+		currentPlayer().cash -= charge;
+		$$invalidate(0, state.bank.cash += charge, state);
+		currentPlayer().strains.push(strain);
+		console.log(currentPlayer().name + " bought: " + strain.name);
+	}
+
+	function bummer() {
+		let index = Math.floor(Math.random() * state.bummers.length);
+		let card = state.bummers[index];
+
+		if (state.bummers.length > 1) {
+			state.bummers.splice(index, 1);
+			return card;
+		}
+
+		console.log("Reset bummers to original state");
+		$$invalidate(0, state.bummers = _bummers__WEBPACK_IMPORTED_MODULE_5__["default"], state);
+		return card;
+	}
+
+	function farout() {
+		let index = Math.floor(Math.random() * state.farouts.length);
+		let card = state.farouts[index];
+
+		if (state.farouts.length > 1) {
+			state.farouts.splice(index, 1);
+			return card;
+		}
+
+		console.log("Reset farouts to original state");
+		$$invalidate(0, state.farouts = _farouts__WEBPACK_IMPORTED_MODULE_6__["default"], state);
+		return card;
+	}
+
+	function gameRoll() {
+		let first = dieRoll(1, 6);
+		let second = dieRoll(1, 6);
+		return $$invalidate(0, state.currentRoll = first + second, state);
+	}
+
+	function startGame() {
+		gameRoll();
+		console.log("Turn #1");
+		currentPlayer().space = state.currentRoll;
+		drawPlayerPieces();
+		let event = _spaces__WEBPACK_IMPORTED_MODULE_4__["default"][currentPlayer().space - 1].effect;
+		mapEvents(event);
+		console.log("First roll " + state.currentRoll + " by " + currentPlayer().name + " is on space " + currentPlayer().space + ", and has $" + currentPlayer().cash);
+		return setTimeout(() => executeTurn(), 1000);
+	}
+
+	function calculateSpaceId() {
+		const total = currentPlayer().space + state.currentRoll;
+
+		if (total >= 40) {
+			mapEvents("w500");
+		}
+
+		let remainder = total % 40;
+
+		//this is silly, why didn't I use zero indexing for the div 
+		//ids? refactor html and below someday...
+		if (remainder === 0) {
+			remainder = 40;
+		}
+
+		return remainder;
+	}
+
+	function incrementPlayer() {
+		// advance current player index
+		$$invalidate(0, state.activePlayerId += 1, state);
+
+		// keep index in sync
+		if (state.activePlayerId >= state.players.length) {
+			$$invalidate(0, state.activePlayerId = 0, state);
+		}
+
+		return currentPlayer();
+	}
+
+	function executeTurn() {
+		// Drop players with no cash from game.
+		$$invalidate(
+			0,
+			state.players = state.players.filter(function (player) {
+				if (player.cash >= 1) {
+					console.log(player.name + " $" + player.cash);
+					return player;
+				} else {
+					// Give us your property and die a like a dog
+					player.strains.forEach(strain => strain.oz = strain.price / 10);
+
+					$$invalidate(0, state.bank.strains = state.bank.strains.concat(player.strains), state);
+					console.log(player.name + " was dropped from the game for being broke at the beginning of their turn. " + "Their strains are returned unto the fold. ");
+				}
+			}),
+			state
+		);
+
+		console.log("Bank $" + state.bank.cash);
+
+		// then check for a winner
+		if (state.players.length === 1) {
+			return endGame();
+		}
+
+		// check for bank insolvency (done runned out of cash!)
+		if (state.bank.cash < 1) {
+			return abortGame("bank failure");
+		}
+
+		// increment playerId 
+		incrementPlayer();
+
+		// handle (multiple) skipped turns
+		if (state.skipped.includes(state.activePlayerId)) {
+			state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1);
+			console.log("end of turn, player id: " + state.activePlayerId);
+			console.log("skipped player id: " + state.activePlayerId);
+			return executeTurn();
+		}
+
+		//start the turn by rolling dice, and cleaning up turn based booleans
+		gameRoll();
+
+		// report state    
+		console.log(currentPlayer().name + " rolled a " + state.currentRoll + " started on space " + currentPlayer().space + " and has $" + currentPlayer().cash);
+
+		// move player to new space
+		currentPlayer().space = calculateSpaceId();
+
+		drawPlayerPieces();
+
+		// get the event code
+		let event = _spaces__WEBPACK_IMPORTED_MODULE_4__["default"][currentPlayer().space - 1].effect;
+
+		// and fire that shit off
+		mapEvents(event);
+
+		// report end of turn state
+		console.log("At end of turn, " + currentPlayer().name + " rolled " + state.currentRoll + ", is on space " + currentPlayer().space + ",  and has $" + currentPlayer().cash);
+
+		$$invalidate(0, state.turnNumber += 1, state);
+		console.log("Turn #" + state.turnNumber);
+		return setTimeout(() => executeTurn(), 100);
+	}
+
+	function endGame() {
+		let owned = "";
+		let winner = state.players[0];
+
+		if (winner.strains.length === 1) {
+			owned = winner.strains[0].name;
+		}
+
+		if (winner.strains.length > 1) {
+			for (let i = 0; i < winner.strains.length - 1; ) {
+				owned += winner.strains[i].name + ", ";
+				i += 1;
+			}
+
+			owned += "and " + winner.strains[winner.strains.length - 1].name + ". ";
+		}
+
+		const turn = state.turnNumber;
+		let message = "At the beginning of turn " + turn + ": The Winner is " + winner.name + " with $" + winner.cash + " and " + winner.strains.length + " strains. They owned " + owned + "The bank had $" + state.bank.cash + ". ";
+
+		let endState = {
+			turnNumber: state.turnNumber,
+			skipped: state.skipped.length,
+			players: state.players,
+			bank: {
+				strains: state.strains,
+				cash: state.bank.cash
+			},
+			jackpot: { cash: state.jackpot.cash }
+		};
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/api/potluck_log", true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(JSON.stringify({ value: { message, "state": endState } }));
+		alert(message);
+
+		return setTimeout(
+			() => {
+				window.location.href = "/potluck";
+			},
+			3000
+		);
+	}
+
+	function drawPlayerPieces() {
+		for (let i = 40; i > 0; i -= 1) {
+			document.getElementById(i).innerHTML = "";
+		}
+
+		state.players.forEach(function (player) {
+			document.getElementById(player.space).innerHTML += player.token;
+		});
+	}
+
+	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(() => {
+		drawPlayerPieces();
+	});
+
+	return [state, startGame];
+}
+
+class Potluck extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteComponent"] {
+	constructor(options) {
+		super();
+		if (!document_1.getElementById("svelte-1jfjjq1-style")) add_css();
+		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], {});
+	}
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Potluck);
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/bummers.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/bummers.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var bummers = [{
+  id: 1,
+  title: "Sneezed instead of snorted - lost two grams of coke",
+  effect: "l200"
+}, {
+  id: 2,
+  title: "Posted bond money for 'lost friend'",
+  effect: "l1000"
+}, {
+  id: 3,
+  title: "Misplaced your wallet",
+  effect: "l200"
+}, {
+  id: 4,
+  title: "Got ripped off for $500",
+  effect: "l500"
+}, {
+  id: 5,
+  title: "Dog eats your stash",
+  effect: "l5000"
+}, {
+  id: 6,
+  title: "Transmission on your cars goes",
+  effect: "l400"
+}, {
+  id: 7,
+  title: "Blew $500 at the track",
+  effect: "l500"
+}, {
+  id: 8,
+  title: "Busted for public intoxication",
+  effect: "loseTurn"
+}, {
+  id: 9,
+  title: "Your pot has paraquat  &mdash; go to hospital and miss two turns (do not collect $500 for passing Straight Spot)",
+  effect: "paraquat"
+}, {
+  id: 10,
+  title: "Involved in car accident",
+  effect: "l1000"
+}, {
+  id: 11,
+  title: "Your baggage (constaining 5 lbs. of pot) is lost at the airport",
+  effect: "l2000"
+}, {
+  id: 12,
+  title: "Your pot went stale, give the next player to land on a space you own a discount of 50%",
+  effect: "reducePot"
+}, {
+  id: 13,
+  title: "Got paranoid and flushed 2 lbs. down the toilet",
+  effect: "l2000"
+}, {
+  id: 14,
+  title: "Roach burns your new suit",
+  effect: "l300"
+}, {
+  id: 15,
+  title: "Uninsured motorist runs into your house",
+  effect: "l2000"
+}, {
+  id: 16,
+  title: "You bum everyone out. Each player pays you the number rolled x 10",
+  effect: "bumEveryoneOut"
+}];
+/* harmony default export */ __webpack_exports__["default"] = (bummers);
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/farouts.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/farouts.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var farouts = [{
+  id: 1,
+  title: "Your wealthy relative died and left you $2000 in her will!",
+  effect: "w2000"
+}, {
+  id: 2,
+  title: "You win the lottery",
+  effect: "w800"
+}, {
+  id: 3,
+  title: "Get out of Hospital Free!",
+  effect: "getOutOfHospital"
+}, {
+  id: 4,
+  title: "You win $500 playing cards",
+  effect: "w500"
+}, {
+  id: 5,
+  title: "You win jackpot!",
+  effect: "jackpot"
+}, {
+  id: 6,
+  title: "Some deadbeat pays you $1200 he has owed you for over a year",
+  effect: "w1200"
+}, {
+  id: 7,
+  title: "Found your lost wallet",
+  effect: "w200"
+}, {
+  id: 8,
+  title: "This card entitles you to receive one Pound of Pot free! (from the bank) to put on any square you own",
+  effect: "freePound"
+}, {
+  id: 9,
+  title: "The bank makes a mistake in your favor!",
+  effect: "w300"
+}, {
+  id: 10,
+  title: "Your horse comes through at the track",
+  effect: "w1000"
+}, {
+  id: 11,
+  title: "Guy hits your car from behind. You collect $4000 from neck injury suit",
+  effect: "w4000"
+}, {
+  id: 12,
+  title: "Your dog finds bag containing $600 in small bills",
+  effect: "w600"
+}, {
+  id: 13,
+  title: "You receive income tax return of $1500",
+  effect: "w1500"
+}, {
+  id: 14,
+  title: "This card entitles you to roll the dice and receive 100x the number rolled",
+  effect: "highRoller"
+}, {
+  id: 15,
+  title: "Far Out &mdash; roll the dice and pay player to your left 100x the number rolled",
+  effect: "payLefty"
+}, {
+  id: 16,
+  title: "This card entitles you to one deal at 50% discount on any dope (not already purchased) on the board",
+  effect: "halfOff"
+}];
+/* harmony default export */ __webpack_exports__["default"] = (farouts);
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/players.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/players.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var players = [{
+  name: "Alice",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:blue; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}, {
+  name: "Barbara",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:green; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}, {
+  name: "Carolyn",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:yellow; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}, {
+  name: "Dorothy",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:orange; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}, {
+  name: "Evelyn",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:red; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}, _defineProperty({
+  name: "Fatíma",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:purple; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}, "discount", false), {
+  name: "Geraldine",
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:black; height:15px; width:15px; border-radius:50%;"></div>',
+  cash: 2875,
+  strains: [],
+  playing: true,
+  space: 40,
+  discount: false,
+  halfOff: false,
+  freePound: false,
+  getOutOfHospital: false
+}];
+
+function getPlayers(player) {
+  return player.playing === true;
+}
+
+var activePlayers = players.filter(getPlayers);
+/* harmony default export */ __webpack_exports__["default"] = (activePlayers);
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/spaces.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/potluck/spaces.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var spaces = [{
+  id: 1,
+  title: "Colombian",
+  message: "",
+  effect: "pot"
+}, {
+  id: 2,
+  title: "Flying Too High",
+  message: "Lose a turn",
+  effect: "loseTurn"
+}, {
+  id: 3,
+  title: "Home Grown",
+  message: "",
+  effect: "pot"
+}, {
+  id: 4,
+  title: "Far Out",
+  message: "Far Out!",
+  effect: "farout"
+}, {
+  id: 5,
+  title: "Wacky Weed",
+  message: "",
+  effect: "pot"
+}, {
+  id: 6,
+  title: "Gainesville Green",
+  message: "",
+  effect: "pot"
+}, {
+  id: 7,
+  title: "Downtown Pharmacy",
+  message: "",
+  effect: "x5"
+}, {
+  id: 8,
+  title: "Thai Stick",
+  message: "",
+  effect: "pot"
+}, {
+  id: 9,
+  title: "Colombian Red Bud",
+  message: "",
+  effect: "pot"
+}, {
+  id: 10,
+  title: "Hospital",
+  message: "Pay 100x your roll and lose a turn",
+  effect: "hospital"
+}, {
+  id: 11,
+  title: "Colombian Chiba",
+  message: "",
+  effect: "pot"
+}, {
+  id: 12,
+  title: "Tax Man!",
+  message: "You Pay 10x",
+  effect: "x10"
+}, {
+  id: 13,
+  title: "Guerrero Green",
+  message: "",
+  effect: "pot"
+}, {
+  id: 14,
+  title: "Midnight Airstrip",
+  message: "Pay 20x",
+  effect: "x20"
+}, {
+  id: 15,
+  title: "Maui Wowie",
+  message: "",
+  effect: "pot"
+}, {
+  id: 16,
+  title: "Dealing Square",
+  message: "",
+  effect: "deal"
+}, {
+  id: 17,
+  title: "Sinsemilla",
+  message: "",
+  effect: "pot"
+}, {
+  id: 18,
+  title: "The Law:",
+  message: "Pay 20x",
+  effect: "x20"
+}, {
+  id: 19,
+  title: "Acapulco Gold",
+  message: "",
+  effect: "pot"
+}, {
+  id: 20,
+  title: "Jackpot",
+  message: "You won!",
+  effect: "jackpot"
+}, {
+  id: 21,
+  title: "Hawaiian",
+  message: "",
+  effect: "pot"
+}, {
+  id: 22,
+  title: "Vacation Time. Relax.",
+  message: "Lose a Turn",
+  effect: "loseTurn"
+}, {
+  id: 23,
+  title: "Bum Me Out",
+  message: "",
+  effect: "bummer"
+}, {
+  id: 24,
+  title: "Nicaraguan",
+  message: "",
+  effect: "pot"
+}, {
+  id: 25,
+  title: "Munchies!",
+  message: "Pay 10x",
+  effect: "x10"
+}, {
+  id: 26,
+  title: "Colombian Gold",
+  message: "",
+  effect: "pot"
+}, {
+  id: 27,
+  title: "Far Out!",
+  message: "",
+  effect: "farout"
+}, {
+  id: 28,
+  title: "Just Good Pot",
+  message: "",
+  effect: "pot"
+}, {
+  id: 29,
+  title: "Just Bad Pot",
+  message: "",
+  effect: "pot"
+}, {
+  id: 30,
+  title: "Busted...",
+  message: "Lose 1 Turn",
+  effect: "loseTurn"
+}, {
+  id: 31,
+  title: "Vietnamese",
+  message: "",
+  effect: "pot"
+}, {
+  id: 32,
+  title: "Stickless Thai",
+  message: "",
+  effect: "pot"
+}, {
+  id: 33,
+  title: "No Tell Car Rental",
+  message: "Pay 10x",
+  effect: "x10"
+}, {
+  id: 34,
+  title: "Panama Red",
+  message: "",
+  effect: "pot"
+}, {
+  id: 35,
+  title: "Mexican",
+  message: "",
+  effect: "pot"
+}, {
+  id: 36,
+  title: "Dealing Square",
+  message: "",
+  effect: "deal"
+}, {
+  id: 37,
+  title: "Jamaican",
+  message: "",
+  effect: "pot"
+}, {
+  id: 38,
+  title: "Bum Me Out",
+  message: "",
+  effect: "bummer"
+}, {
+  id: 39,
+  title: "Michoacan",
+  message: "",
+  effect: "pot"
+}, {
+  id: 40,
+  title: "Straight Space",
+  message: "",
+  effect: "w500"
+}];
+/* harmony default export */ __webpack_exports__["default"] = (spaces);
+
+/***/ }),
+
+/***/ "./resources/js/components/potluck/strains.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/potluck/strains.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var strains = [{
+  name: 'Colombian',
+  price: 400,
+  oz: 40,
+  "2lb": 120,
+  "3lb": 240,
+  "4lb": 360,
+  "bale": 400,
+  space: 1
+}, {
+  name: 'Homegrown',
+  price: 250,
+  oz: 25,
+  "2lb": 75,
+  "3lb": 150,
+  "4lb": 225,
+  "bale": 250,
+  space: 3
+}, {
+  name: 'Wacky Weed',
+  price: 900,
+  oz: 90,
+  "2lb": 270,
+  "3lb": 540,
+  "4lb": 810,
+  "bale": 900,
+  space: 5
+}, {
+  name: 'Gainesville Green',
+  price: 2000,
+  oz: 200,
+  "2lb": 600,
+  "3lb": 1200,
+  "4lb": 1800,
+  "bale": 2000,
+  space: 6
+}, {
+  name: 'Thai Stick',
+  price: 2200,
+  oz: 220,
+  "2lb": 660,
+  "3lb": 1320,
+  "4lb": 1980,
+  "bale": 2200,
+  space: 8
+}, {
+  name: 'Colombian Red Bud',
+  price: 500,
+  oz: 50,
+  "2lb": 150,
+  "3lb": 300,
+  "4lb": 450,
+  "bale": 500,
+  space: 9
+}, {
+  name: 'Colombian Chiba',
+  price: 600,
+  oz: 60,
+  "2lb": 180,
+  "3lb": 360,
+  "4lb": 540,
+  "bale": 600,
+  space: 11
+}, {
+  name: 'Guerrero Green',
+  price: 400,
+  oz: 40,
+  "2lb": 120,
+  "3lb": 240,
+  "4lb": 360,
+  "bale": 400,
+  space: 13
+}, {
+  name: 'Maui Wowie',
+  price: 2500,
+  oz: 250,
+  "2lb": 750,
+  "3lb": 1500,
+  "4lb": 2250,
+  "bale": 2500,
+  space: 15
+}, {
+  name: 'Sinsemilla',
+  price: 1400,
+  oz: 140,
+  "2lb": 375,
+  "3lb": 750,
+  "4lb": 1125,
+  "bale": 1400,
+  space: 17
+}, {
+  name: 'Aculpulco Gold',
+  price: 500,
+  oz: 50,
+  "2lb": 150,
+  "3lb": 300,
+  "4lb": 450,
+  "bale": 500,
+  space: 19
+}, {
+  name: 'Hawaiian',
+  price: 1600,
+  oz: 160,
+  "2lb": 480,
+  "3lb": 960,
+  "4lb": 1440,
+  "bale": 1600,
+  space: 21
+}, {
+  name: 'Nicaraguan',
+  price: 300,
+  oz: 30,
+  "2lb": 90,
+  "3lb": 180,
+  "4lb": 270,
+  "bale": 300,
+  space: 24
+}, {
+  name: 'Colombian Gold',
+  price: 650,
+  oz: 65,
+  "2lb": 195,
+  "3lb": 390,
+  "4lb": 585,
+  "bale": 650,
+  space: 16
+}, {
+  name: 'Just Good Pot',
+  price: 300,
+  oz: 30,
+  "2lb": 90,
+  "3lb": 180,
+  "4lb": 240,
+  "bale": 300,
+  space: 28
+}, {
+  name: 'Just Bad Pot',
+  price: 100,
+  oz: 10,
+  "2lb": 30,
+  "3lb": 60,
+  "4lb": 90,
+  "bale": 100,
+  space: 29
+}, {
+  name: 'Vietnamese Pot',
+  price: 1000,
+  oz: 100,
+  "2lb": 300,
+  "3lb": 600,
+  "4lb": 900,
+  "bale": 1000,
+  space: 31
+}, {
+  name: 'Stickless Thai',
+  price: 3000,
+  oz: 300,
+  "2lb": 900,
+  "3lb": 1800,
+  "4lb": 2700,
+  "bale": 3000,
+  space: 32
+}, {
+  name: 'Panama Red',
+  price: 800,
+  oz: 75,
+  "2lb": 225,
+  "3lb": 450,
+  "4lb": 675,
+  "bale": 800,
+  space: 34
+}, {
+  name: 'Mexican',
+  price: 150,
+  oz: 15,
+  "2lb": 45,
+  "3lb": 90,
+  "4lb": 135,
+  "bale": 150,
+  space: 35
+}, {
+  name: 'Jamaican',
+  price: 250,
+  oz: 25,
+  "2lb": 75,
+  "3lb": 150,
+  "4lb": 225,
+  "bale": 250,
+  space: 37
+}, {
+  name: 'Michoacan',
+  price: 450,
+  oz: 45,
+  "2lb": 135,
+  "3lb": 270,
+  "4lb": 405,
+  "bale": 450,
+  space: 39
+}];
+/* harmony default export */ __webpack_exports__["default"] = (strains);
+
+/***/ }),
+
+/***/ "./resources/js/script.js":
+/*!********************************!*\
+  !*** ./resources/js/script.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_potluck_Potluck_svelte__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/potluck/Potluck.svelte */ "./resources/js/components/potluck/Potluck.svelte");
+ // import App from './components/App.svelte'
+
+var potluck = new _components_potluck_Potluck_svelte__WEBPACK_IMPORTED_MODULE_0__["default"]({
+  target: document.querySelector('#potluck')
+}); // const app= new App({
+//   target: document.querySelector('#rootComponent')
+// })
+// window.app = app
+
+window.potluck = potluck;
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+
+/***/ 0:
+/*!****************************************************************!*\
+  !*** multi ./resources/js/script.js ./resources/css/style.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! /Users/jeremy/Code/elbow/resources/js/script.js */"./resources/js/script.js");
+module.exports = __webpack_require__(/*! /Users/jeremy/Code/elbow/resources/css/style.css */"./resources/css/style.css");
+
+
+/***/ })
+
+/******/ });
