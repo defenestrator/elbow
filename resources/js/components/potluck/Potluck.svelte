@@ -424,7 +424,7 @@
             currentPlayer().space + ',  and has $' + currentPlayer().cash)
         state.turnNumber += 1
         console.log('Turn #' + state.turnNumber)
-        return setTimeout(() => executeTurn(), 1000);
+        return setTimeout(() => executeTurn(), 100);
     }
 
     function endGame() {
@@ -702,14 +702,15 @@
         <button on:click="{startGame}" class="btn-blue"> Start Game</button>
     </div>
     <div class="container-fluid py-3 px-5 bg-white">
-    <div class="flex-row items-center flex-shrink">
+    <div class="flex-row items-top">
     {#each state.players as player}   
-    <div class="inline-block ">
-        <div class="text-blue-800 p-1 mx-1 bg-gray-200 b-gray-600 rounded-sm">{player.name}  ${player.cash}</div>
-            <div class="p-1 mx-1 bg-white b-gray-600 rounded-sm">
-            {#each player.strains as strain}
-            <p class="text-bold">{strain.name} <br>${strain.oz}</p>
-            {/each}
+    <div class="inline-block" style="width:{100 / state.players.length}%">
+        <div class="items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold">
+            {player.name} <span class="text-green-600"> ${player.cash}</span></div>
+            <div class="border-solid mx-1 bg-gray-100 rounded-sm">
+                {#each player.strains as strain}
+                <p> {strain.name} <span class="text-green-600"> ${strain.oz} </span> (${strain.price / 10})</p>
+                {/each}
             </div>
         </div>
     {/each}
@@ -718,7 +719,7 @@
 </main>
 
 <style>
-@import url("../../css/style.css");
+@import url("/css/style.css");
 
     div {
         box-sizing: border-box;
