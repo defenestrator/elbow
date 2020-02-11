@@ -1,3 +1,6 @@
+<svelte:head>
+    <link rel="stylesheet" href="/css/style.css">
+</svelte:head>
 <script>
     import {onMount} from "svelte";
     import activePlayers from './players';
@@ -485,6 +488,8 @@
     onMount(() => {drawPlayerPieces()});
 </script>
 
+
+
 <main>
     <div class="flex-row py-2 px-5 bg-white width-100">
     </div>
@@ -719,7 +724,6 @@
 </main>
 
 <style>
-@import url("/css/style.css");
 
     div {
         box-sizing: border-box;

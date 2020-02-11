@@ -15,6 +15,7 @@ mix.webpackConfig({})
 .svelte({
   dev: production
 })
+.js('./resources/js/script.js', 'public/js')
 .postCss('./resources/css/style.css', 'public/css/style.css')
 .options({
   postCss: [
@@ -26,16 +27,13 @@ mix.webpackConfig({})
         content: [
           './resources/views/**/*.blade.php', 
           './resources/views/**/*.html',
-          './resources/views/**/*.svelte', 
+          './resources/js/**/*.svelte',
           './resources/js/**/*.js' ],
         defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || []
       }),
     ] : [],
   ],
 })
-.js('./resources/js/script.js', 'public/js')
-.svelte()
 .version()
-.sourceMaps()
 .browserSync({proxy: 'elbow.test', notify: false, open: false})
 
