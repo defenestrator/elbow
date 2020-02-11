@@ -480,7 +480,7 @@
         })
     }
 
-    onMount(() => {startGame();executeTurn();});
+    onMount(() => {startGame();});
 </script>
 
 <main>
