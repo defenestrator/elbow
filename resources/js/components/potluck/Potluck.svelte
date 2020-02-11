@@ -493,6 +493,7 @@
 <main>
 <div class="container-fluid py-3 px-5 bg-white">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button>
+        <p class="inline-block">{state.players[state.activePlayerId].name } rolled {state.currentRoll}</p>
     </div>
     <div class="container-fluid py-3 px-5 bg-white">
     <div class="flex-row items-top">

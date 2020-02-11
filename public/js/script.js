@@ -1870,7 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (504:16) {#each player.strains as strain}
+// (505:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[19].name + "";
@@ -1920,7 +1920,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (499:4) {#each state.players as player}
+// (500:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2034,9 +2034,16 @@ function create_fragment(ctx) {
 	let div0;
 	let button;
 	let t2;
+	let p;
+	let t3_value = /*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].name + "";
+	let t3;
+	let t4;
+	let t5_value = /*state*/ ctx[0].currentRoll + "";
+	let t5;
+	let t6;
 	let div2;
 	let div1;
-	let t3;
+	let t7;
 	let div153;
 	let dispose;
 	let each_value = /*state*/ ctx[0].players;
@@ -2055,6 +2062,11 @@ function create_fragment(ctx) {
 			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
 			button.textContent = "Start Game";
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			p = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
+			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
+			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" rolled ");
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t5_value);
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
@@ -2062,7 +2074,7 @@ function create_fragment(ctx) {
 				each_blocks[i].c();
 			}
 
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div153 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			div153.innerHTML = `<div class="gameBoard svelte-1jfjjq1"><div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner1 svelte-1jfjjq1">JACKPOT!</span> 
@@ -2179,6 +2191,7 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "rel", "stylesheet");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "href", "/css/style.css");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "btn-blue");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "flex-row items-top svelte-1jfjjq1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
@@ -2190,7 +2203,12 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, main, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, button);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, p);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t4);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t6);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div2);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, div1);
 
@@ -2198,11 +2216,14 @@ function create_fragment(ctx) {
 				each_blocks[i].m(div1, null);
 			}
 
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t7);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div153);
 			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button, "click", /*startGame*/ ctx[1]);
 		},
 		p(ctx, [dirty]) {
+			if (dirty & /*state*/ 1 && t3_value !== (t3_value = /*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t3, t3_value);
+			if (dirty & /*state*/ 1 && t5_value !== (t5_value = /*state*/ ctx[0].currentRoll + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t5, t5_value);
+
 			if (dirty & /*state*/ 1) {
 				each_value = /*state*/ ctx[0].players;
 				let i;
