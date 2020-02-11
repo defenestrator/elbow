@@ -89,7 +89,7 @@
         }));
         console.error('Bank Bailout! $' + state.bank.cash + ' ' + message) 
         alert(message)
-        setTimeout(function() {return window.location.href = '/potluck'}, 5000)
+        setTimeout(() => {window.location.href = '/potluck'}, 5000)
     }
 
     function currentPlayer() {
@@ -473,7 +473,7 @@
             }
         }));
         alert(message)
-        return window.location.href = '/potluck'
+        return setTimeout(() => {window.location.href = '/potluck'}, 5000)
     }
 
     function drawPlayerPieces() {
