@@ -447,7 +447,7 @@
         }
         const turn = state.turnNumber
         let message = "At the beginning of turn " + turn + ": The Winner is " + winner.name + ' with $' + winner
-            .cash + '. With ' + winner.strains.length + ' strains. They owned ' + owned
+            .cash + ' and ' + winner.strains.length + ' strains. They owned ' + owned
             + 'The bank had $' + state.bank.cash + '. '
 
         let endState = {
