@@ -1,7 +1,7 @@
 let players = [
     {
         name: "player1",      
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:blue; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:blue; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,       
         strains: [], 
         playing: true,
@@ -13,7 +13,7 @@ let players = [
     }, 
     {
         name: "player2",
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:green; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:green; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
         playing: true,
@@ -25,7 +25,7 @@ let players = [
     }, 
     {
         name: "player3",
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:yellow; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:yellow; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
         playing: true,
@@ -37,7 +37,7 @@ let players = [
     }, 
     {
         name: "player4",
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:orange; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:orange; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
         playing: true,
@@ -49,10 +49,10 @@ let players = [
     }, 
     {
         name: "player5",
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:red; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:red; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
-        playing: false,
+        playing: true,
         space: 40,
         discount: false,
         halfOff: false,
@@ -61,10 +61,10 @@ let players = [
     }, 
     {
         name: "player6",
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:purple; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:purple; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
-        playing: false,
+        playing: true,
         space: 40,
         discount: false,
         halfOff: false,
@@ -74,10 +74,10 @@ let players = [
     }, 
     {
         name: "player7",
-        token: '<div style="margin:1em, 0.2em; display:inline-block; position:relative; background-color:black; height:50px; width:15px;"></div>',
+        token: '<div style="display:grid; align-items: center; justify-content: center; background-color:black; height:15px; width:15px; border-radius:50%;"></div>',
         cash: 2875,
         strains: [], 
-        playing: false,
+        playing: true,
         space: 40,
         discount: false,
         halfOff: false,
