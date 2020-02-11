@@ -17,3 +17,5 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 Route::post('/contest-entries', 'ContestEntryController@create')->middleware('api');
+
+Route::post('/potluck_log', 'PotluckLogController@store');

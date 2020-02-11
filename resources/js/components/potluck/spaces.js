@@ -39,7 +39,7 @@ const spaces = [
         id: 7,
         title: "Downtown Pharmacy",
         message: "",            
-        effect: "x20",
+        effect: "x5",
     }, 
     {
         id: 8,
@@ -66,7 +66,7 @@ const spaces = [
         effect: "pot",
     }, {
         id: 12,
-        title: "You Pay 10x",
+        title: "Tax Man!",
         message: "You Pay 10x",            
         effect: "x10",
     },

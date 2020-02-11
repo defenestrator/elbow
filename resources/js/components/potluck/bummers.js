@@ -56,7 +56,7 @@ const bummers = [
     },
     {
         id:12,
-        title: "Your pot went stale",
+        title: "Your pot went stale, give the next player to land on a space you own a discount of 50%",
         effect: "reducePot"
     },
     {

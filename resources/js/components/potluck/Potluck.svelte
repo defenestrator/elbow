@@ -7,23 +7,87 @@
     import farouts from './farouts';
 
     let state = {
+        turnNumber: 1,
         skipped: [],
         activePlayerId: 0,
         currentRoll: 0,
         players: activePlayers,
         bank: {
             strains: strains,
-            cash: 100000
+            cash: 1400000
         },
         jackpot: {
             cash: 2000
-        }, 
+        },
         farouts: farouts,
         bummers: bummers
     }
-    
-    let turnCounter = 1;
-    
+
+    function abortGame(reason) {
+        let bwned = ''
+        if (state.bank.strains.length > 1) {
+
+            for (let i = 0; i < state.bank.strains.length - 1;) {
+                bwned += state.bank.strains[i].name + ', '
+                i += 1;
+            }
+            bwned += 'and ' + state.bank.strains[state.bank.strains.length - 1].name
+        }
+
+        if (state.bank.strains.length = 1) {
+            bwned = state.bank.strains[0].name
+        }
+
+        let statusMessage = "The bank had $" + state.bank.cash + ' and ' + state.bank.strains.length + ' strains. ' +
+            bwned + '. '
+
+        state.players.forEach(function (player) {
+            let owned = ''
+            if (player.strains.length > 1) {
+                for (let i = 0; i < player.strains.length - 1;) {
+                    owned += player.strains[i].name + ', '
+                    i += 1;
+                }
+                owned += 'and ' + player.strains[player.strains.length - 1].name
+            }
+
+            if (player.strains.length === 1) {
+                owned = player.strains[0].name
+            }
+
+            statusMessage += player.name + ' had $' + player.cash + '. With ' + player.strains.length +
+                ' strains. They owned ' + owned + '.'
+        })
+
+        let message = "On or about turn #" + state.turnNumber + ": The game was aborted for " + reason + '. ' +
+            statusMessage
+
+        let endState = {
+            turnNumber: state.turnNumber,
+            skipped: state.skipped.length,
+            players: state.players,
+            bank: {
+                strains: state.strains,
+                cash: state.bank.cash
+            },
+            jackpot: {
+                cash: state.jackpot.cash
+            }
+        }
+        // alert(message)
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/api/potluck_log', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            value: {
+                "message": message,
+                "state": endState
+            }
+        }));
+        console.error('Bank Bailout! $' + state.bank.cash) 
+        window.location.href = '/potluck'
+    }
+
     function currentPlayer() {
         return state.players[state.activePlayerId]
     }
@@ -31,57 +95,44 @@
     function mapEvents(e) {
         switch (e) {
             case "bumEveryoneOut":
-                    state.players.forEach( function(player){
-                        player.cash -= 200
-                        currentPlayer().cash += 200
-                    })
+                state.players.forEach(function (player) {
+                    player.cash -= 200
+                    currentPlayer().cash += 200
+                })
+                return 'Each player paid the bad bad bummer boy. $200'
 
-                return console.log('Each player paid the bummer boy.')
+            case "pot":
+                return pot()
 
-            case "pot": return pot()
+            case "reducePot":
+                return currentPlayer().discount = true
+            case "freePound":
+                return currentPlayer().freePound = true
+            case "halfOff":
+                return currentPlayer().halfOff = true
 
             case "deal":
-                //get all strains by player.
-                let owned = []
-                for (let i = 0; i < state.players.length;) {
-                    state.players[i].strains.map(function (strain) {
-                        owned.push({
-                            playerIndex: i,
-                            price: strain.price,
-                            name: strain.name,
-                            rent: strain.oz,
-                            value: strain.oz * 5
-                        })
-                    })
-                    i += 1
-                }
-                console.log(owned)
+                return owned()
                 break;
 
             case "loseTurn":
                 console.log(currentPlayer().name + ' lost a turn')
-                state.skipped.push(state.skipped[state.activePlayerId])
-                break;
-
+                return state.skipped.push(state.skipped[state.activePlayerId])
+                
             case "bummer":
                 let b = bummer()
-                mapEvents(b.effect)
                 console.log('Bummer: ' + b.effect)
-                break;
+                return mapEvents(b.effect)
 
             case "farout":
                 let f = farout()
-                mapEvents(f.effect)
                 console.log('Far Out: ' + f.effect)
-                break;
-
-            case "halfOff": return console.warn('halfOff not implemented')
-
+                return mapEvents(f.effect)
+                
             case "highRoller":
                 const roller = dieRoll(1, 6) + dieRoll(1, 6) * 100;
-                e ='w' + roller
-                break;
-                
+                return mapEvents('w' + roller)                
+
             case "payLefty":
                 const lefty = dieRoll(1, 6) + dieRoll(1, 6) * 100;
                 currentPlayer().cash -= lefty
@@ -94,10 +145,8 @@
 
             case "jackpot":
                 console.log(currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!")
-                currentPlayer().cash += state.jackpot.cash
-                if (state.bank.cash >= 2000) {
-                    state.bank.cash -= 2000
-                }
+                currentPlayer().cash +=  state.jackpot.cash
+                state.jackpot.cash = 0
                 return;
 
             case "paraquat":
@@ -110,7 +159,7 @@
                 }
                 mapEvents("hospital")
                 break;
-            
+
             case "hospital":
                 currentPlayer().space = 10
                 mapEvents("loseTurn")
@@ -145,13 +194,32 @@
         }
     }
 
+    function owned() {
+        //get all strains by player.
+        let owned = []
+            state.players.forEach(function (player) {
+                player.strains.map(function (strain) {
+                return owned.push({
+                    player: player,
+                    price: strain.price,
+                    name: strain.name,
+                    rent: strain.oz,
+                    value: strain.oz * 5
+                })
+                })
+            })
+        console.log(owned)
+        return owned
+    }
+
     function pot() {
         let bankStrains = state.bank.strains
         for (let i = 0; i < bankStrains.length;) {
             if (bankStrains[i].space == currentPlayer().space) {
-                if (bankStrains[i].price < currentPlayer().cash) {
+                if (bankStrains[i].price < currentPlayer().cash) {                                
                     buyPot(bankStrains[i])
-                    return state.bank.strains.splice(i, 1)
+                    state.bank.strains.splice(i, 1) 
+                    return 
                 } else {
                     console.log(currentPlayer().name + 'did not have enough money for ' + bankStrains[i].name)
                 }
@@ -159,49 +227,66 @@
             i += 1
         }
 
-        let owned = []
-
         for (let i = 0; i < state.players.length;) {
             state.players[i].strains.find(function (s) {
                 if (s.space === currentPlayer().space) {
-                    if (currentPlayer().strains.includes(s) && s.price < currentPlayer().cash) {
-
-                        currentPlayer().cash -= s.price
-                        state.bank.cash += s.price
-
-                        // watch this, lol
-                        if (s.oz >= s["5lb"]) {
-                            s.oz = s["5lb"] + s.price
-                            return console.log(s.name + ' is over 5lb ' + s.oz)
+                    if (currentPlayer().strains.includes(s)) {
+                        if (currentPlayer().freePound === true) {
+                            return pound(s)
                         }
-
-                        if (s.oz <= s["2lb"]) {
-                            if (s.oz === s["2lb"]) {
-                                return s.oz = s["3lb"]
-                            }
-                            return s.oz = s["2lb"]
+                        if (s.price < currentPlayer().cash) {
+                            currentPlayer().cash -= s.price
+                            state.bank.cash += s.price
+                            return pound(s)
                         }
-
-                        if (s.oz > s["3lb"]) {
-                            if (s.oz === s["4lb"]) {
-                                return s.oz = s["5lb"]
-                            }
-                            return s.oz = s["4lb"]
-                        }
+                        return
                     }
-                    console.log(currentPlayer().name + ' paid ' + state.players[i].name + ' $' + s.oz +
+                    // and if none of that is true, but the space is owned by a player, currentPlayer has to pay 'rent' on it by buying an ounce.
+                    let charge = s.oz
+                    //unless they have a discount.
+                    if (currentPlayer().discount === true) {
+                        charge = Math.round(s.oz / 2)
+                    }
+
+                    console.log(currentPlayer().name + ' paid ' + state.players[i].name + ' $' + charge +
                         ' for ' + s.name)
-                    currentPlayer().cash -= s.oz
-                    state.players[i].cash += s.oz
+                    currentPlayer().cash -= charge
+                    state.players[i].cash += charge
                 }
             })
             i += 1
         }
     }
 
+    function pound(strain) {
+        // watch this, lol
+        if (strain.oz >= strain["5lb"]) {
+            strain.oz = strain["5lb"] + strain.price
+            return console.log(strain.name + ' is over 5lb ' + strain.oz)
+        }
+
+        if (strain.oz <= strain["2lb"]) {
+            if (strain.oz === strain["2lb"]) {
+                return strain.oz = strain["3lb"]
+            }
+            return strain.oz = strain["2lb"]
+        }
+
+        if (strain.oz > strain["3lb"]) {
+            if (strain.oz === strain["4lb"]) {
+                return strain.oz = strain["5lb"]
+            }
+            return strain.oz = strain["4lb"]
+        }
+    }
+
     function buyPot(strain) {
-        currentPlayer().cash -= strain.price
-        state.bank.cash += strain.price
+        let charge = strain.price
+        if (currentPlayer().halfOff === true) {
+            charge = Math.round(strain.price / 2)
+        }
+        currentPlayer().cash -= charge
+        state.bank.cash += charge
         currentPlayer().strains.push(strain)
         console.log(currentPlayer().name + " bought: " + strain.name)
     }
@@ -212,7 +297,7 @@
         if (state.bummers.length > 1) {
             state.bummers.splice(index, 1)
             return card
-        }         
+        }
         console.log("Reset bummers to original state")
         state.bummers = bummers
         return card
@@ -224,7 +309,7 @@
         if (state.farouts.length > 1) {
             state.farouts.splice(index, 1)
             return card
-        }         
+        }
         console.log("Reset farouts to original state")
         state.farouts = farouts
         return card
@@ -247,10 +332,11 @@
         gameRoll()
         console.log("Turn #1")
         currentPlayer().space = state.currentRoll
+        drawPlayerPieces()
         let event = spaces[currentPlayer().space - 1].effect
         mapEvents(event)
         console.log('First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' +
-        currentPlayer().space + ', and has $' + currentPlayer().cash)
+            currentPlayer().space + ', and has $' + currentPlayer().cash)
     }
 
     function calculateSpaceId() {
@@ -289,21 +375,23 @@
                 player.strains.forEach(strain => strain.oz = strain.price / 10)
                 state.bank.strains = state.bank.strains.concat(player.strains)
                 console.log(player.name +
-                    ' was dropped from the game for being broke at the beginning of their turn. Their strains are returned unto the fold.'
-                    )
+                    ' was dropped from the game for being broke at the beginning of their turn. ' +
+                    'Their strains are returned unto the fold. '
+                )
             }
         })
-
+        console.log("Bank $" + state.bank.cash)
         // then check for a winner
         if (state.players.length === 1) {
             return endGame()
         }
 
+        // check for bank insolvency (done runned out of cash!)
+        if (state.bank.cash < 1) {
+            return abortGame('bank failure')
+        }
         // increment playerId 
         incrementPlayer()
-
-        //start the turn by rolling dice, and cleaning up turn based booleans
-        gameRoll()
 
         // handle (multiple) skipped turns
         if (state.skipped.includes(state.activePlayerId)) {
@@ -313,13 +401,16 @@
             return executeTurn()
         }
 
+        //start the turn by rolling dice, and cleaning up turn based booleans
+        gameRoll()
+
         // report state    
         console.log(currentPlayer().name + ' rolled a ' + state.currentRoll + ' started on space ' + currentPlayer()
             .space + ' and has $' + currentPlayer().cash)
 
         // move player to new space
         currentPlayer().space = calculateSpaceId()
-
+        drawPlayerPieces()
         // get the event code
         let event = spaces[currentPlayer().space - 1].effect
 
@@ -329,42 +420,67 @@
         // report end of turn state
         console.log("At end of turn, " + currentPlayer().name + ' rolled ' + state.currentRoll + ', is on space ' +
             currentPlayer().space + ',  and has $' + currentPlayer().cash)
-        turnCounter += 1
-        console.log('Turn #' + turnCounter)
+        state.turnNumber += 1
+        console.log('Turn #' + state.turnNumber)
         return executeTurn()
     }
 
-    function getOutOfHospital() {
-        return currentPlayer().getOutOfHospital = true
-    }
-
-    export function reducePot() {
-        return currentPlayer().discount = true
-    }
-
-    export function endGame() {
+    function endGame() {
         let owned = ''
 
         let winner = state.players[0]
-        if (winner.strains.length > 0) {
-            for (let i = 0; i < winner.strains.length;) {
+        if (winner.strains.length === 1) {
+                owned = winner.strains[0].name
+            }
+
+        if (winner.strains.length > 1) {
+            for (let i = 0; i < winner.strains.length - 1;) {
                 owned += winner.strains[i].name + ', '
                 i += 1;
             }
+            owned += 'and ' + winner.strains[winner.strains.length - 1].name + '. '
+        }
+        const turn = state.turnNumber
+        let message = "At the beginning of turn " + turn + ": The Winner is " + winner.name + ' with $' + winner
+            .cash + '. With ' + winner.strains.length + ' strains. They owned ' + owned
+            + 'The bank had $' + state.bank.cash + '. '
+
+        let endState = {
+            turnNumber: state.turnNumber,
+            skipped: state.skipped.length,
+            players: state.players,
+            bank: {
+                strains: state.strains,
+                cash: state.bank.cash
+            },
+            jackpot: {
+                cash: state.jackpot.cash
+            }
         }
 
-        const turnNumber = turnCounter + 1
-
-        let message = "At the beginning of turn " + turnNumber + ": The Winner is " + winner.name + ' with $' + winner
-            .cash + '. They owned ' + owned + '.'
-
-        return alert(message)
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", '/api/potluck_log', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            value: {
+                "message": message,
+                "state": endState
+            }
+        }));
+        // alert(message)
+        return window.location.href = '/potluck'
     }
 
-onMount(() => {
-    startGame();
-});
+    function drawPlayerPieces() {
+        for (let i = 40; i > 0; i -= 1) {
+            document.getElementById(i).innerHTML = ''
+        }
+        state.players.forEach(function (player) {
+            document.getElementById(player.space).innerHTML += player.token
+        })
+    }
 
+    onMount(() => {startGame();executeTurn();});
 </script>
 
 <main>
@@ -373,76 +489,97 @@ onMount(() => {
     <div class="potluck">
         <div class="gameBoard">
             <div class="row top">
-                <div class="square2" id="20"><span class="corner corner1">JACKPOT!</div>
-                <div class="square1" id="21">
+                <div class="square2"><span class="corner corner1">JACKPOT!</span>
+                    <div id="20"></div>
+                </div>
+                <div class="square1">
                     <div class="header header-top purple"></div>
                     <div class="firstLine firstLine-top top-side">Hawaiian</div>
+                    <div id="21"></div>
                 </div>
-                <div class="square1" id="22">
+                <div class="square1">
                     <div class="firstLine firstLine-top no-color top-side">Vacation<br>Time<br>Relax,<br> Lose a Turn
                     </div>
+                    <div id="22"></div>
                 </div>
-                <div class="square1" id="23">
+                <div class="square1">
                     <div class="firstLine firstLine-top no-color top-side">Bum Me Out</div>
+                    <div id="23"></div>
                 </div>
-                <div class="square1" id="24">
+                <div class="square1">
                     <div class="header header-top orange"></div>
                     <div class="firstLine firstLine-top top-side">Nicaraguan</div>
+                    <div id="24"></div>
                 </div>
-                <div class="square1" id="25">
+                <div class="square1">
                     <div class="firstLine firstLine-top no-color top-side">MUNCHIES!<br /> Pay 10x your roll</div>
+                    <div id="25"></div>
                 </div>
-                <div class="square1" id="26">
+                <div class="square1">
                     <div class="header header-top yellow"></div>
                     <div class="firstLine firstLine-top top-side">Colombian Gold</div>
+                    <div id="26"></div>
                 </div>
-                <div class="square1" id="27">
+                <div class="square1">
                     <div class="firstLine firstLine-top top-side">Far<br />Out</div>
+                    <div id="27"></div>
                 </div>
-                <div class="square1" id="28">
+                <div class="square1">
                     <div class="header header-top lightblue"></div>
                     <div class="firstLine firstLine-top top-side">Just <br>Good Pot</div>
+                    <div id="28"></div>
                 </div>
-                <div class="square1" id="29">
+                <div class="square1">
                     <div class="header header-top blue"></div>
                     <div class="firstLine firstLine-top top-side">just<br> bad pot</div>
+                    <div id="29"></div>
                 </div>
-                <div class="square2" id="30"><span class="corner corner2">Busted...<br />lose 1 turn</span></div>
+                <div class="square2"><span class="corner corner2">Busted...<br />lose 1 turn</span></div>
+                <div id="30"></div>
             </div>
 
             <div class="row center">
                 <div class="square2">
-                    <div class="squareSide" id="19">
+                    <div class="squareSide">
                         <div class="headerSide header-left yellow"></div>
                         <div class="firstLine firstLine-left left-side">Acapulco<br>Gold</div>
+                        <div id="19"></div>
                     </div>
-                    <div class="squareSide" id="18">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-left no-color left-side">The Law: <br /> Pay 20x</div>
+                        <div id="18"></div>
                     </div>
-                    <div class="squareSide" id="17">
+                    <div class="squareSide">
                         <div class="headerSide header-left yellow"></div>
                         <div class="firstLine firstLine-left left-side">Sinsemilla</div>
+                        <div id="17"></div>
                     </div>
-                    <div class="squareSide" id="16">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-left no-color left-side">Dealing <br />Square</div>
+                        <div class="firstLine firstLine-left no-color left-side" id="16"></div>
                     </div>
-                    <div class="squareSide" id="15">
+                    <div class="squareSide">
                         <div class="headerSide header-left red"></div>
                         <div class="firstLine firstLine-left left-side">Maui Wowie</div>
+                        <div id="15"></div>
                     </div>
-                    <div class="squareSide" id="14">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-left no-color left-side">Midnight <br>Airstrip<br> Pay 40x</div>
+                        <div id="14"></div>
                     </div>
-                    <div class="squareSide" id="13">
+                    <div class="squareSide">
                         <div class="headerSide header-left green"></div>
                         <div class="firstLine firstLine-left left-side">Guerrero<br /> Green</div>
+                        <div id="13"></div>
                     </div>
-                    <div class="squareSide" id="12">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-left no-color left-side">You Pay<br />10x</div>
+                        <div id="12"></div>
                     </div>
-                    <div class="squareSide" id="11">
+                    <div class="squareSide">
                         <div class="headerSide header-left lightblue"></div>
                         <div class="firstLine firstLine-left left-side">colombian<br />chiba</div>
+                        <div id="11"></div>
                     </div>
                 </div>
                 <div class="square9">
@@ -457,82 +594,104 @@ onMount(() => {
                     </div>
                 </div>
                 <div class="square2">
-                    <div class="squareSide" id="31">
+                    <div class="squareSide">
                         <div class="headerSide header-right purple"></div>
                         <div class="firstLine firstLine-right right-side">Vietnamese</div>
+                        <div id="31"></div>
                     </div>
-                    <div class="squareSide" id="32">
+                    <div class="squareSide">
                         <div class="headerSide header-right orange"></div>
                         <div class="firstLine firstLine-right right-side">Stickless<br />Thai</div>
+                        <div id="32"></div>
                     </div>
-                    <div class="squareSide" id="33">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-right no-color right-side">No-Tell<br> Car Rental<br>pay 10x
                         </div>
+                        <div id="33"></div>
                     </div>
-                    <div class="squareSide" id="34">
+                    <div class="squareSide">
                         <div class="headerSide header-right red"></div>
                         <div class="firstLine firstLine-right right-side">Panama<br /> Red</div>
+                        <div id="34"></div>
                     </div>
-                    <div class="squareSide" id="35">
+                    <div class="squareSide">
                         <div class="headerSide header-right brown"></div>
                         <div class="firstLine firstLine-right right-side">Mexican</div>
+                        <div id="35"></div>
                     </div>
-                    <div class="squareSide" id="36">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-right no-color right-side">Dealing <br>Square</div>
+                        <div id="36"></div>
                     </div>
-                    <div class="squareSide" id="37">
+                    <div class="squareSide">
                         <div class="headerSide header-right lightblue"></div>
                         <div class="firstLine firstLine-right right-side">Jamaican</div>
+                        <div id="37"></div>
                     </div>
-                    <div class="squareSide" id="38">
+                    <div class="squareSide">
                         <div class="firstLine firstLine-right no-color right-side">bum<br>me out</div>
+                        <div id="38"></div>
                     </div>
-                    <div class="squareSide" id="39">
+                    <div class="squareSide">
                         <div class="headerSide header-right yellow"></div>
                         <div class="firstLine firstLine-right right-side">michoacan</div>
+                        <div id="39"></div>
                     </div>
                 </div>
             </div>
 
             <div class="row top">
-                <div class="square2" id="10">
+                <div class="square2">
                     <span class="corner corner4" style="line-height:1em;"> Hospital: <br>lose a
-                        turn. <br>pay 100x your roll</span>
+                        turn. <br>pay 100x your roll
+                    </span>
+                    <div style="padding-top:5em;" id="10"></div>
                 </div>
-                <div class="square1" id="9">
+                <div class="square1">
                     <div class="header header-bottom red"></div>
                     <div class="firstLine firstLine-bottom">colombian <br>red bud</div>
+                    <div style="padding-top:5em;" id="9"></div>
                 </div>
-                <div class="square1" id="8">
+                <div class="square1">
                     <div class="header header-bottom blue"></div>
                     <div class="firstLine firstLine-bottom">thai<br>stick</div>
+                    <div style="padding-top:5em;" id="8"></div>
                 </div>
-                <div class="square1" id="7">
-                    <div class="firstLine firstLine-bottom no-color">downtown<br>pharmacy</div>
+                <div class="square1">
+                    <div class="firstLine firstLine-bottom no-color">downtown<br>pharmacy <br>Pay 5x</div>
+                    <div style="padding-top:5em;" id="7"></div>
                 </div>
-                <div class="square1" id="6">
+                <div class="square1">
                     <div class="header header-bottom green"></div>
                     <div class="firstLine firstLine-bottom">gainesville<br /> green</div>
+                    <div style="padding-top:5em;" id="6"></div>
                 </div>
-                <div class="square1" id="5">
+                <div class="square1">
                     <div class="header header-bottom orange"></div>
                     <div class="firstLine firstLine-bottom">wacky<br /> weed</div>
+                    <div style="padding-top:5em;" id="5"></div>
                 </div>
-                <div class="square1" id="4">
+                <div class="square1">
                     <div class="firstLine firstLine-bottom no-color">Far <br /> Out!</div>
+                    <div style="padding-top:5em;" id="4"></div>
                 </div>
-                <div class="square1" id="3">
+                <div class="square1">
                     <div class="header header-bottom green"></div>
                     <div class="firstLine firstLine-bottom">Home Grown</div>
+                    <div style="padding-top:5em;" id="3"></div>
                 </div>
-                <div class="square1" id="2">
+                <div class="square1">
                     <div class="firstLine firstLine-bottom no-color">Flying<br /> Too High:<br>Lose A<br>Turn</div>
+                    <div style="padding-top:5em;" id="2"></div>
                 </div>
-                <div class="square1" id="1">
+                <div class="square1">
                     <div class="header header-bottom brown"></div>
                     <div class="firstLine firstLine-bottom">Colombian</div>
+                    <div style="padding-top:5em;" id="1"></div>
                 </div>
-                <div class="square2" id="40" style="background-image:url('/img/straight.jpg'); background-size:cover;" />
+                <div class="square2" style="background-image:url('/img/straight.jpg'); background-size:cover;">
+                    <div style="padding-top:5em;" id="40"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -821,6 +980,7 @@ onMount(() => {
         transform: rotateZ(-135deg) translateX(-75%) translateY(-75%);
         line-height: 1em;
     }
+
     .corner4 {
         transform: rotateZ(45deg) translateX(32%) translateY(0%);
         line-height: 1em;
