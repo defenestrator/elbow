@@ -1870,7 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (717:16) {#each player.strains as strain}
+// (721:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[20].name + "";
@@ -1921,7 +1921,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (712:4) {#each state.players as player}
+// (716:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2390,7 +2390,7 @@ function instance($$self, $$props, $$invalidate) {
 				}
 				return $$invalidate(0, state.players[leftyId].cash += lefty, state);
 			case "jackpot":
-				if ($$invalidate(0, state.jackpot.cash = 0, state)) {
+				if (state.jackpot.cash === 0) {
 					$$invalidate(0, state.message = "It says jackpot, but " + currentPlayer().name + " should think of it as 'Free Parking'", state);
 				}
 				$$invalidate(0, state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!", state);
@@ -2637,19 +2637,23 @@ function instance($$self, $$props, $$invalidate) {
 		}
 
 		// Drop players with no cash from game.
-		if (currentPlayer().cash <= 0) {
+		if (currentPlayer().cash < 1) {
 			// Give us your property and die like a dog
 			currentPlayer().strains.forEach(strain => strain.oz = strain.price / 10);
 
 			$$invalidate(0, state.bank.strains = state.bank.strains.concat(currentPlayer().strains), state);
 			$$invalidate(0, state.message = currentPlayer().name + " was dropped from the game for being broke at the beginning of their turn. ", state);
-			state.players.splice(state.players.indexOf(state.activePlayerId), 1);
+			state.players.splice(state.players.indexOf(state.players[state.activePlayerId]), 1);
 			incrementPlayer();
 		}
 
 		// then check for a winner
 		if (state.players.length === 1) {
-			return endGame();
+			if (currentPlayer().cash > 0) {
+				return endGame();
+			}
+
+			return abortGame("PLAYER HAD NEGATIVE CASH");
 		}
 
 		// check for bank insolvency (done runned out of cash!)

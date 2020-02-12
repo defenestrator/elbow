@@ -143,7 +143,7 @@
                 return state.players[leftyId].cash += lefty
 
             case "jackpot":
-                if (state.jackpot.cash = 0) {
+                if (state.jackpot.cash === 0) {
                     state.message = 'It says jackpot, but '+ currentPlayer().name + " should think of it as 'Free Parking'"
                 }
                 state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!"
@@ -378,19 +378,23 @@
         }
         
         // Drop players with no cash from game.
-        if (currentPlayer().cash <= 0) {
+        if (currentPlayer().cash < 1) {
             // Give us your property and die like a dog
             currentPlayer().strains.forEach(strain => strain.oz = strain.price / 10)
             state.bank.strains = state.bank.strains.concat(currentPlayer().strains)
+            
             state.message = currentPlayer().name +
-                ' was dropped from the game for being broke at the beginning of their turn. '
-            state.players.splice(state.players.indexOf(state.activePlayerId), 1)
+            ' was dropped from the game for being broke at the beginning of their turn. '
+            state.players.splice(state.players.indexOf(state.players[state.activePlayerId]), 1)
             incrementPlayer()
         }
 
         // then check for a winner
-        if (state.players.length === 1) {
-            return endGame()
+        if (state.players.length === 1 ) {
+            if( currentPlayer().cash > 0) {
+                return endGame()
+            }
+            return abortGame('PLAYER HAD NEGATIVE CASH')       
         } 
 
         // check for bank insolvency (done runned out of cash!)
@@ -489,7 +493,7 @@
         })
     }
 
-    onMount(() => {drawPlayerPieces();});
+    onMount(() => {drawPlayerPieces(); });
 </script>
 
 
