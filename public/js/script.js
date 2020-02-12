@@ -1870,7 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (724:16) {#each player.strains as strain}
+// (728:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[20].name + "";
@@ -1921,7 +1921,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (719:4) {#each state.players as player}
+// (723:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2392,6 +2392,9 @@ function instance($$self, $$props, $$invalidate) {
 				}
 				return $$invalidate(0, state.players[leftyId].cash += lefty, state);
 			case "jackpot":
+				if ($$invalidate(0, state.jackpot.cash = 0, state)) {
+					$$invalidate(0, state.message = "It says jackpot, but " + currentPlayer().name + " should think of it as 'Free Parking'", state);
+				}
 				$$invalidate(0, state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!", state);
 				currentPlayer().cash += state.jackpot.cash;
 				$$invalidate(0, state.jackpot.cash = 0, state);
@@ -2694,8 +2697,10 @@ function instance($$self, $$props, $$invalidate) {
 			() => {
 				executeTurn();
 			},
-			750
+			1000
 		);
+
+		executeTurn();
 	}
 
 	function endGame() {

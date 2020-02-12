@@ -152,6 +152,9 @@
                 return state.players[leftyId].cash += lefty
 
             case "jackpot":
+                if (state.jackpot.cash = 0) {
+                    state.message = 'It says jackpot, but '+ currentPlayer().name + " should think of it as 'Free Parking'"
+                }
                 state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!"
                 currentPlayer().cash +=  state.jackpot.cash
                 state.jackpot.cash = 0
@@ -438,7 +441,8 @@
         mapEvents(event)
 
         // Do it again
-        return setTimeout(() => {executeTurn()}, 750)
+        return setTimeout(() => {executeTurn()}, 1000)
+        executeTurn()
     }
 
     function endGame() {
