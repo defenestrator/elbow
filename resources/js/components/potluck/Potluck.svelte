@@ -23,9 +23,10 @@
             cash: 2000
         },
         farouts: farouts,
-        bummers: bummers
+        bummers: bummers,
+        spaces:   spaces
     }
-
+    
     function abortGame(reason) {
         let bwned = ''
         if (state.bank.strains.length > 1) {
@@ -341,7 +342,7 @@
         mapEvents(event)
         console.log('First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' +
             currentPlayer().space + ', and has $' + currentPlayer().cash)
-        return setTimeout(() => executeTurn(), 1000);
+        return setTimeout(() => executeTurn(), 500);
     }
 
     function calculateSpaceId() {
@@ -492,18 +493,22 @@
 
 <main>
 <div class="container-fluid py-3 px-5 bg-white">
-        <button on:click="{startGame}" class="btn-blue"> Start Game</button>
-        <p class="inline-block">{state.players[state.activePlayerId].name } rolled {state.currentRoll}</p>
+        <button on:click="{startGame}" class="btn-blue"> Start Game</button><br>
+        <p class="inline-block mt-2">{state.players[state.activePlayerId].name } 
+        rolled {state.currentRoll} and landed on {state.spaces[state.players[state.activePlayerId].space -1].title}</p>
     </div>
     <div class="container-fluid py-3 px-5 bg-white">
     <div class="flex-row items-top">
     {#each state.players as player}   
     <div class="inline-block" style="width:{100 / state.players.length}%">
-        <div class="items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold">
+        <div class="items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold text-sm">
             {player.name} {@html player.token} <span class="text-green-600"> ${player.cash}</span></div>
-            <div class="border-solid mx-1 bg-gray-100 rounded-sm">
+            <div class="border-solid mx-1 bg-gray-100 rounded-sm text-x">
                 {#each player.strains as strain}
-                <p> {strain.name} <span class="text-green-600"> ${strain.oz} </span> (${strain.price / 10})</p>
+                <p> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
+                (vs ${strain.price / 10}) 
+                                
+                </p>
                 {/each}
             </div>
         </div>
