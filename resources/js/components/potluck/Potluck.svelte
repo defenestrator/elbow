@@ -493,7 +493,7 @@
 
 <main>
 <div class="container-fluid py-3 px-5 bg-white">
-        <button on:click="{startGame}" class="btn-blue"> Start Game</button><br>
+        <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber}</p><br>
         <p class="inline-block mt-2 text-sm">{state.players[state.activePlayerId].name } 
         rolled {state.currentRoll} and landed on {state.spaces[state.players[state.activePlayerId].space -1].title}</p>
     </div>
@@ -505,7 +505,7 @@
             <div class="m-1 bg-gray-100 rounded-sm text-xs">
                 {#each player.strains as strain}
                 <p class="p-1"> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
-                (vs ${strain.price / 10}) 
+                (${strain.price / 10}) 
                                 
                 </p>
                 {/each}
