@@ -1853,8 +1853,8 @@ const { document: document_1 } = svelte_internal__WEBPACK_IMPORTED_MODULE_0__["g
 
 function add_css() {
 	var style = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("style");
-	style.id = "svelte-1jfjjq1-style";
-	style.textContent = "div.svelte-1jfjjq1{box-sizing:border-box;text-transform:uppercase}.box.svelte-1jfjjq1{position:relative;top:26%;left:23%;right:23%;bottom:auto;overflow:hidden}.potluck.svelte-1jfjjq1{background-color:floralwhite;width:95.75vw;height:94.25vw;margin:10px auto}.gameBoard.svelte-1jfjjq1{height:100%;position:relative;background-color:floralwhite}.row.svelte-1jfjjq1{width:100%;display:flex}.top.svelte-1jfjjq1{height:15.384615385%}.center.svelte-1jfjjq1{height:69.23076923%}.square1.svelte-1jfjjq1{outline:1px solid black;flex-grow:1;position:relative;background:floralwhite}.square2.svelte-1jfjjq1{flex-grow:2;outline:1px solid black;display:flex;flex-direction:column;position:relative;background:floralwhite}.square9.svelte-1jfjjq1{flex-grow:9;outline:1px solid black;background:lightgoldenrodyellow}.squareSide.svelte-1jfjjq1{outline:1px solid black;width:100%;flex-grow:1;position:relative}.header.svelte-1jfjjq1{height:21%;position:absolute;outline:2px solid black;background:grey;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-position:contain}.headerSide.svelte-1jfjjq1{width:21%;position:absolute;outline:2px solid black}.header-top.svelte-1jfjjq1{bottom:1px;left:1px;right:1px;background:transparent url('/img/leaf-180-bg.png') center center no-repeat;background-size:contain}.header-bottom.svelte-1jfjjq1{top:1px;left:1px;right:1px;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-size:contain}.header-left.svelte-1jfjjq1{top:1px;bottom:1px;right:1px;background:grey;background:transparent url('/img/leaf-90-bg.png') center center no-repeat;background-size:contain}.header-right.svelte-1jfjjq1{top:1px;bottom:1px;left:1px;background:grey;background:transparent url('/img/leaf-270-bg.png') center center no-repeat;background-size:contain}.firstLine.svelte-1jfjjq1{position:absolute;font-size:0.7vw;font-weight:500;line-height:1vw;text-align:center}.firstLine-top.svelte-1jfjjq1{left:1px;right:1px;bottom:30%;height:10%}.firstLine-top.no-color.svelte-1jfjjq1{bottom:12%}.firstLine-left.svelte-1jfjjq1{top:0px;bottom:0px;right:42%}.firstLine-left.no-color.svelte-1jfjjq1{right:23%}.firstLine-right.svelte-1jfjjq1{top:0;bottom:0;left:42%}.firstLine-right.no-color.svelte-1jfjjq1{left:23%}.firstLine-bottom.svelte-1jfjjq1{left:0;right:0;top:30%}.firstLine-bottom.no-color.svelte-1jfjjq1{top:12%}.red.svelte-1jfjjq1{background-color:#ed1b24}.yellow.svelte-1jfjjq1{background-color:#fef200}.lightblue.svelte-1jfjjq1{background-color:#aae0fa}.brown.svelte-1jfjjq1{background-color:#955436}.blue.svelte-1jfjjq1{background-color:#0072bb}.green.svelte-1jfjjq1{background-color:#1fb25a}.orange.svelte-1jfjjq1{background-color:#f7941d}.purple.svelte-1jfjjq1{background-color:#d93a96}.left-side.svelte-1jfjjq1{transform:rotate(90deg)}.top-side.svelte-1jfjjq1{transform:rotate(180deg)}.right-side.svelte-1jfjjq1{transform:rotate(-90deg)}.logoBox.svelte-1jfjjq1{width:46%;background:transparent;position:absolute;transform:rotateZ(-45deg) translateX(-26.5%) translateY(246.5%);border:3px solid black;border-radius:1em;padding:0, 0.1em, 0.2em 0.1em;text-align:center;box-shadow:inset 0px 4px 24px 8px white;box-shadow:inset 0px 2px 12px 0px greenyellow}.logoName.svelte-1jfjjq1{font-size:7.0vw;color:black;font-family:futura;-webkit-text-stroke-width:2px;-webkit-text-stroke-color:black;text-shadow:-3px 2px 0px black;-webkit-text-fill-color:transparent}.card-box.svelte-1jfjjq1{position:absolute;width:15%;height:9vw}.card-blue.svelte-1jfjjq1{background:rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;background-size:contain;border-radius:0.3em;transform:rotateZ(-45deg) translateX(-5.5%) translateY(132.25%)}.card-blue-inside.svelte-1jfjjq1{width:94%;height:94%;margin:0.3vw auto;position:relative}.card-orange.svelte-1jfjjq1{background:rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;background-size:contain;transform:rotateZ(-45deg) translateX(-25%) translateY(687.25%);border-radius:0.3em}.card-orange-inside.svelte-1jfjjq1{width:94%;height:94%;margin:0.3vw auto;position:relative}.corner.svelte-1jfjjq1{position:absolute;text-align:center;line-height:8vw;font-size:1.2vw;font-weight:500}.corner1.svelte-1jfjjq1{transform:rotateZ(135deg) translateX(-22%) translateY(-107%)}.corner2.svelte-1jfjjq1{transform:rotateZ(-135deg) translateX(-75%) translateY(-75%);line-height:1em}.corner4.svelte-1jfjjq1{transform:rotateZ(45deg) translateX(32%) translateY(0%);line-height:1em}";
+	style.id = "svelte-c2takw-style";
+	style.textContent = "div.svelte-c2takw{box-sizing:border-box;text-transform:uppercase}.box.svelte-c2takw{position:relative;top:50%;left:50%;right:50%;bottom:auto;overflow:hidden}.potluck.svelte-c2takw{background-color:floralwhite;width:95.75vw;height:94.25vw;margin:10px auto}.gameBoard.svelte-c2takw{height:100%;position:relative;background-color:floralwhite}.row.svelte-c2takw{width:100%;display:flex}.top.svelte-c2takw{height:15.384615385%}.center.svelte-c2takw{height:69.23076923%}.square1.svelte-c2takw{outline:1px solid black;flex-grow:1;position:relative;background:floralwhite}.square2.svelte-c2takw{flex-grow:2;outline:1px solid black;display:flex;flex-direction:column;position:relative;background:floralwhite}.square9.svelte-c2takw{flex-grow:9;outline:1px solid black;background:lightgoldenrodyellow}.squareSide.svelte-c2takw{outline:1px solid black;width:100%;flex-grow:1;position:relative}.header.svelte-c2takw{height:21%;position:absolute;outline:2px solid black;background:grey;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-position:contain}.headerSide.svelte-c2takw{width:21%;position:absolute;outline:2px solid black}.header-top.svelte-c2takw{bottom:1px;left:1px;right:1px;background:transparent url('/img/leaf-180-bg.png') center center no-repeat;background-size:contain}.header-bottom.svelte-c2takw{top:1px;left:1px;right:1px;background:transparent url('/img/leaf-bg.png') center center no-repeat;background-size:contain}.header-left.svelte-c2takw{top:1px;bottom:1px;right:1px;background:grey;background:transparent url('/img/leaf-90-bg.png') center center no-repeat;background-size:contain}.header-right.svelte-c2takw{top:1px;bottom:1px;left:1px;background:grey;background:transparent url('/img/leaf-270-bg.png') center center no-repeat;background-size:contain}.firstLine.svelte-c2takw{position:absolute;font-size:0.7vw;font-weight:500;line-height:1vw;text-align:center}.firstLine-top.svelte-c2takw{left:1px;right:1px;bottom:30%;height:10%}.firstLine-top.no-color.svelte-c2takw{bottom:12%}.firstLine-left.svelte-c2takw{top:0px;bottom:0px;right:42%}.firstLine-left.no-color.svelte-c2takw{right:23%}.firstLine-right.svelte-c2takw{top:0;bottom:0;left:42%}.firstLine-right.no-color.svelte-c2takw{left:23%}.firstLine-bottom.svelte-c2takw{left:0;right:0;top:30%}.firstLine-bottom.no-color.svelte-c2takw{top:12%}.red.svelte-c2takw{background-color:#ed1b24}.yellow.svelte-c2takw{background-color:#fef200}.lightblue.svelte-c2takw{background-color:#aae0fa}.brown.svelte-c2takw{background-color:#955436}.blue.svelte-c2takw{background-color:#0072bb}.green.svelte-c2takw{background-color:#1fb25a}.orange.svelte-c2takw{background-color:#f7941d}.purple.svelte-c2takw{background-color:#d93a96}.left-side.svelte-c2takw{transform:rotate(90deg)}.top-side.svelte-c2takw{transform:rotate(180deg)}.right-side.svelte-c2takw{transform:rotate(-90deg)}.logoBox.svelte-c2takw{width:46%;background:transparent;position:absolute;transform:rotateZ(-45deg) translateX(-26.5%) translateY(246.5%);border:3px solid black;border-radius:1em;padding:0, 0.1em, 0.2em 0.1em;text-align:center;box-shadow:inset 0px 4px 24px 8px white;box-shadow:inset 0px 2px 12px 0px greenyellow}.logoName.svelte-c2takw{font-size:7.0vw;color:black;font-family:futura;-webkit-text-stroke-width:2px;-webkit-text-stroke-color:black;text-shadow:-3px 2px 0px black;-webkit-text-fill-color:transparent}.card-box.svelte-c2takw{position:absolute;width:15%;height:9vw}.card-blue.svelte-c2takw{background:rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;background-size:contain;border-radius:0.3em;transform:rotateZ(-45deg) translateX(-5.5%) translateY(132.25%)}.card-blue-inside.svelte-c2takw{width:94%;height:94%;margin:0.3vw auto;position:relative}.card-orange.svelte-c2takw{background:rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;background-size:contain;transform:rotateZ(-45deg) translateX(-25%) translateY(687.25%);border-radius:0.3em}.card-orange-inside.svelte-c2takw{width:94%;height:94%;margin:0.3vw auto;position:relative}.corner.svelte-c2takw{position:absolute;text-align:center;line-height:8vw;font-size:1.2vw;font-weight:500}.corner1.svelte-c2takw{transform:rotateZ(135deg) translateX(-22%) translateY(-107%)}.corner2.svelte-c2takw{transform:rotateZ(-135deg) translateX(-75%) translateY(-75%);line-height:1em}.corner4.svelte-c2takw{transform:rotateZ(45deg) translateX(32%) translateY(0%);line-height:1em}";
 	Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(document_1.head, style);
 }
 
@@ -1911,7 +1911,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (509:16) {#each player.strains as strain}
+// (719:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[19].name + "";
@@ -1962,7 +1962,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (504:4) {#each state.players as player}
+// (714:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2006,10 +2006,10 @@ function create_each_block(ctx) {
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			html_tag = new svelte_internal__WEBPACK_IMPORTED_MODULE_0__["HtmlTag"](raw_value, t2);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", "text-green-600");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300 svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300 svelte-c2takw");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div0, "overflow", "hidden");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "m-1 bg-gray-100 rounded-sm text-xs svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "inline-block align-top svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "m-1 bg-gray-100 rounded-sm text-xs svelte-c2takw");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "inline-block align-top svelte-c2takw");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div2, "width", 100 / /*state*/ ctx[0].players.length + "%");
 		},
 		m(target, anchor) {
@@ -2083,8 +2083,8 @@ function create_fragment(ctx) {
 	let br0;
 	let t4;
 	let t5;
-	let div1;
-	let t6;
+	let div151;
+	let t183;
 	let div152;
 	let dispose;
 	let if_block = /*state*/ ctx[0].currentRoll != 0 && create_if_block(ctx);
@@ -2110,133 +2110,135 @@ function create_fragment(ctx) {
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			if (if_block) if_block.c();
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			div151 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+
+			div151.innerHTML = `<div class="gameBoard svelte-c2takw"><div class="row top svelte-c2takw"><div class="square2 svelte-c2takw"><span class="corner corner1 svelte-c2takw">JACKPOT!</span> 
+                    <div class="box svelte-c2takw" id="20"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-top purple svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-c2takw">Hawaiian</div> 
+                    <div class="box svelte-c2takw" id="21"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-top no-color top-side svelte-c2takw">Vacation<br>Time<br>Relax,<br> Lose a Turn
+                    </div> 
+                    <div class="box svelte-c2takw" id="22"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-top no-color top-side svelte-c2takw">Bum Me Out</div> 
+                    <div class="box svelte-c2takw" id="23"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-top orange svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-c2takw">Nicaraguan</div> 
+                    <div class="box svelte-c2takw" id="24"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-top no-color top-side svelte-c2takw">MUNCHIES!<br> Pay 10x your roll</div> 
+                    <div class="box svelte-c2takw" id="25"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-top yellow svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-c2takw">Colombian Gold</div> 
+                    <div class="box svelte-c2takw" id="26"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-top top-side svelte-c2takw">Far<br>Out</div> 
+                    <div class="box svelte-c2takw" id="27"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-top lightblue svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-c2takw">Just <br>Good Pot</div> 
+                    <div class="box svelte-c2takw" id="28"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-top blue svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-top top-side svelte-c2takw">just<br> bad pot</div> 
+                    <div class="box svelte-c2takw" id="29"></div></div> 
+                <div class="square2 svelte-c2takw"><span class="corner corner2 svelte-c2takw">Busted...<br>lose 1 turn</span></div> 
+                <div class="box svelte-c2takw" id="30"></div></div> 
+
+            <div class="row center svelte-c2takw"><div class="square2 svelte-c2takw"><div class="squareSide svelte-c2takw"><div class="headerSide header-left yellow svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-c2takw">Acapulco<br>Gold</div> 
+                        <div class="box svelte-c2takw" id="19"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-left no-color left-side svelte-c2takw">The Law: <br> Pay 20x</div> 
+                        <div class="box svelte-c2takw" id="18"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-left yellow svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-c2takw">Sinsemilla</div> 
+                        <div class="box svelte-c2takw" id="17"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-left no-color left-side svelte-c2takw">Dealing <br>Square</div> 
+                        <div class="box svelte-c2takw" id="16"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-left red svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-c2takw">Maui Wowie</div> 
+                        <div class="box svelte-c2takw" id="15"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-left no-color left-side svelte-c2takw">Midnight <br>Airstrip<br> Pay 40x</div> 
+                        <div class="box svelte-c2takw" id="14"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-left green svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-c2takw">Guerrero<br> Green</div> 
+                        <div class="box svelte-c2takw" id="13"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-left no-color left-side svelte-c2takw">You Pay<br>10x</div> 
+                        <div class="box svelte-c2takw" id="12"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-left lightblue svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-left left-side svelte-c2takw">colombian<br>chiba</div> 
+                        <div class="box svelte-c2takw" id="11"></div></div></div> 
+                <div class="square9 svelte-c2takw"><div class="card-box card-blue svelte-c2takw"><div class="card-blue-inside svelte-c2takw"></div></div> 
+                    <div class="logoBox svelte-c2takw"><span class="logoName svelte-c2takw">Pot Luck</span></div> 
+                    <div class="card-box card-orange svelte-c2takw"><div class="card-orange-inside svelte-c2takw"></div></div></div> 
+                <div class="square2 svelte-c2takw"><div class="squareSide svelte-c2takw"><div class="headerSide header-right purple svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-c2takw">Vietnamese</div> 
+                        <div class="box svelte-c2takw" id="31"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-right orange svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-c2takw">Stickless<br>Thai</div> 
+                        <div class="box svelte-c2takw" id="32"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-right no-color right-side svelte-c2takw">No-Tell<br> Car Rental<br>pay 10x
+                        </div> 
+                        <div class="box svelte-c2takw" id="33"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-right red svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-c2takw">Panama<br> Red</div> 
+                        <div class="box svelte-c2takw" id="34"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-right brown svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-c2takw">Mexican</div> 
+                        <div class="box svelte-c2takw" id="35"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-right no-color right-side svelte-c2takw">Dealing <br>Square</div> 
+                        <div class="box svelte-c2takw" id="36"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-right lightblue svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-c2takw">Jamaican</div> 
+                        <div class="box svelte-c2takw" id="37"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="firstLine firstLine-right no-color right-side svelte-c2takw">bum<br>me out</div> 
+                        <div class="box svelte-c2takw" id="38"></div></div> 
+                    <div class="squareSide svelte-c2takw"><div class="headerSide header-right yellow svelte-c2takw"></div> 
+                        <div class="firstLine firstLine-right right-side svelte-c2takw">michoacan</div> 
+                        <div class="box svelte-c2takw" id="39"></div></div></div></div> 
+
+            <div class="row top svelte-c2takw"><div class="square2 svelte-c2takw"><span class="corner corner4 svelte-c2takw" style="line-height:1em;"> Hospital: <br>lose a
+                        turn. <br>pay 100x your roll
+                    </span> 
+                    <div class="box svelte-c2takw" id="10"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-bottom red svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-bottom svelte-c2takw">colombian <br>red bud</div> 
+                    <div class="box svelte-c2takw" id="9"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-bottom blue svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-bottom svelte-c2takw">thai<br>stick</div> 
+                    <div class="box svelte-c2takw" id="8"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-bottom no-color svelte-c2takw">downtown<br>pharmacy <br>Pay 5x</div> 
+                    <div class="box svelte-c2takw" id="7"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-bottom green svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-bottom svelte-c2takw">gainesville<br> green</div> 
+                    <div class="box svelte-c2takw" id="6"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-bottom orange svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-bottom svelte-c2takw">wacky<br> weed</div> 
+                    <div id="5" class="svelte-c2takw"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-bottom no-color svelte-c2takw">Far <br> Out!</div> 
+                    <div class="box svelte-c2takw" id="4"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-bottom green svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-bottom svelte-c2takw">Home Grown</div> 
+                    <div class="box svelte-c2takw" id="3"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="firstLine firstLine-bottom no-color svelte-c2takw">Flying<br> Too High:<br>Lose A<br>Turn</div> 
+                    <div class="box svelte-c2takw" id="2"></div></div> 
+                <div class="square1 svelte-c2takw"><div class="header header-bottom brown svelte-c2takw"></div> 
+                    <div class="firstLine firstLine-bottom svelte-c2takw">Colombian</div> 
+                    <div class="box svelte-c2takw" id="1"></div></div> 
+                <div class="square2 svelte-c2takw" style="background-image:url(&#39;/img/straight.jpg&#39;); background-size:cover;"><div class="box svelte-c2takw" id="40"></div></div></div></div>`;
+
+			t183 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			div152 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			div152 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
-
-			div152.innerHTML = `<div class="gameBoard svelte-1jfjjq1"><div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner1 svelte-1jfjjq1">JACKPOT!</span> 
-                    <div class="box svelte-1jfjjq1" id="20"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-top purple svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Hawaiian</div> 
-                    <div class="box svelte-1jfjjq1" id="21"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top no-color top-side svelte-1jfjjq1">Vacation<br>Time<br>Relax,<br> Lose a Turn
-                    </div> 
-                    <div class="box svelte-1jfjjq1" id="22"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top no-color top-side svelte-1jfjjq1">Bum Me Out</div> 
-                    <div class="box svelte-1jfjjq1" id="23"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-top orange svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Nicaraguan</div> 
-                    <div class="box svelte-1jfjjq1" id="24"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top no-color top-side svelte-1jfjjq1">MUNCHIES!<br> Pay 10x your roll</div> 
-                    <div class="box svelte-1jfjjq1" id="25"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-top yellow svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Colombian Gold</div> 
-                    <div class="box svelte-1jfjjq1" id="26"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-top top-side svelte-1jfjjq1">Far<br>Out</div> 
-                    <div class="box svelte-1jfjjq1" id="27"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-top lightblue svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Just <br>Good Pot</div> 
-                    <div class="box svelte-1jfjjq1" id="28"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-top blue svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-top top-side svelte-1jfjjq1">just<br> bad pot</div> 
-                    <div class="box svelte-1jfjjq1" id="29"></div></div> 
-                <div class="square2 svelte-1jfjjq1"><span class="corner corner2 svelte-1jfjjq1">Busted...<br>lose 1 turn</span></div> 
-                <div class="box svelte-1jfjjq1" id="30"></div></div> 
-
-            <div class="row center svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left yellow svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Acapulco<br>Gold</div> 
-                        <div class="box svelte-1jfjjq1" id="19"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">The Law: <br> Pay 20x</div> 
-                        <div class="box svelte-1jfjjq1" id="18"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left yellow svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Sinsemilla</div> 
-                        <div class="box svelte-1jfjjq1" id="17"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">Dealing <br>Square</div> 
-                        <div class="box svelte-1jfjjq1" id="16"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left red svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Maui Wowie</div> 
-                        <div class="box svelte-1jfjjq1" id="15"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">Midnight <br>Airstrip<br> Pay 40x</div> 
-                        <div class="box svelte-1jfjjq1" id="14"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left green svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">Guerrero<br> Green</div> 
-                        <div class="box svelte-1jfjjq1" id="13"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-left no-color left-side svelte-1jfjjq1">You Pay<br>10x</div> 
-                        <div class="box svelte-1jfjjq1" id="12"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-left lightblue svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-left left-side svelte-1jfjjq1">colombian<br>chiba</div> 
-                        <div class="box svelte-1jfjjq1" id="11"></div></div></div> 
-                <div class="square9 svelte-1jfjjq1"><div class="card-box card-blue svelte-1jfjjq1"><div class="card-blue-inside svelte-1jfjjq1"></div></div> 
-                    <div class="logoBox svelte-1jfjjq1"><span class="logoName svelte-1jfjjq1">Pot Luck</span></div> 
-                    <div class="card-box card-orange svelte-1jfjjq1"><div class="card-orange-inside svelte-1jfjjq1"></div></div></div> 
-                <div class="square2 svelte-1jfjjq1"><div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right purple svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Vietnamese</div> 
-                        <div class="box svelte-1jfjjq1" id="31"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right orange svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Stickless<br>Thai</div> 
-                        <div class="box svelte-1jfjjq1" id="32"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-right no-color right-side svelte-1jfjjq1">No-Tell<br> Car Rental<br>pay 10x
-                        </div> 
-                        <div class="box svelte-1jfjjq1" id="33"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right red svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Panama<br> Red</div> 
-                        <div class="box svelte-1jfjjq1" id="34"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right brown svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Mexican</div> 
-                        <div class="box svelte-1jfjjq1" id="35"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-right no-color right-side svelte-1jfjjq1">Dealing <br>Square</div> 
-                        <div class="box svelte-1jfjjq1" id="36"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right lightblue svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">Jamaican</div> 
-                        <div class="box svelte-1jfjjq1" id="37"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="firstLine firstLine-right no-color right-side svelte-1jfjjq1">bum<br>me out</div> 
-                        <div class="box svelte-1jfjjq1" id="38"></div></div> 
-                    <div class="squareSide svelte-1jfjjq1"><div class="headerSide header-right yellow svelte-1jfjjq1"></div> 
-                        <div class="firstLine firstLine-right right-side svelte-1jfjjq1">michoacan</div> 
-                        <div class="box svelte-1jfjjq1" id="39"></div></div></div></div> 
-
-            <div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner4 svelte-1jfjjq1" style="line-height:1em;"> Hospital: <br>lose a
-                        turn. <br>pay 100x your roll
-                    </span> 
-                    <div class="box svelte-1jfjjq1" id="10"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom red svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">colombian <br>red bud</div> 
-                    <div class="box svelte-1jfjjq1" id="9"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom blue svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">thai<br>stick</div> 
-                    <div class="box svelte-1jfjjq1" id="8"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-bottom no-color svelte-1jfjjq1">downtown<br>pharmacy <br>Pay 5x</div> 
-                    <div class="box svelte-1jfjjq1" id="7"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom green svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">gainesville<br> green</div> 
-                    <div class="box svelte-1jfjjq1" id="6"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom orange svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">wacky<br> weed</div> 
-                    <div id="5" class="svelte-1jfjjq1"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-bottom no-color svelte-1jfjjq1">Far <br> Out!</div> 
-                    <div class="box svelte-1jfjjq1" id="4"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom green svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">Home Grown</div> 
-                    <div class="box svelte-1jfjjq1" id="3"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="firstLine firstLine-bottom no-color svelte-1jfjjq1">Flying<br> Too High:<br>Lose A<br>Turn</div> 
-                    <div class="box svelte-1jfjjq1" id="2"></div></div> 
-                <div class="square1 svelte-1jfjjq1"><div class="header header-bottom brown svelte-1jfjjq1"></div> 
-                    <div class="firstLine firstLine-bottom svelte-1jfjjq1">Colombian</div> 
-                    <div class="box svelte-1jfjjq1" id="1"></div></div> 
-                <div class="square2 svelte-1jfjjq1" style="background-image:url(&#39;/img/straight.jpg&#39;); background-size:cover;"><div class="box svelte-1jfjjq1" id="40"></div></div></div></div>`;
-
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "rel", "stylesheet");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "href", "/css/style.css");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "btn-blue");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block text-bold text-lg mx-2");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "container flex-row svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div152, "class", "potluck svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-3 px-1 bg-white svelte-c2takw");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div151, "class", "potluck svelte-c2takw");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div151, "overflow", "hidden");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div151, "border", "1px solid black");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div152, "class", "container flex-row svelte-c2takw");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(document_1.head, link);
@@ -2251,14 +2253,14 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t4);
 			if (if_block) if_block.m(div0, null);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t5);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div151);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t183);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div152);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].m(div1, null);
+				each_blocks[i].m(div152, null);
 			}
 
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t6);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div152);
 			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button, "click", /*startGame*/ ctx[1]);
 		},
 		p(ctx, [dirty]) {
@@ -2289,7 +2291,7 @@ function create_fragment(ctx) {
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(div1, null);
+						each_blocks[i].m(div152, null);
 					}
 				}
 
@@ -2809,7 +2811,7 @@ function instance($$self, $$props, $$invalidate) {
 class Potluck extends svelte_internal__WEBPACK_IMPORTED_MODULE_0__["SvelteComponent"] {
 	constructor(options) {
 		super();
-		if (!document_1.getElementById("svelte-1jfjjq1-style")) add_css();
+		if (!document_1.getElementById("svelte-c2takw-style")) add_css();
 		Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["init"])(this, options, instance, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__["safe_not_equal"], {});
 	}
 }
@@ -2987,7 +2989,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var players = [{
   name: "Alice",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:blue; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:blue; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,
@@ -2998,7 +3000,7 @@ var players = [{
   getOutOfHospital: false
 }, {
   name: "Barbara",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:green; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:green; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,
@@ -3009,7 +3011,7 @@ var players = [{
   getOutOfHospital: false
 }, {
   name: "Carolyn",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:yellow; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:yellow; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,
@@ -3020,7 +3022,7 @@ var players = [{
   getOutOfHospital: false
 }, {
   name: "Dorothy",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:orange; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:orange; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,
@@ -3031,7 +3033,7 @@ var players = [{
   getOutOfHospital: false
 }, {
   name: "Evelyn",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:red; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:red; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,
@@ -3042,7 +3044,7 @@ var players = [{
   getOutOfHospital: false
 }, _defineProperty({
   name: "Fatíma",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:purple; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:purple; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,
@@ -3053,7 +3055,7 @@ var players = [{
   getOutOfHospital: false
 }, "discount", false), {
   name: "Geraldine",
-  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:black; height:15px; width:15px; border-radius:50%;"></div>',
+  token: '<div style="display:grid; align-items: center; justify-content: center; background-color:black; height:1.5vw; width:1.5vw; max-width:15px; max-height:15px; border-radius:50%;"></div>',
   cash: 2875,
   strains: [],
   playing: true,

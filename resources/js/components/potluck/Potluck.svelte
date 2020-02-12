@@ -492,7 +492,7 @@
 
 
 <main>
-<div class="container-fluid py-3 px-5 bg-white">
+<div class="container-fluid py-3 px-1 bg-white">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber}</p><br>
         {#if state.currentRoll != 0}
             <p class="inline-block mt-2 text-sm">{state.players[state.activePlayerId].name } 
@@ -500,23 +500,8 @@
             </p>
         {/if}
     </div>
-    <div class="container flex-row">
-    {#each state.players as player}   
-    <div class="inline-block align-top" style="width:{100 / state.players.length}%;">
-        <div class="p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300" style="overflow:hidden;">
-            {player.name} {@html player.token} <span class="text-green-600"> ${player.cash}</span></div>
-            <div class="m-1 bg-gray-100 rounded-sm text-xs">
-                {#each player.strains as strain}
-                <p class="p-1"> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
-                (${strain.price / 10}) 
-                                
-                </p>
-                {/each}
-            </div>
-        </div>
-    {/each}
-    </div> 
-    <div class="potluck">
+    
+    <div class="potluck" style="overflow:hidden; border:1px solid black;">
         <div class="gameBoard">
             <div class="row top">
                 <div class="square2"><span class="corner corner1">JACKPOT!</span>
@@ -725,7 +710,22 @@
             </div>
         </div>
     </div>
-    
+    <div class="container flex-row">
+    {#each state.players as player}   
+    <div class="inline-block align-top" style="width:{100 / state.players.length}%;">
+        <div class="p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300" style="overflow:hidden;">
+            {player.name} {@html player.token} <span class="text-green-600"> ${player.cash}</span></div>
+            <div class="m-1 bg-gray-100 rounded-sm text-xs">
+                {#each player.strains as strain}
+                <p class="p-1"> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
+                (${strain.price / 10}) 
+                                
+                </p>
+                {/each}
+            </div>
+        </div>
+    {/each}
+    </div> 
 </main>
 
 <style>
@@ -737,9 +737,9 @@
 
     .box {
         position:relative;
-        top:26%;
-        left:23%;
-        right:23%;
+        top:50%;
+        left:50%;
+        right:50%;
         bottom:auto;
         overflow:hidden;
     }
