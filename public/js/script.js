@@ -2742,7 +2742,7 @@ function instance($$self, $$props, $$invalidate) {
 			() => {
 				window.location.href = "/potluck";
 			},
-			2000
+			1000
 		);
 	}
 
