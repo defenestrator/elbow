@@ -494,18 +494,17 @@
 <main>
 <div class="container-fluid py-3 px-5 bg-white">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button><br>
-        <p class="inline-block mt-2">{state.players[state.activePlayerId].name } 
+        <p class="inline-block mt-2 text-sm">{state.players[state.activePlayerId].name } 
         rolled {state.currentRoll} and landed on {state.spaces[state.players[state.activePlayerId].space -1].title}</p>
     </div>
-    <div class="container-fluid py-3 px-5 bg-white">
-    <div class="flex-row items-top">
+    <div class="container flex-row">
     {#each state.players as player}   
-    <div class="inline-block" style="width:{100 / state.players.length}%">
-        <div class="items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold text-sm">
+    <div class="inline-block align-top" style="width:{100 / state.players.length}%">
+        <div class="text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold text-sm">
             {player.name} {@html player.token} <span class="text-green-600"> ${player.cash}</span></div>
-            <div class="border-solid mx-1 bg-gray-100 rounded-sm text-x">
+            <div class="m-1 bg-gray-100 rounded-sm text-xs">
                 {#each player.strains as strain}
-                <p> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
+                <p class="p-1"> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
                 (vs ${strain.price / 10}) 
                                 
                 </p>
@@ -514,7 +513,6 @@
         </div>
     {/each}
     </div> 
-    </div>    
     <div class="potluck">
         <div class="gameBoard">
             <div class="row top">

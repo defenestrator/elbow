@@ -1870,7 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (507:16) {#each player.strains as strain}
+// (506:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[19].name + "";
@@ -1897,6 +1897,7 @@ function create_each_block_1(ctx) {
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t5_value);
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(") \n                                \n                ");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", "text-green-600");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "p-1");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p, anchor);
@@ -1920,7 +1921,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (502:4) {#each state.players as player}
+// (501:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -1964,9 +1965,9 @@ function create_each_block(ctx) {
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			html_tag = new svelte_internal__WEBPACK_IMPORTED_MODULE_0__["HtmlTag"](raw_value, t2);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", "text-green-600");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "items-top text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold text-sm svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "border-solid mx-1 bg-gray-100 rounded-sm text-x svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "inline-block svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "text-blue-800 p-1 mx-1 bg-gray-200 border-solid border-1 border-gray-600 rounded-sm font-bold text-sm svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "m-1 bg-gray-100 rounded-sm text-xs svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "inline-block align-top svelte-1jfjjq1");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div2, "width", 100 / /*state*/ ctx[0].players.length + "%");
 		},
 		m(target, anchor) {
@@ -2045,10 +2046,9 @@ function create_fragment(ctx) {
 	let t7_value = /*state*/ ctx[0].spaces[/*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].space - 1].title + "";
 	let t7;
 	let t8;
-	let div2;
 	let div1;
 	let t9;
-	let div153;
+	let div152;
 	let dispose;
 	let each_value = /*state*/ ctx[0].players;
 	let each_blocks = [];
@@ -2074,7 +2074,6 @@ function create_fragment(ctx) {
 			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" and landed on ");
 			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t7_value);
 			t8 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			div2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			div1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2082,9 +2081,9 @@ function create_fragment(ctx) {
 			}
 
 			t9 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			div153 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
+			div152 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
-			div153.innerHTML = `<div class="gameBoard svelte-1jfjjq1"><div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner1 svelte-1jfjjq1">JACKPOT!</span> 
+			div152.innerHTML = `<div class="gameBoard svelte-1jfjjq1"><div class="row top svelte-1jfjjq1"><div class="square2 svelte-1jfjjq1"><span class="corner corner1 svelte-1jfjjq1">JACKPOT!</span> 
                     <div class="box svelte-1jfjjq1" id="20"></div></div> 
                 <div class="square1 svelte-1jfjjq1"><div class="header header-top purple svelte-1jfjjq1"></div> 
                     <div class="firstLine firstLine-top top-side svelte-1jfjjq1">Hawaiian</div> 
@@ -2198,11 +2197,10 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "rel", "stylesheet");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "href", "/css/style.css");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "btn-blue");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block mt-2");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block mt-2 text-sm");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "flex-row items-top svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "container-fluid py-3 px-5 bg-white svelte-1jfjjq1");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div153, "class", "potluck svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "container flex-row svelte-1jfjjq1");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div152, "class", "potluck svelte-1jfjjq1");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(document_1.head, link);
@@ -2219,15 +2217,14 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t6);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t7);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t8);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div2);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, div1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div1);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(div1, null);
 			}
 
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t9);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div153);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div152);
 			dispose = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["listen"])(button, "click", /*startGame*/ ctx[1]);
 		},
 		p(ctx, [dirty]) {
