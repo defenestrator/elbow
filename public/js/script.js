@@ -1860,17 +1860,17 @@ function add_css() {
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[19] = list[i];
+	child_ctx[20] = list[i];
 	return child_ctx;
 }
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[16] = list[i];
+	child_ctx[17] = list[i];
 	return child_ctx;
 }
 
-// (498:8) {#if state.currentRoll != 0}
+// (493:8) {#if state.currentRoll > 0}
 function create_if_block(ctx) {
 	let p;
 	let t0_value = /*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].name + "";
@@ -1890,7 +1890,7 @@ function create_if_block(ctx) {
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t2_value);
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" and landed on ");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t4_value);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block mt-2 text-sm");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "block mt-2 text-sm");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p, anchor);
@@ -1911,18 +1911,18 @@ function create_if_block(ctx) {
 	};
 }
 
-// (720:16) {#each player.strains as strain}
+// (716:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
-	let t0_value = /*strain*/ ctx[19].name + "";
+	let t0_value = /*strain*/ ctx[20].name + "";
 	let t0;
 	let t1;
 	let span;
 	let t2;
-	let t3_value = /*strain*/ ctx[19].oz + "";
+	let t3_value = /*strain*/ ctx[20].oz + "";
 	let t3;
 	let t4;
-	let t5_value = /*strain*/ ctx[19].price / 10 + "";
+	let t5_value = /*strain*/ ctx[20].price / 10 + "";
 	let t5;
 	let t6;
 
@@ -1952,9 +1952,9 @@ function create_each_block_1(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t6);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*strain*/ ctx[19].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
-			if (dirty & /*state*/ 1 && t3_value !== (t3_value = /*strain*/ ctx[19].oz + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t3, t3_value);
-			if (dirty & /*state*/ 1 && t5_value !== (t5_value = /*strain*/ ctx[19].price / 10 + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t5, t5_value);
+			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*strain*/ ctx[20].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
+			if (dirty & /*state*/ 1 && t3_value !== (t3_value = /*strain*/ ctx[20].oz + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t3, t3_value);
+			if (dirty & /*state*/ 1 && t5_value !== (t5_value = /*strain*/ ctx[20].price / 10 + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t5, t5_value);
 		},
 		d(detaching) {
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(p);
@@ -1962,24 +1962,24 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (715:4) {#each state.players as player}
+// (711:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
-	let t0_value = /*player*/ ctx[16].name + "";
+	let t0_value = /*player*/ ctx[17].name + "";
 	let t0;
 	let t1;
 	let html_tag;
-	let raw_value = /*player*/ ctx[16].token + "";
+	let raw_value = /*player*/ ctx[17].token + "";
 	let t2;
 	let span;
 	let t3;
-	let t4_value = /*player*/ ctx[16].cash + "";
+	let t4_value = /*player*/ ctx[17].cash + "";
 	let t4;
 	let t5;
 	let div1;
 	let t6;
-	let each_value_1 = /*player*/ ctx[16].strains;
+	let each_value_1 = /*player*/ ctx[17].strains;
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_1.length; i += 1) {
@@ -2032,12 +2032,12 @@ function create_each_block(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div2, t6);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*player*/ ctx[16].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
-			if (dirty & /*state*/ 1 && raw_value !== (raw_value = /*player*/ ctx[16].token + "")) html_tag.p(raw_value);
-			if (dirty & /*state*/ 1 && t4_value !== (t4_value = /*player*/ ctx[16].cash + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
+			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*player*/ ctx[17].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
+			if (dirty & /*state*/ 1 && raw_value !== (raw_value = /*player*/ ctx[17].token + "")) html_tag.p(raw_value);
+			if (dirty & /*state*/ 1 && t4_value !== (t4_value = /*player*/ ctx[17].cash + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
 
 			if (dirty & /*state*/ 1) {
-				each_value_1 = /*player*/ ctx[16].strains;
+				each_value_1 = /*player*/ ctx[17].strains;
 				let i;
 
 				for (i = 0; i < each_value_1.length; i += 1) {
@@ -2076,18 +2076,22 @@ function create_fragment(ctx) {
 	let main;
 	let div0;
 	let button;
-	let p;
+	let p0;
 	let t2;
 	let t3_value = /*state*/ ctx[0].turnNumber + "";
 	let t3;
 	let br0;
 	let t4;
 	let t5;
+	let p1;
+	let t6_value = /*state*/ ctx[0].message + "";
+	let t6;
+	let t7;
 	let div151;
-	let t183;
+	let t185;
 	let div152;
 	let dispose;
-	let if_block = /*state*/ ctx[0].currentRoll != 0 && create_if_block(ctx);
+	let if_block = /*state*/ ctx[0].currentRoll > 0 && create_if_block(ctx);
 	let each_value = /*state*/ ctx[0].players;
 	let each_blocks = [];
 
@@ -2103,13 +2107,16 @@ function create_fragment(ctx) {
 			div0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 			button = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("button");
 			button.textContent = "Start Game";
-			p = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
+			p0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
 			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])("Turn #");
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
 			br0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("br");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			if (if_block) if_block.c();
 			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			p1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t6_value);
+			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div151 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			div151.innerHTML = `<div class="gameBoard svelte-121h6el"><div class="row top svelte-121h6el"><div class="square2 svelte-121h6el"><span class="corner corner1 svelte-121h6el">JACKPOT!</span> 
@@ -2223,7 +2230,7 @@ function create_fragment(ctx) {
                     <div class="box svelte-121h6el" id="1"></div></div> 
                 <div class="square2 svelte-121h6el" style="background-image:url(&#39;/img/straight.jpg&#39;); background-size:cover;"><div class="box svelte-121h6el" id="40"></div></div></div></div>`;
 
-			t183 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t185 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div152 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2233,8 +2240,9 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "rel", "stylesheet");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "href", "/css/style.css");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "btn-blue");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block text-bold text-lg mx-2");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-2 px-4 bg-white svelte-121h6el");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p0, "class", "inline-block text-bold text-lg mx-2");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p1, "class", "block mt-2 text-sm");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid p-1 bg-white svelte-121h6el");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div151, "class", "potluck svelte-121h6el");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div152, "class", "container p-1 mx-1 flex-row svelte-121h6el");
 		},
@@ -2244,15 +2252,18 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, main, anchor);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, button);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, p);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t2);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t3);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, p0);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p0, t2);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p0, t3);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, br0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t4);
 			if (if_block) if_block.m(div0, null);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, p1);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t6);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t7);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div151);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t183);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t185);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div152);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2264,18 +2275,20 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			if (dirty & /*state*/ 1 && t3_value !== (t3_value = /*state*/ ctx[0].turnNumber + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t3, t3_value);
 
-			if (/*state*/ ctx[0].currentRoll != 0) {
+			if (/*state*/ ctx[0].currentRoll > 0) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
 					if_block = create_if_block(ctx);
 					if_block.c();
-					if_block.m(div0, null);
+					if_block.m(div0, t5);
 				}
 			} else if (if_block) {
 				if_block.d(1);
 				if_block = null;
 			}
+
+			if (dirty & /*state*/ 1 && t6_value !== (t6_value = /*state*/ ctx[0].message + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t6, t6_value);
 
 			if (dirty & /*state*/ 1) {
 				each_value = /*state*/ ctx[0].players;
@@ -2313,30 +2326,6 @@ function create_fragment(ctx) {
 	};
 }
 
-function pound(strain) {
-	// watch this, lol
-	if (strain.oz >= strain["5lb"]) {
-		strain.oz = strain["5lb"] + strain.price;
-		return console.log(strain.name + " is over 5lb " + strain.oz);
-	}
-
-	if (strain.oz <= strain["2lb"]) {
-		if (strain.oz === strain["2lb"]) {
-			return strain.oz = strain["3lb"];
-		}
-
-		return strain.oz = strain["2lb"];
-	}
-
-	if (strain.oz > strain["3lb"]) {
-		if (strain.oz === strain["4lb"]) {
-			return strain.oz = strain["5lb"];
-		}
-
-		return strain.oz = strain["4lb"];
-	}
-}
-
 function dieRoll(min, max) {
 	// any number range you care for
 	min = Math.ceil(min);
@@ -2348,6 +2337,7 @@ function dieRoll(min, max) {
 function instance($$self, $$props, $$invalidate) {
 	let state = {
 		turnNumber: 1,
+		message: "Press 'Start Game'",
 		skipped: [],
 		activePlayerId: 0,
 		currentRoll: 0,
@@ -2414,14 +2404,9 @@ function instance($$self, $$props, $$invalidate) {
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.send(JSON.stringify({ value: { message, "state": endState } }));
 		console.error("Bank Bailout! $" + state.bank.cash + " " + message);
-		alert(message);
 
-		setTimeout(
-			() => {
-				window.location.href = "/potluck";
-			},
-			3000
-		);
+		// alert(message)
+		window.location.href = "/potluck";
 	}
 
 	function currentPlayer() {
@@ -2448,16 +2433,16 @@ function instance($$self, $$props, $$invalidate) {
 				return owned();
 				break;
 			case "loseTurn":
-				console.log(currentPlayer().name + " lost a turn");
+				$$invalidate(0, state.message = currentPlayer().name + " lost a turn", state);
 				state.skipped.push(state.activePlayerId);
 				return;
 			case "bummer":
 				let b = bummer();
-				console.log("Bummer: " + b.effect);
+				$$invalidate(0, state.message = "Bummer! " + b.title, state);
 				return mapEvents(b.effect);
 			case "farout":
 				let f = farout();
-				console.log("Far Out: " + f.effect);
+				$$invalidate(0, state.message = "Far Out! " + f.title, state);
 				return mapEvents(f.effect);
 			case "highRoller":
 				const roller = dieRoll(1, 6) + dieRoll(1, 6) * 100;
@@ -2469,20 +2454,19 @@ function instance($$self, $$props, $$invalidate) {
 				if (leftyId < 0) {
 					leftyId = state.players.length - 1;
 				}
-				console.log("leftyId: " + leftyId);
 				return $$invalidate(0, state.players[leftyId].cash += lefty, state);
 			case "jackpot":
-				console.log(currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!");
+				$$invalidate(0, state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!", state);
 				currentPlayer().cash += state.jackpot.cash;
 				$$invalidate(0, state.jackpot.cash = 0, state);
 				return;
 			case "paraquat":
-				console.log(currentPlayer().name + " got paraquat, this is going to suck.");
-				console.log(currentPlayer().name + " lost a turn to paraquat");
+				$$invalidate(0, state.message = currentPlayer().name + " got paraquat, this is going to suck.", state);
+				$$invalidate(0, state.message = currentPlayer().name + " lost a turn to paraquat", state);
 				state.skipped.push(state.skipped[state.activePlayerId]);
 				if (currentPlayer().getOutOfHospital === true) {
 					currentPlayer().getOutOfHospital = false;
-					return console.log("You lucky dog");
+					return $$invalidate(0, state.message = currentPlayer().name + "You lucky dog", state);
 				}
 				mapEvents("hospital");
 				break;
@@ -2494,7 +2478,6 @@ function instance($$self, $$props, $$invalidate) {
 			case "getOutOfHospital":
 				return currentPlayer().getOutOfHospital = true;
 			default:
-				console.log("handle: " + e);
 				if (e.substring(0, 1) === "x") {
 					let pay = Number(e.substring(1, 5)) * state.currentRoll;
 					currentPlayer().cash -= pay;
@@ -2534,7 +2517,6 @@ function instance($$self, $$props, $$invalidate) {
 			});
 		});
 
-		console.log(owned);
 		return owned;
 	}
 
@@ -2548,7 +2530,7 @@ function instance($$self, $$props, $$invalidate) {
 					state.bank.strains.splice(i, 1);
 					return;
 				} else {
-					console.log(currentPlayer().name + "did not have enough money for " + bankStrains[i].name);
+					$$invalidate(0, state.message = currentPlayer().name + " did not have enough money for " + bankStrains[i].name, state);
 				}
 			}
 
@@ -2580,13 +2562,37 @@ function instance($$self, $$props, $$invalidate) {
 						charge = Math.round(s.oz / 2);
 					}
 
-					console.log(currentPlayer().name + " paid " + state.players[i].name + " $" + charge + " for " + s.name);
+					$$invalidate(0, state.message = currentPlayer().name + " paid " + state.players[i].name + " $" + charge + " for " + s.name, state);
 					currentPlayer().cash -= charge;
 					$$invalidate(0, state.players[i].cash += charge, state);
 				}
 			});
 
 			i += 1;
+		}
+	}
+
+	function pound(strain) {
+		// watch this, lol
+		if (strain.oz >= strain["5lb"]) {
+			strain.oz = strain["5lb"] + strain.price;
+			return $$invalidate(0, state.message = strain.name + " is over 5lb! $" + strain.oz, state);
+		}
+
+		if (strain.oz <= strain["2lb"]) {
+			if (strain.oz === strain["2lb"]) {
+				return strain.oz = strain["3lb"];
+			}
+
+			return strain.oz = strain["2lb"];
+		}
+
+		if (strain.oz > strain["3lb"]) {
+			if (strain.oz === strain["4lb"]) {
+				return strain.oz = strain["5lb"];
+			}
+
+			return strain.oz = strain["4lb"];
 		}
 	}
 
@@ -2600,7 +2606,7 @@ function instance($$self, $$props, $$invalidate) {
 		currentPlayer().cash -= charge;
 		$$invalidate(0, state.bank.cash += charge, state);
 		currentPlayer().strains.push(strain);
-		console.log(currentPlayer().name + " bought: " + strain.name);
+		$$invalidate(0, state.message = currentPlayer().name + " bought: " + strain.name, state);
 	}
 
 	function bummer() {
@@ -2612,7 +2618,7 @@ function instance($$self, $$props, $$invalidate) {
 			return card;
 		}
 
-		console.log("Reset bummers to original state");
+		$$invalidate(0, state.message = "Reset bummers to original state", state);
 		$$invalidate(0, state.bummers = _bummers__WEBPACK_IMPORTED_MODULE_5__["default"], state);
 		return card;
 	}
@@ -2626,7 +2632,7 @@ function instance($$self, $$props, $$invalidate) {
 			return card;
 		}
 
-		console.log("Reset farouts to original state");
+		$$invalidate(0, state.message = "Reset farouts to original state", state);
 		$$invalidate(0, state.farouts = _farouts__WEBPACK_IMPORTED_MODULE_6__["default"], state);
 		return card;
 	}
@@ -2639,13 +2645,14 @@ function instance($$self, $$props, $$invalidate) {
 
 	function startGame() {
 		gameRoll();
-		console.log("Turn #1");
+		$$invalidate(0, state.message = "Turn #1", state);
 		currentPlayer().space = state.currentRoll;
 		drawPlayerPieces();
 		let event = _spaces__WEBPACK_IMPORTED_MODULE_4__["default"][currentPlayer().space - 1].effect;
 		mapEvents(event);
-		console.log("First roll " + state.currentRoll + " by " + currentPlayer().name + " is on space " + currentPlayer().space + ", and has $" + currentPlayer().cash);
-		return setTimeout(() => executeTurn(), 500);
+		$$invalidate(0, state.message = "First roll " + state.currentRoll + " by " + currentPlayer().name + " is on space ", state);
+		currentPlayer().space + ", and has $" + currentPlayer().cash;
+		return executeTurn();
 	}
 
 	function calculateSpaceId() {
@@ -2684,20 +2691,17 @@ function instance($$self, $$props, $$invalidate) {
 			0,
 			state.players = state.players.filter(function (player) {
 				if (player.cash >= 1) {
-					console.log(player.name + " $" + player.cash);
 					return player;
 				} else {
 					// Give us your property and die a like a dog
 					player.strains.forEach(strain => strain.oz = strain.price / 10);
 
 					$$invalidate(0, state.bank.strains = state.bank.strains.concat(player.strains), state);
-					console.log(player.name + " was dropped from the game for being broke at the beginning of their turn. " + "Their strains are returned unto the fold. ");
+					$$invalidate(0, state.message = player.name + " was dropped from the game for being broke at the beginning of their turn. " + "Their strains are returned unto the fold. ", state);
 				}
 			}),
 			state
 		);
-
-		console.log("Bank $" + state.bank.cash);
 
 		// then check for a winner
 		if (state.players.length === 1) {
@@ -2709,26 +2713,26 @@ function instance($$self, $$props, $$invalidate) {
 			return abortGame("bank failure");
 		}
 
+		// increment turn #
+		$$invalidate(0, state.turnNumber += 1, state);
+
 		// increment playerId 
 		incrementPlayer();
 
 		// handle (multiple) skipped turns
 		if (state.skipped.includes(state.activePlayerId)) {
 			state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1);
-			console.log("end of turn, player: " + currentPlayer().name);
-			console.log("skipped player: " + currentPlayer().name);
+			$$invalidate(0, state.message = "skipped player: " + currentPlayer().name, state);
 			return executeTurn();
 		}
 
-		//start the turn by rolling dice, and cleaning up turn based booleans
+		//start the turn by rolling dice
 		gameRoll();
-
-		// report state    
-		console.log(currentPlayer().name + " rolled a " + state.currentRoll + " started on space " + currentPlayer().space + " and has $" + currentPlayer().cash);
 
 		// move player to new space
 		currentPlayer().space = calculateSpaceId();
 
+		// update DOM
 		drawPlayerPieces();
 
 		// get the event code
@@ -2737,12 +2741,13 @@ function instance($$self, $$props, $$invalidate) {
 		// and fire that shit off
 		mapEvents(event);
 
-		// report end of turn state
-		console.log("At end of turn, " + currentPlayer().name + " rolled " + state.currentRoll + ", is on space " + currentPlayer().space + ",  and has $" + currentPlayer().cash);
-
-		$$invalidate(0, state.turnNumber += 1, state);
-		console.log("Turn #" + state.turnNumber);
-		return setTimeout(() => executeTurn(), 100);
+		// Do it again
+		return setTimeout(
+			() => {
+				executeTurn();
+			},
+			500
+		);
 	}
 
 	function endGame() {
@@ -2780,14 +2785,9 @@ function instance($$self, $$props, $$invalidate) {
 		xhr.open("POST", "/api/potluck_log", true);
 		xhr.setRequestHeader("Content-Type", "application/json");
 		xhr.send(JSON.stringify({ value: { message, "state": endState } }));
-		alert(message);
 
-		return setTimeout(
-			() => {
-				window.location.href = "/potluck";
-			},
-			1000
-		);
+		// alert(message)
+		return window.location.href = "/potluck";
 	}
 
 	function drawPlayerPieces() {
@@ -2964,7 +2964,7 @@ var farouts = [{
   effect: "highRoller"
 }, {
   id: 15,
-  title: "Far Out &mdash; roll the dice and pay player to your left 100x the number rolled",
+  title: "Pay Lefty - roll the dice and pay player to your left 100x the number rolled",
   effect: "payLefty"
 }, {
   id: 16,

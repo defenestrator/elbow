@@ -1,6 +1,7 @@
 <svelte:head>
     <link rel="stylesheet" href="/css/style.css">
 </svelte:head>
+
 <script>
     import {onMount} from "svelte";
     import activePlayers from './players';
@@ -11,6 +12,7 @@
 
     let state = {
         turnNumber: 1,
+        message: "Press 'Start Game'",
         skipped: [],
         activePlayerId: 0,
         currentRoll: 0,
@@ -89,8 +91,8 @@
             }
         }));
         console.error('Bank Bailout! $' + state.bank.cash + ' ' + message) 
-        alert(message)
-        setTimeout(() => {window.location.href = '/potluck'}, 3000)
+        // alert(message)
+        window.location.href = '/potluck'
     }
 
     function currentPlayer() {
@@ -121,18 +123,18 @@
                 break;
 
             case "loseTurn":
-                console.log(currentPlayer().name + ' lost a turn')
+                state.message = currentPlayer().name + ' lost a turn'
                 state.skipped.push(state.activePlayerId)
                 return 
                 
             case "bummer":
                 let b = bummer()
-                console.log('Bummer: ' + b.effect)
+                state.message ='Bummer! ' + b.title
                 return mapEvents(b.effect)
 
             case "farout":
                 let f = farout()
-                console.log('Far Out: ' + f.effect)
+                state.message ='Far Out! ' + f.title
                 return mapEvents(f.effect)
                 
             case "highRoller":
@@ -146,22 +148,22 @@
                 if (leftyId < 0) {
                     leftyId = state.players.length - 1
                 }
-                console.log("leftyId: " + leftyId)
+                
                 return state.players[leftyId].cash += lefty
 
             case "jackpot":
-                console.log(currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!")
+                state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!"
                 currentPlayer().cash +=  state.jackpot.cash
                 state.jackpot.cash = 0
                 return;
 
             case "paraquat":
-                console.log(currentPlayer().name + ' got paraquat, this is going to suck.')
-                console.log(currentPlayer().name + ' lost a turn to paraquat')
+                state.message = currentPlayer().name + ' got paraquat, this is going to suck.'
+                state.message = currentPlayer().name + ' lost a turn to paraquat'
                 state.skipped.push(state.skipped[state.activePlayerId])
                 if (currentPlayer().getOutOfHospital === true) {
                     currentPlayer().getOutOfHospital = false
-                    return console.log("You lucky dog");
+                    return state.message = currentPlayer().name + "You lucky dog"
                 }
                 mapEvents("hospital")
                 break;
@@ -176,7 +178,6 @@
                 return currentPlayer().getOutOfHospital = true
 
             default:
-                console.log("handle: " + e)
                 if (e.substring(0, 1) === "x") {
                     let pay = Number(e.substring(1, 5)) * state.currentRoll
                     currentPlayer().cash -= pay
@@ -214,7 +215,6 @@
                 })
                 })
             })
-        console.log(owned)
         return owned
     }
 
@@ -227,7 +227,7 @@
                     state.bank.strains.splice(i, 1) 
                     return 
                 } else {
-                    console.log(currentPlayer().name + 'did not have enough money for ' + bankStrains[i].name)
+                    state.message = currentPlayer().name + ' did not have enough money for ' + bankStrains[i].name
                 }
             }
             i += 1
@@ -254,8 +254,8 @@
                         charge = Math.round(s.oz / 2)
                     }
 
-                    console.log(currentPlayer().name + ' paid ' + state.players[i].name + ' $' + charge +
-                        ' for ' + s.name)
+                    state.message = currentPlayer().name + ' paid ' + state.players[i].name + ' $' + charge +
+                        ' for ' + s.name
                     currentPlayer().cash -= charge
                     state.players[i].cash += charge
                 }
@@ -268,7 +268,7 @@
         // watch this, lol
         if (strain.oz >= strain["5lb"]) {
             strain.oz = strain["5lb"] + strain.price
-            return console.log(strain.name + ' is over 5lb ' + strain.oz)
+            return  state.message = strain.name + ' is over 5lb! $' + strain.oz
         }
 
         if (strain.oz <= strain["2lb"]) {
@@ -294,7 +294,7 @@
         currentPlayer().cash -= charge
         state.bank.cash += charge
         currentPlayer().strains.push(strain)
-        console.log(currentPlayer().name + " bought: " + strain.name)
+        state.message = currentPlayer().name + " bought: " + strain.name
     }
 
     function bummer() {
@@ -304,7 +304,7 @@
             state.bummers.splice(index, 1)
             return card
         }
-        console.log("Reset bummers to original state")
+        state.message = "Reset bummers to original state"
         state.bummers = bummers
         return card
     }
@@ -316,7 +316,7 @@
             state.farouts.splice(index, 1)
             return card
         }
-        console.log("Reset farouts to original state")
+        state.message = "Reset farouts to original state"
         state.farouts = farouts
         return card
     }
@@ -336,14 +336,14 @@
 
     function startGame() {
         gameRoll()
-        console.log("Turn #1")
+        state.message = "Turn #1"
         currentPlayer().space = state.currentRoll
         drawPlayerPieces()
         let event = spaces[currentPlayer().space - 1].effect
         mapEvents(event)
-        console.log('First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' +
-            currentPlayer().space + ', and has $' + currentPlayer().cash)
-        return setTimeout(() => executeTurn(), 500);
+        state.message = 'First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' 
+            currentPlayer().space + ', and has $' + currentPlayer().cash
+        return executeTurn();
     }
 
     function calculateSpaceId() {
@@ -375,19 +375,17 @@
         // Drop players with no cash from game.
         state.players = state.players.filter(function (player) {
             if (player.cash >= 1) {
-                console.log(player.name + ' $' + player.cash)
                 return player
             } else {
                 // Give us your property and die a like a dog
                 player.strains.forEach(strain => strain.oz = strain.price / 10)
                 state.bank.strains = state.bank.strains.concat(player.strains)
-                console.log(player.name +
+                state.message = player.name +
                     ' was dropped from the game for being broke at the beginning of their turn. ' +
                     'Their strains are returned unto the fold. '
-                )
             }
         })
-        console.log("Bank $" + state.bank.cash)
+
         // then check for a winner
         if (state.players.length === 1) {
             return endGame()
@@ -397,39 +395,37 @@
         if (state.bank.cash < 1) {
             return abortGame('bank failure')
         }
+        // increment turn #
+        state.turnNumber += 1
+
         // increment playerId 
         incrementPlayer()
 
         // handle (multiple) skipped turns
         if (state.skipped.includes(state.activePlayerId)) {
             state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
-            console.log("end of turn, player: " + currentPlayer().name)
-            console.log("skipped player: " + currentPlayer().name)
+            
+            state.message = "skipped player: " + currentPlayer().name
             return executeTurn()
         }
 
-        //start the turn by rolling dice, and cleaning up turn based booleans
+        //start the turn by rolling dice
         gameRoll()
-
-        // report state    
-        console.log(currentPlayer().name + ' rolled a ' + state.currentRoll + ' started on space ' + currentPlayer()
-            .space + ' and has $' + currentPlayer().cash)
 
         // move player to new space
         currentPlayer().space = calculateSpaceId()
+        
+        // update DOM
         drawPlayerPieces()
+
         // get the event code
         let event = spaces[currentPlayer().space - 1].effect
 
         // and fire that shit off
         mapEvents(event)
 
-        // report end of turn state
-        console.log("At end of turn, " + currentPlayer().name + ' rolled ' + state.currentRoll + ', is on space ' +
-            currentPlayer().space + ',  and has $' + currentPlayer().cash)
-        state.turnNumber += 1
-        console.log('Turn #' + state.turnNumber)
-        return setTimeout(() => executeTurn(), 100);
+        // Do it again
+        return setTimeout(() => {executeTurn()}, 500)
     }
 
     function endGame() {
@@ -474,8 +470,8 @@
                 "state": endState
             }
         }));
-        alert(message)
-        return setTimeout(() => {window.location.href = '/potluck'}, 1000)
+        // alert(message)
+        return window.location.href = '/potluck'
     }
 
     function drawPlayerPieces() {
@@ -487,19 +483,19 @@
         })
     }
 
-    onMount(() => {drawPlayerPieces()});
+    onMount(() => {drawPlayerPieces();});
 </script>
 
 
-
 <main>
-<div class="container-fluid py-2 px-4 bg-white">
+<div class="container-fluid p-1 bg-white">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber}</p><br>
-        {#if state.currentRoll != 0}
-            <p class="inline-block mt-2 text-sm">{state.players[state.activePlayerId].name } 
+        {#if state.currentRoll > 0}
+            <p class="block mt-2 text-sm">{state.players[state.activePlayerId].name } 
             rolled {state.currentRoll} and landed on {state.spaces[state.players[state.activePlayerId].space -1].title}
             </p>
         {/if}
+        <p class="block mt-2 text-sm">{state.message}</p>
     </div>
     
     <div class="potluck">

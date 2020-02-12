@@ -71,7 +71,7 @@ const farouts = [
     },
     {
         id: 15,
-        title: "Far Out &mdash; roll the dice and pay player to your left 100x the number rolled",
+        title: "Pay Lefty - roll the dice and pay player to your left 100x the number rolled",
         effect: "payLefty"
     },
     {
