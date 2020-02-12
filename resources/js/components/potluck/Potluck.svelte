@@ -501,7 +501,7 @@
         {/if}
     </div>
     
-    <div class="potluck" style="overflow:hidden; border:1px solid black;">
+    <div class="potluck">
         <div class="gameBoard">
             <div class="row top">
                 <div class="square2"><span class="corner corner1">JACKPOT!</span>
@@ -710,7 +710,7 @@
             </div>
         </div>
     </div>
-    <div class="container flex-row">
+    <div class="container p-1 flex-row">
     {#each state.players as player}   
     <div class="inline-block align-top" style="width:{100 / state.players.length}%;">
         <div class="p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300" style="overflow:hidden;">
@@ -740,14 +740,14 @@
         top:50%;
         left:50%;
         right:50%;
-        bottom:auto;
+        bottom:50%;
         overflow:hidden;
     }
 
     .potluck {
         background-color: floralwhite;
         width: 95.75vw;
-        height: 94.25vw;
+        height: 95.75vw;
         margin: 10px auto;
     }
 
@@ -775,6 +775,7 @@
         flex-grow: 1;
         position: relative;
         background: floralwhite;
+        overflow:hidden; 
     }
 
     .square2 {
@@ -784,6 +785,7 @@
         flex-direction: column;
         position: relative;
         background: floralwhite;
+        overflow:hidden; 
     }
 
     .square9 {
