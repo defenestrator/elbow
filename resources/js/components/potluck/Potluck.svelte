@@ -122,7 +122,8 @@
 
             case "loseTurn":
                 console.log(currentPlayer().name + ' lost a turn')
-                return state.skipped.push(state.skipped[state.activePlayerId])
+                state.skipped.push(state.activePlayerId)
+                return 
                 
             case "bummer":
                 let b = bummer()
@@ -402,8 +403,8 @@
         // handle (multiple) skipped turns
         if (state.skipped.includes(state.activePlayerId)) {
             state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
-            console.log("end of turn, player id: " + state.activePlayerId)
-            console.log("skipped player id: " + state.activePlayerId)
+            console.log("end of turn, player: " + currentPlayer().name)
+            console.log("skipped player: " + currentPlayer().name)
             return executeTurn()
         }
 
@@ -492,7 +493,7 @@
 
 
 <main>
-<div class="container-fluid py-3 px-1 bg-white">
+<div class="container-fluid py-2 px-4 bg-white">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber}</p><br>
         {#if state.currentRoll != 0}
             <p class="inline-block mt-2 text-sm">{state.players[state.activePlayerId].name } 
@@ -710,12 +711,12 @@
             </div>
         </div>
     </div>
-    <div class="container p-1 flex-row">
+    <div class="container p-1 mx-1 flex-row">
     {#each state.players as player}   
     <div class="inline-block align-top" style="width:{100 / state.players.length}%;">
         <div class="p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300" style="overflow:hidden;">
             {player.name} {@html player.token} <span class="text-green-600"> ${player.cash}</span></div>
-            <div class="m-1 bg-gray-100 rounded-sm text-xs">
+            <div class="mx-1 bg-gray-100 rounded-sm text-xs">
                 {#each player.strains as strain}
                 <p class="p-1"> {strain.name} <span class="text-green-600"> ${strain.oz} </span> 
                 (${strain.price / 10}) 

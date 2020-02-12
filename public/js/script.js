@@ -1870,7 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (497:8) {#if state.currentRoll != 0}
+// (498:8) {#if state.currentRoll != 0}
 function create_if_block(ctx) {
 	let p;
 	let t0_value = /*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].name + "";
@@ -1911,7 +1911,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (719:16) {#each player.strains as strain}
+// (720:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[19].name + "";
@@ -1962,7 +1962,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (714:4) {#each state.players as player}
+// (715:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2008,7 +2008,7 @@ function create_each_block(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(span, "class", "text-green-600");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300 svelte-121h6el");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div0, "overflow", "hidden");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "m-1 bg-gray-100 rounded-sm text-xs svelte-121h6el");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div1, "class", "mx-1 bg-gray-100 rounded-sm text-xs svelte-121h6el");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div2, "class", "inline-block align-top svelte-121h6el");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_style"])(div2, "width", 100 / /*state*/ ctx[0].players.length + "%");
 		},
@@ -2234,9 +2234,9 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(link, "href", "/css/style.css");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(button, "class", "btn-blue");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "inline-block text-bold text-lg mx-2");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-3 px-1 bg-white svelte-121h6el");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div0, "class", "container-fluid py-2 px-4 bg-white svelte-121h6el");
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div151, "class", "potluck svelte-121h6el");
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div152, "class", "container p-1 flex-row svelte-121h6el");
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(div152, "class", "container p-1 mx-1 flex-row svelte-121h6el");
 		},
 		m(target, anchor) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(document_1.head, link);
@@ -2449,7 +2449,8 @@ function instance($$self, $$props, $$invalidate) {
 				break;
 			case "loseTurn":
 				console.log(currentPlayer().name + " lost a turn");
-				return state.skipped.push(state.skipped[state.activePlayerId]);
+				state.skipped.push(state.activePlayerId);
+				return;
 			case "bummer":
 				let b = bummer();
 				console.log("Bummer: " + b.effect);
@@ -2714,8 +2715,8 @@ function instance($$self, $$props, $$invalidate) {
 		// handle (multiple) skipped turns
 		if (state.skipped.includes(state.activePlayerId)) {
 			state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1);
-			console.log("end of turn, player id: " + state.activePlayerId);
-			console.log("skipped player id: " + state.activePlayerId);
+			console.log("end of turn, player: " + currentPlayer().name);
+			console.log("skipped player: " + currentPlayer().name);
 			return executeTurn();
 		}
 
