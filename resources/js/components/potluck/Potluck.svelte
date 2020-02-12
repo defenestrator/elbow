@@ -172,6 +172,7 @@
                 currentPlayer().space = 10
                 mapEvents("loseTurn")
                 mapEvents("x100")
+                drawPlayerPieces()
                 break;
 
             case "getOutOfHospital":
@@ -294,7 +295,7 @@
         currentPlayer().cash -= charge
         state.bank.cash += charge
         currentPlayer().strains.push(strain)
-        state.message = currentPlayer().name + " bought: " + strain.name
+        state.message = currentPlayer().name + " bought " + strain.name
     }
 
     function bummer() {
@@ -322,7 +323,6 @@
     }
 
     function dieRoll(min, max) {
-        // any number range you care for
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -331,7 +331,15 @@
     function gameRoll() {
         let first = dieRoll(1, 6)
         let second = dieRoll(1, 6)
-        return state.currentRoll = first + second
+        const total = first + second
+        state.message = currentPlayer().name + ' rolled ' + first + ' + ' + second + ' = '+ total +'. '
+        if (first === second) {            
+            currentPlayer().doubles += 1  
+            state.message += 'Doubles! Roll again!'
+        } else {
+            currentPlayer().doubles = 0   
+        }
+        return state.currentRoll = total
     }
 
     function startGame() {
@@ -361,7 +369,7 @@
     }
 
     function incrementPlayer() {
-        // advance current player index
+        
         state.activePlayerId += 1
 
         // keep index in sync
@@ -372,51 +380,56 @@
     }
 
     function executeTurn() {
+        state.turnNumber += 1
+
+        //check for doubles
+        if (! currentPlayer().doubles > 0) {
+            incrementPlayer()  
+        }
+        
         // Drop players with no cash from game.
-        state.players = state.players.filter(function (player) {
-            if (player.cash >= 1) {
-                return player
-            } else {
-                // Give us your property and die a like a dog
-                player.strains.forEach(strain => strain.oz = strain.price / 10)
-                state.bank.strains = state.bank.strains.concat(player.strains)
-                state.message = player.name +
-                    ' was dropped from the game for being broke at the beginning of their turn. ' +
-                    'Their strains are returned unto the fold. '
-            }
-        })
+        if (currentPlayer().cash <= 0) {
+            // Give us your property and die like a dog
+            currentPlayer().strains.forEach(strain => strain.oz = strain.price / 10)
+            state.bank.strains = state.bank.strains.concat(currentPlayer().strains)
+            state.message = currentPlayer().name +
+                ' was dropped from the game for being broke at the beginning of their turn. '
+            state.players.splice(state.players.indexOf(state.activePlayerId), 1)
+            incrementPlayer()
+        }
 
         // then check for a winner
         if (state.players.length === 1) {
             return endGame()
-        }
+        } 
 
         // check for bank insolvency (done runned out of cash!)
         if (state.bank.cash < 1) {
             return abortGame('bank failure')
         }
-        // increment turn #
-        state.turnNumber += 1
-
-        // increment playerId 
-        incrementPlayer()
-
+            
         // handle (multiple) skipped turns
         if (state.skipped.includes(state.activePlayerId)) {
             state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
-            
             state.message = "skipped player: " + currentPlayer().name
             return executeTurn()
         }
 
-        //start the turn by rolling dice
+        // start the turn by rolling dice
         gameRoll()
-
+        
         // move player to new space
         currentPlayer().space = calculateSpaceId()
         
+        // punish the lucky
+        if (currentPlayer().doubles >= 3) {
+            state.message = currentPlayer().name + ' rolled doubles three consecutive times and was sent to the hospital.'
+            currentPlayer().doubles = 0
+            mapEvents('hospital')
+        }
+
         // update DOM
-        drawPlayerPieces()
+        drawPlayerPieces()        
 
         // get the event code
         let event = spaces[currentPlayer().space - 1].effect
@@ -425,7 +438,7 @@
         mapEvents(event)
 
         // Do it again
-        return setTimeout(() => {executeTurn()}, 500)
+        return setTimeout(() => {executeTurn()}, 750)
     }
 
     function endGame() {
@@ -483,18 +496,13 @@
         })
     }
 
-    onMount(() => {drawPlayerPieces();});
+    onMount(() => {drawPlayerPieces(); startGame();});
 </script>
 
 
 <main>
 <div class="container-fluid p-1 bg-white">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber}</p><br>
-        {#if state.currentRoll > 0}
-            <p class="block mt-2 text-sm">{state.players[state.activePlayerId].name } 
-            rolled {state.currentRoll} and landed on {state.spaces[state.players[state.activePlayerId].space -1].title}
-            </p>
-        {/if}
         <p class="block mt-2 text-sm">{state.message}</p>
     </div>
     

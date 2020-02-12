@@ -1870,48 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (493:8) {#if state.currentRoll > 0}
-function create_if_block(ctx) {
-	let p;
-	let t0_value = /*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].name + "";
-	let t0;
-	let t1;
-	let t2_value = /*state*/ ctx[0].currentRoll + "";
-	let t2;
-	let t3;
-	let t4_value = /*state*/ ctx[0].spaces[/*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].space - 1].title + "";
-	let t4;
-
-	return {
-		c() {
-			p = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
-			t0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t0_value);
-			t1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" \n            rolled ");
-			t2 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t2_value);
-			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(" and landed on ");
-			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t4_value);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["attr"])(p, "class", "block mt-2 text-sm");
-		},
-		m(target, anchor) {
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["insert"])(target, p, anchor);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t0);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t1);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t2);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t3);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p, t4);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*state*/ 1 && t0_value !== (t0_value = /*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].name + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t0, t0_value);
-			if (dirty & /*state*/ 1 && t2_value !== (t2_value = /*state*/ ctx[0].currentRoll + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t2, t2_value);
-			if (dirty & /*state*/ 1 && t4_value !== (t4_value = /*state*/ ctx[0].spaces[/*state*/ ctx[0].players[/*state*/ ctx[0].activePlayerId].space - 1].title + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t4, t4_value);
-		},
-		d(detaching) {
-			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(p);
-		}
-	};
-}
-
-// (716:16) {#each player.strains as strain}
+// (724:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[20].name + "";
@@ -1962,7 +1921,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (711:4) {#each state.players as player}
+// (719:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2082,16 +2041,14 @@ function create_fragment(ctx) {
 	let t3;
 	let br0;
 	let t4;
-	let t5;
 	let p1;
-	let t6_value = /*state*/ ctx[0].message + "";
+	let t5_value = /*state*/ ctx[0].message + "";
+	let t5;
 	let t6;
-	let t7;
 	let div151;
-	let t185;
+	let t184;
 	let div152;
 	let dispose;
-	let if_block = /*state*/ ctx[0].currentRoll > 0 && create_if_block(ctx);
 	let each_value = /*state*/ ctx[0].players;
 	let each_blocks = [];
 
@@ -2112,11 +2069,9 @@ function create_fragment(ctx) {
 			t3 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t3_value);
 			br0 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("br");
 			t4 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
-			if (if_block) if_block.c();
-			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			p1 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("p");
-			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t6_value);
-			t7 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t5 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["text"])(t5_value);
+			t6 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div151 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			div151.innerHTML = `<div class="gameBoard svelte-121h6el"><div class="row top svelte-121h6el"><div class="square2 svelte-121h6el"><span class="corner corner1 svelte-121h6el">JACKPOT!</span> 
@@ -2230,7 +2185,7 @@ function create_fragment(ctx) {
                     <div class="box svelte-121h6el" id="1"></div></div> 
                 <div class="square2 svelte-121h6el" style="background-image:url(&#39;/img/straight.jpg&#39;); background-size:cover;"><div class="box svelte-121h6el" id="40"></div></div></div></div>`;
 
-			t185 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
+			t184 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["space"])();
 			div152 = Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["element"])("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2257,13 +2212,11 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p0, t3);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, br0);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t4);
-			if (if_block) if_block.m(div0, null);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, t5);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(div0, p1);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t6);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t7);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(p1, t5);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t6);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div151);
-			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t185);
+			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, t184);
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["append"])(main, div152);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -2274,21 +2227,7 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			if (dirty & /*state*/ 1 && t3_value !== (t3_value = /*state*/ ctx[0].turnNumber + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t3, t3_value);
-
-			if (/*state*/ ctx[0].currentRoll > 0) {
-				if (if_block) {
-					if_block.p(ctx, dirty);
-				} else {
-					if_block = create_if_block(ctx);
-					if_block.c();
-					if_block.m(div0, t5);
-				}
-			} else if (if_block) {
-				if_block.d(1);
-				if_block = null;
-			}
-
-			if (dirty & /*state*/ 1 && t6_value !== (t6_value = /*state*/ ctx[0].message + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t6, t6_value);
+			if (dirty & /*state*/ 1 && t5_value !== (t5_value = /*state*/ ctx[0].message + "")) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["set_data"])(t5, t5_value);
 
 			if (dirty & /*state*/ 1) {
 				each_value = /*state*/ ctx[0].players;
@@ -2319,7 +2258,6 @@ function create_fragment(ctx) {
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(link);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(t0);
 			if (detaching) Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["detach"])(main);
-			if (if_block) if_block.d();
 			Object(svelte_internal__WEBPACK_IMPORTED_MODULE_0__["destroy_each"])(each_blocks, detaching);
 			dispose();
 		}
@@ -2327,9 +2265,7 @@ function create_fragment(ctx) {
 }
 
 function dieRoll(min, max) {
-	// any number range you care for
 	min = Math.ceil(min);
-
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -2474,6 +2410,7 @@ function instance($$self, $$props, $$invalidate) {
 				currentPlayer().space = 10;
 				mapEvents("loseTurn");
 				mapEvents("x100");
+				drawPlayerPieces();
 				break;
 			case "getOutOfHospital":
 				return currentPlayer().getOutOfHospital = true;
@@ -2606,7 +2543,7 @@ function instance($$self, $$props, $$invalidate) {
 		currentPlayer().cash -= charge;
 		$$invalidate(0, state.bank.cash += charge, state);
 		currentPlayer().strains.push(strain);
-		$$invalidate(0, state.message = currentPlayer().name + " bought: " + strain.name, state);
+		$$invalidate(0, state.message = currentPlayer().name + " bought " + strain.name, state);
 	}
 
 	function bummer() {
@@ -2640,7 +2577,17 @@ function instance($$self, $$props, $$invalidate) {
 	function gameRoll() {
 		let first = dieRoll(1, 6);
 		let second = dieRoll(1, 6);
-		return $$invalidate(0, state.currentRoll = first + second, state);
+		const total = first + second;
+		$$invalidate(0, state.message = currentPlayer().name + " rolled " + first + " + " + second + " = " + total + ". ", state);
+
+		if (first === second) {
+			currentPlayer().doubles += 1;
+			$$invalidate(0, state.message += "Doubles! Roll again!", state);
+		} else {
+			currentPlayer().doubles = 0;
+		}
+
+		return $$invalidate(0, state.currentRoll = total, state);
 	}
 
 	function startGame() {
@@ -2674,7 +2621,6 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	function incrementPlayer() {
-		// advance current player index
 		$$invalidate(0, state.activePlayerId += 1, state);
 
 		// keep index in sync
@@ -2686,22 +2632,23 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	function executeTurn() {
-		// Drop players with no cash from game.
-		$$invalidate(
-			0,
-			state.players = state.players.filter(function (player) {
-				if (player.cash >= 1) {
-					return player;
-				} else {
-					// Give us your property and die a like a dog
-					player.strains.forEach(strain => strain.oz = strain.price / 10);
+		$$invalidate(0, state.turnNumber += 1, state);
 
-					$$invalidate(0, state.bank.strains = state.bank.strains.concat(player.strains), state);
-					$$invalidate(0, state.message = player.name + " was dropped from the game for being broke at the beginning of their turn. " + "Their strains are returned unto the fold. ", state);
-				}
-			}),
-			state
-		);
+		//check for doubles
+		if (!currentPlayer().doubles > 0) {
+			incrementPlayer();
+		}
+
+		// Drop players with no cash from game.
+		if (currentPlayer().cash <= 0) {
+			// Give us your property and die like a dog
+			currentPlayer().strains.forEach(strain => strain.oz = strain.price / 10);
+
+			$$invalidate(0, state.bank.strains = state.bank.strains.concat(currentPlayer().strains), state);
+			$$invalidate(0, state.message = currentPlayer().name + " was dropped from the game for being broke at the beginning of their turn. ", state);
+			state.players.splice(state.players.indexOf(state.activePlayerId), 1);
+			incrementPlayer();
+		}
 
 		// then check for a winner
 		if (state.players.length === 1) {
@@ -2713,12 +2660,6 @@ function instance($$self, $$props, $$invalidate) {
 			return abortGame("bank failure");
 		}
 
-		// increment turn #
-		$$invalidate(0, state.turnNumber += 1, state);
-
-		// increment playerId 
-		incrementPlayer();
-
 		// handle (multiple) skipped turns
 		if (state.skipped.includes(state.activePlayerId)) {
 			state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1);
@@ -2726,11 +2667,18 @@ function instance($$self, $$props, $$invalidate) {
 			return executeTurn();
 		}
 
-		//start the turn by rolling dice
+		// start the turn by rolling dice
 		gameRoll();
 
 		// move player to new space
 		currentPlayer().space = calculateSpaceId();
+
+		// punish the lucky
+		if (currentPlayer().doubles >= 3) {
+			$$invalidate(0, state.message = currentPlayer().name + " rolled doubles three consecutive times and was sent to the hospital.", state);
+			currentPlayer().doubles = 0;
+			mapEvents("hospital");
+		}
 
 		// update DOM
 		drawPlayerPieces();
@@ -2746,7 +2694,7 @@ function instance($$self, $$props, $$invalidate) {
 			() => {
 				executeTurn();
 			},
-			500
+			750
 		);
 	}
 
@@ -2802,6 +2750,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(() => {
 		drawPlayerPieces();
+		startGame();
 	});
 
 	return [state, startGame];
@@ -2993,6 +2942,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
@@ -3004,6 +2954,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
@@ -3015,6 +2966,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
@@ -3026,6 +2978,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
@@ -3037,6 +2990,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
@@ -3048,6 +3002,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
@@ -3059,6 +3014,7 @@ var players = [{
   strains: [],
   playing: true,
   space: 40,
+  doubles: 0,
   discount: false,
   halfOff: false,
   freePound: false,
