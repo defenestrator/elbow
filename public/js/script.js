@@ -1870,7 +1870,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (728:16) {#each player.strains as strain}
+// (717:16) {#each player.strains as strain}
 function create_each_block_1(ctx) {
 	let p;
 	let t0_value = /*strain*/ ctx[20].name + "";
@@ -1921,7 +1921,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (723:4) {#each state.players as player}
+// (712:4) {#each state.players as player}
 function create_each_block(ctx) {
 	let div2;
 	let div0;
@@ -2351,12 +2351,6 @@ function instance($$self, $$props, $$invalidate) {
 
 	function mapEvents(e) {
 		switch (e) {
-			case "bumEveryoneOut":
-				state.players.forEach(function (player) {
-					player.cash -= 200;
-					currentPlayer().cash += 200;
-				});
-				return "Each player paid the bad bad bummer boy. $200";
 			case "pot":
 				return pot();
 			case "reducePot":
@@ -2367,11 +2361,9 @@ function instance($$self, $$props, $$invalidate) {
 				return currentPlayer().halfOff = true;
 			case "deal":
 				return owned();
-				break;
 			case "loseTurn":
-				$$invalidate(0, state.message = currentPlayer().name + " lost a turn", state);
-				state.skipped.push(state.activePlayerId);
-				return;
+				$$invalidate(0, state.message += " They lost a turn", state);
+				return state.skipped.push(state.activePlayerId);
 			case "bummer":
 				let b = bummer();
 				$$invalidate(0, state.message = "Bummer! " + b.title, state);
@@ -2380,6 +2372,12 @@ function instance($$self, $$props, $$invalidate) {
 				let f = farout();
 				$$invalidate(0, state.message = "Far Out! " + f.title, state);
 				return mapEvents(f.effect);
+			case "bumEveryoneOut":
+				state.players.forEach(function (player) {
+					player.cash -= 200;
+					currentPlayer().cash += 200;
+				});
+				return "Each player paid the bad bad bummer boy. $200";
 			case "highRoller":
 				const roller = dieRoll(1, 6) + dieRoll(1, 6) * 100;
 				return mapEvents("w" + roller);
@@ -2397,24 +2395,20 @@ function instance($$self, $$props, $$invalidate) {
 				}
 				$$invalidate(0, state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!", state);
 				currentPlayer().cash += state.jackpot.cash;
-				$$invalidate(0, state.jackpot.cash = 0, state);
-				return;
+				return $$invalidate(0, state.jackpot.cash = 0, state);
 			case "paraquat":
-				$$invalidate(0, state.message = currentPlayer().name + " got paraquat, this is going to suck.", state);
-				$$invalidate(0, state.message = currentPlayer().name + " lost a turn to paraquat", state);
+				$$invalidate(0, state.message += " They got paraquat, this is going to suck.", state);
 				state.skipped.push(state.skipped[state.activePlayerId]);
 				if (currentPlayer().getOutOfHospital === true) {
 					currentPlayer().getOutOfHospital = false;
 					return $$invalidate(0, state.message = currentPlayer().name + "You lucky dog", state);
 				}
-				mapEvents("hospital");
-				break;
+				return mapEvents("hospital");
 			case "hospital":
 				currentPlayer().space = 10;
 				mapEvents("loseTurn");
 				mapEvents("x100");
-				drawPlayerPieces();
-				break;
+				return drawPlayerPieces();
 			case "getOutOfHospital":
 				return currentPlayer().getOutOfHospital = true;
 			default:
@@ -2470,7 +2464,7 @@ function instance($$self, $$props, $$invalidate) {
 					state.bank.strains.splice(i, 1);
 					return;
 				} else {
-					$$invalidate(0, state.message = currentPlayer().name + " did not have enough money for " + bankStrains[i].name, state);
+					$$invalidate(0, state.message += currentPlayer().name + " did not have enough money for " + bankStrains[i].name, state);
 				}
 			}
 
@@ -2482,10 +2476,12 @@ function instance($$self, $$props, $$invalidate) {
 				if (s.space === currentPlayer().space) {
 					if (currentPlayer().strains.includes(s)) {
 						if (currentPlayer().freePound === true) {
+							$$invalidate(0, state.message += " They got a free pound of " + s.name, state);
 							return pound(s);
 						}
 
 						if (s.price < currentPlayer().cash) {
+							$$invalidate(0, state.message += " They bought a pound of " + s.name, state);
 							currentPlayer().cash -= s.price;
 							$$invalidate(0, state.bank.cash += s.price, state);
 							return pound(s);
@@ -2502,7 +2498,7 @@ function instance($$self, $$props, $$invalidate) {
 						charge = Math.round(s.oz / 2);
 					}
 
-					$$invalidate(0, state.message = currentPlayer().name + " paid " + state.players[i].name + " $" + charge + " for " + s.name, state);
+					$$invalidate(0, state.message += " They paid " + state.players[i].name + " $" + charge + " for " + s.name, state);
 					currentPlayer().cash -= charge;
 					$$invalidate(0, state.players[i].cash += charge, state);
 				}
@@ -2516,7 +2512,7 @@ function instance($$self, $$props, $$invalidate) {
 		// watch this, lol
 		if (strain.oz >= strain["5lb"]) {
 			strain.oz = strain["5lb"] + strain.price;
-			return $$invalidate(0, state.message = strain.name + " is over 5lb! $" + strain.oz, state);
+			return $$invalidate(0, state.message += strain.name + " is over 5lb! $" + strain.oz, state);
 		}
 
 		if (strain.oz <= strain["2lb"]) {
@@ -2546,7 +2542,7 @@ function instance($$self, $$props, $$invalidate) {
 		currentPlayer().cash -= charge;
 		$$invalidate(0, state.bank.cash += charge, state);
 		currentPlayer().strains.push(strain);
-		$$invalidate(0, state.message = currentPlayer().name + " bought " + strain.name, state);
+		$$invalidate(0, state.message += "They bought " + strain.name, state);
 	}
 
 	function bummer() {
@@ -2558,7 +2554,6 @@ function instance($$self, $$props, $$invalidate) {
 			return card;
 		}
 
-		$$invalidate(0, state.message = "Reset bummers to original state", state);
 		$$invalidate(0, state.bummers = _bummers__WEBPACK_IMPORTED_MODULE_5__["default"], state);
 		return card;
 	}
@@ -2572,7 +2567,6 @@ function instance($$self, $$props, $$invalidate) {
 			return card;
 		}
 
-		$$invalidate(0, state.message = "Reset farouts to original state", state);
 		$$invalidate(0, state.farouts = _farouts__WEBPACK_IMPORTED_MODULE_6__["default"], state);
 		return card;
 	}
@@ -2699,9 +2693,7 @@ function instance($$self, $$props, $$invalidate) {
 			},
 			1000
 		);
-
-		executeTurn();
-	}
+	} // return executeTurn()
 
 	function endGame() {
 		let owned = "";
@@ -2722,6 +2714,7 @@ function instance($$self, $$props, $$invalidate) {
 
 		const turn = state.turnNumber;
 		let message = "At the beginning of turn " + turn + ": The Winner is " + winner.name + " with $" + winner.cash + " and " + winner.strains.length + " strains. They owned " + owned + "The bank had $" + state.bank.cash + ". ";
+		$$invalidate(0, state.message = message, state);
 
 		let endState = {
 			turnNumber: state.turnNumber,
@@ -2755,7 +2748,6 @@ function instance($$self, $$props, $$invalidate) {
 
 	Object(svelte__WEBPACK_IMPORTED_MODULE_1__["onMount"])(() => {
 		drawPlayerPieces();
-		startGame();
 	});
 
 	return [state, startGame];

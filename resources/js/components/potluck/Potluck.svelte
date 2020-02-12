@@ -101,31 +101,15 @@
 
     function mapEvents(e) {
         switch (e) {
-            case "bumEveryoneOut":
-                state.players.forEach(function (player) {
-                    player.cash -= 200
-                    currentPlayer().cash += 200
-                })
-                return 'Each player paid the bad bad bummer boy. $200'
-
-            case "pot":
-                return pot()
-
-            case "reducePot":
-                return currentPlayer().discount = true
-            case "freePound":
-                return currentPlayer().freePound = true
-            case "halfOff":
-                return currentPlayer().halfOff = true
-
-            case "deal":
-                return owned()
-                break;
+            case "pot": return pot()
+            case "reducePot": return currentPlayer().discount = true
+            case "freePound": return currentPlayer().freePound = true
+            case "halfOff":   return currentPlayer().halfOff = true
+            case "deal":      return owned()
 
             case "loseTurn":
-                state.message = currentPlayer().name + ' lost a turn'
-                state.skipped.push(state.activePlayerId)
-                return 
+                state.message += ' They lost a turn'
+                return state.skipped.push(state.activePlayerId)
                 
             case "bummer":
                 let b = bummer()
@@ -136,7 +120,14 @@
                 let f = farout()
                 state.message ='Far Out! ' + f.title
                 return mapEvents(f.effect)
-                
+            
+            case "bumEveryoneOut":
+                state.players.forEach(function (player) {
+                    player.cash -= 200
+                    currentPlayer().cash += 200
+                })
+                return 'Each player paid the bad bad bummer boy. $200'  
+
             case "highRoller":
                 const roller = dieRoll(1, 6) + dieRoll(1, 6) * 100;
                 return mapEvents('w' + roller)                
@@ -157,26 +148,22 @@
                 }
                 state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!"
                 currentPlayer().cash +=  state.jackpot.cash
-                state.jackpot.cash = 0
-                return;
+                return state.jackpot.cash = 0
 
             case "paraquat":
-                state.message = currentPlayer().name + ' got paraquat, this is going to suck.'
-                state.message = currentPlayer().name + ' lost a turn to paraquat'
+                state.message += ' They got paraquat, this is going to suck.'
                 state.skipped.push(state.skipped[state.activePlayerId])
                 if (currentPlayer().getOutOfHospital === true) {
                     currentPlayer().getOutOfHospital = false
                     return state.message = currentPlayer().name + "You lucky dog"
                 }
-                mapEvents("hospital")
-                break;
-
+                return mapEvents("hospital")
+                
             case "hospital":
                 currentPlayer().space = 10
                 mapEvents("loseTurn")
                 mapEvents("x100")
-                drawPlayerPieces()
-                break;
+                return drawPlayerPieces()
 
             case "getOutOfHospital":
                 return currentPlayer().getOutOfHospital = true
@@ -231,7 +218,7 @@
                     state.bank.strains.splice(i, 1) 
                     return 
                 } else {
-                    state.message = currentPlayer().name + ' did not have enough money for ' + bankStrains[i].name
+                    state.message += currentPlayer().name + ' did not have enough money for ' + bankStrains[i].name
                 }
             }
             i += 1
@@ -242,9 +229,11 @@
                 if (s.space === currentPlayer().space) {
                     if (currentPlayer().strains.includes(s)) {
                         if (currentPlayer().freePound === true) {
+                            state.message += ' They got a free pound of ' + s.name
                             return pound(s)
                         }
                         if (s.price < currentPlayer().cash) {
+                            state.message += ' They bought a pound of ' + s.name
                             currentPlayer().cash -= s.price
                             state.bank.cash += s.price
                             return pound(s)
@@ -258,7 +247,7 @@
                         charge = Math.round(s.oz / 2)
                     }
 
-                    state.message = currentPlayer().name + ' paid ' + state.players[i].name + ' $' + charge +
+                    state.message += ' They paid ' + state.players[i].name + ' $' + charge +
                         ' for ' + s.name
                     currentPlayer().cash -= charge
                     state.players[i].cash += charge
@@ -272,7 +261,7 @@
         // watch this, lol
         if (strain.oz >= strain["5lb"]) {
             strain.oz = strain["5lb"] + strain.price
-            return  state.message = strain.name + ' is over 5lb! $' + strain.oz
+            return  state.message += strain.name + ' is over 5lb! $' + strain.oz
         }
 
         if (strain.oz <= strain["2lb"]) {
@@ -298,7 +287,7 @@
         currentPlayer().cash -= charge
         state.bank.cash += charge
         currentPlayer().strains.push(strain)
-        state.message = currentPlayer().name + " bought " + strain.name
+        state.message += "They bought " + strain.name
     }
 
     function bummer() {
@@ -308,7 +297,6 @@
             state.bummers.splice(index, 1)
             return card
         }
-        state.message = "Reset bummers to original state"
         state.bummers = bummers
         return card
     }
@@ -320,7 +308,6 @@
             state.farouts.splice(index, 1)
             return card
         }
-        state.message = "Reset farouts to original state"
         state.farouts = farouts
         return card
     }
@@ -442,7 +429,7 @@
 
         // Do it again
         return setTimeout(() => {executeTurn()}, 1000)
-        executeTurn()
+        // return executeTurn()
     }
 
     function endGame() {
@@ -464,6 +451,8 @@
         let message = "At the beginning of turn " + turn + ": The Winner is " + winner.name + ' with $' + winner
             .cash + ' and ' + winner.strains.length + ' strains. They owned ' + owned
             + 'The bank had $' + state.bank.cash + '. '
+        
+        state.message = message 
 
         let endState = {
             turnNumber: state.turnNumber,
@@ -500,7 +489,7 @@
         })
     }
 
-    onMount(() => {drawPlayerPieces(); startGame();});
+    onMount(() => {drawPlayerPieces();});
 </script>
 
 
