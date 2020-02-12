@@ -474,7 +474,7 @@
             }
         }));
         alert(message)
-        return setTimeout(() => {window.location.href = '/potluck'}, 3000)
+        return setTimeout(() => {window.location.href = '/potluck'}, 2000)
     }
 
     function drawPlayerPieces() {
