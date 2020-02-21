@@ -137,7 +137,7 @@ let strains = [
         "3lb": 390,
         "4lb": 585,
         "bale": 650,
-        space: 16
+        space: 26
     },
     {
         name: 'Just Good Pot',

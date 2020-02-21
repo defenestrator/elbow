@@ -1,7 +1,3 @@
-<svelte:head>
-    <link rel="stylesheet" href="/css/style.css">
-</svelte:head>
-
 <script>
     import {onMount} from "svelte";
     import activePlayers from './players';
@@ -19,7 +15,7 @@
         players: activePlayers,
         bank: {
             strains: strains,
-            cash: 100000
+            cash: 150000
         },
         jackpot: {
             cash: 2000
@@ -27,72 +23,6 @@
         farouts: farouts,
         bummers: bummers,
         spaces:   spaces
-    }
-    
-    function abortGame(reason) {
-        let bwned = ''
-        if (state.bank.strains.length > 1) {
-
-            for (let i = 0; i < state.bank.strains.length - 1;) {
-                bwned += state.bank.strains[i].name + ', '
-                i += 1;
-            }
-            bwned += 'and ' + state.bank.strains[state.bank.strains.length - 1].name
-        }
-
-        if (state.bank.strains.length = 1) {
-            bwned = state.bank.strains[0].name
-        }
-
-        let statusMessage = "The bank had $" + state.bank.cash + ' and ' + state.bank.strains.length + ' strains. ' +
-            bwned + '. '
-
-        state.players.forEach(function (player) {
-            let owned = ''
-            if (player.strains.length > 1) {
-                for (let i = 0; i < player.strains.length - 1;) {
-                    owned += player.strains[i].name + ', '
-                    i += 1;
-                }
-                owned += 'and ' + player.strains[player.strains.length - 1].name
-            }
-
-            if (player.strains.length === 1) {
-                owned = player.strains[0].name
-            }
-
-            statusMessage += player.name + ' had $' + player.cash + ' and ' + player.strains.length +
-                ' strains. They owned ' + owned + '. '
-        })
-
-        let message = "On or about turn #" + state.turnNumber + ": The game was aborted for " + reason + '. ' +
-            statusMessage
-
-        let endState = {
-            turnNumber: state.turnNumber,
-            skipped: state.skipped.length,
-            players: state.players,
-            bank: {
-                strains: state.strains,
-                cash: state.bank.cash
-            },
-            jackpot: {
-                cash: state.jackpot.cash
-            }
-        }
-        
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/api/potluck_log', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({
-            value: {
-                "message": message,
-                "state": endState
-            }
-        }));
-        console.error('Bank Bailout! $' + state.bank.cash + ' ' + message) 
-        // alert(message)
-        window.location.href = '/potluck'
     }
 
     function currentPlayer() {
@@ -105,20 +35,21 @@
             case "reducePot": return currentPlayer().discount = true
             case "freePound": return currentPlayer().freePound = true
             case "halfOff":   return currentPlayer().halfOff = true
-            case "deal":      return owned()
-
+            case "deal":      
+                state.message += ' Dealing Square! ' 
+                return owned()
             case "loseTurn":
-                state.message += ' They lost a turn'
+                state.message += ' They lost a turn '
                 return state.skipped.push(state.activePlayerId)
                 
             case "bummer":
                 let b = bummer()
-                state.message ='Bummer! ' + b.title
+                state.message +='Bummer! ' + b.title
                 return mapEvents(b.effect)
 
             case "farout":
                 let f = farout()
-                state.message ='Far Out! ' + f.title
+                state.message +='Far Out! ' + f.title
                 return mapEvents(f.effect)
             
             case "bumEveryoneOut":
@@ -126,10 +57,11 @@
                     player.cash -= 200
                     currentPlayer().cash += 200
                 })
-                return 'Each player paid the bad bad bummer boy. $200'  
+                return state.message += ' Each player paid the bad bad bummer boy. $200'
 
             case "highRoller":
                 const roller = dieRoll(1, 6) + dieRoll(1, 6) * 100;
+                state.message += ' High Roller! You won $' + roller
                 return mapEvents('w' + roller)                
 
             case "payLefty":
@@ -139,23 +71,23 @@
                 if (leftyId < 0) {
                     leftyId = state.players.length - 1
                 }
-                
+                state.message += ' Pay the player to the left $' + lefty
                 return state.players[leftyId].cash += lefty
 
             case "jackpot":
-                if (state.jackpot.cash === 0) {
-                    state.message = 'It says jackpot, but '+ currentPlayer().name + " should think of it as 'Free Parking'"
+                if (state.jackpot.cash <= 0) {
+                    return state.message += 'It says jackpot, but '+ currentPlayer().name + " should think of it as 'Free Parking'"
                 }
                 state.message = currentPlayer().name + " won $" + state.jackpot.cash + " from the jackpot!"
                 currentPlayer().cash +=  state.jackpot.cash
                 return state.jackpot.cash = 0
 
             case "paraquat":
-                state.message += ' They got paraquat, this is going to suck.'
+                state.message += ' They got paraquat, this is going to suck. '
                 state.skipped.push(state.skipped[state.activePlayerId])
                 if (currentPlayer().getOutOfHospital === true) {
                     currentPlayer().getOutOfHospital = false
-                    return state.message = currentPlayer().name + "You lucky dog"
+                    return state.message = currentPlayer().name + " you lucky dog, no hospital trip for you."
                 }
                 return mapEvents("hospital")
                 
@@ -322,10 +254,10 @@
         let first = dieRoll(1, 6)
         let second = dieRoll(1, 6)
         const total = first + second
-        state.message = currentPlayer().name + ' rolled ' + first + ' + ' + second + ' = '+ total +'. '
+        state.message += currentPlayer().name + ' rolled ' + first + ' + ' + second + ' = '+ total +'. '
         if (first === second) {            
             currentPlayer().doubles += 1  
-            state.message += 'Doubles! Roll again!'
+            state.message += 'Doubles! Roll again! '
         } else {
             currentPlayer().doubles = 0   
         }
@@ -339,9 +271,9 @@
         drawPlayerPieces()
         let event = spaces[currentPlayer().space - 1].effect
         mapEvents(event)
-        state.message = 'First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' is on space ' 
-            currentPlayer().space + ', and has $' + currentPlayer().cash
-        return executeTurn();
+        state.message = 'First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' They are on "' +
+            spaces[currentPlayer().space -1].title + '" , with $' + currentPlayer().cash
+        return setTimeout(() => {executeTurn()}, 2500)
     }
 
     function calculateSpaceId() {
@@ -370,54 +302,55 @@
     }
 
     function executeTurn() {
-        state.turnNumber += 1
-
-        //check for doubles
+        //check for doubles, increment player if not.
         if (! currentPlayer().doubles > 0) {
             incrementPlayer()  
         }
+        state.message = ''
+        // handle (multiple) skipped turns next, because 
+        // players who rolled doubles may also have lost a turn 
+        if (state.skipped.includes(state.activePlayerId)) {
+            state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
+            state.message += "Skipped " + currentPlayer().name + " because they lost a turn "
+            return executeTurn()
+        }
         
-        // Drop players with no cash from game.
+        // then it counds as a turn
+        state.turnNumber += 1
+
+        // Drop players with no cash at the beginning of their turn from the game.
         if (currentPlayer().cash < 1) {
-            // Give us your property and die like a dog
+            // Reset prices and return strains to bank.
             currentPlayer().strains.forEach(strain => strain.oz = strain.price / 10)
             state.bank.strains = state.bank.strains.concat(currentPlayer().strains)
-            
-            state.message = currentPlayer().name +
+            // Announce loser
+            state.message += ' ' + currentPlayer().name +
             ' was dropped from the game for being broke at the beginning of their turn. '
             state.players.splice(state.players.indexOf(state.players[state.activePlayerId]), 1)
             incrementPlayer()
         }
 
-        // then check for a winner
-        if (state.players.length === 1 ) {
-            if( currentPlayer().cash > 0) {
-                return endGame()
-            }
-            return abortGame('PLAYER HAD NEGATIVE CASH')       
-        } 
+        // then check for win state
+        if (state.players.length === 1) {
+            return endGame('winner')
+        }
 
-        // check for bank insolvency (done runned out of cash!)
+        // check for bank insolvency 
         if (state.bank.cash < 1) {
-            return abortGame('bank failure')
+            return endGame(' bank failure')
         }
             
-        // handle (multiple) skipped turns
-        if (state.skipped.includes(state.activePlayerId)) {
-            state.skipped.splice(state.skipped.indexOf(state.activePlayerId), 1)
-            state.message = "skipped player: " + currentPlayer().name
-            return executeTurn()
-        }
-
-        // start the turn by rolling dice
+        // Really, finally, actually start the turn by rolling dice
         gameRoll()
         
         // move player to new space
         currentPlayer().space = calculateSpaceId()
         
+         state.message += 'They are on "' + spaces[currentPlayer().space -1].title + '", with $' + currentPlayer().cash +'. '
+
         // punish the lucky
         if (currentPlayer().doubles >= 3) {
-            state.message = currentPlayer().name + ' rolled doubles three consecutive times and was sent to the hospital.'
+            state.message += ' ' + currentPlayer().name + ' rolled doubles three consecutive times and was sent to the hospital.'
             currentPlayer().doubles = 0
             mapEvents('hospital')
         }
@@ -431,56 +364,103 @@
         // and fire that shit off
         mapEvents(event)
 
+        // writeMessageToLog()
+
         // Do it again
-        return setTimeout(() => {executeTurn()}, 1000)
+        setTimeout(() => {executeTurn()}, 2500);
         // return executeTurn()
     }
 
-    function endGame() {
-        let owned = ''
+    function endGame(reason) {
+        if (reason == 'winner') {
+            let owned = ''
 
-        let winner = state.players[0]
-        if (winner.strains.length === 1) {
+            let winner = state.players[0]
+            if (winner.strains.length === 1) {
                 owned = winner.strains[0].name
             }
 
-        if (winner.strains.length > 1) {
-            for (let i = 0; i < winner.strains.length - 1;) {
-                owned += winner.strains[i].name + ', '
-                i += 1;
+            if (winner.strains.length > 1) {
+                for (let i = 0; i < winner.strains.length - 1;) {
+                    owned += winner.strains[i].name + ', '
+                    i += 1;
+                }
+                owned += 'and ' + winner.strains[winner.strains.length - 1].name + '. '
             }
-            owned += 'and ' + winner.strains[winner.strains.length - 1].name + '. '
-        }
-        const turn = state.turnNumber
-        let message = "At the beginning of turn " + turn + ": The Winner is " + winner.name + ' with $' + winner
-            .cash + ' and ' + winner.strains.length + ' strains. They owned ' + owned
-            + 'The bank had $' + state.bank.cash + '. '
-        
-        state.message = message 
+            const turn = state.turnNumber
+            state.message = " At the beginning of turn " + turn + ": The Winner is " + winner.name + ' with $' + winner
+                .cash + ' and ' + winner.strains.length + ' strains. They owned ' + owned
+                + 'The bank had $' + state.bank.cash + '. '
+            
+            let endState = {
+                turnNumber: state.turnNumber,
+                skipped: state.skipped.length,
+                players: state.players,
+                bank: {
+                    strains: state.strains,
+                    cash: state.bank.cash
+                },
+                jackpot: {
+                    cash: state.jackpot.cash
+                }
+            }
+            let result = { message: state.message, state: endState }
+            writeEndToLog(result).then() 
+            
+        } else {
+            let bwned = ''
+            if (state.bank.strains.length > 1) {
 
-        let endState = {
-            turnNumber: state.turnNumber,
-            skipped: state.skipped.length,
-            players: state.players,
-            bank: {
-                strains: state.strains,
-                cash: state.bank.cash
-            },
-            jackpot: {
-                cash: state.jackpot.cash
+                for (let i = 0; i < state.bank.strains.length - 1;) {
+                    bwned += state.bank.strains[i].name + ', '
+                    i += 1;
+                }
+                bwned += 'and ' + state.bank.strains[state.bank.strains.length - 1].name
             }
-        }
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/api/potluck_log', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({
-            value: {
-                "message": message,
-                "state": endState
+            if (state.bank.strains.length == 1) {
+                bwned = state.bank.strains[0].name
             }
-        }));
-        // alert(message)
+
+            let statusMessage = 'The bank had $' + state.bank.cash + ' and ' + state.bank.strains.length + ' strains. ' +
+                bwned + '. '
+
+            state.players.forEach(function (player) {
+                let owned = ''
+                if (player.strains.length > 1) {
+                    for (let i = 0; i < player.strains.length - 1;) {
+                        owned += player.strains[i].name + ', '
+                        i += 1;
+                    }
+                    owned += 'and ' + player.strains[player.strains.length - 1].name
+                }
+
+                if (player.strains.length === 1) {
+                    owned = player.strains[0].name
+                }
+
+                statusMessage += player.name + ' had $' + player.cash + ' and ' + player.strains.length +
+                    ' strains. They owned ' + owned + '. '
+            })
+
+            state.message = ' On turn #' + state.turnNumber + ': The game was ended for ' + reason + '. ' + statusMessage
+
+            let endState = {
+                turnNumber: state.turnNumber,
+                skipped: state.skipped.length,
+                players: state.players,
+                bank: {
+                    strains: state.strains,
+                    cash: state.bank.cash
+                },
+                jackpot: {
+                    cash: state.jackpot.cash
+                }
+            }
+            
+            const result = { message: state.message, state: endState }
+            writeEndToLog(result)
+        }
         return window.location.href = '/potluck'
     }
 
@@ -492,15 +472,45 @@
             document.getElementById(player.space).innerHTML += player.token
         })
     }
+    
+    async function writeEndToLog(data) {        
+        var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/api/potluck_log', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            await xhr.send(JSON.stringify({
+                value: {
+                    "message": data.message,
+                    "state": data.state
+                }
+            }));
+            return 
+    }
+    
+    async function writeMessageToLog() {
+        let snapshot = {players: state.players, bank: state.bank}        
+        let xhr = new XMLHttpRequest();
+            xhr.open("POST", '/api/potluck_log', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            await xhr.send(JSON.stringify({
+                value: {
+                    "message": state.message,
+                    "state": snapshot
+                }
+            })); 
+    }
 
-    onMount(() => {drawPlayerPieces(); });
+    onMount(() => {drawPlayerPieces();});
+
 </script>
 
+<svelte:head>
+    <link rel="stylesheet" href="/css/style.css">
+</svelte:head>
 
 <main>
-<div class="container-fluid p-1 bg-white">
-        <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber}</p><br>
-        <p class="block mt-2 text-sm">{state.message}</p>
+<div class="container-fluid flex p-2 bg-white">
+        <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber} </p>
+        <p class="block text-sm">{state.message}</p>
     </div>
     
     <div class="potluck">
@@ -739,18 +749,18 @@
 
     .box {
         position:relative;
-        top:50%;
-        left:50%;
-        right:50%;
-        bottom:50%;
+        top:30%;
+        left:30%;
+        margin:0 auto;
         overflow:hidden;
+        line-height:0.8rem;
     }
 
     .potluck {
         background-color: floralwhite;
-        width: 95.75vw;
-        height: 95.75vw;
-        margin: 10px auto;
+        width: 95vw;
+        height: 95vw;
+        margin: 0.5rem auto;
     }
 
     .gameBoard {
@@ -1026,4 +1036,4 @@
         transform: rotateZ(45deg) translateX(32%) translateY(0%);
         line-height: 1em;
     }
-</style>
+</style>`

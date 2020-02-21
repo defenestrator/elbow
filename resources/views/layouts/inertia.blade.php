@@ -54,7 +54,7 @@
         </div>
       </nav>
      <div class="container p-2 m-2">
-      @yield('content')
+      @inertia
     </div>   
     <div class="flex-row-reverse">
       @yield('bottom')

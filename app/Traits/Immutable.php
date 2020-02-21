@@ -51,7 +51,6 @@ trait Immutable
                 $model->{$model->hashKey()} = sha1($model->{$model->contentKey()});
             }            
             $model->created_at = $model->freshTimestamp();
-
         });
         
         static::retrieved(function ($model) {

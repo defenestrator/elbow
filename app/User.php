@@ -57,21 +57,23 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $guard_name = 'web';
 
     /**
-     * Indicates if the IDs are auto-incrementing.
      *
      * @var bool
     */
     public $incrementing = false;
 
     /**
-     * Sets Optimized Uuids
-     *
+     * Sets Optimized Uuids, 
+     * User does NOT use 
+     * Elbow\Prototype
+     * 
      * @void
     */
     public function setIdAttribute($id)
     {
         $this->attributes['id'] = preg_replace('/-/', '', Str::orderedUuid());
     }
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -100,7 +102,14 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('Elbow\Team')
                 ->using('Elbow\TeamUser') 
-                ->withTimestamps()
-                ->withPivot('owner');
+                ->withTimestamps();
+    }
+
+    public function games()
+    {
+        return $this->belongsToMany('Elbow\Game')
+                ->using('Elbow\GameUser') 
+                ->withTimestamps();
+                
     }
 }

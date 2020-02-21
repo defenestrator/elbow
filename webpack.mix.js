@@ -5,18 +5,22 @@ const purgecss = require('@fullhuman/postcss-purgecss')
 const tailwindcss = require('tailwindcss')
 require('laravel-mix-svelte');
 
-// are we not dev?
-const mode = process.env.NODE_ENV || 'development';
-
-// const production returns false when process.env.NODE_ENV is not 'production'
-const production = mode === 'production';
-
-mix.webpackConfig({})
-.svelte({
-  dev: production
+mix.webpackConfig({
+  output: {
+    chunkFilename: 'js/[name].js?id=[chunkhash]',
+  },
+  resolve: {
+    alias: {
+        '@': path.resolve('resources/js')
+    }
+}
 })
 .js('./resources/js/script.js', 'public/js')
 .postCss('./resources/css/style.css', 'public/css/style.css')
+.svelte({
+  dev: !mix.inProduction()
+})
+
 .options({
   postCss: [
     cssImport(),
@@ -28,12 +32,15 @@ mix.webpackConfig({})
           './resources/views/**/*.blade.php', 
           './resources/views/**/*.html',
           './resources/js/**/*.svelte',
-          './resources/js/**/*.js' ],
-        defaultExtractor: content => content.match(/[\w-/:.]+(?<!:)/g) || []
+        ],
+        defaultExtractor: content =>
+          content.match(/[\w-/:.]+(?<!:)/g) || [],
+          whitelistPatternsChildren: [/nprogress/]
       }),
     ] : [],
   ],
 })
 .version()
+.sourceMaps()
 .browserSync({proxy: 'elbow.test', notify: false, open: false})
 

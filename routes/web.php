@@ -3,11 +3,13 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['verify' => true]);
 Route::resource('/contents', 'ContentController');
-
-Route::get('/potluck', 'PotLuckController@index');
+Route::get('/games/create', 'GameController@create')->name('games.create');
+Route::post('/games', 'GameController@store')->name('games.store');
+Route::get('/potluck', 'PotLuckGameController@index');
+Route::get('potluck/{$id}', 'PotluckGameController@show');
 
 Route::view('/', 'welcome')->name('welcome');
-Route::get('/potluck', 'PotLuckController@index');
+
 // Contact Form
 Route::view('/contact', 'contact')->name('contact');
 Route::post('/contact','ContactFormController@create')->name('contact');

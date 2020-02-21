@@ -236,5 +236,4 @@ const spaces = [
         effect: "w500",
     }
 ]
-
 export default spaces

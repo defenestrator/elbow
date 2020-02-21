@@ -292,7 +292,7 @@ class CreateMostOfTheTables extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->realBinary('id', 32)->unique()->primary();
             $table->string('game_title');
-            $table->realBinary('winner_id', 32);
+            $table->realBinary('winner_id', 32)->nullable();
             $table->foreign('winner_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestampsTz();
@@ -315,8 +315,8 @@ class CreateMostOfTheTables extends Migration
             $table->realBinary('id', 32)->unique()->primary();
             $table->realBinary('game_user_id', 32);   
             $table->foreign('game_user_id')->references('id')->on('game_user');
-            $table->binary('hash');
-            $table->json('state'); 
+            $table->string('hash', 40);
+            $table->longText('state'); 
             $table->timestampTz('created_at', 0);
         });
         
@@ -1020,7 +1020,6 @@ class CreateMostOfTheTables extends Migration
         'permissions',
         'plans',
         'plants',
-        'pot_lucks',
         'profiles',
         'raffles',
         'reflector_hoods',

@@ -1,4 +1,4 @@
-<template>
+<main>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -12,12 +12,8 @@
             </div>
         </div>
     </div>
-</template>
+</main>
 
 <script>
-    export default {
-        mounted() {
-            console.log('Component mounted.')
-        }
-    }
+   onMount(() =>  console.log('Component mounted.')) 
 </script>

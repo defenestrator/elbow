@@ -32,4 +32,10 @@ class GameMove extends Model
     {
         return 'state';
     }
+
+    
+    public function game()
+    {
+        return $this->belongsTo('Elbow\Game');
+    }
 }

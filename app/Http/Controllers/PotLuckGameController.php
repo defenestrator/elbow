@@ -1,10 +1,12 @@
 <?php
 
 namespace Elbow\Http\Controllers;
-use Log;
-use Illuminate\Http\Request;
 
-class PotluckLogController extends Controller
+use Elbow\Game as PotLuck;
+use Illuminate\Http\Request;
+use Inertia\Inertia;
+
+class PotLuckGameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class PotluckLogController extends Controller
      */
     public function index()
     {
-        //
+       return Inertia::render('potluck/Potluck', []);
     }
 
     /**
@@ -23,7 +25,7 @@ class PotluckLogController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -32,44 +34,45 @@ class PotluckLogController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, PotLuck $potLuck)
     {
-           return Log::info([
-                'message' => $request['value']['message'],
-                'state' => $request['value']['state']
-            ]);
+        dd($request->users);
+        $this->potLuck->create([
+            'game_title' => 'potluck',
+        ])->sync($request->users);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \Elbow\PotLuck  $potLuck
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PotLuck $potLuck)
     {
-        //
+        return view('potluck.show', compact($potLuck));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \Elbow\PotLuck  $potLuck
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PotLuck $potLuck)
     {
-        //
+        //exit
+        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Elbow\PotLuck  $potLuck
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PotLuck $potLuck)
     {
         //
     }
@@ -77,10 +80,10 @@ class PotluckLogController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Elbow\PotLuck  $potLuck
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PotLuck $potLuck)
     {
         //
     }

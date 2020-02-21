@@ -2,10 +2,10 @@
 
 namespace Elbow\Http\Controllers;
 
-use Elbow\PotLuck;
 use Illuminate\Http\Request;
+use Elbow\Game;
 
-class PotLuckController extends Controller
+class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PotLuckController extends Controller
      */
     public function index()
     {
-       return view('potluck');
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class PotLuckController extends Controller
      */
     public function create()
     {
-        //
+        return view('games.create');
     }
 
     /**
@@ -33,18 +33,18 @@ class PotLuckController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Game $game)
     {
-        //
+        return $game->create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Elbow\PotLuck  $potLuck
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(PotLuck $potLuck)
+    public function show($id)
     {
         //
     }
@@ -52,10 +52,10 @@ class PotLuckController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Elbow\PotLuck  $potLuck
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(PotLuck $potLuck)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +64,10 @@ class PotLuckController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Elbow\PotLuck  $potLuck
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PotLuck $potLuck)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +75,10 @@ class PotLuckController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Elbow\PotLuck  $potLuck
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PotLuck $potLuck)
+    public function destroy($id)
     {
         //
     }

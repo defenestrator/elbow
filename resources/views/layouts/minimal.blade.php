@@ -12,7 +12,7 @@
 </head>
 
 <body class="font-sans bg-blue-900 text-white width-100 h-100">
-    <div id="rootComponent">
+    <div id="app">
       @yield('content')
     </div>
 </body>
