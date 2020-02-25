@@ -5,10 +5,8 @@ use Illuminate\Support\Str;
 
 trait HasUuid
 {
-    protected static function boot()
+    protected static function bootHasUuid()
     {
-        parent::bootHasUuid();
-
         static::creating(function ($model) {
             $model->id = preg_replace('/-/', '', Str::orderedUuid());
         });

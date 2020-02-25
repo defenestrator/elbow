@@ -56,8 +56,10 @@
      <div class="container p-2 m-2">
       @inertia
     </div>   
-    <div class="flex-row-reverse">
-      @yield('bottom')
+    <div class="container p-2 m-2 flex-row flex-wrap">
+      <div class="inline-block flex-grow">
+        @include('icons')
+      </div>
     </div>
   </div>
 </div>

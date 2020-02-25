@@ -13419,6 +13419,21 @@ h4, h5, h6 {
   font-weight: 400
 }
 
+.iconsList {
+  display:-webkit-box;
+  display:flex;
+  flex-wrap: wrap;
+  -webkit-box-flex: inherit;
+          flex-grow: inherit;
+}
+
+.iconsList > li {
+  margin: 1.5rem;
+  -webkit-box-align: center;
+          align-items: center;
+  text-align: center;
+}
+
 [x-cloak] { display: none;
 }
 

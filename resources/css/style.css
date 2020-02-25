@@ -24,5 +24,16 @@ h1,h2,h3 {
 h4, h5, h6 {
     font-weight: 400
 }
+.iconsList {
+    display:flex;
+    flex-wrap: wrap;
+    flex-grow: inherit;
+}
 
+.iconsList > li {
+
+    margin: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
 [x-cloak] { display: none; }
