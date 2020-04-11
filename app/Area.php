@@ -3,7 +3,7 @@
 namespace Elbow;
 
 use Elbow\Prototype as Model;
-use Elbow\Traits\HasUuid;
+
 /**
  * Elbow\Area
  *
@@ -36,5 +36,5 @@ use Elbow\Traits\HasUuid;
  */
 class Area extends Model
 {
-    use HasUuid;
+    
 }

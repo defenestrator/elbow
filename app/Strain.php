@@ -62,7 +62,7 @@ class Strain extends Model
     /**
      * @var string
      */
-    protected $table = 'strains';
+    protected $table = 'cannabis_strains';
 
     /**
      * @var array

@@ -43,7 +43,7 @@ class SeedCompany extends Model
     /**
      * @var string
      */
-    protected $table = 'seed_companies';
+    protected $table = 'cannabis_seed_companies';
 
     /**
      * @var array

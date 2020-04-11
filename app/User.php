@@ -6,8 +6,6 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasPermissions;
-use Elbow\Traits\HasUuid;
-use Illuminate\Support\Str;
 
 /**
  * Elbow\User
@@ -52,27 +50,10 @@ use Illuminate\Support\Str;
  */
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, HasPermissions, HasUuid;
+    use Notifiable, HasPermissions;
     
     protected $guard_name = 'web';
 
-    /**
-     *
-     * @var bool
-    */
-    public $incrementing = false;
-
-    /**
-     * Sets Optimized Uuids, 
-     * User does NOT use 
-     * Elbow\Prototype
-     * 
-     * @void
-    */
-    public function setIdAttribute($id)
-    {
-        $this->attributes['id'] = preg_replace('/-/', '', Str::orderedUuid());
-    }
     
     /**
      * The attributes that are mass assignable.

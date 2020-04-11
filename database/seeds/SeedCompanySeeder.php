@@ -16,6 +16,7 @@ class SeedCompanySeeder extends Seeder
 
     public function pop()
     {
-        DB::unprepared(file_get_contents('database/prod_seed_companies_2020-01-23-21-26.sql'));
+        // DB::unprepared(file_get_contents('database/prod_seed_companies_2020-01-23-21-26.sql'));
+        DB::unprepared(file_get_contents('database/cannabis_seed_companies.sql'));
     }
 }

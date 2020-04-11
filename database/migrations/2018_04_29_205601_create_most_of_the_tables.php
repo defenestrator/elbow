@@ -34,19 +34,19 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('api_keys', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();  
+            $table->id();  
             $table->string('key');
             $table->string('name');
-            $table->realBinary('user_id', 32);
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->realBinary('sensor_id', 32)->nullable();
+            $table->unsignedBigInteger('sensor_id')->nullable();
             $table->foreign('sensor_id')->references('id')->on('sensors');
             $table->timestampsTz();
         });
 
         Schema::create('subscriptions', function ($table) {
-            $table->realBinary('id', 32)->unique()->primary();  
-            $table->realBinary('user_id', 32);
+            $table->id();  
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('stripe_id');
@@ -59,7 +59,7 @@ class CreateMostOfTheTables extends Migration
         });
         
         Schema::create('features', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();  
+            $table->id();  
             $table->string('name');
             $table->string('description')->default('super useful new feature!');
             $table->softDeletes();
@@ -67,7 +67,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('plans', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();  
+            $table->id();  
             $table->string('name');
             $table->string('stripe_plan');
             $table->boolean('archived')->default(false);
@@ -76,8 +76,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('profiles', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('avatar')->default('/img/bot.png');            
             $table->string('facebook')->default('elbow');
@@ -94,8 +94,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('invoices', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('deposit_requested')->default(0);
             $table->integer('total')->default(0);
@@ -190,12 +190,12 @@ class CreateMostOfTheTables extends Migration
     {
         // Content
         Schema::create('images', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('imageable_id', 32)->nullable();
+            $table->unsignedBigInteger('imageable_id')->nullable();
             $table->string('imageable_type')->nullable();
             $table->string('large')->nullable();
             $table->string('medium')->nullable();
@@ -205,8 +205,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('contents', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('author_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
             $table->string('slug', 240)->unique();
             $table->string('title', 191);
@@ -217,10 +217,10 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('comments', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();          
-            $table->realBinary('user_id', 32);
+            $table->id();          
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->realBinary('commentable_id', 32);
+            $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
             $table->string('title')->nullable();
             $table->longText('body');
@@ -228,23 +228,23 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('tags', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('tag');
             $table->string('slug')->unique();
         });
 
         Schema::create('taggables', function (Blueprint $table) {
-            $table->realBinary('tag_id', 32);
+            $table->unsignedBigInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('tags');
-            $table->realBinary('taggable_id', 32);
+            $table->unsignedBigInteger('taggable_id');
             $table->string('taggable_type');
         });
 
         Schema::create('edits', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('editable_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('editable_id');
             $table->string('editable_type');
-            $table->realBinary('user_id', 32);
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('hash', 40);
             $table->longText('state');
@@ -252,7 +252,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('raffles', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->unsignedBigInteger('ticket_limit')->default(0);
             $table->string('title');
             $table->string('description');
@@ -262,7 +262,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('giveaways', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('title');
             $table->longText('description');
             $table->string('image');
@@ -272,7 +272,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('contest_entries', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->integer('giveaway_id')->unsigned()->default(0);
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
@@ -281,7 +281,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('contact_form_messages', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();  
+            $table->id();  
             $table->string('name');
             $table->string('email_address');
             $table->string('message');
@@ -290,21 +290,21 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('games', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('game_title');
-            $table->realBinary('winner_id', 32)->nullable();
+            $table->unsignedBigInteger('winner_id')->nullable();
             $table->foreign('winner_id')->references('id')->on('users');
             $table->softDeletes();
             $table->timestampsTz();
         });
 
         Schema::create('game_user', function(Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('game_id', 32);            
+            $table->id();
+            $table->unsignedBigInteger('game_id');            
             $table->foreign('game_id')
                 ->references('id')
                 ->on('games');
-            $table->realBinary('user_id', 32);            
+            $table->unsignedBigInteger('user_id');            
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -312,8 +312,8 @@ class CreateMostOfTheTables extends Migration
         });
         
         Schema::create('game_moves', function(Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('game_user_id', 32);   
+            $table->id();
+            $table->unsignedBigInteger('game_user_id');   
             $table->foreign('game_user_id')->references('id')->on('game_user');
             $table->string('hash', 40);
             $table->longText('state'); 
@@ -321,29 +321,29 @@ class CreateMostOfTheTables extends Migration
         });
         
         Schema::create('products', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('type');
             $table->longText('description');            
             $table->timestampsTz();
         });
 
         Schema::create('cannabis', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
             $table->string('name');
             $table->longText('description')->nullable();
-            $table->realBinary('product_id', 32);
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products');
-            $table->realBinary('strain_id', 32);
+            $table->unsignedBigInteger('strain_id');
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->realBinary('seed_company_id', 32);
+            $table->unsignedBigInteger('seed_company_id');
             $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
@@ -355,8 +355,8 @@ class CreateMostOfTheTables extends Migration
     {
         // Growing 
         Schema::create('farms', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -373,8 +373,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('area_types', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -384,24 +384,24 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('areas', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('farm_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('farm_id');
             $table->foreign('farm_id')->references('id')->on('farms');
             $table->string('name');
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('floorspace_cm2')->nullable();
             $table->unsignedBigInteger('growspace_cm2')->nullable();
-            $table->realBinary('area_type_id', 32)->nullable();
+            $table->unsignedBigInteger('area_type_id')->nullable();
             $table->foreign('area_type_id')->references('id')->on('area_types');
             $table->softDeletes();
             $table->timestampsTz();
         });
 
         Schema::create('seed_companies', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('name')->nullable();
             $table->string('description')->nullable();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -414,12 +414,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('strains', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('seed_company_id', 32)->nullable();
+            $table->unsignedBigInteger('seed_company_id')->nullable();
             $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
@@ -441,16 +441,16 @@ class CreateMostOfTheTables extends Migration
  
 
         Schema::create('seeds', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('strain_id', 32);
+            $table->unsignedBigInteger('strain_id');
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->realBinary('seed_company_id', 32);
+            $table->unsignedBigInteger('seed_company_id');
             $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
@@ -465,16 +465,16 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('cuttings', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('strain_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('strain_id');
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->realBinary('seed_company_id', 32)->nullable();
+            $table->unsignedBigInteger('seed_company_id')->nullable();
             $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -485,7 +485,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('manufacturers', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('name')->unique();
             $table->string('phone')->default('555-867-5309');
             $table->longText('description')->nullable();
@@ -499,10 +499,10 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('media', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('name');
             $table->longText('description')->nullable();
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
@@ -512,12 +512,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('cycles', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('farm_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('farm_id');
             $table->foreign('farm_id')->references('id')->on('farms');
             $table->string('name')->default('Default Cycle');
             $table->longText('description')->nullable();
-            $table->realBinary('medium_id', 32)->nullable();
+            $table->unsignedBigInteger('medium_id')->nullable();
             $table->foreign('medium_id')
                 ->references('id')
                 ->on('media');
@@ -528,9 +528,9 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('harvests', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->date('date_of')->default(now('America/Denver'));
-            $table->realBinary('cycle_id', 32);
+            $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')
                 ->references('id')
                 ->on('cycles');
@@ -541,8 +541,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('stages', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('area_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')->references('id')->on('areas');
             $table->string('name')->default('default stage');
             $table->string('description')->nullable();
@@ -552,20 +552,20 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('plants', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('strain_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('strain_id')->nullable();
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->realBinary('seed_company_id', 32)->nullable();
+            $table->unsignedBigInteger('seed_company_id')->nullable();
             $table->foreign('seed_company_id')
                 ->references('id')
                 ->on('seed_companies');
-            $table->realBinary('cycle_id', 32);
+            $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')
                 ->references('id')
                 ->on('cycles');
-            $table->realBinary('user_id', 32);
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -575,8 +575,8 @@ class CreateMostOfTheTables extends Migration
         }); 
 
         Schema::create('sensor_types', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -590,25 +590,25 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('sensors', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
             $table->string('name')->default('default sensor');
-            $table->realBinary('sensor_type_id', 32)->nullable();
+            $table->unsignedBigInteger('sensor_type_id')->nullable();
             $table->foreign('sensor_type_id')->references('id')->on('sensor_types');
             $table->softDeletes();
             $table->timestampsTz();
         });
 
         Schema::create('solutions', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('sensor_id')->nullable();
             $table->float('ph', 4, 2)->nullable();
@@ -622,10 +622,10 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('environments', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->realBinary('sensor_id', 32)->nullable();
+            $table->unsignedBigInteger('sensor_id')->nullable();
             $table->foreign('sensor_id')->references('id')->on('sensors');
             $table->unsignedBigInteger('temperature_c')->nullable();
             $table->unsignedBigInteger('c02_ppm')->nullable();
@@ -637,12 +637,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('light_fixtures', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
@@ -656,12 +656,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('reservoirs', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
@@ -674,13 +674,13 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('fertilizers', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
             $table->string('name')->default('default');
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
@@ -701,12 +701,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('hvac_appliances', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -720,14 +720,14 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('fans', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('user_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
             $table->unsignedInteger('watts')->default(0);
             $table->unsignedBigInteger('cfm')->default(0);
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id', 16)
                 ->references('id')
                 ->on('manufacturers');
@@ -736,17 +736,17 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('chillers', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('model')->nullable();
             $table->unsignedInteger('capacity');
             $table->unsignedBigInteger('btus')->default(0);
             $table->unsignedBigInteger('watts')->default(0);
             $table->unsignedBigInteger('gph')->default(0);
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -755,12 +755,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('lamps', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -775,13 +775,13 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('drivers', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('model');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
@@ -795,14 +795,14 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('ballasts', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('model');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
             $table->unsignedBigInteger('watts')->default(0);
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
@@ -813,12 +813,12 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('reflector_hoods', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('manufacturer_id', 32)->nullable();
+            $table->id();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
                 ->on('manufacturers');
-            $table->realBinary('user_id', 32)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
@@ -833,7 +833,7 @@ class CreateMostOfTheTables extends Migration
     {
         // Humans
         Schema::create('users', function ($table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -848,7 +848,7 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('teams', function ($table) {
-            $table->realBinary('id', 32)->unique()->primary();
+            $table->id();
             $table->string('name');
             $table->softDeletes();
             $table->timestampsTz();
@@ -858,103 +858,103 @@ class CreateMostOfTheTables extends Migration
     protected function pivots()
     {
         Schema::create('cycle_stage', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('cycle_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')
                 ->references('id')
                 ->on('cycles');
-            $table->realBinary('stage_id', 32);
+            $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')
                 ->references('id')
                 ->on('stages');
         });       
 
         Schema::create('light_fixture_stage', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('light_fixture_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('light_fixture_id');
             $table->foreign('light_fixture_id')
                 ->references('id')
                 ->on('light_fixtures');
-            $table->realBinary('stage_id', 32);
+            $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')
                 ->references('id')
                 ->on('stages');
         });
 
         Schema::create('reservoir_stage', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('stage_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')
                 ->references('id')
                 ->on('stages');
-            $table->realBinary('reservoir_id', 32);
+            $table->unsignedBigInteger('reservoir_id');
             $table->foreign('reservoir_id')
                 ->references('id')
                 ->on('reservoirs');
         });
 
         Schema::create('ballast_light_fixture', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('ballast_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('ballast_id');
             $table->foreign('ballast_id')
                 ->references('id')
                 ->on('ballasts');
-            $table->realBinary('light_fixture_id', 32);
+            $table->unsignedBigInteger('light_fixture_id');
             $table->foreign('light_fixture_id')
                 ->references('id')
                 ->on('light_fixtures');
         });
 
         Schema::create('driver_light_fixture', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('driver_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('driver_id');
             $table->foreign('driver_id')
                 ->references('id')
                 ->on('drivers');
-            $table->realBinary('light_fixture_id', 32);
+            $table->unsignedBigInteger('light_fixture_id');
             $table->foreign('light_fixture_id')
                 ->references('id')
                 ->on('light_fixtures');
         });
 
         Schema::create('lamp_light_fixture', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('lamp_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('lamp_id');
             $table->foreign('lamp_id')
                 ->references('id')
                 ->on('lamps');
-            $table->realBinary('light_fixture_id', 32);
+            $table->unsignedBigInteger('light_fixture_id');
             $table->foreign('light_fixture_id')
                 ->references('id')
                 ->on('light_fixtures');
         });       
 
         Schema::create('feature_plan', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('plan_id', 32);
-            $table->realBinary('feature_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('plan_id');
+            $table->unsignedBigInteger('feature_id');
             $table->timestampsTz();
         });
 
         Schema::create('harvest_plant', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('harvest_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('harvest_id');
             $table->foreign('harvest_id')
                 ->references('id')
                 ->on('harvests');
-            $table->realBinary('plant_id', 32);
+            $table->unsignedBigInteger('plant_id');
             $table->foreign('plant_id')
                 ->references('id')
                 ->on('plants');
         });
 
         Schema::create('team_user', function (Blueprint $table) {
-            $table->realBinary('id', 32)->unique()->primary();
-            $table->realBinary('team_id', 32);
+            $table->id();
+            $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
                 ->references('id')
                 ->on('teams');
-            $table->realBinary('user_id', 32);
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');

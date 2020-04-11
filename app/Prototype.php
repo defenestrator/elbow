@@ -3,8 +3,6 @@
 namespace Elbow;
 
 use Illuminate\Database\Eloquent\Model;
-use Elbow\Traits\HasUuid;
-use Illuminate\Support\Str;
 
 /**
  * Elbow\Prototype
@@ -18,24 +16,13 @@ use Illuminate\Support\Str;
  */
 abstract class Prototype extends Model
 {
-    use HasUuid;
+    
 
     /**
      * Indicates if the IDs are auto-incrementing.
      *
      * @var bool
     */
-    public $incrementing = false;
-
-    
-    /**
-     * Sets Optimized Uuids
-     *
-     * @void
-    */
-    public function setIdAttribute()
-    {
-        $this->attributes['id'] = preg_replace('/-/', '', Str::orderedUuid());
-    }
+    public $incrementing = true;
     
 }

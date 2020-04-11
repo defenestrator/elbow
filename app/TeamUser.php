@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class TeamUser extends Pivot
 {
-    private $timestamps = true;
-    public $incrementing = false;
-    
+    private $timestamps = true;    
 }
 
 

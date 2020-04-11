@@ -21,10 +21,6 @@ use Elbow\Edit;
 
 class DatabaseSeeder extends Seeder
 {
-    public function uuid()
-    {
-        return preg_replace('/-/', '', Str::orderedUuid());
-    }
 
     public function userId()
     {

@@ -3,7 +3,7 @@
 namespace Elbow;
 
 use Elbow\Prototype;
-use Elbow\Traits\HasUuid;
+
 
 /**
  * Elbow\Plan
@@ -30,5 +30,5 @@ use Elbow\Traits\HasUuid;
  */
 class Plan extends Prototype
 {
-    use HasUuid;
+    
 }
