@@ -6,8 +6,11 @@ use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
 $factory->define(Elbow\Strain::class, function (Faker $faker) {
+    $seedco = Elbow\Breeder::find(1)->first();
+
     return [
-        'seed_company_id'           => factory(Elbow\SeedCompany::class),
+        'breeder_id'           => $seedco->id,
+        'breeder'              => $seedco->name,
         'lineage'                   => $faker->sentence,
         'genetics'                  => $faker->word . ' x ' . $faker->word,
         'name'                      => $faker->name,

@@ -11,14 +11,14 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle query()
  * @mixin \Eloquent
- * @property int $cannabis_strain_id
+ * @property int $strain_id
  * @property int $ticket_limit
  * @property string $title
  * @property string $description
  * @property string $ends_at
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereCannabisStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Raffle whereEndsAt($value)
@@ -34,5 +34,5 @@ use Elbow\Prototype as Model;
  */
 class Raffle extends Model
 {
-    protected $fillable = ['ticket_limit', 'title', 'description', 'cannabis_strain_id'];
+    protected $fillable = ['ticket_limit', 'title', 'description', 'strain_id'];
 }

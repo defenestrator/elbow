@@ -10,7 +10,7 @@ $factory->define(Elbow\Seed::class, function (Faker $faker) {
     return [
         'description'       => $faker->paragraph,
         'strain_id'         => $faker->numberBetween(1, 10),
-        'seed_company_id'   => $faker->numberBetween(1, 10),
+        'breeder_id'   => $faker->numberBetween(1, 10),
         'qty_per_pack'      => $qty,
         'price'             => $price,
         'inventory'         => $faker->numberBetween(1,100),

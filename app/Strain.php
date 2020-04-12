@@ -13,7 +13,7 @@ use Elbow\Prototype as Model;
  * @property string $image
  * @property string $lineage
  * @property string $genetics
- * @property string $seed_company
+ * @property string $breeder
  * @property string $description
  * @property string $url
  * @property string $qr
@@ -24,13 +24,13 @@ use Elbow\Prototype as Model;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Plant[] $plants
- * @property-read \Elbow\SeedCompany $seedCompanies
+ * @property-read \Elbow\Breeder $breeders
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereImage($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereLineage($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereGenetics($value)
- * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereSeedCompany($value)
+ * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereBreeder($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereDescription($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereUrl($value)
  * @method static \Illuminate\Database\Query\Builder|\Elbow\Strain whereQr($value)
@@ -45,15 +45,15 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain query()
  * @property string|null $uuid
- * @property int|null $cannabis_seed_company_id
+ * @property int|null $breeder_id
  * @property string|null $deleted_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereCannabisSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereCannabisBreederId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereUuid($value)
  * @property int|null $user_id
- * @property int|null $seed_company_id
+ * @property int|null $breeder_id
  * @property-read int|null $plants_count
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereBreederId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Strain whereUserId($value)
  */
 class Strain extends Model
@@ -62,14 +62,14 @@ class Strain extends Model
     /**
      * @var string
      */
-    protected $table = 'cannabis_strains';
+    protected $table = 'strains';
 
     /**
      * @var array
      */
     protected $fillable = [
-        'cannabis_reports_link', 'name', 'lineage', 'genetics', 'description', 'seed_company', 
-        'seed_company_id',
+        'cannabis_reports_link', 'name', 'lineage', 'genetics', 'description', 'breeder', 
+        'breeder_id',
         'flowering_time_min', 'flowering_time_max', 'ucpc', 'image', 'url', 'qr', 'description'
     ];
 
@@ -84,8 +84,8 @@ class Strain extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function seedCompanies()
+    public function breeders()
     {
-        return $this->belongsTo(SeedCompany::class);
+        return $this->belongsTo(Breeder::class);
     }
 }

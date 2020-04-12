@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\CycleStage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\CycleStage whereStageId($value)
  * @mixin \Eloquent
+ * @property mixed $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\CycleStage whereUuid($value)
  */
 class CycleStage extends Pivot
 {

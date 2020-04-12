@@ -16,8 +16,8 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUpdatedAt($value)
  * @mixin \Eloquent
- * @property int $cannabis_strain_id
- * @property int $cannabis_seed_company_id
+ * @property int $strain_id
+ * @property int $breeder_id
  * @property int $qty_per_pack
  * @property int $price
  * @property int $inventory
@@ -25,8 +25,8 @@ use Elbow\Prototype as Model;
  * @property int $autoflower
  * @property string|null $deleted_at
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereAutoflower($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereCannabisSeedCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereCannabisStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereCannabisBreederId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereFeminized($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereInventory($value)
@@ -35,10 +35,10 @@ use Elbow\Prototype as Model;
  * @property string $uuid
  * @property int|null $user_id
  * @property int $strain_id
- * @property int $seed_company_id
+ * @property int $breeder_id
  * @property string|null $description
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereBreederId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Seed whereUuid($value)

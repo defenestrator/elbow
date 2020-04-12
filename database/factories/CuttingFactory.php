@@ -8,11 +8,9 @@ use Illuminate\Support\Str;
 
 $factory->define(Cutting::class, function (Faker $faker) {
 
-    $seedco = factory(Elbow\SeedCompany::class);
-
     return [
-        'strain_id'         => factory(Elbow\Strain::class),
-        'seed_company_id'   => $faker->randomElement([$seedco, null]),
+        'strain_id'         => 1,
+        'breeder_id'        => 1,
         'user_id'           => factory(Elbow\User::class),
         'price'             => $faker->numberBetween(1000,10000000),
         'description'       => $faker->paragraph,

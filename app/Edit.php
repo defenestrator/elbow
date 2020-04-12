@@ -26,6 +26,11 @@ use Elbow\Traits\Immutable;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Edit whereOldContent($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Edit whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Edit whereContent($value)
+ * @property \Dyrynda\Database\Casts\EfficientUuid $uuid
+ * @property string $state
+ * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $editable
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Edit whereState($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Edit whereUuid($value)
  */
 class Edit extends Prototype
 {
@@ -41,7 +46,7 @@ class Edit extends Prototype
 
     public function editable()
     {
-        return $this->morphToMany();
+        return $this->morphTo();
     }
     
 }

@@ -42,6 +42,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile whereUserTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile whereWhatsapp($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile whereYoutube($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Profile whereUuid($value)
  */
 class Profile extends Model
 {

@@ -24,6 +24,7 @@ use Elbow\Prototype;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Feature whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Feature whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Feature whereUuid($value)
  */
 class Feature extends Prototype
 {

@@ -39,6 +39,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Farm whereTotalAreaM2($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Farm whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Farm whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Farm whereUuid($value)
  */
 class Farm extends Model
 {

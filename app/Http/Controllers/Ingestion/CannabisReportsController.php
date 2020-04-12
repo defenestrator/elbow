@@ -17,7 +17,7 @@ class CannabisReportsController extends Controller {
     public function seedco()
     {
         $page = new CannabisReports();
-        return $page->getSeedCompanyDetails();
+        return $page->getBreederDetails();
     }
 
     public function getStrainDetails()

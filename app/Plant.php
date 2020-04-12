@@ -17,10 +17,10 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUpdatedAt($value)
  * @mixin \Eloquent
  * @property string $uuid
- * @property int $cannabis_strain_id
+ * @property int $strain_id
  * @property int $cycle_id
  * @property string|null $deleted_at
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereCannabisStrainId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereCycleId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUuid($value)
@@ -29,9 +29,9 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereNotes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereStrainId($value)
  * @property mixed $id
- * @property mixed|null $seed_company_id
+ * @property mixed|null $breeder_id
  * @property mixed $user_id
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereBreederId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plant whereUserId($value)
  */
 class Plant extends Model

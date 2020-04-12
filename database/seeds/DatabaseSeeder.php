@@ -14,7 +14,7 @@ use Elbow\Ballast;
 use Elbow\Reservoir;
 use Elbow\Harvest;
 use Elbow\Plant;
-use Elbow\SeedCompany;
+use Elbow\Breeder;
 use Elbow\Driver;
 use Elbow\Lamp;
 use Elbow\Edit;
@@ -58,9 +58,9 @@ class DatabaseSeeder extends Seeder
         return Cycle::select('id')->first()->id;
     }
 
-    public function seedCompanyId()
+    public function breederId()
     {
-        return SeedCompany::select('id')->first()->id;
+        return Breeder::select('id')->first()->id;
     }
     
     public function stageId()
@@ -122,7 +122,7 @@ class DatabaseSeeder extends Seeder
             CycleSeeder::class,
             StageSeeder::class,
             TeamSeeder::class,
-            SeedCompanySeeder::class,
+            BreederSeeder::class,
             StrainSeeder::class, 
             FeatureSeeder::class,
             PlanSeeder::class,

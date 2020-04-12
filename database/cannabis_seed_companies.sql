@@ -21,31 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `elbow`
 --
-DROP TABLE IF EXISTS `cannabis_seed_companies`;
 
-CREATE TABLE `cannabis_seed_companies` (
-  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(20) unsigned DEFAULT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `ucpc` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `cannabis_reports_link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `cannabis_seed_companies_id_unique` (`id`),
-  UNIQUE KEY `cannabis_seed_companies_ucpc_unique` (`ucpc`),
-  KEY `seed_companies_user_id_foreign` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- CREATE TABLE `breeders` (
+--   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+--   `user_id` bigint(20) unsigned DEFAULT NULL,
+--   `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `ucpc` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `description` text COLLATE utf8mb4_unicode_ci,
+--   `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `url` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `cannabis_reports_link` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+--   `deleted_at` timestamp NULL DEFAULT NULL,
+--   `created_at` timestamp NULL DEFAULT NULL,
+--   `updated_at` timestamp NULL DEFAULT NULL,
+--   PRIMARY KEY (`id`),
+--   UNIQUE KEY `breeders_id_unique` (`id`),
+--   UNIQUE KEY `breeders_ucpc_unique` (`ucpc`),
+--   KEY `seed_companies_user_id_foreign` (`user_id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `cannabis_seed_companies`
+-- Dumping data for table `breeders`
 --
 
-INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
+INSERT INTO `breeders` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
 (1, 'Riot Seeds', 'YFTYM00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/a/full_ad1c69c816993e47f0c87e8a2da3b5acb9531c68.jpg', 'https://www.cannabisreports.com/strain-reports/riot-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/YFTYM00000000000000000000', '2019-04-24 16:18:08', '2019-04-24 19:03:08'),
 (2, 'GreenMan Organics', '3Q67M00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/d/full_dedd63644e415247b4c7f07ea140a97c93ab4f26.jpg', 'https://www.cannabisreports.com/strain-reports/greenman-organics', 'https://www.cannabisreports.com/api/v1.0/seed-companies/3Q67M00000000000000000000', '2019-04-24 16:18:08', '2019-04-24 19:03:18'),
 (3, 'Apothecary Seed Company', 'G3YM700000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/c/full_c51fe38441fafaa4186e68f87e613ee0b21a0976.jpg', 'https://www.cannabisreports.com/strain-reports/apothecary-seed-company', 'https://www.cannabisreports.com/api/v1.0/seed-companies/G3YM700000000000000000000', '2019-04-24 16:18:08', '2019-04-24 19:03:25'),
@@ -190,7 +189,7 @@ INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `ima
 (142, 'Dark Heart Nursery', 'HNLDX00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/6/full_6888c4c0fdced84f41d3c65d798030bb40756ca7.jpg', 'https://www.cannabisreports.com/strain-reports/dark-heart-nursery', 'https://www.cannabisreports.com/api/v1.0/seed-companies/HNLDX00000000000000000000', '2019-04-24 16:23:38', '2019-04-24 19:21:24'),
 (143, 'Eskobar', 'WFTHF00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/8/full_83465c3734c9616eb4ad5eacc590372852f4a73d.jpg', 'https://www.cannabisreports.com/strain-reports/eskobar', 'https://www.cannabisreports.com/api/v1.0/seed-companies/WFTHF00000000000000000000', '2019-04-24 16:23:38', '2019-04-24 19:21:31'),
 (144, 'K.C. Brains', '3AQF200000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/3/full_3c770edbd568def3889ff78c6bd8caef11c68135.jpg', 'https://www.cannabisreports.com/strain-reports/kc-brains', 'https://www.cannabisreports.com/api/v1.0/seed-companies/3AQF200000000000000000000', '2019-04-24 16:23:45', '2019-04-24 19:21:39');
-INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
+INSERT INTO `breeders` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
 (145, 'Dutchgrown Seeds', 'LCXT900000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/4/full_475c17074dc6e23941d9039b2a623fcd8ab76575.jpg', 'https://www.cannabisreports.com/strain-reports/dutchgrown-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/LCXT900000000000000000000', '2019-04-24 16:23:53', '2019-04-24 19:21:46'),
 (146, 'Delta-9 Labs', 'JU39300000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/7/full_7617c3537fa08ee14ce5c7de5b7abcbb65cf1d07.jpg', 'https://www.cannabisreports.com/strain-reports/delta-9-labs', 'https://www.cannabisreports.com/api/v1.0/seed-companies/JU39300000000000000000000', '2019-04-24 16:23:53', '2019-04-24 19:21:54'),
 (147, 'Stallion Genetics', 'PXZ7300000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/stallion-genetics', 'https://www.cannabisreports.com/api/v1.0/seed-companies/PXZ7300000000000000000000', '2019-04-24 16:23:54', '2019-04-24 19:22:01'),
@@ -337,7 +336,7 @@ INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `ima
 (288, 'Flash Seeds', '2QQDW00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/3/full_3ade2cf9c501f9b635f6b727b6497355c4761dee.jpg', 'https://www.cannabisreports.com/strain-reports/flash-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/2QQDW00000000000000000000', '2019-04-24 16:34:42', '2019-04-24 19:39:47'),
 (289, 'Reason Genetics', 'VKK9F00000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/reason-genetics', 'https://www.cannabisreports.com/api/v1.0/seed-companies/VKK9F00000000000000000000', '2019-04-24 16:34:42', '2019-04-24 19:39:54'),
 (290, 'Lux Collective', 'YFAJT00000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/lux-collective', 'https://www.cannabisreports.com/api/v1.0/seed-companies/YFAJT00000000000000000000', '2019-04-24 16:34:42', '2019-04-24 19:40:02');
-INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
+INSERT INTO `breeders` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
 (291, 'Reserva Privada', '4PNYL00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/9/full_90e3ae418fc8ff7468297df305c8f9a0c7733354.jpg', 'https://www.cannabisreports.com/strain-reports/reserva-privada', 'https://www.cannabisreports.com/api/v1.0/seed-companies/4PNYL00000000000000000000', '2019-04-24 16:34:49', '2019-04-24 19:40:09'),
 (292, '7 Dwarfs', 'NUP9X00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/5/full_5714c964b12088cfa212cc6320ee67c6c06dc3a6.jpg', 'https://www.cannabisreports.com/strain-reports/7-dwarfs', 'https://www.cannabisreports.com/api/v1.0/seed-companies/NUP9X00000000000000000000', '2019-04-24 16:34:49', '2019-04-24 19:40:16'),
 (293, 'Brazilian Seed Company', 'AZX2U00000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/brazilian-seed-company', 'https://www.cannabisreports.com/api/v1.0/seed-companies/AZX2U00000000000000000000', '2019-04-24 16:34:49', '2019-04-24 19:40:24'),
@@ -488,7 +487,7 @@ INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `ima
 (438, 'French Touch Seeds', 'LGTRU00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/8/full_8c01b37b9032cf18eddd129fcaa1133b6702b6ae.jpg', 'https://www.cannabisreports.com/strain-reports/french-touch-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/LGTRU00000000000000000000', '2019-04-24 16:48:33', '2019-04-24 20:24:19'),
 (439, 'Pheno Finder Seeds', 'HF9AL00000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/pheno-finder-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/HF9AL00000000000000000000', '2019-04-24 16:48:41', '2019-04-24 20:24:26'),
 (440, 'Black Sheep Genetics', 'DHDFW00000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/5/full_5e38849f8d89b7ecec16d6ea62cdd42ab1edb613.jpg', 'https://www.cannabisreports.com/strain-reports/black-sheep-genetics', 'https://www.cannabisreports.com/api/v1.0/seed-companies/DHDFW00000000000000000000', '2019-04-24 16:48:49', '2019-04-24 20:24:34');
-INSERT INTO `cannabis_seed_companies` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
+INSERT INTO `breeders` (`id`, `name`, `ucpc`, `description`, `image`, `url`, `cannabis_reports_link`, `created_at`, `updated_at`) VALUES
 (441, 'Sunshine Seeds', '9ZD4Y00000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/sunshine-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/9ZD4Y00000000000000000000', '2019-04-24 16:48:49', '2019-04-24 20:24:41'),
 (442, 'Heavyweight Seeds', 'XHKM700000000000000000000', NULL, 'https://www.cannabisreports.com/images/profile/1/full_1eaafbb6ec942b2500afbcf00db562d03bae959c.jpg', 'https://www.cannabisreports.com/strain-reports/heavyweight-seeds', 'https://www.cannabisreports.com/api/v1.0/seed-companies/XHKM700000000000000000000', '2019-04-24 16:48:56', '2019-04-24 20:24:48'),
 (443, 'Fast Buds Company', 'WCN6M00000000000000000000', NULL, 'https://www.cannabisreports.com', 'https://www.cannabisreports.com/strain-reports/fast-buds-company', 'https://www.cannabisreports.com/api/v1.0/seed-companies/WCN6M00000000000000000000', '2019-04-24 16:49:59', '2019-04-24 20:24:56'),

@@ -38,11 +38,11 @@ Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verified'])->group( fu
     Route::delete('/seeds/{id}', 'SeedController@delete')->name('seeds.destroy');
 
     // Seed Companies Routes
-    Route::get('/seed-companies', 'SeedCompanyController@index')->name('seed-companies.index');
-    Route::get('/seed-companies/new', 'SeedCompanyController@create')->name('seed-companies.create');
-    Route::get('/seed-companies/{id}', 'SeedCompanyController@show')->name('seed-companies.show');
-    Route::put('/seed-companies/{id}', 'SeedCompanyController@update')->name('seed-companies.update');
-    Route::delete('/seed-companies/{id}', 'SeedCompanyController@delete')->name('seed-companies.destroy');
+    Route::get('/seed-companies', 'BreederController@index')->name('seed-companies.index');
+    Route::get('/seed-companies/new', 'BreederController@create')->name('seed-companies.create');
+    Route::get('/seed-companies/{id}', 'BreederController@show')->name('seed-companies.show');
+    Route::put('/seed-companies/{id}', 'BreederController@update')->name('seed-companies.update');
+    Route::delete('/seed-companies/{id}', 'BreederController@delete')->name('seed-companies.destroy');
 
     // Strains CMS Routes
     Route::get('/strains', 'StrainController@index')->name('strains.index');

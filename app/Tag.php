@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Tag whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Tag whereTag($value)
  * @mixin \Eloquent
+ * @property mixed $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Tag whereUuid($value)
  */
 class Tag extends Model
 {

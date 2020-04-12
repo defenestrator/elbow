@@ -9,7 +9,7 @@ use Elbow\Prototype as Model;
  *
  * @property string $uuid
  * @property int $strain_id
- * @property int|null $seed_company_id
+ * @property int|null $breeder_id
  * @property int|null $user_id
  * @property string|null $description
  * @property int $price
@@ -24,7 +24,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereInventory($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereSeedCompanyId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereBreederId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereStrainId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Cutting whereUserId($value)

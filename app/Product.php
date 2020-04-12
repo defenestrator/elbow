@@ -21,6 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Product whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Product whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property mixed $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Product whereUuid($value)
  */
 class Product extends Model
 {

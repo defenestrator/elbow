@@ -5,7 +5,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Elbow\Plant::class, function (Faker $faker) {
     
-    $seedco = Elbow\SeedCompany::get('id')->first()->id;
+    $seedco = Elbow\Breeder::get('id')->first()->id;
     
     $user = Elbow\User::get('id')->first()->id;
     
@@ -15,7 +15,7 @@ $factory->define(Elbow\Plant::class, function (Faker $faker) {
     
     return [
         'strain_id'             => $faker->randomElement([$strain, null]),
-        'seed_company_id'       => $faker->randomElement([$seedco, null]),
+        'breeder_id'       => $faker->randomElement([$seedco, null]),
         'user_id'               => $user,
         'cycle_id'              => $cycle,
         'notes'                 => $faker->randomElement(['{ "'. $faker->word . '":' . '"' . $faker->paragraph . '"}', null])

@@ -27,6 +27,7 @@ use Elbow\Prototype;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plan whereStripePlan($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plan whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Plan whereUuid($value)
  */
 class Plan extends Prototype
 {

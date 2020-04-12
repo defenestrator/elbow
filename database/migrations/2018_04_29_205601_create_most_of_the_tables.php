@@ -12,7 +12,7 @@ class CreateMostOfTheTables extends Migration
      * @return void
      */
     public function up()
-    {
+    {        
         $this->humans();
 
         $this->growing();
@@ -23,7 +23,7 @@ class CreateMostOfTheTables extends Migration
         
         $this->pivots();
     }
-
+    
     protected function application()
     {
         // Application
@@ -34,7 +34,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('api_keys', function (Blueprint $table) {
-            $table->id();  
+            $table->id();
+            $table->efficientUuid('uuid')->index();  
             $table->string('key');
             $table->string('name');
             $table->unsignedBigInteger('user_id');
@@ -45,7 +46,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('subscriptions', function ($table) {
-            $table->id();  
+            $table->id();
+            $table->efficientUuid('uuid')->index();  
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
@@ -59,7 +61,8 @@ class CreateMostOfTheTables extends Migration
         });
         
         Schema::create('features', function (Blueprint $table) {
-            $table->id();  
+            $table->id();
+            $table->efficientUuid('uuid')->index();  
             $table->string('name');
             $table->string('description')->default('super useful new feature!');
             $table->softDeletes();
@@ -67,7 +70,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('plans', function (Blueprint $table) {
-            $table->id();  
+            $table->id();
+            $table->efficientUuid('uuid')->index();  
             $table->string('name');
             $table->string('stripe_plan');
             $table->boolean('archived')->default(false);
@@ -77,6 +81,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('avatar')->default('/img/bot.png');            
@@ -95,6 +100,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('deposit_requested')->default(0);
@@ -191,6 +197,7 @@ class CreateMostOfTheTables extends Migration
         // Content
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -206,6 +213,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('contents', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users');
             $table->string('slug', 240)->unique();
@@ -217,7 +225,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();          
+            $table->id();
+            $table->efficientUuid('uuid')->index();          
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('commentable_id');
@@ -229,6 +238,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('tag');
             $table->string('slug')->unique();
         });
@@ -242,6 +252,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('edits', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('editable_id');
             $table->string('editable_type');
             $table->unsignedBigInteger('user_id');
@@ -253,6 +264,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('raffles', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('ticket_limit')->default(0);
             $table->string('title');
             $table->string('description');
@@ -263,6 +275,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('giveaways', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('title');
             $table->longText('description');
             $table->string('image');
@@ -273,6 +286,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('contest_entries', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->integer('giveaway_id')->unsigned()->default(0);
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
@@ -281,7 +295,8 @@ class CreateMostOfTheTables extends Migration
         });
 
         Schema::create('contact_form_messages', function (Blueprint $table) {
-            $table->id();  
+            $table->id();
+            $table->efficientUuid('uuid')->index();  
             $table->string('name');
             $table->string('email_address');
             $table->string('message');
@@ -291,6 +306,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('game_title');
             $table->unsignedBigInteger('winner_id')->nullable();
             $table->foreign('winner_id')->references('id')->on('users');
@@ -300,6 +316,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('game_user', function(Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('game_id');            
             $table->foreign('game_id')
                 ->references('id')
@@ -313,6 +330,7 @@ class CreateMostOfTheTables extends Migration
         
         Schema::create('game_moves', function(Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('game_user_id');   
             $table->foreign('game_user_id')->references('id')->on('game_user');
             $table->string('hash', 40);
@@ -322,31 +340,9 @@ class CreateMostOfTheTables extends Migration
         
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('type');
             $table->longText('description');            
-            $table->timestampsTz();
-        });
-
-        Schema::create('cannabis', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users');
-            $table->string('name');
-            $table->longText('description')->nullable();
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')
-                ->references('id')
-                ->on('products');
-            $table->unsignedBigInteger('strain_id');
-            $table->foreign('strain_id')
-                ->references('id')
-                ->on('strains');
-            $table->unsignedBigInteger('seed_company_id');
-            $table->foreign('seed_company_id')
-                ->references('id')
-                ->on('seed_companies');
             $table->timestampsTz();
         });
     }
@@ -356,6 +352,7 @@ class CreateMostOfTheTables extends Migration
         // Growing 
         Schema::create('farms', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -374,6 +371,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('area_types', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -385,6 +383,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('farm_id');
             $table->foreign('farm_id')->references('id')->on('farms');
             $table->string('name');
@@ -397,33 +396,35 @@ class CreateMostOfTheTables extends Migration
             $table->timestampsTz();
         });
 
-        Schema::create('seed_companies', function (Blueprint $table) {
+        Schema::create('breeders', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('description')->nullable();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
+            $table->string('name');
             $table->string('ucpc')->nullable()->unique();
+            $table->string('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('url')->nullable();
+            $table->string('url')->nullable();                      
             $table->string('cannabis_reports_link')->nullable();
             $table->softDeletes();
-            $table->timestampsTz();
+            $table->timestamps();
         });
 
         Schema::create('strains', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
-            $table->unsignedBigInteger('seed_company_id')->nullable();
-            $table->foreign('seed_company_id')
+            $table->unsignedBigInteger('breeder_id')->nullable();
+            $table->foreign('breeder_id')
                 ->references('id')
-                ->on('seed_companies');
-            $table->string('seed_company')->nullable();
+                ->on('breeders');
+            $table->string('breeder')->nullable();
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('lineage')->nullable();
@@ -442,6 +443,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('seeds', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -450,10 +452,10 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->unsignedBigInteger('seed_company_id');
-            $table->foreign('seed_company_id')
+            $table->unsignedBigInteger('breeder_id');
+            $table->foreign('breeder_id')
                 ->references('id')
-                ->on('seed_companies');
+                ->on('breeders');
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('qty_per_pack')->default(12);
             $table->unsignedBigInteger('price')->default(100);
@@ -466,14 +468,15 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('cuttings', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('strain_id');
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->unsignedBigInteger('seed_company_id')->nullable();
-            $table->foreign('seed_company_id')
+            $table->unsignedBigInteger('breeder_id')->nullable();
+            $table->foreign('breeder_id')
                 ->references('id')
-                ->on('seed_companies');
+                ->on('breeders');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -486,6 +489,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('name')->unique();
             $table->string('phone')->default('555-867-5309');
             $table->longText('description')->nullable();
@@ -500,6 +504,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('media', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('name');
             $table->longText('description')->nullable();
             $table->unsignedBigInteger('manufacturer_id')->nullable();
@@ -513,6 +518,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('cycles', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('farm_id');
             $table->foreign('farm_id')->references('id')->on('farms');
             $table->string('name')->default('Default Cycle');
@@ -529,6 +535,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('harvests', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->date('date_of')->default(now('America/Denver'));
             $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')
@@ -542,6 +549,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('stages', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('area_id')->nullable();
             $table->foreign('area_id')->references('id')->on('areas');
             $table->string('name')->default('default stage');
@@ -553,14 +561,15 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('strain_id')->nullable();
             $table->foreign('strain_id')
                 ->references('id')
                 ->on('strains');
-            $table->unsignedBigInteger('seed_company_id')->nullable();
-            $table->foreign('seed_company_id')
+            $table->unsignedBigInteger('breeder_id')->nullable();
+            $table->foreign('breeder_id')
                 ->references('id')
-                ->on('seed_companies');
+                ->on('breeders');
             $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')
                 ->references('id')
@@ -576,6 +585,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('sensor_types', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -591,6 +601,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -608,6 +619,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('solutions', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('sensor_id')->nullable();
@@ -623,6 +635,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('environments', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('sensor_id')->nullable();
@@ -638,6 +651,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('light_fixtures', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -657,6 +671,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('reservoirs', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -675,6 +690,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('fertilizers', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -702,6 +718,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('hvac_appliances', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -721,6 +738,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('fans', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
                 ->references('id')
@@ -737,6 +755,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('chillers', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('model')->nullable();
             $table->unsignedInteger('capacity');
             $table->unsignedBigInteger('btus')->default(0);
@@ -756,6 +775,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('lamps', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -776,6 +796,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('model');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
@@ -796,6 +817,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('ballasts', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('model');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')
@@ -814,6 +836,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('reflector_hoods', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('manufacturer_id')->nullable();
             $table->foreign('manufacturer_id')
                 ->references('id')
@@ -834,6 +857,7 @@ class CreateMostOfTheTables extends Migration
         // Humans
         Schema::create('users', function ($table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -849,6 +873,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('teams', function ($table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->string('name');
             $table->softDeletes();
             $table->timestampsTz();
@@ -859,6 +884,7 @@ class CreateMostOfTheTables extends Migration
     {
         Schema::create('cycle_stage', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('cycle_id');
             $table->foreign('cycle_id')
                 ->references('id')
@@ -871,6 +897,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('light_fixture_stage', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('light_fixture_id');
             $table->foreign('light_fixture_id')
                 ->references('id')
@@ -883,6 +910,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('reservoir_stage', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')
                 ->references('id')
@@ -895,6 +923,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('ballast_light_fixture', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('ballast_id');
             $table->foreign('ballast_id')
                 ->references('id')
@@ -907,6 +936,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('driver_light_fixture', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('driver_id');
             $table->foreign('driver_id')
                 ->references('id')
@@ -919,6 +949,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('lamp_light_fixture', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('lamp_id');
             $table->foreign('lamp_id')
                 ->references('id')
@@ -931,6 +962,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('feature_plan', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('plan_id');
             $table->unsignedBigInteger('feature_id');
             $table->timestampsTz();
@@ -938,6 +970,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('harvest_plant', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('harvest_id');
             $table->foreign('harvest_id')
                 ->references('id')
@@ -950,6 +983,7 @@ class CreateMostOfTheTables extends Migration
 
         Schema::create('team_user', function (Blueprint $table) {
             $table->id();
+            $table->efficientUuid('uuid')->index();
             $table->unsignedBigInteger('team_id');
             $table->foreign('team_id')
                 ->references('id')
@@ -980,6 +1014,7 @@ class CreateMostOfTheTables extends Migration
         'areas',
         'ballast_light_fixture',
         'ballasts',
+        'breeders',
         'chillers',
         'comments',
         'contact_form_messages',

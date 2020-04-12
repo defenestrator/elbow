@@ -7,8 +7,6 @@ use Elbow\Exceptions\Corruption;
 
 trait Immutable
 {   
-    public $timestamps = false;
-
     public static $hashCheck = true;
     
     /**

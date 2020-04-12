@@ -47,6 +47,12 @@ use Spatie\Permission\Traits\HasPermissions;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereTrialEndsAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property mixed $uuid
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Game[] $games
+ * @property-read int|null $games_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\Elbow\Team[] $teams
+ * @property-read int|null $teams_count
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\User whereUuid($value)
  */
 class User extends Authenticatable implements MustVerifyEmail
 {

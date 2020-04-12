@@ -2,7 +2,7 @@
 namespace Elbow\Ingestors;
 
 use Elbow\Strain;
-use Elbow\SeedCompany;
+use Elbow\Breeder;
 use GuzzleHttp\Client;
 
 class CannabisReports
@@ -42,14 +42,14 @@ class CannabisReports
     {
         for ($i = 0; $i < 10; $i++) {
             try {
-                SeedCompany::where('ucpc', '=', $data['data'][$i]['seedCompany']['ucpc'])->firstOrFail();
+                Breeder::where('ucpc', '=', $data['data'][$i]['breeder']['ucpc'])->firstOrFail();
             } catch (\Exception $e) {
-                $seedCompany = new SeedCompany([
-                    'name' => $data['data'][$i]['seedCompany']['name'],
-                    'ucpc' => $data['data'][$i]['seedCompany']['ucpc'],
-                    'cannabis_reports_link' => $data['data'][$i]['seedCompany']['link'],
+                $breeder = new Breeder([
+                    'name' => $data['data'][$i]['breeder']['name'],
+                    'ucpc' => $data['data'][$i]['breeder']['ucpc'],
+                    'cannabis_reports_link' => $data['data'][$i]['breeder']['link'],
                 ]);
-                $seedCompany->save();
+                $breeder->save();
             }
 
             try {
@@ -58,7 +58,7 @@ class CannabisReports
                 $strain = new Strain([
                     'name'                  => $data['data'][$i]['name'],
                     'ucpc'                  => $data['data'][$i]['ucpc'],
-                    'seed_company'          => $data['data'][$i]['seedCompany']['name'],
+                    'breeder'          => $data['data'][$i]['breeder']['name'],
                     'genetics'              => $data['data'][$i]['genetics']['names'],
                     'cannabis_reports_link' => $data['data'][$i]['url'],
                     'ucpc'                  => $data['data'][$i]['ucpc'],
@@ -75,12 +75,12 @@ class CannabisReports
         return;
     }
 
-    public function getSeedCompanyDetails()
+    public function getBreederDetails()
     {
         for ($i = 0; $i <= 570; ++$i) {
             try {
                 sleep(7);
-                $seedco = SeedCompany::where('id', '=', $i)->firstOrFail();
+                $seedco = Breeder::where('id', '=', $i)->firstOrFail();
                 $request = $this->client()->get('https://www.cannabisreports.com/api/v1.0/seed-companies/'.$seedco->ucpc);
                 $response = $request->getBody();
                 $data = json_decode($response, true);

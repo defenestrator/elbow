@@ -3,6 +3,8 @@
 namespace Elbow;
 
 use Illuminate\Database\Eloquent\Model;
+use Dyrynda\Database\Casts\EfficientUuid;
+use Dyrynda\Database\Support\GeneratesUuid;
 
 /**
  * Elbow\Prototype
@@ -16,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 abstract class Prototype extends Model
 {
-    
+    use GeneratesUuid;   
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -25,4 +27,7 @@ abstract class Prototype extends Model
     */
     public $incrementing = true;
     
+    protected $casts = [
+        'uuid' => EfficientUuid::class,
+    ];
 }

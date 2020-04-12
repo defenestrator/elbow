@@ -28,6 +28,7 @@ use Elbow\Prototype as Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage wherePhotoperiod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\Elbow\Stage whereUuid($value)
  */
 class Stage extends Model
 {
