@@ -19,13 +19,6 @@ use Dyrynda\Database\Support\GeneratesUuid;
 abstract class Prototype extends Model
 {
     use GeneratesUuid;   
-
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-    */
-    public $incrementing = true;
     
     protected $casts = [
         'uuid' => EfficientUuid::class,

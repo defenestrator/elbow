@@ -33,7 +33,7 @@ use Elbow\Prototype as Model;
 class Game extends Prototype
 {
     
-    protected $fillable = ['game_title', 'winner_id'];
+    protected $fillable = ['game_title'];
 
     /**
      * users

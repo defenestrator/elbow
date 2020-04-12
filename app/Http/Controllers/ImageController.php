@@ -7,7 +7,7 @@ use Elbow\Image as ImageModel;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
-class ImagesController extends Controller
+class ImageController extends Controller
 {
     public $options = ['visibility' => 'public', 'Cache-Control' => 'max-age=315360000'];
 
