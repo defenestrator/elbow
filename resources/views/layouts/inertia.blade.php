@@ -34,7 +34,9 @@
           </svg>
         </button>
       </div>
-      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div x-cloak
+      x-bind:class="{'hidden': ! openMenu }"
+      x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div  
         class="text-sm lg:flex-grow">
           <a href="/strains" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
@@ -43,9 +45,9 @@
           <a href="/potluck" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
             Pot Luck
           </a>
-          <a href="/blog" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900">
+          {{-- <a href="/blog" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900">
             Blog
-          </a>
+          </a> --}}
         </div>
         <div class="text-sm md:flex-row-reverse">
           <a href="/login" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4"> 
@@ -55,6 +57,11 @@
       </nav>
      <div class="container p-2 m-2">
       @inertia
+    </div>   
+    <div class="container p-2 m-2 flex-row flex-wrap">
+      <div class="inline-block flex-grow">
+        @include('icons')
+      </div>
     </div>
   </div>
 </div>

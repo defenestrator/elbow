@@ -463,7 +463,8 @@
             const result = { message: state.message, state: endState }
             writeEndToLog(result)
         }
-        return setTimeout(() => window.location.href = '/potluck', 10000)
+        alert(state.message)
+        return setTimeout(() => window.location.href = '/potluck', 60000)
     }
 
     function drawPlayerPieces() {
@@ -511,11 +512,15 @@
 <main>
 <div class="flex p-2 bg-white">
     <div class="flex-1 m-1 p-1">
+        {#if running === true} 
+            Reload Page to Start Over
+        {:else}
         <h1 class="text-sm">A full simulation of the Pot Luck board game</h1>
         <h3 class="text-sm">using Svelte (JS)</h3>
+        {/if}
     </div>
     <div class="flex-1 m-1 p-1">
-        <label for="delay" class="leading-tight text-lg">Delay:</label>
+        <label for="delay" class="leading-tight text-sm">Delay in seconds:</label>
         <select class="mr-4 rounded number text-lg leading-tight appearance-none form-input" type="number" id="delay" name="delay" 
         bind:value="{delay}">
         <option value="{0}">0</option>
@@ -526,15 +531,17 @@
         <option value="{4000}">4</option>
         <option value="{5000}">5</option>
         </select>
-        <p class="text-sm">(in seconds)</p>
+        <p class="my-2 text-sm leading-tight">(It's reactive, bro)</p>
     </div>
 
     <div class="flex-1 m-1 p-1">
         {#if running === false} 
             <button on:click="{startGame}" class="btn-blue"> Start Game</button>
         {/if}
+        {#if running === true} 
         <p class="inline-block text-bold text-lg"> Turn #{state.turnNumber} </p> 
         <p class="flex-1 text-sm">{state.message}</p>
+        {/if}
     </div>
 </div>
 <div class="container p-1 mx-1 flex-row">
