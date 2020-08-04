@@ -22,8 +22,10 @@
         },
         farouts: farouts,
         bummers: bummers,
-        spaces:   spaces
+        spaces:   spaces,
     }
+    
+    export let delay = 500
 
     function currentPlayer() {
         return state.players[state.activePlayerId]
@@ -124,7 +126,7 @@
         }
     }
 
-    function owned() {
+    function owned() { 
         //get all strains by player.
         let owned = []
             state.players.forEach(function (player) {
@@ -273,7 +275,7 @@
         mapEvents(event)
         state.message = 'First roll ' + state.currentRoll + ' by ' + currentPlayer().name + ' They are on "' +
             spaces[currentPlayer().space -1].title + '" , with $' + currentPlayer().cash
-        return setTimeout(() => {executeTurn()}, 2500)
+        return setTimeout(() => {executeTurn()}, delay)
     }
 
     function calculateSpaceId() {
@@ -364,10 +366,8 @@
         // and fire that shit off
         mapEvents(event)
 
-        // writeMessageToLog()
-
         // Do it again
-        setTimeout(() => {executeTurn()}, 2500);
+        setTimeout(() => {executeTurn()}, delay);
         // return executeTurn()
     }
 
@@ -461,7 +461,7 @@
             const result = { message: state.message, state: endState }
             writeEndToLog(result)
         }
-        return window.location.href = '/potluck'
+        return setTimeout(() => window.location.href = '/potluck', 10000)
     }
 
     function drawPlayerPieces() {
@@ -499,8 +499,7 @@
             })); 
     }
 
-    onMount(() => {drawPlayerPieces(); console.log(strains)});
-
+    onMount(() => {drawPlayerPieces()});
 </script>
 
 <svelte:head>
@@ -508,221 +507,22 @@
 </svelte:head>
 
 <main>
-<div class="container-fluid flex p-2 bg-white">
+<div class="flex p-2 bg-white">
+    <div class="flex-1 m-1 p-1">
+        <h1 class="text-xl">A full simulation of the Pot Luck board game, written in Svelte (JS)</h1>
+        
+    </div>
+    <div class="flex-1 m-1 p-1">
+        <label for="delay" class="leading-tight text-xl">delay between turns:</label>
+        <input class="rounded number text-lg leading-tight" type="number" id="delay" name="delay" bind:value="{delay}" min="0" max="3000" step="100">
+        <p>(0-3000)</p>
+    </div>
+    <div class="flex-1 m-1 p-1">
         <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber} </p>
-        <p class="block text-sm">{state.message}</p>
+        <p class="flex-1 text-sm">{state.message}</p>
     </div>
-    
-    <div class="potluck">
-        <div class="gameBoard">
-            <div class="row top">
-                <div class="square2"><span class="corner corner1">JACKPOT!</span>
-                    <div class="box" id="20"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-top purple"></div>
-                    <div class="firstLine firstLine-top top-side">Hawaiian</div>
-                    <div class="box" id="21"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-top no-color top-side">Vacation<br>Time<br>Relax,<br> Lose a Turn
-                    </div>
-                    <div class="box" id="22"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-top no-color top-side">Bum Me Out</div>
-                    <div class="box" id="23"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-top orange"></div>
-                    <div class="firstLine firstLine-top top-side">Nicaraguan</div>
-                    <div class="box" id="24"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-top no-color top-side">MUNCHIES!<br /> Pay 10x your roll</div>
-                    <div class="box" id="25"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-top yellow"></div>
-                    <div class="firstLine firstLine-top top-side">Colombian Gold</div>
-                    <div class="box" id="26"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-top top-side">Far<br />Out</div>
-                    <div class="box" id="27"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-top lightblue"></div>
-                    <div class="firstLine firstLine-top top-side">Just <br>Good Pot</div>
-                    <div class="box" id="28"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-top blue"></div>
-                    <div class="firstLine firstLine-top top-side">just<br> bad pot</div>
-                    <div class="box" id="29"></div>
-                </div>
-                <div class="square2"><span class="corner corner2">Busted...<br />lose 1 turn</span></div>
-                <div class="box" id="30"></div>
-            </div>
-
-            <div class="row center">
-                <div class="square2">
-                    <div class="squareSide">
-                        <div class="headerSide header-left yellow"></div>
-                        <div class="firstLine firstLine-left left-side">Acapulco<br>Gold</div>
-                        <div class="box" id="19"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-left no-color left-side">The Law: <br /> Pay 20x</div>
-                        <div class="box" id="18"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-left yellow"></div>
-                        <div class="firstLine firstLine-left left-side">Sinsemilla</div>
-                        <div class="box" id="17"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-left no-color left-side">Dealing <br />Square</div>
-                        <div class="box" id="16"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-left red"></div>
-                        <div class="firstLine firstLine-left left-side">Maui Wowie</div>
-                        <div class="box" id="15"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-left no-color left-side">Midnight <br>Airstrip<br> Pay 40x</div>
-                        <div class="box" id="14"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-left green"></div>
-                        <div class="firstLine firstLine-left left-side">Guerrero<br /> Green</div>
-                        <div class="box" id="13"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-left no-color left-side">You Pay<br />10x</div>
-                        <div class="box" id="12"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-left lightblue"></div>
-                        <div class="firstLine firstLine-left left-side">colombian<br />chiba</div>
-                        <div class="box" id="11"></div>
-                    </div>
-                </div>
-                <div class="square9">
-                    <div class="card-box card-blue">
-                        <div class="card-blue-inside"></div>
-                    </div>
-                    <div class="logoBox">
-                        <span class="logoName">Pot Luck</span>
-                    </div>
-                    <div class="card-box card-orange">
-                        <div class="card-orange-inside"></div>
-                    </div>
-                </div>
-                <div class="square2">
-                    <div class="squareSide">
-                        <div class="headerSide header-right purple"></div>
-                        <div class="firstLine firstLine-right right-side">Vietnamese</div>
-                        <div class="box" id="31"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-right orange"></div>
-                        <div class="firstLine firstLine-right right-side">Stickless<br />Thai</div>
-                        <div class="box" id="32"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-right no-color right-side">No-Tell<br> Car Rental<br>pay 10x
-                        </div>
-                        <div class="box" id="33"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-right red"></div>
-                        <div class="firstLine firstLine-right right-side">Panama<br /> Red</div>
-                        <div class="box" id="34"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-right brown"></div>
-                        <div class="firstLine firstLine-right right-side">Mexican</div>
-                        <div class="box" id="35"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-right no-color right-side">Dealing <br>Square</div>
-                        <div class="box" id="36"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-right lightblue"></div>
-                        <div class="firstLine firstLine-right right-side">Jamaican</div>
-                        <div class="box" id="37"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="firstLine firstLine-right no-color right-side">bum<br>me out</div>
-                        <div class="box" id="38"></div>
-                    </div>
-                    <div class="squareSide">
-                        <div class="headerSide header-right yellow"></div>
-                        <div class="firstLine firstLine-right right-side">michoacan</div>
-                        <div class="box" id="39"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row top">
-                <div class="square2">
-                    <span class="corner corner4" style="line-height:1em;"> Hospital: <br>lose a
-                        turn. <br>pay 100x your roll
-                    </span>
-                    <div class="box" id="10"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-bottom red"></div>
-                    <div class="firstLine firstLine-bottom">colombian <br>red bud</div>
-                    <div class="box" id="9"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-bottom blue"></div>
-                    <div class="firstLine firstLine-bottom">thai<br>stick</div>
-                    <div class="box" id="8"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-bottom no-color">downtown<br>pharmacy <br>Pay 5x</div>
-                    <div class="box" id="7"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-bottom green"></div>
-                    <div class="firstLine firstLine-bottom">gainesville<br /> green</div>
-                    <div class="box" id="6"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-bottom orange"></div>
-                    <div class="firstLine firstLine-bottom">wacky<br /> weed</div>
-                    <div id="5"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-bottom no-color">Far <br /> Out!</div>
-                    <div class="box" id="4"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-bottom green"></div>
-                    <div class="firstLine firstLine-bottom">Home Grown</div>
-                    <div class="box" id="3"></div>
-                </div>
-                <div class="square1">
-                    <div class="firstLine firstLine-bottom no-color">Flying<br /> Too High:<br>Lose A<br>Turn</div>
-                    <div class="box" id="2"></div>
-                </div>
-                <div class="square1">
-                    <div class="header header-bottom brown"></div>
-                    <div class="firstLine firstLine-bottom">Colombian</div>
-                    <div class="box" id="1"></div>
-                </div>
-                <div class="square2" style="background-image:url('/img/straight.jpg'); background-size:cover;">
-                    <div class="box" id="40"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container p-1 mx-1 flex-row">
+</div>
+<div class="container p-1 mx-1 flex-row">
     {#each state.players as player}   
     <div class="inline-block align-top" style="width:{100 / state.players.length}%;">
         <div class="p-1 mx-1 rounded-sm font-bold text-sm bg-gray-300" style="overflow:hidden;">
@@ -737,7 +537,217 @@
             </div>
         </div>
     {/each}
-    </div> 
+</div> 
+<div class="potluck">
+    <div class="gameBoard">
+        <div class="row top">
+            <div class="square2"><span class="corner corner1">JACKPOT!</span>
+                <div class="box" id="20"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-top purple"></div>
+                <div class="firstLine firstLine-top top-side">Hawaiian</div>
+                <div class="box" id="21"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-top no-color top-side">Vacation<br>Time<br>Relax,<br> Lose a Turn
+                </div>
+                <div class="box" id="22"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-top no-color top-side">Bum Me Out</div>
+                <div class="box" id="23"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-top orange"></div>
+                <div class="firstLine firstLine-top top-side">Nicaraguan</div>
+                <div class="box" id="24"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-top no-color top-side">MUNCHIES!<br /> Pay 10x your roll</div>
+                <div class="box" id="25"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-top yellow"></div>
+                <div class="firstLine firstLine-top top-side">Colombian Gold</div>
+                <div class="box" id="26"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-top top-side">Far<br />Out</div>
+                <div class="box" id="27"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-top lightblue"></div>
+                <div class="firstLine firstLine-top top-side">Just <br>Good Pot</div>
+                <div class="box" id="28"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-top blue"></div>
+                <div class="firstLine firstLine-top top-side">just<br> bad pot</div>
+                <div class="box" id="29"></div>
+            </div>
+            <div class="square2"><span class="corner corner2">Busted...<br />lose 1 turn</span></div>
+            <div class="box" id="30"></div>
+        </div>
+
+        <div class="row center">
+            <div class="square2">
+                <div class="squareSide">
+                    <div class="headerSide header-left yellow"></div>
+                    <div class="firstLine firstLine-left left-side">Acapulco<br>Gold</div>
+                    <div class="box" id="19"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-left no-color left-side">The Law: <br /> Pay 20x</div>
+                    <div class="box" id="18"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-left yellow"></div>
+                    <div class="firstLine firstLine-left left-side">Sinsemilla</div>
+                    <div class="box" id="17"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-left no-color left-side">Dealing <br />Square</div>
+                    <div class="box" id="16"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-left red"></div>
+                    <div class="firstLine firstLine-left left-side">Maui Wowie</div>
+                    <div class="box" id="15"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-left no-color left-side">Midnight <br>Airstrip<br> Pay 40x</div>
+                    <div class="box" id="14"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-left green"></div>
+                    <div class="firstLine firstLine-left left-side">Guerrero<br /> Green</div>
+                    <div class="box" id="13"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-left no-color left-side">You Pay<br />10x</div>
+                    <div class="box" id="12"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-left lightblue"></div>
+                    <div class="firstLine firstLine-left left-side">colombian<br />chiba</div>
+                    <div class="box" id="11"></div>
+                </div>
+            </div>
+            <div class="square9">
+                <div class="card-box card-blue">
+                    <div class="card-blue-inside"></div>
+                </div>
+                <div class="logoBox">
+                    <span class="logoName">Pot Luck</span>
+                </div>
+                <div class="card-box card-orange">
+                    <div class="card-orange-inside"></div>
+                </div>
+            </div>
+            <div class="square2">
+                <div class="squareSide">
+                    <div class="headerSide header-right purple"></div>
+                    <div class="firstLine firstLine-right right-side">Vietnamese</div>
+                    <div class="box" id="31"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-right orange"></div>
+                    <div class="firstLine firstLine-right right-side">Stickless<br />Thai</div>
+                    <div class="box" id="32"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-right no-color right-side">No-Tell<br> Car Rental<br>pay 10x
+                    </div>
+                    <div class="box" id="33"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-right red"></div>
+                    <div class="firstLine firstLine-right right-side">Panama<br /> Red</div>
+                    <div class="box" id="34"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-right brown"></div>
+                    <div class="firstLine firstLine-right right-side">Mexican</div>
+                    <div class="box" id="35"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-right no-color right-side">Dealing <br>Square</div>
+                    <div class="box" id="36"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-right lightblue"></div>
+                    <div class="firstLine firstLine-right right-side">Jamaican</div>
+                    <div class="box" id="37"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="firstLine firstLine-right no-color right-side">bum<br>me out</div>
+                    <div class="box" id="38"></div>
+                </div>
+                <div class="squareSide">
+                    <div class="headerSide header-right yellow"></div>
+                    <div class="firstLine firstLine-right right-side">michoacan</div>
+                    <div class="box" id="39"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row top">
+            <div class="square2">
+                <span class="corner corner4" style="line-height:1em;"> Hospital: <br>lose a
+                    turn. <br>pay 100x your roll
+                </span>
+                <div class="box" id="10"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-bottom red"></div>
+                <div class="firstLine firstLine-bottom">colombian <br>red bud</div>
+                <div class="box" id="9"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-bottom blue"></div>
+                <div class="firstLine firstLine-bottom">thai<br>stick</div>
+                <div class="box" id="8"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-bottom no-color">downtown<br>pharmacy <br>Pay 5x</div>
+                <div class="box" id="7"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-bottom green"></div>
+                <div class="firstLine firstLine-bottom">gainesville<br /> green</div>
+                <div class="box" id="6"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-bottom orange"></div>
+                <div class="firstLine firstLine-bottom">wacky<br /> weed</div>
+                <div id="5"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-bottom no-color">Far <br /> Out!</div>
+                <div class="box" id="4"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-bottom green"></div>
+                <div class="firstLine firstLine-bottom">Home Grown</div>
+                <div class="box" id="3"></div>
+            </div>
+            <div class="square1">
+                <div class="firstLine firstLine-bottom no-color">Flying<br /> Too High:<br>Lose A<br>Turn</div>
+                <div class="box" id="2"></div>
+            </div>
+            <div class="square1">
+                <div class="header header-bottom brown"></div>
+                <div class="firstLine firstLine-bottom">Colombian</div>
+                <div class="box" id="1"></div>
+            </div>
+            <div class="square2" style="background-image:url('/img/straight.jpg'); background-size:cover;">
+                <div class="box" id="40"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </main>
 
 <style>

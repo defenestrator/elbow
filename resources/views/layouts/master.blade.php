@@ -34,13 +34,11 @@
           </svg>
         </button>
       </div>
-      <div x-cloak
-      x-bind:class="{'hidden': ! openMenu }"
-      x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow md:flex md:items-center md:w-auto">
+      <div class="w-full block flex-grow md:flex md:items-center md:w-auto">
         <div  
         class="text-sm md:flex-grow">
-          <a href="/docs" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
-            Docs
+          <a href="/strains" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+            Strains
           </a>
           <a href="/potluck" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
             Pot Luck
@@ -50,8 +48,8 @@
           </a>
         </div>
         <div class="text-sm md:flex-row-reverse">
-          <a href="/right" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4"> 
-            Right side 
+          <a href="/login" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4"> 
+            Login
           </a>
         </div>
       </nav>
