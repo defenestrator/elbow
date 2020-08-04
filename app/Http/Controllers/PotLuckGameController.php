@@ -15,7 +15,7 @@ class PotLuckGameController extends Controller
      */
     public function index()
     {
-       return Inertia::render('potluck/Potluck', []);
+       return Inertia::render('potluck/Potluck');
     }
 
     /**
@@ -25,7 +25,7 @@ class PotLuckGameController extends Controller
      */
     public function create()
     {
-        
+    
     }
 
     /**

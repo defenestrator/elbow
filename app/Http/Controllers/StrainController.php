@@ -3,6 +3,7 @@
 namespace Elbow\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Elbow\Strain;
 
 class StrainController extends Controller
 {
@@ -13,7 +14,8 @@ class StrainController extends Controller
      */
     public function index()
     {
-        //
+        $strains = Strain::orderBy('name')->paginate(100);
+        return view('strains.index', compact('strains'));
     }
 
     /**

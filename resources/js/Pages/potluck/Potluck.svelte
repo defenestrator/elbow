@@ -499,7 +499,7 @@
             })); 
     }
 
-    onMount(() => {drawPlayerPieces();});
+    onMount(() => {drawPlayerPieces(); console.log(strains)});
 
 </script>
 

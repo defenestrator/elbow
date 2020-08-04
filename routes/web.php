@@ -53,8 +53,7 @@ Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verified'])->group( fu
 
 
 });
-
-
+Route::get('/strains', 'StrainController@index')->name('strains.index');
 //////////////////////////////////////////////////////////
 // For scraping data from Cannabis Reports. Thanks, folks!
 //////////////////////////////////////////////////////////

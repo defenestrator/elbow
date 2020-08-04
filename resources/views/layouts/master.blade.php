@@ -23,9 +23,9 @@
       </a>
       </div>
       <div class="flex items-center flex-shrink-0 text-blue-900 mr-6">
-        <p class="font-100 font-sans tracking-tight lg:hidden">Elbow Farm</p>
+        <p class="font-100 font-sans tracking-tight md:hidden">Elbow Farm</p>
       </div>
-      <div x-on:click="openMenu= true" class="block lg:hidden">
+      <div x-on:click="openMenu= true" class="block md:hidden">
         <button x-on:click="openMenu= true"        
           class="flex items-center px-3 py-2 rounded text-blue-900 hover:text-gray-500">
           <svg x-on:click="openMenu= true" class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -36,21 +36,23 @@
       </div>
       <div x-cloak
       x-bind:class="{'hidden': ! openMenu }"
-      x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow md:flex md:items-center md:w-auto">
         <div  
-        class="text-sm lg:flex-grow">
-          <a href="/docs" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+        class="text-sm md:flex-grow">
+          <a href="/docs" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
             Docs
           </a>
-          <a href="/potluck" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+          <a href="/potluck" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
             Pot Luck
           </a>
-          <a href="/blog" class="block mt-2 lg:inline-block lg:mt-0 text-gray-700 hover:text-blue-900">
+          <a href="/blog" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
             Blog
           </a>
         </div>
-        <div class="mt-2">
-          Right side
+        <div class="text-sm md:flex-row-reverse">
+          <a href="/right" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4"> 
+            Right side 
+          </a>
         </div>
       </nav>
      <div class="container p-2 m-2">
@@ -62,5 +64,4 @@
   </div>
 </div>
 </body>
-
 </html>

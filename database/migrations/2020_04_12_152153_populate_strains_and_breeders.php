@@ -13,7 +13,7 @@ class PopulateStrainsAndBreeders extends Migration
      */
     public function up()
     {
-        DB::unprepared(file_get_contents('database/StrainsAndBreeders.sql')); 
+        DB::unprepared(file_get_contents('database/BreedersAndStrainsWithUuid.sql')); 
     }
 
     /**

@@ -3,7 +3,6 @@ import alpinejs from 'alpinejs';
 // import App from './components/App.svelte'
 // import Game from './components/game/CreateGame.svelte'
 import { InertiaApp } from '@inertiajs/inertia-svelte'
-
 const app = document.getElementById('app')
 
 new InertiaApp({

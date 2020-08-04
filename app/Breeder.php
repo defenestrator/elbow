@@ -50,6 +50,7 @@ class Breeder extends Model
      */
     protected $fillable = [
         'name',
+        'uuid',
         'ucpc',
         'description',
         'cannabis_reports_link',

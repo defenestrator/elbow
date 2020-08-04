@@ -69,7 +69,7 @@ class Strain extends Model
      */
     protected $fillable = [
         'cannabis_reports_link', 'name', 'lineage', 'genetics', 'description', 'breeder', 
-        'breeder_id',
+        'breeder_id', 'uuid',
         'flowering_time_min', 'flowering_time_max', 'ucpc', 'image', 'url', 'qr', 'description'
     ];
 
@@ -84,7 +84,7 @@ class Strain extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function breeders()
+    public function breeder()
     {
         return $this->belongsTo(Breeder::class);
     }
