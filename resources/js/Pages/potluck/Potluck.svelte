@@ -25,7 +25,8 @@
         spaces:   spaces,
     }
     
-    export let delay = 500
+    let delay = 500
+    let running = false
 
     function currentPlayer() {
         return state.players[state.activePlayerId]
@@ -267,6 +268,7 @@
     }
 
     function startGame() {
+        running = true
         gameRoll()
         state.message = "Turn #1"
         currentPlayer().space = state.currentRoll
@@ -509,16 +511,29 @@
 <main>
 <div class="flex p-2 bg-white">
     <div class="flex-1 m-1 p-1">
-        <h1 class="text-xl">A full simulation of the Pot Luck board game, written in Svelte (JS)</h1>
-        
+        <h1 class="text-sm">A full simulation of the Pot Luck board game</h1>
+        <h3 class="text-sm">using Svelte (JS)</h3>
     </div>
     <div class="flex-1 m-1 p-1">
-        <label for="delay" class="leading-tight text-xl">delay between turns:</label>
-        <input class="rounded number text-lg leading-tight" type="number" id="delay" name="delay" bind:value="{delay}" min="0" max="3000" step="100">
-        <p>(0-3000)</p>
+        <label for="delay" class="leading-tight text-lg">Delay:</label>
+        <select class="mr-4 rounded number text-lg leading-tight appearance-none form-input" type="number" id="delay" name="delay" 
+        bind:value="{delay}">
+        <option value="{0}">0</option>
+        <option value="{500}" selected>0.5</option>
+        <option value="{1000}">1</option>
+        <option value="{2000}">2</option>
+        <option value="{3000}">3</option>
+        <option value="{4000}">4</option>
+        <option value="{5000}">5</option>
+        </select>
+        <p class="text-sm">(in seconds)</p>
     </div>
+
     <div class="flex-1 m-1 p-1">
-        <button on:click="{startGame}" class="btn-blue"> Start Game</button><p class="inline-block text-bold text-lg mx-2"> Turn #{state.turnNumber} </p>
+        {#if running === false} 
+            <button on:click="{startGame}" class="btn-blue"> Start Game</button>
+        {/if}
+        <p class="inline-block text-bold text-lg"> Turn #{state.turnNumber} </p> 
         <p class="flex-1 text-sm">{state.message}</p>
     </div>
 </div>
