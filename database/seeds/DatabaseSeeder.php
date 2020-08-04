@@ -110,12 +110,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {         
-        $this->call([
-            AreaTypesSeeder::class,
-            UserSeeder::class
-        ]);
         if(! config('app.env') == 'production') {
             $this->call([
+                AreaTypesSeeder::class,
+                UserSeeder::class,
                 FarmSeeder::class,    
                 AreaSeeder::class, 
                 ManufacturerSeeder::class, 
@@ -157,5 +155,6 @@ class DatabaseSeeder extends Seeder
                 PivotTableSeeder::class,  
             ]);
         } 
+        return 'Do fuck off with that.'; 
     }
 }
