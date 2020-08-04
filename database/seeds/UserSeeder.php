@@ -20,6 +20,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('very very temporary'),
             'remember_token' => Str::random(10)
         ]);
-        factory(Elbow\User::class, 10)->create();
+        // factory(Elbow\User::class, 10)->create();
     }
 }
