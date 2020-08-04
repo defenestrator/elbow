@@ -1,6 +1,7 @@
 <?php
 
 use DatabaseSeeder as Seeder;
+use Elbow\User;
 
 class UserSeeder extends Seeder
 {
