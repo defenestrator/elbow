@@ -2,6 +2,7 @@
 
 use DatabaseSeeder as Seeder;
 use Elbow\User;
+use Illuminate\Support\Str;
 
 class UserSeeder extends Seeder
 {
