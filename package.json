@@ -12,10 +12,11 @@
     "devDependencies": {
         "@fullhuman/postcss-purgecss": "^2.3.0",
         "@tailwindcss/custom-forms": "^0.2.1",
+        "alpinejs": "^2.5.0",
         "browser-sync": "^2.26.12",
-        "browser-sync-webpack-plugin": "^2.2.2",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^5.2.1",
-        "laravel-mix": "^4.1.4",
+        "laravel-mix": "^4",
         "laravel-mix-svelte": "github:wewowweb/laravel-mix-svelte",
         "postcss-import": "^12.0.1",
         "postcss-nesting": "^7.0.1",
@@ -25,13 +26,5 @@
         "tailwindcss": "^1.6.2",
         "vue-template-compiler": "^2.6.11"
     },
-    "dependencies": {
-        "@inertiajs/inertia": "^0.1.9",
-        "@inertiajs/inertia-svelte": "^0.1.2",
-        "@popperjs/core": "^2.4.4",
-        "alpinejs": "^1.12.0",
-        "bootstrap": "^4.5.2",
-        "jquery": "^3.5.1",
-        "popper.js": "^1.16.1"
-    }
+    "dependencies": {}
 }

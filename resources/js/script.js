@@ -1,16 +1,12 @@
 import alpinejs from 'alpinejs';
-// import Potluck from './components/potluck/Potluck.svelte'
-// import App from './components/App.svelte'
-// import Game from './components/game/CreateGame.svelte'
-import { InertiaApp } from '@inertiajs/inertia-svelte'
+import Potluck from './Pages/potluck/Potluck.svelte'
+
+import Game from './Pages/potluck/game/CreateGame.svelte'
+
 const app = document.getElementById('app')
 
-new InertiaApp({
-  target: app,
-  props: {
-    initialPage: JSON.parse(app.dataset.page),
-    resolveComponent: name => import(`./Pages/${name}.svelte`).then(module => module.default),
-  },
+const potluck = new Potluck({
+  target: document.getElementById('potluck')
 })
 
 export default {}

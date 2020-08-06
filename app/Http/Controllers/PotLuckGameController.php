@@ -4,7 +4,6 @@ namespace Elbow\Http\Controllers;
 
 use Elbow\Game as PotLuck;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class PotLuckGameController extends Controller
 {
@@ -15,7 +14,7 @@ class PotLuckGameController extends Controller
      */
     public function index()
     {
-       return Inertia::render('potluck/Potluck');
+       return view('potluck');
     }
 
     /**
