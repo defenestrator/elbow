@@ -1,6 +1,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
+  purge: [
+    './resources/**/*.html',
+    './resources/**/*.svelte',
+    './resources/**/*.blade.php',
+    './resources/**/*.css',
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -11,20 +17,21 @@ module.exports = {
         blue: {
           '900': '#343A40',
           '800': '#39556a',
-          '600': '#3595fa',
+          '600': '#0f81f9',
           '500': '#3595fa',
-          '400': '#64b7fa',
-          '300': '#2d94fa',
+          '400': '#2d94fa',
+          '300': '#64b7fa',
+          '200': '#81ccfe',
           '100': '#A8DCFE'
         },
         green: {
-            '900': '',
-            '800': '#39556a',
-            '600': '#3c883e',
-            '500': '#91ba3c',
-            '400': '#7DB17F',
-            '300': '#a3a3a3',
-            '100': '#A8DCFE'
+            '900': '#09120d',
+            '800': '#1e3829',
+            '600': '#335e45',
+            '500': '#478561',
+            '400': '#5ea97e',
+            '300': '#84bd9c',
+            '100': '#aad2bb'
         }
       },
       boxShadow: theme => ({
