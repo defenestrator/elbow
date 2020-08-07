@@ -12,7 +12,7 @@
             <h1 class="text-xl my-2 capitalize" style="text-decoration: capitalize;">{{ $breeder->name }}</h1>
             <div class="content-center w-100 m-2">
                 <a href="{!! '/breeders/' . $breeder->uuid !!}">      
-                    <img src="{!! $breeder->image !!}" alt="{!! $breeder->name !!}" class="w-100 m-0 mr-4 rounded-md">
+                    <img src="{!! $breeder->image !!}" alt="{!! $breeder->name !!}" class="mx-auto w-100 m-0 mr-4 rounded-md">
                 </a>
             </div>
         </div>

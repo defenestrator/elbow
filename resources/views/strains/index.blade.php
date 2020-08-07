@@ -22,7 +22,7 @@
                         @if($strain->breeder->image === "/img/coming-soon.png" )
                         {{$strain->breeder_name}}
                         @else
-                        <img src="{!! $strain->breeder->image !!}" alt="{!! $strain->name !!} was produced by {!! $strain->breeder_name !!}" class="w-100 m-0 rounded-md">
+                        <img src="{!! $strain->breeder->image !!}" alt="{!! $strain->name !!} was produced by {!! $strain->breeder_name !!}" class="mx-auto w-100 m-0 rounded-md">
                         @endif
                     </a>
                 </p>
