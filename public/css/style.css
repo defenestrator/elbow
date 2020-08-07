@@ -21416,6 +21416,14 @@ h4, h5, h6 {
   font-weight: 400
 }
 
+a, a:link {
+  color: #0f81f9;
+}
+
+a:hover, a:active {
+  color: #3595fa;
+}
+
 .iconsList {
   display:-webkit-box;
   display:flex;

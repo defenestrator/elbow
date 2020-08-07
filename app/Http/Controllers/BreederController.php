@@ -14,7 +14,7 @@ class BreederController extends Controller
      */
     public function index()
     {
-        $breeders = Breeder::orderBy('name')->paginate(100);
+        $breeders = Breeder::orderBy('name')->paginate(25);
         return view('breeders.index', compact('breeders'));
     }
 

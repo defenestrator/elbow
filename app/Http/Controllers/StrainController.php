@@ -14,7 +14,7 @@ class StrainController extends Controller
      */
     public function index()
     {
-        $strains = Strain::orderBy('name')->paginate(100);
+        $strains = Strain::orderBy('name')->with('breeder')->paginate(25);
         return view('strains.index', compact('strains'));
     }
 
@@ -47,7 +47,7 @@ class StrainController extends Controller
      */
     public function show($uuid)
     {
-        $strain =  Strain::whereUuid($uuid)->first();
+        $strain =  Strain::whereUuid($uuid)->with('breeder')->first();
         return view('strains.show', ['strain' => $strain]);
     }
 

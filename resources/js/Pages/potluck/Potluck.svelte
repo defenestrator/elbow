@@ -27,6 +27,7 @@
     
     let delay = 500
     let running = false
+    let paused = false
 
     function currentPlayer() {
         return state.players[state.activePlayerId]
@@ -367,10 +368,11 @@
 
         // and fire that shit off
         mapEvents(event)
-
-        // Do it again
-        setTimeout(() => {executeTurn()}, delay);
-        // return executeTurn()
+        if (paused === true) {
+            setTimeout(() => {executeTurn()}, 2147483647);
+        } else {
+            setTimeout(() => {executeTurn()}, delay);
+        }
     }
 
     function endGame(reason) {
@@ -501,7 +503,13 @@
                 }
             })); 
     }
-
+    function reloadPage() {
+        return window.location.href = '/potluck'
+    }
+    function pauseGame() {
+        paused = !paused
+        executeTurn()
+    }
     onMount(() => {drawPlayerPieces()});
 </script>
 
@@ -513,7 +521,17 @@
 <div class="flex p-2 bg-white">
     <div class="flex-1 m-1 p-1">
         {#if running === true} 
-            Reload Page to Start Over
+            <p class="my-1"><button class="btn btn-blue" on:click="{reloadPage}">Start Over</button></p>
+            <p class="my-1">
+                {#if paused === true}
+                <button class="btn btn-blue" style="background-color:gray;" on:click="{pauseGame}">
+                    Resume
+                </button>
+                {:else}
+                <button class="btn btn-blue" style="background-color:orange;" on:click="{pauseGame}">
+                    Pause
+                </button>
+                {/if}</p> 
         {:else}
         <h1 class="text-sm">A full simulation of the Pot Luck board game</h1>
         <h3 class="text-sm">using Svelte (JS)</h3>
