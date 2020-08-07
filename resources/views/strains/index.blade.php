@@ -19,7 +19,6 @@
             <div class="text-left pt-4">                
                 <p><strong>Breeder:</strong>
                     <a href="{!! route('breeders.show', $strain->breeder->uuid) !!}">  
-                        {{-- {{dd($strain->breeder->image)}} --}}
                         @if($strain->breeder->image === "/img/coming-soon.png" )
                         {{$strain->breeder_name}}
                         @else

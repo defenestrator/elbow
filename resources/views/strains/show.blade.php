@@ -9,10 +9,18 @@
                     <img src="{!! $strain->image !!}" alt="{!! $strain->name !!}" class="w-100 m-0 mr-4 rounded-md">
                 </a>
             </div>
-            <div class="text-left pt-4">                
-                <p><strong>Breeder:</strong> {{ $strain->breeder }}</p>
+            <div class="text-left pt-4"> 
                 <p><strong>Lineage:</strong> {{ $strain->genetics }}</p>  
-                <p><strong>Description:</strong> {{$strain->description}}</p>
+                <p><strong>Description:</strong> {{$strain->description}}</p>               
+                <p><strong>Breeder:</strong> 
+                    <a href="{!! route('breeders.show', $strain->breeder->uuid) !!}">  
+                        @if($strain->breeder->image === "/img/coming-soon.png" )
+                        {{$strain->breeder_name}}
+                        @else
+                        <img src="{!! $strain->breeder->image !!}" alt="{!! $strain->name !!} was produced by {!! $strain->breeder_name !!}" class="w-100 m-0 rounded-md">
+                        @endif
+                    </a>    
+                </p>
             </div>
         </div>
     </div>    
