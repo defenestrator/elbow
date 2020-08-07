@@ -3,7 +3,7 @@
 <div class="text-center content-center">
     
     <div class="inline-flex text-xs">
-        {{ $breeders->onEachSide(1)->links() }}
+        {{ $breeders->onEachSide(1)->links('pagination.tailwind-default') }}
     </div>
 
     <div class="flex flex-wrap content-start w-100">
