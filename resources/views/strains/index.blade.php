@@ -2,8 +2,8 @@
 @section('content')
 <div class="text-center content-center">
     
-    <div class="inline-flex">
-        {{ $strains->links() }}
+    <div class="inline-flex w-100 text-xs">
+        {{ $strains->onEachSide(1)->links() }}
     </div>
 
     <div class="flex flex-wrap content-start w-100">
