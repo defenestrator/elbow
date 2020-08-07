@@ -55,7 +55,8 @@ Route::name('cms.')->prefix('/cms')->middleware(['auth', 'verified'])->group( fu
 });
 Route::get('/strains', 'StrainController@index')->name('strains.index');
 Route::get('/strains/{uuid}', 'StrainController@show')->name('strains.show');
-Route::get('/breeders', 'BreederController@index')->name('breeder.index');
+Route::get('/breeders', 'BreederController@index')->name('breeders.index');
+Route::get('/breeders/{uuid}', 'BreederController@show')->name('breeders.show');
 //////////////////////////////////////////////////////////
 // For scraping data from Cannabis Reports. Thanks, folks!
 //////////////////////////////////////////////////////////

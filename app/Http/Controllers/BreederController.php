@@ -15,7 +15,7 @@ class BreederController extends Controller
     public function index()
     {
         $breeders = Breeder::orderBy('name')->paginate(100);
-        return view('breeder.index', compact('breeders'));
+        return view('breeders.index', compact('breeders'));
     }
 
     /**
@@ -45,9 +45,10 @@ class BreederController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        //
+        $breeder =  Breeder::whereUuid($uuid)->first();
+        return view('breeders.show', ['breeder' => $breeder]);
     }
 
     /**
