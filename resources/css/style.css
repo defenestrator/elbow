@@ -1,12 +1,11 @@
-/* Reset */
+/* Catch a ride! */
 @import "tailwindcss/base";
-@import "reset";
-
-/* Components */
 @import "tailwindcss/components";
-@import "buttons";
-@import "form";
-@import "nprogress";
+/* Reset */
+@import "./reset";
+/* Components */
+@import "./buttons";
+@import "./form";
 
 /* Utilities */
 @import "tailwindcss/utilities";
@@ -37,3 +36,50 @@ h4, h5, h6 {
     text-align: center;
 }
 [x-cloak] { display: none; }
+
+.pagination{
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+}
+
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.page-link:not(.disabled) {
+    cursor: pointer;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    color: #0f81f9;
+    margin-left: -1px;
+    line-height: 1.25;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+    color: #3595fa;
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.page-item.active .page-link  {
+    color:white;
+    background-color:#3595fa;
+}

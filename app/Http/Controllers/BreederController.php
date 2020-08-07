@@ -2,6 +2,7 @@
 
 namespace Elbow\Http\Controllers;
 
+use Elbow\Breeder;
 use Illuminate\Http\Request;
 
 class BreederController extends Controller
@@ -13,7 +14,8 @@ class BreederController extends Controller
      */
     public function index()
     {
-        //
+        $breeders = Breeder::orderBy('name')->paginate(100);
+        return view('breeder.index', compact('breeders'));
     }
 
     /**

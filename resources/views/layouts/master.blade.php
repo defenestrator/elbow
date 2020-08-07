@@ -55,7 +55,11 @@
           </a>
         </div>
       </nav>
-     <div class="container p-2 m-2">
+     <div class="container p-2 m-2 mx-auto" id="app">
+      <script>
+        const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+        console.log(csrfToken)
+      </script>
       @yield('content')
     </div>   
     <div class="flex-row-reverse">

@@ -45,9 +45,10 @@ class StrainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uuid)
     {
-        //
+        $strain =  Strain::whereUuid($uuid)->first();
+        return view('strains.show', ['strain' => $strain]);
     }
 
     /**
