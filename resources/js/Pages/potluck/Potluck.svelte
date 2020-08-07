@@ -560,7 +560,7 @@
         </div>
     {/each}
 </div> 
-<div class="potluck">
+<div class="container potluck">
     <div class="gameBoard">
         <div class="row top">
             <div class="square2"><span class="corner corner1">JACKPOT!</span>
