@@ -2,7 +2,12 @@
 .btn-blue {
   @apply px-6 py-3 rounded bg-blue-600 text-white text-sm font-bold whitespace-no-wrap;
   transition: all 0.5s;
-  &:hover, &:focus { @apply bg-blue-500 }
+  
+}
+
+.btn-blue:hover, .btn-blue:focus {
+  @apply bg-blue-300; 
+  transition: all 0.5s;
 }
 
 .btn-spinner,

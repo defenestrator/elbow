@@ -36,9 +36,9 @@
       </div>
       <div x-cloak
       x-bind:class="{'hidden': ! openMenu }"
-      x-on:click.away="openMenu = false;" class="transition-slow ease-in ease-out w-full block flex-grow md:flex md:items-center md:w-auto">
+      x-on:click.away="openMenu = false;" class="transition-slow ease-in w-full block flex-grow md:flex md:items-center md:w-auto">
       
-      <div class="text-sm md:flex-grow">
+      <div class="text-sm md:flex-grow mt-6 md:mt-0">
         <a href="{{route('breeders.index')}}" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
           Breeders
         </a>  
