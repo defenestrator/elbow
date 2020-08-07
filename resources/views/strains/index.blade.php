@@ -8,7 +8,7 @@
 
     <div class="flex flex-wrap content-start w-100">
     @foreach($strains as $strain)    
-        <div class="m-2 flex-1 text-gray-700 border border-double p-2 rounded-md overflow-hidden" style="min-width:200px;">
+        <div class="m-2 flex-1 text-gray-700 border border-gray-400 p-2 shadow rounded-md overflow-hidden" style="min-width:200px;">
             <a href="{!! route('strains.show', $strain->uuid) !!}">  
                 <h1 class="text-blue-700 text-xl my-2">{{ $strain->name }}</h1>
             <div class="content-center w-100 m-2">
