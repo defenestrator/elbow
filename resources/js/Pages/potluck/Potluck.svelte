@@ -559,7 +559,7 @@
             </div>
         </div>
     {/each}
-</div> 
+</div>
 <div class="container potluck">
     <div class="gameBoard">
         <div class="row top">
@@ -992,7 +992,7 @@
         width: 46%;
         background: transparent;
         position: absolute;
-        transform: rotateZ(-45deg) translateX(-26.5%) translateY(246.5%);
+        transform: rotateZ(-45deg) translateX(-30%) translateY(450.5%);
         border: 3px solid black;
         border-radius: 1em;
         padding: 0, 0.1em, 0.2em 0.1em;
@@ -1002,7 +1002,7 @@
     }
 
     .logoName {
-        font-size: 7.0vw;
+        font-size: 3.0vw;
         color: black;
         font-family: futura;
         -webkit-text-stroke-width: 2px;
@@ -1023,7 +1023,7 @@
         background: rgb(66, 166, 240) url('/img/FarOut.jpg') center center no-repeat;
         background-size: contain;
         border-radius: 0.3em;
-        transform: rotateZ(-45deg) translateX(-5.5%) translateY(132.25%);
+        transform: rotateZ(-45deg) translateX(-5.5%) translateY(82.25%);
     }
 
     .card-blue-inside {
@@ -1036,7 +1036,7 @@
     .card-orange {
         background: rgb(66, 166, 240) url('/img/BumOut.jpg') center center no-repeat;
         background-size: contain;
-        transform: rotateZ(-45deg) translateX(-25%) translateY(687.25%);
+        transform: rotateZ(-45deg) translateX(-150%) translateY(587.25%);
         border-radius: 0.3em;
     }
 
