@@ -39,7 +39,7 @@
                 <li in:fly="{{ x: 200, duration: 400 }}" out:fade class="block w-100 align-center" style="border-bottom:1px solid #c5c7ca;">
                         <div class="m-2 w-20 inline-block align-center"> 
                             <a href="{result.link}">
-                                <img src="{result.image}" alt="{result.name}">
+                                <img class="rounded-sm" src="{result.image}" alt="{result.name}">
                             </a>
                         </div>
                     
