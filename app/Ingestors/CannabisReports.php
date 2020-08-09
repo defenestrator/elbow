@@ -154,9 +154,10 @@ class CannabisReports
     {
         $items = Breeder::where('image', '!=', '/img/coming-soon.png'); 
         $path = '/img/breeders/' . basename($item->image);
-        foreach($items as $item) {
+
+        $items->each(function($item) {
             $item->update(['image' => $path]);
-        }
+        }); 
     }
     
     public function updateStrainTable()
@@ -164,9 +165,10 @@ class CannabisReports
         $items = Strain::where('image', '!=', '/img/coming-soon.png'); 
 
         $path = '/img/strains/' . basename($item->image);
-        foreach($items as $item) {
+        
+        $items->each(function($item) {
             $item->update(['image' => $path]);
-        }
+        });
         
     }
 }
