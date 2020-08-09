@@ -1,3 +1,20 @@
+<script>
+    import { fade, fly } from 'svelte/transition'
+    export let query = '';
+    export let results = [];
+    
+    function search() {
+        fetch('/api/search?query=' + query.trim())
+        .then(response => response.json())
+        .then(data => results = data)
+        }
+
+    function clear() {
+        query = ''
+        results = []
+    }
+</script>
+
 <main>
     <div class="searchWrapper flex flex-row">
         <div class="flex-1">
@@ -19,7 +36,7 @@
         <div class="block" id="results">
             <ul style="padding-left:0;">
                 {#each results as result}                
-                <li class="block w-100 align-center" style="border-bottom:1px solid #c5c7ca;">
+                <li in:fly="{{ x: 200, duration: 400 }}" out:fade class="block w-100 align-center" style="border-bottom:1px solid #c5c7ca;">
                         <div class="w-20 inline-block align-center"> 
                             <a href="{result.link}">
                                 <img src="{result.image}" alt="{result.name}">
@@ -47,21 +64,6 @@
     {/if}
 </main>
 
-<script>
-    export let query = '';
-    export let results = [];
-    
-    function search() {
-        fetch('/api/search?query=' + query.trim())
-        .then(response => response.json())
-        .then(data => results = data)
-        }
-
-    function clear() {
-        query = ''
-        results = []
-    }
-</script>
 <style>
 
 </style>

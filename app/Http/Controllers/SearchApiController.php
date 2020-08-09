@@ -35,6 +35,6 @@ class SearchApiController extends Controller
             $results->push($strain);
         };
 
-        return $results->sortBy('name')->flatten();
+        return $results->sortBy('type')->flatten();
     }
 }
