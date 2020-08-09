@@ -47,7 +47,7 @@ class BreederController extends Controller
      */
     public function show($uuid)
     {
-        $breeder =  Breeder::whereUuid($uuid)->first();
+        $breeder =  Breeder::whereUuid($uuid)->with('strains')->first();
         return view('breeders.show', ['breeder' => $breeder]);
     }
 

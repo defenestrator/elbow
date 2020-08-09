@@ -13,13 +13,13 @@ class SearchApiController extends Controller
     {
         $query = $request->input('query');
 
-        $returnedStrains = $strain->search($query)->orderBy('updated_at', 'desc')->get()->map(function($strain) {
+        $returnedStrains = $strain->search($query)->orderBy('updated_at', 'desc')->take(50)->get()->map(function($strain) {
             $strain['type'] = 'Strain';
             $strain['link'] = route('strains.show',  $strain['uuid']);
             return $strain;
         });
 
-        $returnedBreeders = $breeder->search($query)->orderBy('updated_at', 'desc')->get()->map(function($breeder) {
+        $returnedBreeders = $breeder->search($query)->orderBy('updated_at', 'desc')->take(50)->get()->map(function($breeder) {
             $breeder['type'] = 'Breeder';
             $breeder['link'] = route('breeders.show',$breeder['uuid']);
             return $breeder;

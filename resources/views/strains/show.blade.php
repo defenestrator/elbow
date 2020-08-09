@@ -10,7 +10,7 @@
                 </a>
             </div>
             <div class="text-left pt-4"> 
-                <p><strong>Lineage:</strong> {{ $strain->genetics }}</p>  
+                <p><strong>Genetics:</strong> {{ $strain->genetics }}</p>  
                 <p><strong>Description:</strong> {{$strain->description}}</p>               
                 <p><strong>Breeder:</strong> 
                     <a href="{!! route('breeders.show', $strain->breeder->uuid) !!}">  

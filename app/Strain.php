@@ -70,7 +70,7 @@ class Strain extends Model
      */
     public function toSearchableArray()
     {
-        $array = $this->only(['id','name', 'uuid', 'image']);
+        $array = $this->toArray();
 
         // Customize array...
 

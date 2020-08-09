@@ -1,7 +1,7 @@
 <main>
     <div class="searchWrapper">
         <form name="search" id="search-input" on:submit|preventDefault={search}>
-            <input bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:keyup="{search}">
+            <input bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:keyup="{search}"><button on:click="{clear}">clear</button>
         </form>
     </div>
     {#if results}
@@ -35,14 +35,11 @@
 
     function search() {
         isLoading = true;
-        if(query.length > 2) {
         fetch('/api/search?query=' + query.trim())
         .then(response => response.json())
         .then(data => results = data)
         .then(console.log(results))
         }
-        
-    }
 
     function clear() {
         this.query = ''
@@ -51,31 +48,5 @@
     }
 </script>
 <style>
-.search-results {
-    box-shadow:0px 2px 2px #c5c7ca;
-    border:1px solid #c5c7ca;
-    z-index:101;
-    width:96.5%;
-    padding:1em;
-    border-top:none;
-    background:white;
-    position:absolute;
-    height:auto;
-    top:46px;
-}
-.searchbar-li {
-    margin:6px auto;  width:auto; padding: 0 8px;
-}
-.scrollable-menu .search-results {
-    max-height:600px;
-}
-@media (min-width:768px) {
-    .search-results {
-        width:550px;
-        max-height:750px;
-    }
-    .searchbar-li {
-        width:200px;
-    }
-}
+
 </style>
