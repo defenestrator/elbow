@@ -1,8 +1,10 @@
 <main>
     <div class="searchWrapper">
         <form name="search" id="search-input" on:submit|preventDefault={search}>
-            <input bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:keyup="{search}"><button on:click="{clear}">clear</button>
+            <label for="search">Search Everything</label>
+            <input name="search" bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:keyup="{search}" autofocus>
         </form>
+        <button class="my-3 btn-blue" on:click="{clear}">clear</button>
     </div>
     {#if results}
         <div class="block" id="results">
@@ -38,13 +40,11 @@
         fetch('/api/search?query=' + query.trim())
         .then(response => response.json())
         .then(data => results = data)
-        .then(console.log(results))
         }
 
     function clear() {
-        this.query = ''
-        this.results = []
-        return 'results cleared'
+        query = ''
+        results = []
     }
 </script>
 <style>
