@@ -116,4 +116,53 @@ class CannabisReports
         }
         return;
     }
+
+    public function downloadStrainImages()
+    {
+        $items = Strain::where('image', '!=', '/img/coming-soon.png'); 
+        
+        $items->each(function($item){
+            $path = '/img/strains/' . basename($item->image);
+            if (parse_url($item->image, PHP_URL_SCHEME) === 'https' && $item->image != 'https://www.cannabisreports.com/images/strains/landraces/full-landraces.png'){
+                $response = $this->client()->request('GET', $item->image, ['sink' => public_path($path)]);
+                if( $response->getStatusCode() == 200){
+                    $item->update(['image' => $path]);
+                } else {
+                    return 'Please try again';
+                }
+            }
+            
+            return print_f('All done!');     
+        });
+        
+    }
+    public function downloadBreederImages()
+    {
+        $items = Breeder::where('image', '!=', '/img/coming-soon.png'); 
+
+        $items->each(function($item){
+            $path = '/img/breeders/' . basename($item->image);
+            $response = $this->client()->request('GET', $item->image, ['sink' => public_path($path)]);
+            if( $response->getStatusCode() == 200){
+                $item->update(['image' => $path]);
+            }            
+        });
+        
+    }
+
+    public function updateBreederTable()
+    {
+        $items = Breeder::where('image', '!=', '/img/coming-soon.png'); 
+        $path = '/img/breeders/' . basename($item->image);
+        $item->update(['image' => $path]);
+    }
+    
+    public function updateStrainTable()
+    {
+        $items = Strain::where('image', '!=', '/img/coming-soon.png'); 
+
+        $path = '/img/strains/' . basename($item->image);
+
+        $item->update(['image' => $path]);
+    }
 }

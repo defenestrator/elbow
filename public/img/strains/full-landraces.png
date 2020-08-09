@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>404 - Page Not Found</title>
+    <meta name="description" content="Build your profile. Search and Explore. Connect and Follow. Discover your cannabis experience.">
+
+    <meta name="google-site-verification" content="-GmWRjTvUvgpAZQu0HJNLV7hY_rU2kILQ4r1jE94sFQ" />
+
+    <meta property="og:title" content="404 - Page Not Found">
+    <meta property="og:url" content="http://www.cannabisreports.com/images/strains/landraces/full-landraces.png">
+    <meta property="og:site_name" content="Cannabis Reports">
+        <meta property="og:image" content="http://www.cannabisreports.com/images/share_logo.png">
+            
+    <link href="/css/main.css?v=5.638" rel="stylesheet">
+    <link href="/css/toastr.min.css?v=5.638" rel="stylesheet">
+
+            
+    
+    <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Much Favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <!-- End Such Favicon -->
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-P9LC5BP');</script>
+	<!-- End Google Tag Manager -->
+
+    <script type="application/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-36465794-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+</head>
+
+<body>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9LC5BP"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+    <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-left" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon icon-menu"></span>
+            </button>
+
+            <a class="navbar-logo" href="https://www.cannabisreports.com"><img src="/images/brand-cannabis-reports.svg" alt="Cannabis Reports"></a>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".search-collapse">
+                <span class="sr-only">Toggle search</span>
+                <span class="icon icon-magnifier"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                                    <li>
+                    <a href="https://www.cannabisreports.com/login" rel="nofollow"><span class="icon icon-enter"></span> Join / Sign In</a>
+                    </li>
+                            </ul>
+            <form class="navbar-form hidden-xs search-form" role="search" id="site-search-non-mobile-container" action="https://www.cannabisreports.com/search/results" method="get">
+                <div class="form-group" style="display: inline;">
+                    <div class="input-group" style="display: table;">
+                        <div class="input-group-btn" style="width: 1%;">
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All <span class="icon icon-chevron-down" style="font-size: 70%; font-weight: 700;"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                                                        <li><a href="https://www.cannabisreports.com/explore/brands"><p><span class="icon icon-license2"></span> Brands</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/dispensaries"><p><span class="icon icon-store"></span> Dispensaries</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/edibles"><p><span class="icon icon-dinner2"></span> Edibles</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/edibles/additive">Additives</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/baked-good">Baked Goods</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/beverage">Beverages</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/breath-spray">Breath Sprays</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/breath-strip">Breath Strips</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/butter">Butters</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/candy">Candies</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/cereal">Cereals</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/chocolate">Chocolates</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/concentrated-flavorings">Concentrated Flavorings</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/cooking-oil">Cooking Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/dietary-supplement">Dietary Supplements</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/dog-treat">Dog Treats</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/gum">Gums</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/honey">Honeys</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/ice-cream">Ice Creams</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/lozenge">Lozenges</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/mint">Mints</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/oil">Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/pill">Pills</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/rso">RSO</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/salad-dressing">Salad Dressings</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/sauce">Sauces</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/snack">Snacks</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/soup">Soups</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/spread">Spreads</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/sugarsweetner">Sugar/Sweetners</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/syrup">Syrups</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/tincture">Tinctures</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/treat">Treats</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/extracts"><p><span class="icon icon-beaker"></span> Extracts</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/extracts/crumble">Crumbles</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/hash">Hashes</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/honeycomb">Honeycombs</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/inhaler">Inhalers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/kief">Kiefs</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/oil">Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/shatter">Shatters</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/space-foam">Space Foams</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/vaporizer-cartridge">Vaporizer Cartridges</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/vaporizer-disposable">Vaporizer Disposables</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/water-hash">Water Hashes</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/wax">Waxes</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/faq"><p><span class="icon icon-question-circle"></span> FAQ</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/flowers"><p><span class="icon icon-lotus"></span> Flowers</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/flowers/clones">Clones</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/flowers/flowers">Flowers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/flowers/seeds">Seeds</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/flowers/shake">Shake</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/landraces"><p><span class="icon icon-earth"></span> Landraces</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/cannabis-studies"><p><span class="icon icon-first-aid"></span> Medical Conditions</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="/news/"><p><span class="icon icon-news"></span> News</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/products"><p><span class="icon icon-tags"></span> Products</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/products/animal-care">Animal Care</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/bath">Bath</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/coated-flower">Coated Flowers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/coated-flowers">Coated Flowers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/cold-water-extract">Cold Water Extracts</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/extract">Extracts</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/lip-balm">Lip Balms</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/personal-lubricant">Personal Lubricants</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/pre-roll">Pre-rolls</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/skin-care">Skin Cares</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/snake-oil">Snake Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/suppository">Suppositories</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/topical">Topicals</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/reviews"><p><span class="icon icon-star"></span> Reviews</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/seed-companies"><p><span class="icon icon-landscape"></span> Seed Companies</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/strains"><p><span class="icon icon-leaf"></span> Strains</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                        <input id="site-search" type="text" class="form-control input-lg input-block" placeholder="Products, medical conditions, brands, and more...">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-lg btn-warning search-button">Search</button></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="search-collapse collapse navbar-collapse" id="site-search-mobile-container">
+            <form class="navbar-form search-form" role="search" action="https://www.cannabisreports.com/search/results" method="get">
+                <div class="form-group" style="display: inline;">
+                    <div class="input-group" style="display: table;">
+                        <div class="input-group-btn" style="width: 1%;">
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All <span class="icon icon-chevron-down" style="font-size: 70%; font-weight: 700;"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                                                        <li><a href="https://www.cannabisreports.com/explore/brands"><p><span class="icon icon-license2"></span> Brands</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/dispensaries"><p><span class="icon icon-store"></span> Dispensaries</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/edibles"><p><span class="icon icon-dinner2"></span> Edibles</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/edibles/additive">Additives</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/baked-good">Baked Goods</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/beverage">Beverages</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/breath-spray">Breath Sprays</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/breath-strip">Breath Strips</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/butter">Butters</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/candy">Candies</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/cereal">Cereals</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/chocolate">Chocolates</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/concentrated-flavorings">Concentrated Flavorings</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/cooking-oil">Cooking Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/dietary-supplement">Dietary Supplements</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/dog-treat">Dog Treats</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/gum">Gums</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/honey">Honeys</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/ice-cream">Ice Creams</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/lozenge">Lozenges</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/mint">Mints</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/oil">Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/pill">Pills</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/rso">RSO</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/salad-dressing">Salad Dressings</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/sauce">Sauces</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/snack">Snacks</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/soup">Soups</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/spread">Spreads</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/sugarsweetner">Sugar/Sweetners</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/syrup">Syrups</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/tincture">Tinctures</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/edibles/treat">Treats</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/extracts"><p><span class="icon icon-beaker"></span> Extracts</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/extracts/crumble">Crumbles</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/hash">Hashes</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/honeycomb">Honeycombs</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/inhaler">Inhalers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/kief">Kiefs</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/oil">Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/shatter">Shatters</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/space-foam">Space Foams</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/vaporizer-cartridge">Vaporizer Cartridges</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/vaporizer-disposable">Vaporizer Disposables</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/water-hash">Water Hashes</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/extracts/wax">Waxes</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/faq"><p><span class="icon icon-question-circle"></span> FAQ</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/flowers"><p><span class="icon icon-lotus"></span> Flowers</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/flowers/clones">Clones</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/flowers/flowers">Flowers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/flowers/seeds">Seeds</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/flowers/shake">Shake</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/landraces"><p><span class="icon icon-earth"></span> Landraces</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/cannabis-studies"><p><span class="icon icon-first-aid"></span> Medical Conditions</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="/news/"><p><span class="icon icon-news"></span> News</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/products"><p><span class="icon icon-tags"></span> Products</p></a></li>
+                                                                                                                                                                                                                        <li><a href="https://www.cannabisreports.com/explore/products/animal-care">Animal Care</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/bath">Bath</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/coated-flower">Coated Flowers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/coated-flowers">Coated Flowers</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/cold-water-extract">Cold Water Extracts</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/extract">Extracts</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/lip-balm">Lip Balms</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/personal-lubricant">Personal Lubricants</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/pre-roll">Pre-rolls</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/skin-care">Skin Cares</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/snake-oil">Snake Oils</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/suppository">Suppositories</a></li>
+                                                                                                                                                <li><a href="https://www.cannabisreports.com/explore/products/topical">Topicals</a></li>
+                                                                                                                                                <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/reviews"><p><span class="icon icon-star"></span> Reviews</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/seed-companies"><p><span class="icon icon-landscape"></span> Seed Companies</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                        <li><a href="https://www.cannabisreports.com/explore/strains"><p><span class="icon icon-leaf"></span> Strains</p></a></li>
+                                                                        <li role="separator" class="divider"></li>
+                                                                    </ul>
+                            </div>
+                        </div>
+                        <input id="site-search-mobile" type="text" class="form-control input-lg input-block" placeholder="Everything cannabis...">
+                        <span class="input-group-btn"><button type="submit" class="btn btn-lg btn-warning search-button">Go</button></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>Oops! 404 Error <br class="visible-xs"><small>Page Not Found</small></h1>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Sorry about that!</h2>
+            <p>Looks like something went wrong. We'll check into things if there was a problem.</p>
+            <p>We are always working to make things better. Feel free to contact us or provide feedback using the links in the footer.</p>
+        </div>
+    </div>
+</div>
+
+
+    <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-2">
+                <div class="row">
+                    <div class="col-xs-6 col-md-12">
+                        <p class="footer-header">
+                            Get to Know Us
+                        </p>
+                        <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/about-us">About Us</a><br>
+                        <a href="https://www.cannabisreports.com/contact-us">Contact Us</a><br>
+                        <a href="https://www.cannabisreports.com/faq">FAQ</a>
+                        </p>
+                        <br>
+                    </div>
+                    <div class="col-xs-6 col-md-12">
+                        <p class="footer-header">
+                            Business Signup
+                        </p>
+                        <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/grow-your-business/company">Brand Owners</a><br>
+                        <a href="https://www.cannabisreports.com/grow-your-business/dispensary">Dispensary Owners</a>
+                        </p>
+                        <br>
+                    </div>
+                </div>
+                <p class="footer-header">
+                    API Developers
+                </p>
+                <p class="footer-links">
+                <a href="https://www.cannabisreports.com/api">Information</a><br>
+                <a href="https://developers.cannabisreports.com">Documentation</a><br>
+                </p>
+            </div>
+            <div class="col-xs-12 col-md-8 recently-added">
+                <p class="footer-header">
+                    Recently Added
+                </p>
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/dispensaries">Dispensaries</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/oakland/purple-charles">Purple Charles</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/dispensary-reports/ca/oakland">Oakland</a>, <a href="https://www.cannabisreports.com/dispensary-reports/ca">CA</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/vallejo/vallejo-holistic-health-center">Vallejo Holistic Health Center</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/dispensary-reports/ca/vallejo">Vallejo</a>, <a href="https://www.cannabisreports.com/dispensary-reports/ca">CA</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/stockton/doctors-orders">Doctor&#039;s Orders</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/dispensary-reports/ca/stockton">Stockton</a>, <a href="https://www.cannabisreports.com/dispensary-reports/ca">CA</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/vallejo/htp-group">HTP Group</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/dispensary-reports/ca/vallejo">Vallejo</a>, <a href="https://www.cannabisreports.com/dispensary-reports/ca">CA</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/dispensaries">Deliveries</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/concord/mt-diablo-care-collective">Mt. Diablo CARE Collective</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="#">Concord</a>, <a href="#">CA</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/san-diego/7-by-7">7 by 7</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="#">San Diego</a>, <a href="#">CA</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/huntington-beach/green-cross-delivery">Green Cross Delivery</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="#">Huntington Beach</a>, <a href="#">CA</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/dispensary-reports/ca/san-diego/breath-of-life-delivery">Breath of Life Delivery</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="#">San Diego</a>, <a href="#">CA</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                    <div class="clearfix visible-xs visible-sm"></div>
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/brands">Brands</a>
+                        </p>
+                        <p class="footer-links">
+                                                    <a href="https://www.cannabisreports.com/producer-reports/cbddy-cbd">CBDDY CBD</a><br><br>
+                                                    <a href="https://www.cannabisreports.com/producer-reports/my-cbd-health">My CBD Health</a><br><br>
+                                                    <a href="https://www.cannabisreports.com/producer-reports/cbdpure">CBDPure</a><br><br>
+                                                    <a href="https://www.cannabisreports.com/producer-reports/rising-sun-extract">Rising Sun Extract</a><br><br>
+                                                    <a href="https://www.cannabisreports.com/producer-reports/the-humboldt-cure">The Humboldt Cure</a><br><br>
+                                                </p>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/strains">Strains</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/strain-reports/ripper-seeds/acid-dough">Acid Dough</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/strain-reports/ripper-seeds">Ripper Seeds</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/strain-reports/delicatessen/alice-delicatessen">Alice (Delicatessen)</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/strain-reports/delicatessen">Delicatessen</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/strain-reports/exotic-seed-co/spicy-bitch">Spicy Bitch</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/strain-reports/exotic-seed-co">Exotic Seed Co.</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/strain-reports/philosopher-seeds/yumbolt">Yumbolt</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/strain-reports/philosopher-seeds">Philosopher Seeds</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/flowers">Flowers</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/flower-reports/green-house-seed-co/unknown-breeder/cherry-garcia-band/flowers">Cherry Garcia Band Flowers</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/green-house-seed-co">Green House Seed Co.</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/flower-reports/green-house-seed-co/green-house-seed-co/white-widow/flowers">White Widow Flowers</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/green-house-seed-co">Green House Seed Co.</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/flower-reports/mtg-seeds/mtg-seeds/cb-diesel/flowers">CB Diesel Flowers</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/mtg-seeds">MTG Seeds</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/flower-reports/purple-city-genetics/joesy-whales/gorilla-glue-4/flowers">Gorilla Glue #4 Flowers</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/purple-city-genetics">Purple City Genetics</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/extracts">Extracts</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/extract-reports/chameleon-extracts/unknown-breeder/blue-berry/wax">Blue Berry - Wax</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/chameleon-extracts">Chameleon Extracts</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/extract-reports/sunderstorm/unknown-breeder/blue-dream/vaporizer-cartridge">Blue Dream - Vaporizer Cartridge</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/sunderstorm">Sunderstorm</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/extract-reports/rising-sun-extract/unknown-breeder/white-mango/shatter">White Mango - Shatter</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/rising-sun-extract">Rising Sun Extract</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/extract-reports/kaizen-medicinal/green-house-seed-co/super-silver-haze-ssh/wax">Super Silver Haze (SSH) - Wax</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/kaizen-medicinal">Kaizen Medicinal</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                    <div class="clearfix visible-xs visible-sm"></div>
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/edibles">Edibles</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/edible-reports/my-cbd-health/swfl-hemp-avocado-cbd-cooking-oils">SWFL Hemp Avocado &amp; CBD Cooking Oils</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/my-cbd-health">My CBD Health</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/edible-reports/my-cbd-health/swfl-hemp-avacoda-spanish-olive-cooking-oils">SWFL Hemp Avacoda &amp; Spanish Olive Cooking Oils</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/my-cbd-health">My CBD Health</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/edible-reports/my-cbd-health/swfl-hemp-cooking-oils-cbd-spanish-ext-virgin-olive-oils">SWFL Hemp Cooking Oils / CBD Spanish Ext. Virgin Olive Oils</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/my-cbd-health">My CBD Health</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/edible-reports/sunderstorm/kanha-candies-400mg-blueberry-belts">Kanha Candies - 400mg Blueberry Belts</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/sunderstorm">Sunderstorm</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                    <div class="col-xs-6 col-md-3">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/explore/products">Products</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/product-reports/the-humboldt-cure/pre-roll-package">Pre-Roll Package</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/the-humboldt-cure">The Humboldt Cure</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/product-reports/the-humboldt-cure/ounce-of-cannabis">ounce of cannabis</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/the-humboldt-cure">The Humboldt Cure</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/product-reports/the-humboldt-cure/12-ounce-of-cannabis">1/2 ounce of cannabis</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/the-humboldt-cure">The Humboldt Cure</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/product-reports/the-humboldt-cure/14-ounce-of-cannabis">1/4 ounce of cannabis</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/producer-reports/the-humboldt-cure">The Humboldt Cure</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p class="footer-header">
+                            <a href="/news/">Cannabis News</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/news/?p=7838">CBD Shown to be Effective for Treating Schizophrenia in Randomized Controlled Trial</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/news/?p=7838">December 15, 2017</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/news/?p=7826">FDA Sends Warning Letters to CBD Product Brands with GW Pharmaceuticals Links</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/news/?p=7826">November 01, 2017</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/news/?p=7816">Jeff Sessions: &quot;Healthy to Have Some More Competition&quot; in Medical Cannabis Research Supply</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/news/?p=7816">October 18, 2017</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/news/?p=7803">Government-Funded Cannabis PTSD Study Running into Hurdles in Colorado</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/news/?p=7803">October 17, 2017</a></small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/news/?p=7795">Legalization of Cannabis in Colorado Associated with 6.5% Reduction in Opioid-Related Deaths</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small><a href="https://www.cannabisreports.com/news/?p=7795">October 16, 2017</a></small>
+                        <br><br>
+                        </p>
+                                            </div>
+                    <div class="col-xs-6">
+                        <p class="footer-header">
+                            <a href="https://www.cannabisreports.com/cannabis-studies">Cannabis Studies</a>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/cannabis-studies/involvement-of-spinal-cannabinoid-receptors-in-the-antipruritic-effects-of-win-55212-2-a-cannabinoid-receptor-agonist">Involvement of spinal cannabinoid receptors in the antipruritic effects of WIN 55,212-2, a cannabinoid receptor agonist.</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small>
+                                                <a href="https://www.cannabisreports.com/cannabis-studies/cannabis-for-itching-pruritis">Itching (Pruritis)</a><span class="separator">, </span>
+                                                </small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/cannabis-studies/cannabinoid-induced-cell-death-in-endometrial-cancer-cells-involvement-of-trpv1-receptors-in-apoptosis">Cannabinoid-induced cell death in endometrial cancer cells: involvement of TRPV1 receptors in apoptosis.</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small>
+                                                <a href="https://www.cannabisreports.com/cannabis-studies/cannabis-for-cancer-endometrial-uterine">Cancer (Endometrial/Uterine)</a><span class="separator">, </span>
+                                                </small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/cannabis-studies/the-use-of-cannabis-and-cannabinoids-in-treating-symptoms-of-multiple-sclerosis-a-systematic-review-of-reviews">The Use of Cannabis and Cannabinoids in Treating Symptoms of Multiple Sclerosis: a Systematic Review of Reviews.</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small>
+                                                <a href="https://www.cannabisreports.com/cannabis-studies/cannabis-for-multiple-sclerosis-ms">Multiple Sclerosis (MS)</a><span class="separator">, </span>
+                                                </small>
+                        <br><br>
+                        </p>
+                                                <p class="footer-links">
+                        <a href="https://www.cannabisreports.com/cannabis-studies/systematic-review-of-systematic-reviews-for-medical-cannabinoids-pain-nausea-and-vomiting-spasticity-and-harms">Systematic review of systematic reviews for medical cannabinoids: Pain, nausea and vomiting, spasticity, and harms.</a>
+                        </p>
+                        <p class="footer-links small">
+                        <small>
+                                                <a href="https://www.cannabisreports.com/cannabis-studies/cannabis-for-pain-neuropathies-in-general">Pain (Neuropathies, in general)</a><span class="separator">, </span>
+                                                <a href="https://www.cannabisreports.com/cannabis-studies/cannabis-for-chemotherapy-induced-nausea-and-vomiting">Chemotherapy-Induced Nausea and Vomiting</a><span class="separator">, </span>
+                                                <a href="https://www.cannabisreports.com/cannabis-studies/cannabis-for-multiple-sclerosis-ms">Multiple Sclerosis (MS)</a><span class="separator">, </span>
+                                                </small>
+                        <br><br>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+            <br class="visible-xs visible-sm">
+            <div class="col-xs-12 col-md-2">
+                <div class="row">
+                    <div class="col-xs-6 col-md-12">
+                        <p class="footer-header">
+                            Connect with Us
+                        </p>
+                        <p class="footer-links">
+                        <a href="https://www.facebook.com/smokereports"><i class="fa fa-facebook-square fa-fw"></i> Facebook</a><br>
+                        <a href="https://twitter.com/smokereports"><i class="fa fa-twitter-square fa-fw"></i> Twitter</a><br>
+                        <a href="https://www.instagram.com/cannabisreports/"><i class="fa fa-instagram fa-fw"></i> Instagram</a><br>
+                        <a href="https://www.pinterest.com/cannabisreport/"><i class="fa fa-pinterest fa-fw"></i> Pinterest</a><br>
+                        <a href="https://www.youtube.com/c/cannabisreports"><i class="fa fa-youtube fa-fw"></i> YouTube</a><br>
+                        <a href="https://www.linkedin.com/company/cannabis-reports"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a><br>
+                        </p>
+                        <br class="hidden-xs">
+                    </div>
+                    <div class="col-xs-6 col-md-12">
+                        <p class="footer-links telephone-number">
+                            <a href="tel:18449842223">1 (844) 9THC-CBD</a>
+                        </p>
+                        <p class="footer-links small">
+                            <small><a href="tel:18449842223">1 (844) 984-2223</a></small>
+                        </p>
+                        <br>
+                        <img class="img-responsive" src="/images/brand-cannabis-reports.svg" alt="Cannabis Reports">
+                        <p class="footer-links copy"><small>&copy; Copyright 2008 - 2020</small></p>
+                        <p class="footer-links privacy-terms">
+                            <small><a href="https://www.cannabisreports.com/privacy-policy" rel="nofollow">Privacy Policy</a> | <a href="https://www.cannabisreports.com/terms" rel="nofollow">Terms of Use</a></small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script type="application/javascript" src="/js/fastclick.js"></script>
+<script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="application/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script type="application/javascript" src="/js/jquery.placeholder.js"></script>
+<script type="application/javascript" src="/js/jquery.serializejson.min.js"></script>
+<script type="application/javascript" src="/js/toastr.min.js"></script>
+
+<script type="application/javascript">
+    var csrfToken = '4dtSftW1pIaavAQ3Lf8mjhrBWVDMM9PoL4RMj7aA';
+        var userLat = 37.7749295;
+    var userLng = -122.4194155;
+    var userRad = 25;
+    </script>
+
+
+
+<script type="application/javascript" src="/js/site.js?v=5.638"></script>
+<script type="application/javascript" src="/js/typeahead.js/typeahead.modified.bundle.min.js"></script>
+<script type="application/javascript" src="/js/search.js?v=5.638"></script>
+
+
+    <div id="flash-message-js" class="container flash-message">
+    <div class="row">
+        <div id="flash-message-container" class="bs-callout">
+            <h4 id="flash-message-title"></h4>
+            <p id="flash-message-message"></p>
+        </div>
+   </div>
+</div>
+
+</body>
+</html>
