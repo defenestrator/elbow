@@ -1,13 +1,13 @@
 <main>
     <div class="searchWrapper flex flex-row">
         <div class="flex-1">
-            <form  name="search" style="width:80%;" id="search-input" on:submit|preventDefault={search}>
-                <input name="search" bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:update="{search}" on:keyup="{search}" autofocus>
-                <label class="my-2" for="search">Search Everything</label>
+            <form  name="search" style="" id="search-input" on:submit|preventDefault={search}>
+                <input style="font-size:18px; border-top-right-radius:0; border-bottom-right-radius:0;" name="search" bind:value={query} type="search" class="form-input" placeholder="search..." on:update="{search}" on:keyup="{search}" autofocus>
+                <label class="my-2" for="search">&nbsp;</label>
             </form>
         </div>
         <div class="flex-1">
-            <button style="width:20%;" class="btn-blue" on:click="{clear}">clear</button>
+            <button style="border-top-left-radius:0; border-bottom-left-radius:0;" class="btn-blue" on:click="{clear}">clear</button>
         </div>  
     </div>
     {#if results}
