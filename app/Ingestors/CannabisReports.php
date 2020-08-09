@@ -153,20 +153,22 @@ class CannabisReports
     public function updateBreederTable()
     {
         $items = Breeder::where('image', '!=', '/img/coming-soon.png'); 
-        $path = '/img/breeders/' . basename($item->image);
+        $path = '/img/breeders/';
 
         $items->each(function($item) {
-            $item->update(['image' => $path]);
-        }); 
+            $path . basename($item->image);
+           $item->update(['image' => $path]);
+       });
     }
     
     public function updateStrainTable()
     {
         $items = Strain::where('image', '!=', '/img/coming-soon.png'); 
 
-        $path = '/img/strains/' . basename($item->image);
         
+        $path = '/img/strains/';
         $items->each(function($item) {
+             $path . basename($item->image);
             $item->update(['image' => $path]);
         });
         
