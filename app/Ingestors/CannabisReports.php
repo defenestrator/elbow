@@ -29,7 +29,7 @@ class CannabisReports
 
     public function iterateOverPages()
     {
-        for ($i = 900; $i < 1400; ++$i) {
+        for ($i = 0; $i < 1400; ++$i) {
             $this->makeRequest($i);
             sleep(7);
         }
@@ -146,30 +146,6 @@ class CannabisReports
             if( $response->getStatusCode() == 200){
                 $item->update(['image' => $path]);
             }            
-        });
-        
-    }
-
-    public function updateBreederTable()
-    {
-        $items = Breeder::where('image', '!=', '/img/coming-soon.png'); 
-        $path = '/img/breeders/';
-
-        $items->each(function($item) {
-            $path . basename($item->image);
-           $item->update(['image' => $path]);
-       });
-    }
-    
-    public function updateStrainTable()
-    {
-        $items = Strain::where('image', '!=', '/img/coming-soon.png'); 
-
-        
-        $path = '/img/strains/';
-        $items->each(function($item) {
-             $path . basename($item->image);
-            $item->update(['image' => $path]);
         });
         
     }
