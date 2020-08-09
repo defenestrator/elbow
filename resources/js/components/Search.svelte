@@ -1,10 +1,14 @@
 <main>
-    <div class="searchWrapper">
-        <form name="search" id="search-input" on:submit|preventDefault={search}>
-            <label for="search">Search Everything</label>
-            <input name="search" bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:keyup="{search}" autofocus>
-        </form>
-        <button class="my-3 btn-blue" on:click="{clear}">clear</button>
+    <div class="searchWrapper flex flex-row">
+        <div class="flex-1">
+            <form  name="search" style="width:80%;" id="search-input" on:submit|preventDefault={search}>
+                <input name="search" bind:value={query} style="font-size:18px;" type="search" class="form-input" placeholder="search..." on:update="{search}" on:keyup="{search}" autofocus>
+                <label class="my-2" for="search">Search Everything</label>
+            </form>
+        </div>
+        <div class="flex-1">
+            <button style="width:20%;" class="btn-blue" on:click="{clear}">clear</button>
+        </div>  
     </div>
     {#if results}
         <div class="block" id="results">
@@ -44,7 +48,7 @@
 
     function clear() {
         query = ''
-        results = []
+        results = 'Sorry, we did not find a damn thing. Check your spelling, or check my head?'
     }
 </script>
 <style>
