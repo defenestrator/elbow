@@ -3,6 +3,7 @@
 namespace Elbow;
 
 use Elbow\Prototype as Model;
+use Laravel\Scout\Searchable;
 
 /**
  * Elbow\Breeder
@@ -40,6 +41,22 @@ use Elbow\Prototype as Model;
  */
 class Breeder extends Model
 {
+    use Searchable;
+
+    public $asYouType = true;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->only(['id', 'name', 'uuid', 'image']);
+
+        return $array;
+    }
+
     /**
      * @var string
      */

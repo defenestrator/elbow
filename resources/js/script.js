@@ -1,5 +1,6 @@
 import alpinejs from 'alpinejs';
 import Potluck from './Pages/potluck/Potluck.svelte'
+import Search from './components/Search.svelte'
 // import Game from './Pages/potluck/game/CreateGame.svelte'
 
 function http(uri) {
@@ -74,7 +75,7 @@ function http(uri) {
   }
 }
 
-// const app = new App({target: document.getElementById('app')})
+const search = new Search({target: document.getElementById('search')})
 
 const potluck = new Potluck({target: document.getElementById('potluck')})
 

@@ -152,6 +152,8 @@ return [
          * Package Service Providers...
          */
         Dyrynda\Database\LaravelEfficientUuidServiceProvider::class,
+        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -3,7 +3,7 @@
 namespace Elbow;
 
 use Elbow\Prototype as Model;
-//use Laravel\Scout\Searchable;
+use Laravel\Scout\Searchable;
 
 /**
  * Elbow\Strain
@@ -58,7 +58,25 @@ use Elbow\Prototype as Model;
  */
 class Strain extends Model
 {
-//    use Searchable;
+
+    use Searchable;
+
+    public $asYouType = true;
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->only(['id','name', 'uuid', 'image']);
+
+        // Customize array...
+
+        return $array;
+    }
+
     /**
      * @var string
      */

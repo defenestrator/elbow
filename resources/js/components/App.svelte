@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from "svelte";
-
+	require('./Search.svelte')
 	onMount(() => {
 	  console.log("the component has mounted");
 	});

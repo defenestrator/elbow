@@ -45,21 +45,36 @@
         <a href="{{route('strains.index')}}" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
           Strains
         </a>
-        <a href="/potluck" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
+        <a href="{{route('potluck')}}" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4">
           Pot Luck
         </a>
 
       </div>
       <div class="text-sm md:flex-row-reverse">
-          <a href="/login" class="block mt-2 md:inline-block md:mt-0 text-gray-700 hover:text-blue-900 mr-4"> 
-            Login
+        @guest
+        <div class="flex">
+          
+          <a href="{{route('login')}}"> 
+            <button class="btn border p-2 py-1 rounded mt-2 md:inline-block text-gray-700 hover:text-blue-600 mr-4 ml-0">
+              Login
+            </button>
           </a>
+        </div>
+
+        @endguest
+        @auth
+        <div class="flex">
+        <form action="{{route('logout')}}" method="post"> @csrf <input type="hidden" name="logout" value="{{ Auth::user() }}">
+          <button class="btn border px-2 py-1 rounded mt-2 md:inline-block text-gray-700 hover:text-blue-600 mr-4 ml-0"> 
+            Logout
+          </button>
+        </div>          
+        @endauth
       </div>
       </nav>
      <div class="container p-2 m-2 mx-auto" id="app">
       <script>
         const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
-        console.log(csrfToken)
       </script>
       @yield('content')
     </div>   

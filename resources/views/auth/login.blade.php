@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container mx-auto">
+    <div class="container mx-auto h-screen">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
                 <div class="flex flex-col break-words bg-white border rounded shadow-md">
@@ -12,7 +12,6 @@
 
                     <form class="w-full p-6" method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="flex flex-wrap mb-6">
                             <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
                                 {{ __('E-Mail Address') }}:
@@ -49,7 +48,7 @@
                         </div>
 
                         <div class="flex flex-wrap items-center">
-                            <button type="submit" class="btn-green">
+                            <button type="submit" class="btn-blue">
                                 {{ __('Login') }}
                             </button>
 
