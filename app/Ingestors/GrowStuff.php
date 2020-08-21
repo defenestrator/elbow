@@ -1,7 +1,6 @@
 <?php
 namespace Elbow\Ingestors;
 
-use Elbow\Crop;
 use GuzzleHttp\Client;
 
 class GrowStuff

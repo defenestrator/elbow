@@ -106,4 +106,20 @@ class Strain extends Model
     {
         return $this->belongsTo(Breeder::class);
     }
+
+    /**
+     * Get all of the flavors for the strain.
+     */
+    public function flavors()
+    {
+        return $this->morphToMany('App\Flavor', 'tastable');
+    }
+
+        /**
+     * Get all of the aromas for the strain.
+     */
+    public function aromas()
+    {
+        return $this->morphToMany('App\Flavor', 'smellable');
+    }
 }
