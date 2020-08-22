@@ -428,7 +428,13 @@ class CreateMostOfTheTables extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('lineage')->nullable();
+            $table->boolean('clone')->default(false);
+            $table->boolean('autoflower')->default(false);
             $table->string('genetics')->nullable();
+            $table->unsignedBigInteger('sire_id')->nullable();
+            $table->foreign('sire_id')->references('id')->on('strains');
+            $table->unsignedBigInteger('dam_id')->nullable();
+            $table->foreign('dam_id')->references('id')->on('strains');
             $table->longText('description')->nullable();
             $table->string('url')->nullable();
             $table->string('qr')->nullable();
@@ -850,6 +856,25 @@ class CreateMostOfTheTables extends Migration
             $table->softDeletes();
             $table->timestampsTz();
         });
+        Schema::create('flavors', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+        });
+
+        Schema::create('tastables', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('tastable');
+        });
+
+        Schema::create('aromas', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+        });
+
+        Schema::create('smellables', function (Blueprint $table) {
+            $table->id();
+            $table->morphs('smellable');
+        });
     }
 
     protected function humans()
@@ -1005,13 +1030,16 @@ class CreateMostOfTheTables extends Migration
      */
     public function down()
     {
-        //
+        foreach($this->tables as $table){
+            Schema::dropIfExists($table);
+        }
     }
 
     protected $tables = [
         'api_keys',
         'area_types',
         'areas',
+        'aromas',
         'ballast_light_fixture',
         'ballasts',
         'breeders',
@@ -1033,6 +1061,7 @@ class CreateMostOfTheTables extends Migration
         'feature_plans',
         'features',
         'fertilizers',
+        'flavors',
         'game_move',
         'game_user',
         'games',
@@ -1065,9 +1094,11 @@ class CreateMostOfTheTables extends Migration
         'seeds',
         'sensor_types',
         'sensors',
+        'smellables',
         'solutions',
         'stages',
         'subscriptions',
+        'tastables',
         'users'        
     ];
 
