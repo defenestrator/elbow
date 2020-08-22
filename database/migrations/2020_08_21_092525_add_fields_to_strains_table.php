@@ -15,7 +15,7 @@ class AddFieldsToStrainsTable extends Migration
     {
         Schema::table('strains', function (Blueprint $table) {
             $table->boolean('clone')->after('lineage')->default(false);
-            $table->boolean('autoflower')->after('lineage')->default(true);
+            $table->boolean('autoflower')->after('lineage')->default(false);
             $table->unsignedBigInteger('sire_id')->after('genetics')->nullable();
             $table->foreign('sire_id')->references('id')->on('strains');
             $table->unsignedBigInteger('dam_id')->after('genetics')->nullable();

@@ -70,7 +70,6 @@ class Breeder extends Model
         'uuid',
         'ucpc',
         'description',
-        'cannabis_reports_link',
         'url',
         'image'
     ];
