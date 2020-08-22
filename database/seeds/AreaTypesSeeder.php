@@ -22,7 +22,7 @@ class AreaTypesSeeder extends Seeder
                 'grow cabinet' => 'hard-sided grow cabinet',
                 'closet'       => 'just a closet, yo.',
                 'container'    => 'shipping container',
-                'custom'       => 'some other, unlisted type'
+                'custom'       => 'some other unlisted type'
             ];
         
         foreach(array_keys($areaTypes) as $areaType) { 
