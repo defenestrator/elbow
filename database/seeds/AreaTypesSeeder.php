@@ -13,7 +13,7 @@ class AreaTypesSeeder extends Seeder
     {
         $areaTypes = [
                 'grow tent'    => 'generic grow tent',
-            'outdoor'      => 'outdoor farm',
+                'outdoor'      => 'outdoor farm',
                 'hoop house'   => 'a simple hoop house',
                 'greenhouse'   => 'hard-sided greenhouse',
                 'open room'    => 'open-ventilation room',
@@ -22,7 +22,7 @@ class AreaTypesSeeder extends Seeder
                 'grow cabinet' => 'hard-sided grow cabinet',
                 'closet'       => 'just a closet, yo.',
                 'container'    => 'shipping container',
-                'custom'       => 'some other unlisted type'
+                'custom'       => 'some other, unlisted type'
             ];
         
         foreach(array_keys($areaTypes) as $areaType) { 
