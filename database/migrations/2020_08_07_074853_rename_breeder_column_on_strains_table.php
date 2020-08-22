@@ -13,9 +13,7 @@ class RenameBreederColumnOnStrainsTable extends Migration
      */
     public function up()
     {
-        Schema::table('strains', function (Blueprint $table) {
-            $table->renameColumn('breeder','breeder_name');
-        });
+        // Moved to 'database/migrations/2018_04_29_205601_create_most_of_the_tables.php'
     }
 
     /**

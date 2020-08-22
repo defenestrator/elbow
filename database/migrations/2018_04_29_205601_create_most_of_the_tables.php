@@ -424,7 +424,7 @@ class CreateMostOfTheTables extends Migration
             $table->foreign('breeder_id')
                 ->references('id')
                 ->on('breeders');
-            $table->string('breeder')->nullable();
+            $table->string('breeder_name')->nullable();
             $table->string('name');
             $table->string('image')->nullable();
             $table->string('lineage')->nullable();
