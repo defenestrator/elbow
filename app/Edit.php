@@ -36,14 +36,19 @@ class Edit extends Prototype
 {
     use Immutable;
 
-    protected   $table      = 'edits';
+    protected   $table      =   'edits';
 
-    public      $timestamps = false;
+    protected   $uuidVersion =  'ordered'; 
+
+    public      $timestamps =   false;
     
-    protected   $fillable   = ['editable_id', 'editable_type', 'state', 'user_id'];
+    protected   $fillable   =   ['editable_id', 'editable_type', 'state', 'user_id'];
 
-    protected   $hidden     = ['id'];
+    protected   $hidden     =   ['id'];
 
+    /*
+    * morphs editable() one to many
+    */
     public function editable()
     {
         return $this->morphTo();

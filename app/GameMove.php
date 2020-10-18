@@ -30,7 +30,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class GameMove extends Model
 {
-    use Immutable, GeneratesUuid; 
+    use Immutable;
+    use GeneratesUuid; 
     
     public $timestamps = false;
 

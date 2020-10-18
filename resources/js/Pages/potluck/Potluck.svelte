@@ -25,7 +25,7 @@
         spaces:   spaces,
     }
     
-    let delay = 500
+    let delay = 0
     let running = false
     let paused = false
 

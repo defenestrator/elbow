@@ -55,7 +55,7 @@ class Content extends Model
 {
     use Sluggable; // Attach the Sluggable trait to the model
     
-    protected function sluggable()
+    protected function sluggableField()
     {
         return 'title';
     }    

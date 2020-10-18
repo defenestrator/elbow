@@ -35,7 +35,7 @@ class Tag extends Model
     }
 
     /**
-     * Get all of the videos that are assigned this tag.
+     * Get all of the strains that are assigned this tag.
      */
     public function strains()
     {
